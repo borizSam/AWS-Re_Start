@@ -13,7 +13,7 @@ Aquí encontrarás apuntes, laboratorios y recursos sobre:
 - 💼 **Soft Skills**
 - 🧪 **Proyectos y Laboratorios**
 
-> Este proyecto refleja mi evolución como profesional del entorno Cloud & DevOps.  
+> Este proyecto refleja mi evolución como profesional del entorno Cloud & DevOps..
 > Lo uso para estudiar, repasar y compartir conocimiento con la comunidad.  
 
 ---
