@@ -1,0 +1,121 @@
+
+# 📘 Fundamentos de la Nube - Documentación
+
+> _Resumen estructurado de conceptos esenciales sobre cloud computing y AWS._
+
+---
+
+## 🚀 Parte I: Fundamentos Básicos
+
+### ☁️ ¿Qué es la informática en la nube?
+- ✅ Uso de servicios de computación a través de Internet.
+- 🔄 Alternativa moderna al hardware físico local.
+
+### 🧩 Tipos de Aplicaciones
+| Tipo            | Descripción                                       |
+|-----------------|---------------------------------------------------|
+| Web             | Acceso mediante navegador web                    |
+| Móviles         | Aplicaciones para smartphones/tablets            |
+| Escritorio      | Ejecutadas directamente en PCs                   |
+| IoT             | En dispositivos conectados a internet            |
+
+### 🛠️ Componentes de un Ordenador
+- **Hardware**: CPU, memoria RAM, disco duro, tarjeta de red.
+- **Software**: Sistema operativo (OS) y aplicaciones.
+
+### 🌐 Redes Informáticas
+- Red de dispositivos conectados para compartir recursos.
+- Tarjeta de red (NIC) para conexión cableada o inalámbrica.
+
+### 🖥️ Infraestructura Clave
+- **Servidor**: Máquina robusta que brinda servicios a otras.
+- **Centro de Datos**: Instalación física con múltiples servidores.
+- **VM (Máquina Virtual)**: Simulación de múltiples sistemas en uno solo.
+
+### 🔄 SDLC - Ciclo de Vida del Software
+```mermaid
+graph TD;
+    Planificación --> Análisis;
+    Análisis --> Diseño;
+    Diseño --> Desarrollo;
+    Desarrollo --> Pruebas;
+    Pruebas --> Implementación;
+    Implementación --> Mantenimiento;
+```
+
+### 👥 Roles en el Desarrollo
+- 📌 Gerente de Proyecto: Gestión global.
+- 🧠 Analista: Requisitos y alcance.
+- 🧪 QA: Pruebas del sistema.
+- 💻 Dev: Codificación.
+- 📊 DBA: Administración de datos.
+
+### 🧱 Modelos de Servicio en la Nube
+- **IaaS**: Infraestructura como servicio (máxima flexibilidad).
+- **PaaS**: Plataforma como servicio (gestión parcial).
+- **SaaS**: Software como servicio (totalmente gestionado).
+
+### ☁️ Modelos de Implementación
+- **Pública** | **Privada** | **Híbrida**
+
+---
+
+## 🛠️ Parte II: AWS Fundamentals
+
+### 🔎 ¿Qué es AWS?
+- Proveedor líder de servicios cloud.
+- Infraestructura robusta global y múltiples servicios.
+
+### 🔧 Servicios Populares
+```bash
+# Ejemplo CLI para lanzar una instancia EC2
+aws ec2 run-instances --image-id ami-12345678 --count 1 --instance-type t2.micro
+```
+
+| Categoría       | Servicios Clave                           |
+|----------------|--------------------------------------------|
+| Cómputo        | EC2, Lambda, Fargate                       |
+| Almacenamiento | S3, Glacier, EBS, EFS                      |
+| Base de datos  | RDS, DynamoDB, Aurora                      |
+| Red            | VPC, Route 53, CloudFront                  |
+| Seguridad      | IAM, KMS, Cognito                          |
+
+### 🛠️ Herramientas de Interacción
+- **AWS Console**: Interfaz visual.
+- **AWS CLI**: Control desde terminal.
+- **SDKs**: Integración programática.
+
+### 🧭 AWS CAF - Cloud Adoption Framework
+- Guía estratégica para adopción de nube.
+- Facilita colaboración entre negocio y TI.
+
+### 💰 Modelo de Precios AWS
+- Pago por uso
+- Descuentos por reserva (AURI, PURI, NURI)
+- Capas gratuitas para nuevos usuarios
+
+### 📊 Herramientas de Costo
+- [Calculadora de Precios](https://calculator.aws/#/)
+- TCO: Comparación entre on-premises vs cloud
+
+### 🌍 Infraestructura Global
+- +34 regiones
+- Zonas de disponibilidad (alta redundancia)
+- +600 puntos de presencia global
+
+### 🧬 Características Técnicas
+- Escalabilidad automática
+- Alta disponibilidad
+- Tolerancia a fallos
+
+### 🔐 Modelo de Responsabilidad Compartida
+```markdown
+- AWS: Seguridad **de** la nube (infraestructura)
+- Cliente: Seguridad **en** la nube (datos, apps)
+```
+
+---
+
+🎯 **DevOps Tip**: Automatiza despliegues en AWS usando herramientas como `Terraform`, `CloudFormation` o `CDK` para mantener infraestructura como código (IaC).
+
+---

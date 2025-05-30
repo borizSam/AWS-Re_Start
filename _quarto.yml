@@ -1,0 +1,103 @@
+project:
+  type: website
+
+website:
+  title: "Apuntes AWS RE/START"
+  navbar:
+    left:
+      - text: "Inicio"
+        file: index.qmd
+
+      - text: "Fundamentos de la Nube"
+        menu:
+          - text: "Índice"
+            file: Fundamentos-Nube/index.qmd
+          - text: "Fundation"
+            file: Fundamentos-Nube/found.qmd
+          - text: "Fundamentos 1-2"
+            file: Fundamentos-Nube/Fundamentos-1-2.qmd
+
+      - text: "Linux"
+        menu:
+          - text: "Conceptos"
+            file: Linux/conceptos.qmd
+          - text: "Comandos Básicos"
+            file: Linux/comandos.qmd
+          - text: "Gestión de Usuarios"
+            file: Linux/usuarios.qmd
+          - text: "Sistema de Archivos"
+            file: Linux/archivos.qmd
+          - text: "Distros"
+            file: Linux/distros.qmd
+          - text: "Laboratorios"
+            file: Linux/laboratorios.qmd
+
+      - text: "Redes"
+        menu:
+          - text: "Inicio"
+            file: Redes/index.qmd
+          - text: "Conceptos"
+            file: Redes/conceptos.qmd
+          - text: "Comandos"
+            file: Redes/comandos.qmd
+          - text: "Prácticas"
+            file: Redes/practicas.qmd
+
+      - text: "Seguridad"
+        menu:
+          - text: "Inicio"
+            file: Seguridad/index.qmd
+          - text: "Permisos"
+            file: Seguridad/permisos.qmd
+          - text: "Firewall"
+            file: Seguridad/firewall.qmd
+
+      - text: "Python"
+        menu:
+          - text: "Inicio"
+            file: Python/index.qmd
+          - text: "Teoría"
+            file: Python/teoria.qmd
+          - text: "Laboratorio"
+            file: Python/laboratorio.qmd
+          - text: "Test"
+            file: Python/test.qmd
+
+      - text: "Bases de Datos"
+        file: Bases-Datos/index.qmd
+
+      - text: "Jumpstart AWS"
+        file: Jumpstart-aws/index.qmd
+
+      - text: "Soft Skills"
+        file: SoftSkills/index.qmd
+
+      - text: "Laboratorios"
+        file: Laboratorios-AWS/index.qmd
+
+      - text: "Recursos"
+        menu:
+          - text: "Proyectos"
+            file: Recursos/proyectos.qmd
+          - text: "Píldoras"
+            file: Recursos/pildoras.qmd
+          - text: "Grabaciones"
+            file: Recursos/grabaciones.qmd
+
+    right:
+      - icon: github
+        href: https://github.com/borizSam
+        aria-label: GitHub
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: darkly
+    toggle:
+      icon: moon-stars
+      title: "Cambiar tema"
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    css: styles.css
