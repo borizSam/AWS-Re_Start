@@ -20,7 +20,7 @@ Aquí encontrarás apuntes, laboratorios y recursos sobre:
 
 ## 🌍 Sitio en vivo
 
-Accede al contenido completo aquí:  
+Accede al contenido completo aquí::  
 🔗 [https://borizSam.github.io/AWS-Re_Start](https://borizSam.github.io/AWS-Re_Start)
 
 ---
