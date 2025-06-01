@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://borizSam.github.io/AWS-Re_Start/index.html</loc>
-    <lastmod>2025-06-01T11:13:15.851Z</lastmod>
-  </url>
-  <url>
-    <loc>https://borizSam.github.io/AWS-Re_Start/Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).html</loc>
-    <lastmod>2025-06-01T11:13:15.851Z</lastmod>
-  </url>
-  <url>
-    <loc>https://borizSam.github.io/AWS-Re_Start/Redes/Lab[264]-Recursos de red para una VPC.html</loc>
-    <lastmod>2025-06-01T11:13:15.851Z</lastmod>
-  </url>
-  <url>
-    <loc>https://borizSam.github.io/AWS-Re_Start/about.html</loc>
-    <lastmod>2025-06-01T11:13:15.851Z</lastmod>
-  </url>
-  <url>
-    <loc>https://borizSam.github.io/AWS-Re_Start/Redes/Lab[261]-IPSpublicas y privadas.html</loc>
-    <lastmod>2025-06-01T11:13:15.851Z</lastmod>
+    <loc>https://borizSam.github.io/AWS-Re_Start/Fundamentos-Nube/Fundamentos-1-2.html</loc>
+    <lastmod>2025-06-01T13:41:54.724Z</lastmod>
   </url>
   <url>
     <loc>https://borizSam.github.io/AWS-Re_Start/Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html</loc>
-    <lastmod>2025-06-01T11:13:15.851Z</lastmod>
+    <lastmod>2025-06-01T13:41:54.725Z</lastmod>
   </url>
   <url>
-    <loc>https://borizSam.github.io/AWS-Re_Start/Fundamentos-Nube/Fundamentos-1-2.html</loc>
-    <lastmod>2025-06-01T11:13:15.850Z</lastmod>
+    <loc>https://borizSam.github.io/AWS-Re_Start/Redes/Lab[261]-IPSpublicas y privadas.html</loc>
+    <lastmod>2025-06-01T13:41:54.725Z</lastmod>
+  </url>
+  <url>
+    <loc>https://borizSam.github.io/AWS-Re_Start/about.html</loc>
+    <lastmod>2025-06-01T13:41:54.725Z</lastmod>
+  </url>
+  <url>
+    <loc>https://borizSam.github.io/AWS-Re_Start/Redes/Lab[264]-Recursos de red para una VPC.html</loc>
+    <lastmod>2025-06-01T13:41:54.725Z</lastmod>
+  </url>
+  <url>
+    <loc>https://borizSam.github.io/AWS-Re_Start/Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).html</loc>
+    <lastmod>2025-06-01T13:41:54.725Z</lastmod>
+  </url>
+  <url>
+    <loc>https://borizSam.github.io/AWS-Re_Start/index.html</loc>
+    <lastmod>2025-06-01T13:41:54.725Z</lastmod>
+  </url>
+  <url>
+    <loc>https://borizSam.github.io/AWS-Re_Start/Linux/227[LX]-Lab.html</loc>
+    <lastmod>2025-06-01T13:41:54.724Z</lastmod>
   </url>
   <url>
     <loc>https://borizSam.github.io/AWS-Re_Start/Linux/conceptos.html</loc>
-    <lastmod>2025-06-01T11:13:15.850Z</lastmod>
+    <lastmod>2025-06-01T13:41:54.725Z</lastmod>
   </url>
 </urlset>
