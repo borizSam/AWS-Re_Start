@@ -1,7 +1,0 @@
----
-title: "Linux - Conceptos Básicos"
----
-
-## ¿Qué es Linux?
-
-Linux es un sistema operativo tipo Unix, de código abierto, usado comúnmente en servidores, sistemas embebidos y dispositivos móviles.

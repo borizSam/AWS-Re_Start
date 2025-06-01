@@ -1,0 +1,282 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "AWS Re/Start",
+    "section": "",
+    "text": "AWS Re/Start 🚀\n\n\nTu viaje a la nube empieza aquí.\n\nEmpezar"
+  },
+  {
+    "objectID": "Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).html",
+    "href": "Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).html",
+    "title": "1 Lab 263 - Creación de subredes y asignación de direcciones IP en una Amazon Virtual Private Cloud (Amazon VPC)",
+    "section": "",
+    "text": "Resumir la situación del cliente.\nCrear una VPC y subredes asignando correctamente rangos de IP.\nFamiliarizarse con la AWS Management Console.\nDesarrollar una solución y presentar conclusiones.\n\n\n\n\nRol: Ingeniero de soporte en AWS\nCliente: Paulo Santos (Startup Owner)\nProblema: Necesita crear una VPC con: - ~15,000 IPs privadas - Una subred pública con al menos 50 IPs - Rango de direcciones IPv4 que comience con 192.x.x.x\n\n\n\n\n¡Hola, equipo de soporte en la nube!\nSoy nuevo en AWS y necesito ayuda para configurar una VPC. Me gustaría crear solo la parte de la VPC y que se pareciera a la de la siguiente imagen.\nTambién me gustaría que el bloque de CIDR IPv4 de la VPC sea 192.x.x.x con 15,000 IPs disponibles. Y una subred pública con al menos 50 IPs.\n¡Gracias!\n— Paulo Santos\n\n\n\n\n\n\nDiagrama del cliente\n\n\n\n\n\n\n\n\n\n\nIniciar sesión en AWS Console.\nBuscar “VPC” en la barra de búsqueda superior.\n\n\n\n\nBarra de búsqueda\n\n\n\n\n\n\nSeleccionar Launch VPC Wizard\n\n\n\n\nLaunch VPC Wizard\n\n\n\n\n\n\nElegir “VPC with a Single Public Subnet”\n\n\n\n\n\n\n\n\n\n\n\nCampo\nValor\n\n\n\n\nIPv4 CIDR block\n192.168.0.0/18 (aprox. 16,384 IPs)\n\n\nIPv6 CIDR block\nNo IPv6\n\n\nVPC name\nFirst VPC\n\n\nSubnet IPv4 CIDR\n192.168.1.0/26 (64 IPs, suficiente para 50 requeridas)\n\n\nAvailability Zone\nNo Preference\n\n\nSubnet name\nPublic subnet\n\n\nDNS hostnames\nYes\n\n\nHardware Tenancy\nDefault\n\n\n\n\n\n\nConfiguración CIDR\n\n\n\n\n\n\nHacer clic en Create VPC\nEsperar el mensaje VPC Successfully Created\n\n\n\n\nVPC creada con éxito\n\n\n\n\n\nDiagrama VPC\n\n\n\n\n\n\n\n\n\nCliente (Paulo): ¿Está todo listo?\nIngeniero (Boris Cloud): ✅ Tu VPC está creada con un rango privado de 192.168.0.0/18, que cubre tus necesidades.\nTambién tienes dos subredes públicas 192.168.1.0/26 192.168.2.0/26 con 128 IPs, cumpliendo con el mínimo de 50. Todo configurado.\n\n\n\n\n\n\nLas direcciones IP privadas en la VPC se usan para comunicación interna segura.\nEl bloque 192.168.0.0/18 ofrece más de 15,000 direcciones IP.\nLas subredes públicas permiten acceso desde y hacia Internet (cuando se les asigna una IP pública y tienen una gateway).\nAWS recomienda planificar con bloques CIDR adecuados según proyección de crecimiento.\n\n\n\n\n\n\nRFC 1918 - Rangos privados\nCalculadora CIDR/Subredes\nDocumentación de Amazon VPC\n\n\nAutor del soporte: Boris Cloud – Cloud Support Engineer"
+  },
+  {
+    "objectID": "Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).html#objetivos",
+    "href": "Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).html#objetivos",
+    "title": "1 Lab 263 - Creación de subredes y asignación de direcciones IP en una Amazon Virtual Private Cloud (Amazon VPC)",
+    "section": "",
+    "text": "Resumir la situación del cliente.\nCrear una VPC y subredes asignando correctamente rangos de IP.\nFamiliarizarse con la AWS Management Console.\nDesarrollar una solución y presentar conclusiones."
+  },
+  {
+    "objectID": "Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).html#situación",
+    "href": "Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).html#situación",
+    "title": "1 Lab 263 - Creación de subredes y asignación de direcciones IP en una Amazon Virtual Private Cloud (Amazon VPC)",
+    "section": "",
+    "text": "Rol: Ingeniero de soporte en AWS\nCliente: Paulo Santos (Startup Owner)\nProblema: Necesita crear una VPC con: - ~15,000 IPs privadas - Una subred pública con al menos 50 IPs - Rango de direcciones IPv4 que comience con 192.x.x.x"
+  },
+  {
+    "objectID": "Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).html#ticket-del-cliente",
+    "href": "Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).html#ticket-del-cliente",
+    "title": "1 Lab 263 - Creación de subredes y asignación de direcciones IP en una Amazon Virtual Private Cloud (Amazon VPC)",
+    "section": "",
+    "text": "¡Hola, equipo de soporte en la nube!\nSoy nuevo en AWS y necesito ayuda para configurar una VPC. Me gustaría crear solo la parte de la VPC y que se pareciera a la de la siguiente imagen.\nTambién me gustaría que el bloque de CIDR IPv4 de la VPC sea 192.x.x.x con 15,000 IPs disponibles. Y una subred pública con al menos 50 IPs.\n¡Gracias!\n— Paulo Santos\n\n\n\n\n\n\nDiagrama del cliente"
+  },
+  {
+    "objectID": "Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).html#tarea-1-crear-la-vpc-y-la-subred-pública",
+    "href": "Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).html#tarea-1-crear-la-vpc-y-la-subred-pública",
+    "title": "1 Lab 263 - Creación de subredes y asignación de direcciones IP en una Amazon Virtual Private Cloud (Amazon VPC)",
+    "section": "",
+    "text": "Iniciar sesión en AWS Console.\nBuscar “VPC” en la barra de búsqueda superior.\n\n\n\n\nBarra de búsqueda\n\n\n\n\n\n\nSeleccionar Launch VPC Wizard\n\n\n\n\nLaunch VPC Wizard\n\n\n\n\n\n\nElegir “VPC with a Single Public Subnet”\n\n\n\n\n\n\n\n\n\n\n\nCampo\nValor\n\n\n\n\nIPv4 CIDR block\n192.168.0.0/18 (aprox. 16,384 IPs)\n\n\nIPv6 CIDR block\nNo IPv6\n\n\nVPC name\nFirst VPC\n\n\nSubnet IPv4 CIDR\n192.168.1.0/26 (64 IPs, suficiente para 50 requeridas)\n\n\nAvailability Zone\nNo Preference\n\n\nSubnet name\nPublic subnet\n\n\nDNS hostnames\nYes\n\n\nHardware Tenancy\nDefault\n\n\n\n\n\n\nConfiguración CIDR\n\n\n\n\n\n\nHacer clic en Create VPC\nEsperar el mensaje VPC Successfully Created\n\n\n\n\nVPC creada con éxito\n\n\n\n\n\nDiagrama VPC"
+  },
+  {
+    "objectID": "Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).html#tarea-2-enviar-respuesta-al-cliente",
+    "href": "Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).html#tarea-2-enviar-respuesta-al-cliente",
+    "title": "1 Lab 263 - Creación de subredes y asignación de direcciones IP en una Amazon Virtual Private Cloud (Amazon VPC)",
+    "section": "",
+    "text": "Cliente (Paulo): ¿Está todo listo?\nIngeniero (Boris Cloud): ✅ Tu VPC está creada con un rango privado de 192.168.0.0/18, que cubre tus necesidades.\nTambién tienes dos subredes públicas 192.168.1.0/26 192.168.2.0/26 con 128 IPs, cumpliendo con el mínimo de 50. Todo configurado."
+  },
+  {
+    "objectID": "Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).html#conclusiones",
+    "href": "Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).html#conclusiones",
+    "title": "1 Lab 263 - Creación de subredes y asignación de direcciones IP en una Amazon Virtual Private Cloud (Amazon VPC)",
+    "section": "",
+    "text": "Las direcciones IP privadas en la VPC se usan para comunicación interna segura.\nEl bloque 192.168.0.0/18 ofrece más de 15,000 direcciones IP.\nLas subredes públicas permiten acceso desde y hacia Internet (cuando se les asigna una IP pública y tienen una gateway).\nAWS recomienda planificar con bloques CIDR adecuados según proyección de crecimiento."
+  },
+  {
+    "objectID": "Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).html#recursos-útiles",
+    "href": "Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).html#recursos-útiles",
+    "title": "1 Lab 263 - Creación de subredes y asignación de direcciones IP en una Amazon Virtual Private Cloud (Amazon VPC)",
+    "section": "",
+    "text": "RFC 1918 - Rangos privados\nCalculadora CIDR/Subredes\nDocumentación de Amazon VPC\n\n\nAutor del soporte: Boris Cloud – Cloud Support Engineer"
+  },
+  {
+    "objectID": "Redes/Lab[264]-Recursos de red para una VPC.html",
+    "href": "Redes/Lab[264]-Recursos de red para una VPC.html",
+    "title": "1 🧪 Lab 264 - Creación de Recursos de Red en una VPC",
+    "section": "",
+    "text": "Resumir la situación del cliente.\nCrear los recursos de red necesarios: VPC, IGW, tabla de enrutamiento, grupo de seguridad, NACL, subred y una instancia EC2.\nProbar conectividad con ping desde la instancia EC2 hacia Internet.\n\n\n\n\n\nTiempo estimado: 60 minutos\n\n\n\n\n“Hola, equipo de soporte en la nube,\nPensé que había configurado bien mi VPC, pero no puedo hacer ni un simple ping. ¿Pueden ayudarme a configurar todo correctamente para tener conexión a Internet?”\n— Brock, Propietario de startup\n\n\n\n\n\nVPC CIDR: 192.168.0.0/18\nSubred pública CIDR: 192.168.1.0/26\nRecursos necesarios:\n\nInternet Gateway (IGW)\nTabla de enrutamiento\nGrupo de seguridad\nACL de red\nInstancia EC2 con IP pública\n\n\n\n\n\n\n\n\n\nCrear la VPC\n\nNombre: Test VPC\nIPv4 CIDR block: 192.168.0.0/18\n\n\n\nVPC creada\n\n\n\nCrear la Subred\n\nNombre: Public subnet\nCIDR block: 192.168.1.0/26\nZona de disponibilidad: sin preferencia\n\n\n\n\nSubred pública\n\n\n\nCrear Tabla de Enrutamiento\n\nNombre: Public route table\nAsociar a Test VPC\n\n\n\n\nTabla de enrutamiento\n\n\n\nCrear y Adjuntar la IGW\n\nNombre: IGW test VPC\nAdjuntar a Test VPC\n\n\n\n\n\n\nAdjuntar IGW\n\n\n\nAgregar Ruta en Tabla de Enrutamiento\n\nDestination: 0.0.0.0/0\nTarget: IGW test VPC\n\n\n\n\nRuta añadida\n\n\n\nAsociar la Subred a la Tabla de Enrutamiento\n\n\n\n\nSubred asociada\n\n\n\n\n\n\n\n\n\nCrear ACLs\n\nInbound rule: permitir todo (regla 100, 0.0.0.0/0, todos los protocolos)\nOutbound rule: permitir todo (regla 100, 0.0.0.0/0, todos los protocolos)\n\n\n\n\n\n\nNACL salida\n\n\n\nCrear Grupo de Seguridad\n\nNombre: public security group\nDescripción: Permite acceso público\nReglas de entrada:\n\nSSH (22) desde 0.0.0.0/0\nHTTP (80) desde 0.0.0.0/0\nHTTPS (443) desde 0.0.0.0/0\n\nReglas de salida: permitir todo tráfico\n\n\n\n\nGrupo seguridad\n\n\n\n\n\n\n\n\n\nLanzar Instancia EC2\n\nAMI: Amazon Linux 2\nTipo: t3.micro\nRed: Test VPC\nSubred: Public subnet\nIP pública: Auto-asignada\nGrupo de Seguridad: public security group\n\nAcceso por SSH\n\nA través de PuTTY (Windows) o terminal (Linux/Mac)\nUsuario: ec2-user\nValidar conectividad con:\nping google.com\n\n\n\n\n\n\nLa infraestructura de red se configuró correctamente dentro de la VPC, permitiendo que la instancia EC2 lanzada en una subred pública pueda acceder a Internet. Se validó la conectividad con éxito usando ping, cumpliendo así con el requerimiento del cliente. Este laboratorio refuerza el conocimiento práctico de los componentes esenciales de red en AWS.\n\n🖋️ Firma:\nBoris Ivan Huaraichi Pérez\nAWS Cloud Engineer - Lab 264"
+  },
+  {
+    "objectID": "Redes/Lab[264]-Recursos de red para una VPC.html#objetivos",
+    "href": "Redes/Lab[264]-Recursos de red para una VPC.html#objetivos",
+    "title": "1 🧪 Lab 264 - Creación de Recursos de Red en una VPC",
+    "section": "",
+    "text": "Resumir la situación del cliente.\nCrear los recursos de red necesarios: VPC, IGW, tabla de enrutamiento, grupo de seguridad, NACL, subred y una instancia EC2.\nProbar conectividad con ping desde la instancia EC2 hacia Internet."
+  },
+  {
+    "objectID": "Redes/Lab[264]-Recursos de red para una VPC.html#duración",
+    "href": "Redes/Lab[264]-Recursos de red para una VPC.html#duración",
+    "title": "1 🧪 Lab 264 - Creación de Recursos de Red en una VPC",
+    "section": "",
+    "text": "Tiempo estimado: 60 minutos"
+  },
+  {
+    "objectID": "Redes/Lab[264]-Recursos de red para una VPC.html#ticket-del-cliente",
+    "href": "Redes/Lab[264]-Recursos de red para una VPC.html#ticket-del-cliente",
+    "title": "1 🧪 Lab 264 - Creación de Recursos de Red en una VPC",
+    "section": "",
+    "text": "“Hola, equipo de soporte en la nube,\nPensé que había configurado bien mi VPC, pero no puedo hacer ni un simple ping. ¿Pueden ayudarme a configurar todo correctamente para tener conexión a Internet?”\n— Brock, Propietario de startup"
+  },
+  {
+    "objectID": "Redes/Lab[264]-Recursos de red para una VPC.html#requisitos-técnicos-del-cliente",
+    "href": "Redes/Lab[264]-Recursos de red para una VPC.html#requisitos-técnicos-del-cliente",
+    "title": "1 🧪 Lab 264 - Creación de Recursos de Red en una VPC",
+    "section": "",
+    "text": "VPC CIDR: 192.168.0.0/18\nSubred pública CIDR: 192.168.1.0/26\nRecursos necesarios:\n\nInternet Gateway (IGW)\nTabla de enrutamiento\nGrupo de seguridad\nACL de red\nInstancia EC2 con IP pública"
+  },
+  {
+    "objectID": "Redes/Lab[264]-Recursos de red para una VPC.html#tarea-1-crear-infraestructura-de-red",
+    "href": "Redes/Lab[264]-Recursos de red para una VPC.html#tarea-1-crear-infraestructura-de-red",
+    "title": "1 🧪 Lab 264 - Creación de Recursos de Red en una VPC",
+    "section": "",
+    "text": "Crear la VPC\n\nNombre: Test VPC\nIPv4 CIDR block: 192.168.0.0/18\n\n\n\nVPC creada\n\n\n\nCrear la Subred\n\nNombre: Public subnet\nCIDR block: 192.168.1.0/26\nZona de disponibilidad: sin preferencia\n\n\n\n\nSubred pública\n\n\n\nCrear Tabla de Enrutamiento\n\nNombre: Public route table\nAsociar a Test VPC\n\n\n\n\nTabla de enrutamiento\n\n\n\nCrear y Adjuntar la IGW\n\nNombre: IGW test VPC\nAdjuntar a Test VPC\n\n\n\n\n\n\nAdjuntar IGW\n\n\n\nAgregar Ruta en Tabla de Enrutamiento\n\nDestination: 0.0.0.0/0\nTarget: IGW test VPC\n\n\n\n\nRuta añadida\n\n\n\nAsociar la Subred a la Tabla de Enrutamiento\n\n\n\n\nSubred asociada"
+  },
+  {
+    "objectID": "Redes/Lab[264]-Recursos de red para una VPC.html#tarea-2-crear-seguridad-de-red",
+    "href": "Redes/Lab[264]-Recursos de red para una VPC.html#tarea-2-crear-seguridad-de-red",
+    "title": "1 🧪 Lab 264 - Creación de Recursos de Red en una VPC",
+    "section": "",
+    "text": "Crear ACLs\n\nInbound rule: permitir todo (regla 100, 0.0.0.0/0, todos los protocolos)\nOutbound rule: permitir todo (regla 100, 0.0.0.0/0, todos los protocolos)\n\n\n\n\n\n\nNACL salida\n\n\n\nCrear Grupo de Seguridad\n\nNombre: public security group\nDescripción: Permite acceso público\nReglas de entrada:\n\nSSH (22) desde 0.0.0.0/0\nHTTP (80) desde 0.0.0.0/0\nHTTPS (443) desde 0.0.0.0/0\n\nReglas de salida: permitir todo tráfico\n\n\n\n\nGrupo seguridad"
+  },
+  {
+    "objectID": "Redes/Lab[264]-Recursos de red para una VPC.html#tarea-3-lanzar-y-acceder-a-instancia-ec2",
+    "href": "Redes/Lab[264]-Recursos de red para una VPC.html#tarea-3-lanzar-y-acceder-a-instancia-ec2",
+    "title": "1 🧪 Lab 264 - Creación de Recursos de Red en una VPC",
+    "section": "",
+    "text": "Lanzar Instancia EC2\n\nAMI: Amazon Linux 2\nTipo: t3.micro\nRed: Test VPC\nSubred: Public subnet\nIP pública: Auto-asignada\nGrupo de Seguridad: public security group\n\nAcceso por SSH\n\nA través de PuTTY (Windows) o terminal (Linux/Mac)\nUsuario: ec2-user\nValidar conectividad con:\nping google.com"
+  },
+  {
+    "objectID": "Redes/Lab[264]-Recursos de red para una VPC.html#conclusión",
+    "href": "Redes/Lab[264]-Recursos de red para una VPC.html#conclusión",
+    "title": "1 🧪 Lab 264 - Creación de Recursos de Red en una VPC",
+    "section": "",
+    "text": "La infraestructura de red se configuró correctamente dentro de la VPC, permitiendo que la instancia EC2 lanzada en una subred pública pueda acceder a Internet. Se validó la conectividad con éxito usando ping, cumpliendo así con el requerimiento del cliente. Este laboratorio refuerza el conocimiento práctico de los componentes esenciales de red en AWS.\n\n🖋️ Firma:\nBoris Ivan Huaraichi Pérez\nAWS Cloud Engineer - Lab 264"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "Redes/Lab[261]-IPSpublicas y privadas.html",
+    "href": "Redes/Lab[261]-IPSpublicas y privadas.html",
+    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "section": "",
+    "text": "Comprender las diferencias entre las direcciones IP públicas y privadas asignadas a las instancias EC2, e identificar qué tipo de dirección tiene cada una mediante observación directa.\n\n\n\n\nSe te proporciona una arquitectura que incluye dos instancias EC2 (A y B) en una subred pública, dentro de una misma VPC con acceso a Internet a través de un Internet Gateway. Tu objetivo es observar las configuraciones de red de ambas instancias y analizar sus diferencias.\n\n\n\n\n\nDiagrama de arquitectura\n\n\n\n\n\n\n\n\n\n\nPulsar Start Lab y acceder a AWS Management Console.\n\n\n\n\n\nBuscar EC2 en la barra de búsqueda.\n\n\n\n\nBuscar EC2\n\n\n\n\n\nDebes ver dos instancias activas:\n\ninstance A\ninstance B\n\n\n\n\nPanel EC2\n\n\n\n\n\n\n\n\nSelecciona la instancia.\nVe a la pestaña Networking.\nAnota la IP pública y privada (si hay).\n\n\n\n\nNetworking - instance A\n\n\n\nIP privada: 10.0.10.137 IP pública: No asignada\n\n\n\n\n\nRepite el proceso.\nObserva que esta instancia sí tiene una IP pública asignada.\n\n\n\n\nNetworking - instance B\n\n\n\nIP privada: 10.0.10.66\nIP pública: 52.32.140.209\n\n\n\n\n\n\nInstance A solo tiene IP privada → no accesible desde Internet.\nInstance B tiene IP pública → accesible desde Internet.\nAmbas están en la misma subred, pero solo una tiene autoasignación de IP pública habilitada.\n\n\n\n\n\n\n\n\nVerificar que solo la instancia con IP pública puede ser accedida desde el exterior usando SSH.\n\n\n\n\nIntentar conectar por SSH a instance A → Fallará (no tiene IP pública).\nConectar por SSH a instance B → Conexión exitosa.\n\nssh -i ~/.ssh/labsuser.pem ec2-user@52.32.140.209\n\n\n\nLas instancias sin IP pública no pueden ser accedidas directamente desde fuera de la VPC.\nPara tener acceso SSH, es necesario habilitar IP pública o usar un bastion host.\n\n\n\n\n\n\nIP privada: Solo funciona dentro de la red privada (VPC).\nIP pública: Permite acceso externo, pero es dinámica (cambia al detener la instancia, a menos que se use una Elastic IP).\nAmbas instancias comparten la misma configuración de red a nivel de subred, pero difieren en visibilidad pública.\n\n\nAutor del soporte: Boris Cloud – Cloud Support Engineer"
+  },
+  {
+    "objectID": "Redes/Lab[261]-IPSpublicas y privadas.html#objetivo",
+    "href": "Redes/Lab[261]-IPSpublicas y privadas.html#objetivo",
+    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "section": "",
+    "text": "Comprender las diferencias entre las direcciones IP públicas y privadas asignadas a las instancias EC2, e identificar qué tipo de dirección tiene cada una mediante observación directa."
+  },
+  {
+    "objectID": "Redes/Lab[261]-IPSpublicas y privadas.html#situación",
+    "href": "Redes/Lab[261]-IPSpublicas y privadas.html#situación",
+    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "section": "",
+    "text": "Se te proporciona una arquitectura que incluye dos instancias EC2 (A y B) en una subred pública, dentro de una misma VPC con acceso a Internet a través de un Internet Gateway. Tu objetivo es observar las configuraciones de red de ambas instancias y analizar sus diferencias.\n\n\n\n\n\nDiagrama de arquitectura"
+  },
+  {
+    "objectID": "Redes/Lab[261]-IPSpublicas y privadas.html#tarea-1-observar-las-direcciones-ip",
+    "href": "Redes/Lab[261]-IPSpublicas y privadas.html#tarea-1-observar-las-direcciones-ip",
+    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "section": "",
+    "text": "Pulsar Start Lab y acceder a AWS Management Console.\n\n\n\n\n\nBuscar EC2 en la barra de búsqueda.\n\n\n\n\nBuscar EC2\n\n\n\n\n\nDebes ver dos instancias activas:\n\ninstance A\ninstance B\n\n\n\n\nPanel EC2\n\n\n\n\n\n\n\n\nSelecciona la instancia.\nVe a la pestaña Networking.\nAnota la IP pública y privada (si hay).\n\n\n\n\nNetworking - instance A\n\n\n\nIP privada: 10.0.10.137 IP pública: No asignada\n\n\n\n\n\nRepite el proceso.\nObserva que esta instancia sí tiene una IP pública asignada.\n\n\n\n\nNetworking - instance B\n\n\n\nIP privada: 10.0.10.66\nIP pública: 52.32.140.209\n\n\n\n\n\n\nInstance A solo tiene IP privada → no accesible desde Internet.\nInstance B tiene IP pública → accesible desde Internet.\nAmbas están en la misma subred, pero solo una tiene autoasignación de IP pública habilitada."
+  },
+  {
+    "objectID": "Redes/Lab[261]-IPSpublicas y privadas.html#tarea-2-conexión-mediante-ssh",
+    "href": "Redes/Lab[261]-IPSpublicas y privadas.html#tarea-2-conexión-mediante-ssh",
+    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "section": "",
+    "text": "Verificar que solo la instancia con IP pública puede ser accedida desde el exterior usando SSH.\n\n\n\n\nIntentar conectar por SSH a instance A → Fallará (no tiene IP pública).\nConectar por SSH a instance B → Conexión exitosa.\n\nssh -i ~/.ssh/labsuser.pem ec2-user@52.32.140.209\n\n\n\nLas instancias sin IP pública no pueden ser accedidas directamente desde fuera de la VPC.\nPara tener acceso SSH, es necesario habilitar IP pública o usar un bastion host."
+  },
+  {
+    "objectID": "Redes/Lab[261]-IPSpublicas y privadas.html#conclusión-final",
+    "href": "Redes/Lab[261]-IPSpublicas y privadas.html#conclusión-final",
+    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "section": "",
+    "text": "IP privada: Solo funciona dentro de la red privada (VPC).\nIP pública: Permite acceso externo, pero es dinámica (cambia al detener la instancia, a menos que se use una Elastic IP).\nAmbas instancias comparten la misma configuración de red a nivel de subred, pero difieren en visibilidad pública.\n\n\nAutor del soporte: Boris Cloud – Cloud Support Engineer"
+  },
+  {
+    "objectID": "Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html",
+    "href": "Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html",
+    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "section": "",
+    "text": "Analizar y diferenciar entre direcciones IP públicas estáticas y dinámicas en instancias EC2. Replicar el problema de IP cambiante y resolverlo mediante la asignación de una Elastic IP (EIP).\n\n\n\n\nCorreo del cliente (Bob):\n\n“Estamos teniendo problemas con una de nuestras instancias EC2. La IP cambia cada vez que la iniciamos o detenemos. Necesitamos una dirección IP estática, ya que otros recursos dependen de ella. ¿Pueden ayudar?”\n\n\n\n\n\n\n&gt; VPC con subred pública, una puerta de enlace de Internet y una instancia EC2 (Instance A).\n\n\n\n\n\n\n\nSelecciona Start Lab\nAccede a la AWS Management Console\n\n\n\n\nBuscar “EC2” en la barra superior.\n\n\n\nBuscar EC2\n\n\n\n\n\n\n\n\nPanel de instancias EC2\n\n\n\nAMI: Amazon Linux 2\nTipo: t3.micro\nRed: VPC del laboratorio\nSubred: pública\nAutoasignación de IP pública: habilitada\nPar de claves: vockey | RSA\nEtiqueta: Name = test instance\nGrupo de seguridad: “Linux Instance SG”\n\n\n\n\nLaunch instance\n\n\n\n\n\n\nEsperar estado: running (2/2 checks passed)\nIr a pestaña Networking\nAnotar IP pública y privada\nIP publica 54.187.11.87\nIP privada 172.31.35.197\n\n\n\n\nIP pública y privada\n\n\n\n\n\n\nNavegar a Instance state &gt; Stop instance\nConfirmar estado stopped\nIniciar de nuevo: Instance state &gt; Start instance\nVerificar nuevamente las direcciones IP\n\n\n\n\n\n\nIP pública cambió → La instancia usa IP dinámica\nIP privada no cambió → Se mantiene constante dentro de la VPC\n\n\n\n\n\n\n\n\nDesde EC2 &gt; Network & Security &gt; Elastic IPs\n\n\n\n\nPresionar Allocate Elastic IP address\nAceptar valores por defecto\n\n\n\n\nAsignar EIP\n\n\n\n\n\n\nMarcar nueva EIP\nActions &gt; Associate Elastic IP address\nRecurso: Instance\nSeleccionar: test instance\nIP privada: dejar casilla vacía (se selecciona automáticamente)\nPresionar Associate\n\n\n\n\nAsociar EIP a la instancia EC2-Test\n\n\n\n\n\n\n\n\nIr a pestaña Networking de la instancia\nVerificar que la IP pública es la EIP\nDetener e iniciar la instancia nuevamente\nComprobar que la IP pública permanece igual\n\n\n\n\n\n\n\nQ:Bob?\n&gt; “¿Por qué cambia mi IP pública al reiniciar la instancia?”\nA:Boris-Cloud:\n&gt; “La instancia estaba utilizando una IP pública dinámica. Le hemos asignado una Elastic IP (EIP), que es una dirección pública persistente. Ahora su IP no cambiará más al detener o reiniciar la instancia.”\n\n\n\n\n\nLas IP públicas asignadas automáticamente son dinámicas.\nLa IP privada de una instancia EC2 no cambia al reiniciar.\nUna Elastic IP garantiza persistencia de dirección pública.\nProblema resuelto correctamente.\n\n\n\n\n\n\nAWS EC2 Addressing\nElastic IPs\n\n\nAutor del soporte: Boris Cloud – Cloud Support Engineer"
+  },
+  {
+    "objectID": "Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html#objetivo",
+    "href": "Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html#objetivo",
+    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "section": "",
+    "text": "Analizar y diferenciar entre direcciones IP públicas estáticas y dinámicas en instancias EC2. Replicar el problema de IP cambiante y resolverlo mediante la asignación de una Elastic IP (EIP)."
+  },
+  {
+    "objectID": "Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html#situación-del-cliente",
+    "href": "Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html#situación-del-cliente",
+    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "section": "",
+    "text": "Correo del cliente (Bob):\n\n“Estamos teniendo problemas con una de nuestras instancias EC2. La IP cambia cada vez que la iniciamos o detenemos. Necesitamos una dirección IP estática, ya que otros recursos dependen de ella. ¿Pueden ayudar?”"
+  },
+  {
+    "objectID": "Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html#diagrama-de-arquitectura",
+    "href": "Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html#diagrama-de-arquitectura",
+    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "section": "",
+    "text": "&gt; VPC con subred pública, una puerta de enlace de Internet y una instancia EC2 (Instance A)."
+  },
+  {
+    "objectID": "Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html#tarea-1-replicar-el-problema",
+    "href": "Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html#tarea-1-replicar-el-problema",
+    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "section": "",
+    "text": "Selecciona Start Lab\nAccede a la AWS Management Console\n\n\n\n\nBuscar “EC2” en la barra superior.\n\n\n\nBuscar EC2\n\n\n\n\n\n\n\n\nPanel de instancias EC2\n\n\n\nAMI: Amazon Linux 2\nTipo: t3.micro\nRed: VPC del laboratorio\nSubred: pública\nAutoasignación de IP pública: habilitada\nPar de claves: vockey | RSA\nEtiqueta: Name = test instance\nGrupo de seguridad: “Linux Instance SG”\n\n\n\n\nLaunch instance\n\n\n\n\n\n\nEsperar estado: running (2/2 checks passed)\nIr a pestaña Networking\nAnotar IP pública y privada\nIP publica 54.187.11.87\nIP privada 172.31.35.197\n\n\n\n\nIP pública y privada\n\n\n\n\n\n\nNavegar a Instance state &gt; Stop instance\nConfirmar estado stopped\nIniciar de nuevo: Instance state &gt; Start instance\nVerificar nuevamente las direcciones IP\n\n\n\n\n\n\nIP pública cambió → La instancia usa IP dinámica\nIP privada no cambió → Se mantiene constante dentro de la VPC"
+  },
+  {
+    "objectID": "Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html#tarea-2-asignar-elastic-ip",
+    "href": "Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html#tarea-2-asignar-elastic-ip",
+    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "section": "",
+    "text": "Desde EC2 &gt; Network & Security &gt; Elastic IPs\n\n\n\n\nPresionar Allocate Elastic IP address\nAceptar valores por defecto\n\n\n\n\nAsignar EIP\n\n\n\n\n\n\nMarcar nueva EIP\nActions &gt; Associate Elastic IP address\nRecurso: Instance\nSeleccionar: test instance\nIP privada: dejar casilla vacía (se selecciona automáticamente)\nPresionar Associate\n\n\n\n\nAsociar EIP a la instancia EC2-Test"
+  },
+  {
+    "objectID": "Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html#verificación",
+    "href": "Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html#verificación",
+    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "section": "",
+    "text": "Ir a pestaña Networking de la instancia\nVerificar que la IP pública es la EIP\nDetener e iniciar la instancia nuevamente\nComprobar que la IP pública permanece igual"
+  },
+  {
+    "objectID": "Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html#comunicación-con-el-cliente",
+    "href": "Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html#comunicación-con-el-cliente",
+    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "section": "",
+    "text": "Q:Bob?\n&gt; “¿Por qué cambia mi IP pública al reiniciar la instancia?”\nA:Boris-Cloud:\n&gt; “La instancia estaba utilizando una IP pública dinámica. Le hemos asignado una Elastic IP (EIP), que es una dirección pública persistente. Ahora su IP no cambiará más al detener o reiniciar la instancia.”"
+  },
+  {
+    "objectID": "Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html#conclusión",
+    "href": "Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html#conclusión",
+    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "section": "",
+    "text": "Las IP públicas asignadas automáticamente son dinámicas.\nLa IP privada de una instancia EC2 no cambia al reiniciar.\nUna Elastic IP garantiza persistencia de dirección pública.\nProblema resuelto correctamente."
+  },
+  {
+    "objectID": "Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html#recursos-útiles",
+    "href": "Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html#recursos-útiles",
+    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "section": "",
+    "text": "AWS EC2 Addressing\nElastic IPs\n\n\nAutor del soporte: Boris Cloud – Cloud Support Engineer"
+  },
+  {
+    "objectID": "Fundamentos-Nube/Fundamentos-1-2.html",
+    "href": "Fundamentos-Nube/Fundamentos-1-2.html",
+    "title": "1 📘 Fundamentos de la Nube - Documentación",
+    "section": "",
+    "text": "Resumen estructurado de conceptos esenciales sobre cloud computing y AWS.\n\n\n\n\n\n\n\n✅ Uso de servicios de computación a través de Internet.\n🔄 Alternativa moderna al hardware físico local.\n\n\n\n\n\n\n\nTipo\nDescripción\n\n\n\n\nWeb\nAcceso mediante navegador web\n\n\nMóviles\nAplicaciones para smartphones/tablets\n\n\nEscritorio\nEjecutadas directamente en PCs\n\n\nIoT\nEn dispositivos conectados a internet\n\n\n\n\n\n\n\nHardware: CPU, memoria RAM, disco duro, tarjeta de red.\nSoftware: Sistema operativo (OS) y aplicaciones.\n\n\n\n\n\nRed de dispositivos conectados para compartir recursos.\nTarjeta de red (NIC) para conexión cableada o inalámbrica.\n\n\n\n\n\nServidor: Máquina robusta que brinda servicios a otras.\nCentro de Datos: Instalación física con múltiples servidores.\nVM (Máquina Virtual): Simulación de múltiples sistemas en uno solo.\n\n\n\n\ngraph TD;\n    Planificación --&gt; Análisis;\n    Análisis --&gt; Diseño;\n    Diseño --&gt; Desarrollo;\n    Desarrollo --&gt; Pruebas;\n    Pruebas --&gt; Implementación;\n    Implementación --&gt; Mantenimiento;\n\n\n\n\n📌 Gerente de Proyecto: Gestión global.\n🧠 Analista: Requisitos y alcance.\n🧪 QA: Pruebas del sistema.\n💻 Dev: Codificación.\n📊 DBA: Administración de datos.\n\n\n\n\n\nIaaS: Infraestructura como servicio (máxima flexibilidad).\nPaaS: Plataforma como servicio (gestión parcial).\nSaaS: Software como servicio (totalmente gestionado).\n\n\n\n\n\nPública | Privada | Híbrida\n\n\n\n\n\n\n\n\n\nProveedor líder de servicios cloud.\nInfraestructura robusta global y múltiples servicios.\n\n\n\n\n# Ejemplo CLI para lanzar una instancia EC2\naws ec2 run-instances --image-id ami-12345678 --count 1 --instance-type t2.micro\n\n\n\nCategoría\nServicios Clave\n\n\n\n\nCómputo\nEC2, Lambda, Fargate\n\n\nAlmacenamiento\nS3, Glacier, EBS, EFS\n\n\nBase de datos\nRDS, DynamoDB, Aurora\n\n\nRed\nVPC, Route 53, CloudFront\n\n\nSeguridad\nIAM, KMS, Cognito\n\n\n\n\n\n\n\nAWS Console: Interfaz visual.\nAWS CLI: Control desde terminal.\nSDKs: Integración programática.\n\n\n\n\n\nGuía estratégica para adopción de nube.\nFacilita colaboración entre negocio y TI.\n\n\n\n\n\nPago por uso\nDescuentos por reserva (AURI, PURI, NURI)\nCapas gratuitas para nuevos usuarios\n\n\n\n\n\nCalculadora de Precios\nTCO: Comparación entre on-premises vs cloud\n\n\n\n\n\n+34 regiones\nZonas de disponibilidad (alta redundancia)\n+600 puntos de presencia global\n\n\n\n\n\nEscalabilidad automática\nAlta disponibilidad\nTolerancia a fallos\n\n\n\n\n- AWS: Seguridad **de** la nube (infraestructura)\n- Cliente: Seguridad **en** la nube (datos, apps)\n\n🎯 DevOps Tip: Automatiza despliegues en AWS usando herramientas como Terraform, CloudFormation o CDK para mantener infraestructura como código (IaC)."
+  },
+  {
+    "objectID": "Fundamentos-Nube/Fundamentos-1-2.html#parte-i-fundamentos-básicos",
+    "href": "Fundamentos-Nube/Fundamentos-1-2.html#parte-i-fundamentos-básicos",
+    "title": "1 📘 Fundamentos de la Nube - Documentación",
+    "section": "",
+    "text": "✅ Uso de servicios de computación a través de Internet.\n🔄 Alternativa moderna al hardware físico local.\n\n\n\n\n\n\n\nTipo\nDescripción\n\n\n\n\nWeb\nAcceso mediante navegador web\n\n\nMóviles\nAplicaciones para smartphones/tablets\n\n\nEscritorio\nEjecutadas directamente en PCs\n\n\nIoT\nEn dispositivos conectados a internet\n\n\n\n\n\n\n\nHardware: CPU, memoria RAM, disco duro, tarjeta de red.\nSoftware: Sistema operativo (OS) y aplicaciones.\n\n\n\n\n\nRed de dispositivos conectados para compartir recursos.\nTarjeta de red (NIC) para conexión cableada o inalámbrica.\n\n\n\n\n\nServidor: Máquina robusta que brinda servicios a otras.\nCentro de Datos: Instalación física con múltiples servidores.\nVM (Máquina Virtual): Simulación de múltiples sistemas en uno solo.\n\n\n\n\ngraph TD;\n    Planificación --&gt; Análisis;\n    Análisis --&gt; Diseño;\n    Diseño --&gt; Desarrollo;\n    Desarrollo --&gt; Pruebas;\n    Pruebas --&gt; Implementación;\n    Implementación --&gt; Mantenimiento;\n\n\n\n\n📌 Gerente de Proyecto: Gestión global.\n🧠 Analista: Requisitos y alcance.\n🧪 QA: Pruebas del sistema.\n💻 Dev: Codificación.\n📊 DBA: Administración de datos.\n\n\n\n\n\nIaaS: Infraestructura como servicio (máxima flexibilidad).\nPaaS: Plataforma como servicio (gestión parcial).\nSaaS: Software como servicio (totalmente gestionado).\n\n\n\n\n\nPública | Privada | Híbrida"
+  },
+  {
+    "objectID": "Fundamentos-Nube/Fundamentos-1-2.html#parte-ii-aws-fundamentals",
+    "href": "Fundamentos-Nube/Fundamentos-1-2.html#parte-ii-aws-fundamentals",
+    "title": "1 📘 Fundamentos de la Nube - Documentación",
+    "section": "",
+    "text": "Proveedor líder de servicios cloud.\nInfraestructura robusta global y múltiples servicios.\n\n\n\n\n# Ejemplo CLI para lanzar una instancia EC2\naws ec2 run-instances --image-id ami-12345678 --count 1 --instance-type t2.micro\n\n\n\nCategoría\nServicios Clave\n\n\n\n\nCómputo\nEC2, Lambda, Fargate\n\n\nAlmacenamiento\nS3, Glacier, EBS, EFS\n\n\nBase de datos\nRDS, DynamoDB, Aurora\n\n\nRed\nVPC, Route 53, CloudFront\n\n\nSeguridad\nIAM, KMS, Cognito\n\n\n\n\n\n\n\nAWS Console: Interfaz visual.\nAWS CLI: Control desde terminal.\nSDKs: Integración programática.\n\n\n\n\n\nGuía estratégica para adopción de nube.\nFacilita colaboración entre negocio y TI.\n\n\n\n\n\nPago por uso\nDescuentos por reserva (AURI, PURI, NURI)\nCapas gratuitas para nuevos usuarios\n\n\n\n\n\nCalculadora de Precios\nTCO: Comparación entre on-premises vs cloud\n\n\n\n\n\n+34 regiones\nZonas de disponibilidad (alta redundancia)\n+600 puntos de presencia global\n\n\n\n\n\nEscalabilidad automática\nAlta disponibilidad\nTolerancia a fallos\n\n\n\n\n- AWS: Seguridad **de** la nube (infraestructura)\n- Cliente: Seguridad **en** la nube (datos, apps)\n\n🎯 DevOps Tip: Automatiza despliegues en AWS usando herramientas como Terraform, CloudFormation o CDK para mantener infraestructura como código (IaC)."
+  },
+  {
+    "objectID": "Linux/conceptos.html",
+    "href": "Linux/conceptos.html",
+    "title": "Linux - Conceptos Básicos",
+    "section": "",
+    "text": "Linux es un sistema operativo tipo Unix, de código abierto, usado comúnmente en servidores, sistemas embebidos y dispositivos móviles."
+  },
+  {
+    "objectID": "Linux/conceptos.html#qué-es-linux",
+    "href": "Linux/conceptos.html#qué-es-linux",
+    "title": "Linux - Conceptos Básicos",
+    "section": "",
+    "text": "Linux es un sistema operativo tipo Unix, de código abierto, usado comúnmente en servidores, sistemas embebidos y dispositivos móviles."
+  }
+]
