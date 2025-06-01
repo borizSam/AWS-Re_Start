@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>lab264-recursos-de-red-para-una-vpc – AWS RE/START</title>
+<title>Línea de comandos de Linux – AWS RE/START</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -521,218 +521,102 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lab-264---creación-de-recursos-de-red-en-una-vpc" id="toc-lab-264---creación-de-recursos-de-red-en-una-vpc" class="nav-link active" data-scroll-target="#lab-264---creación-de-recursos-de-red-en-una-vpc"><span class="header-section-number">1</span> 🧪 Lab 264 - Creación de Recursos de Red en una VPC</a>
-  <ul class="collapse">
-  <li><a href="#objetivos" id="toc-objetivos" class="nav-link" data-scroll-target="#objetivos"><span class="header-section-number">1.1</span> 🎯 Objetivos</a></li>
-  <li><a href="#duración" id="toc-duración" class="nav-link" data-scroll-target="#duración"><span class="header-section-number">1.2</span> 🕐 Duración</a></li>
-  <li><a href="#ticket-del-cliente" id="toc-ticket-del-cliente" class="nav-link" data-scroll-target="#ticket-del-cliente"><span class="header-section-number">1.3</span> 📧 Ticket del Cliente</a></li>
-  <li><a href="#requisitos-técnicos-del-cliente" id="toc-requisitos-técnicos-del-cliente" class="nav-link" data-scroll-target="#requisitos-técnicos-del-cliente"><span class="header-section-number">1.4</span> 📌 Requisitos técnicos del cliente</a></li>
-  <li><a href="#diagrama-del-cliente" id="toc-diagrama-del-cliente" class="nav-link" data-scroll-target="#diagrama-del-cliente"><span class="header-section-number">1.5</span> <img src="213123.png" class="img-fluid" alt="Diagrama del cliente"></a></li>
-  <li><a href="#tarea-1-crear-infraestructura-de-red" id="toc-tarea-1-crear-infraestructura-de-red" class="nav-link" data-scroll-target="#tarea-1-crear-infraestructura-de-red"><span class="header-section-number">1.6</span> ✅ Tarea 1: Crear Infraestructura de Red</a></li>
-  <li><a href="#tarea-2-crear-seguridad-de-red" id="toc-tarea-2-crear-seguridad-de-red" class="nav-link" data-scroll-target="#tarea-2-crear-seguridad-de-red"><span class="header-section-number">1.7</span> 🧱 Tarea 2: Crear Seguridad de Red</a></li>
-  <li><a href="#tarea-3-lanzar-y-acceder-a-instancia-ec2" id="toc-tarea-3-lanzar-y-acceder-a-instancia-ec2" class="nav-link" data-scroll-target="#tarea-3-lanzar-y-acceder-a-instancia-ec2"><span class="header-section-number">1.8</span> 💻 Tarea 3: Lanzar y Acceder a Instancia EC2</a></li>
-  <li><a href="#conclusión" id="toc-conclusión" class="nav-link" data-scroll-target="#conclusión"><span class="header-section-number">1.9</span> ✅ Conclusión</a></li>
-  </ul></li>
+  <li><a href="#conéctate-con-ssh" id="toc-conéctate-con-ssh" class="nav-link active" data-scroll-target="#conéctate-con-ssh"><span class="header-section-number">1</span> 🔐 Conéctate con SSH</a></li>
+  <li><a href="#tarea-2-ejecutar-comandos-del-sistema" id="toc-tarea-2-ejecutar-comandos-del-sistema" class="nav-link" data-scroll-target="#tarea-2-ejecutar-comandos-del-sistema"><span class="header-section-number">2</span> 💻 Tarea 2: Ejecutar comandos del sistema</a></li>
+  <li><a href="#tarea-3-historial-y-búsqueda-en-bash" id="toc-tarea-3-historial-y-búsqueda-en-bash" class="nav-link" data-scroll-target="#tarea-3-historial-y-búsqueda-en-bash"><span class="header-section-number">3</span> 🔁 Tarea 3: Historial y búsqueda en Bash</a></li>
+  <li><a href="#conceptos-clave" id="toc-conceptos-clave" class="nav-link" data-scroll-target="#conceptos-clave"><span class="header-section-number">4</span> 🧠 Conceptos clave</a></li>
+  <li><a href="#información-sobre-ec2" id="toc-información-sobre-ec2" class="nav-link" data-scroll-target="#información-sobre-ec2"><span class="header-section-number">5</span> 📌 Información sobre EC2</a></li>
+  <li><a href="#recursos-adicionales" id="toc-recursos-adicionales" class="nav-link" data-scroll-target="#recursos-adicionales"><span class="header-section-number">6</span> 📚 Recursos adicionales</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Línea de comandos de Linux</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
-<section id="lab-264---creación-de-recursos-de-red-en-una-vpc" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> 🧪 Lab 264 - Creación de Recursos de Red en una VPC</h1>
+</header>
+
+
+<section id="conéctate-con-ssh" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="conéctate-con-ssh"><span class="header-section-number">1</span> 🔐 Conéctate con SSH</h2>
+<p><img src="img/conexion-ssh.png" class="img-fluid"></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-i</span> labsuser.pem ec2-user@<span class="op">&lt;</span>public-ip<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <hr>
-<section id="objetivos" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="objetivos"><span class="header-section-number">1.1</span> 🎯 Objetivos</h2>
+</section>
+<section id="tarea-2-ejecutar-comandos-del-sistema" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="tarea-2-ejecutar-comandos-del-sistema"><span class="header-section-number">2</span> 💻 Tarea 2: Ejecutar comandos del sistema</h2>
+<p><img src="img/comandos-sistema.png" class="img-fluid"></p>
+<p>Comandos útiles para obtener información básica del sistema:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">whoami</span>                           <span class="co"># Usuario actual</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span> <span class="at">-s</span>                      <span class="co"># Nombre corto del host</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">uptime</span> <span class="at">-p</span>                        <span class="co"># Tiempo de actividad</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">who</span> <span class="at">-H</span> <span class="at">-a</span>                        <span class="co"># Sesión de usuarios y detalles</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="va">TZ</span><span class="op">=</span>America/New_York <span class="fu">date</span>         <span class="co"># Fecha/hora en Nueva York</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="va">TZ</span><span class="op">=</span>America/Los_Angeles <span class="fu">date</span>      <span class="co"># Fecha/hora en Los Ángeles</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cal</span> <span class="at">-j</span>                           <span class="co"># Calendario juliano</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cal</span> <span class="at">-s</span>                           <span class="co"># Vista alternativa del calendario</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">id</span> ec2-user                      <span class="co"># UID y GID del usuario</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>📌 <strong>Nota</strong>: Puedes usar <code>man cal</code> para ver más opciones del calendario.</p>
+<hr>
+</section>
+<section id="tarea-3-historial-y-búsqueda-en-bash" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="tarea-3-historial-y-búsqueda-en-bash"><span class="header-section-number">3</span> 🔁 Tarea 3: Historial y búsqueda en Bash</h2>
+<p><img src="img/historial-bash.png" class="img-fluid"></p>
+<p>Visualizar y reutilizar comandos anteriores:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">history</span>             <span class="co"># Ver historial completo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Presiona <code>CTRL + R</code> para búsqueda inversa y escribe parte del comando (por ejemplo, <code>TZ</code>) para encontrar un comando previo.</p>
+<p>También puedes usar:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">!!</span>                  <span class="co"># Ejecuta el último comando usado</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="conceptos-clave" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="conceptos-clave"><span class="header-section-number">4</span> 🧠 Conceptos clave</h2>
 <ul>
-<li>Resumir la situación del cliente.</li>
-<li>Crear los recursos de red necesarios: VPC, IGW, tabla de enrutamiento, grupo de seguridad, NACL, subred y una instancia EC2.</li>
-<li>Probar conectividad con ping desde la instancia EC2 hacia Internet.</li>
+<li><code>TZ=Region</code> permite ver la hora de otras zonas.</li>
+<li><code>cal -j</code> muestra las fechas en formato juliano.</li>
+<li><code>CTRL + R</code> busca comandos anteriores (útil para no repetir largos comandos).</li>
+<li><code>!!</code> ejecuta el último comando (shortcut muy útil).</li>
 </ul>
 <hr>
 </section>
-<section id="duración" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="duración"><span class="header-section-number">1.2</span> 🕐 Duración</h2>
-<p>Tiempo estimado: 60 minutos</p>
-<hr>
-</section>
-<section id="ticket-del-cliente" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="ticket-del-cliente"><span class="header-section-number">1.3</span> 📧 Ticket del Cliente</h2>
-<p>“Hola, equipo de soporte en la nube,<br>
-Pensé que había configurado bien mi VPC, pero no puedo hacer ni un simple <code>ping</code>. ¿Pueden ayudarme a configurar todo correctamente para tener conexión a Internet?”</p>
-<p>— Brock, Propietario de startup</p>
-<hr>
-</section>
-<section id="requisitos-técnicos-del-cliente" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="requisitos-técnicos-del-cliente"><span class="header-section-number">1.4</span> 📌 Requisitos técnicos del cliente</h2>
+<section id="información-sobre-ec2" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="información-sobre-ec2"><span class="header-section-number">5</span> 📌 Información sobre EC2</h2>
+<p><img src="img/instancia-ec2.png" class="img-fluid"></p>
 <ul>
-<li><strong>VPC CIDR</strong>: <code>192.168.0.0/18</code></li>
-<li><strong>Subred pública CIDR</strong>: <code>192.168.1.0/26</code></li>
-<li><strong>Recursos necesarios</strong>:
-<ul>
-<li>Internet Gateway (IGW)</li>
-<li>Tabla de enrutamiento</li>
-<li>Grupo de seguridad</li>
-<li>ACL de red</li>
-<li>Instancia EC2 con IP pública</li>
-</ul></li>
+<li>Este laboratorio usa una instancia <code>t3.micro</code>.</li>
+<li>Recurso económico con <strong>1 vCPU y 1 GiB RAM</strong>.</li>
+<li>Ideal para propósitos educativos y tareas básicas.</li>
 </ul>
-</section>
-<section id="diagrama-del-cliente" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="diagrama-del-cliente"><span class="header-section-number">1.5</span> <img src="213123.png" class="img-fluid" alt="Diagrama del cliente"></h2>
-</section>
-<section id="tarea-1-crear-infraestructura-de-red" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="tarea-1-crear-infraestructura-de-red"><span class="header-section-number">1.6</span> ✅ Tarea 1: Crear Infraestructura de Red</h2>
-<ol type="1">
-<li><strong>Crear la VPC</strong>
-<ul>
-<li>Nombre: <code>Test VPC</code></li>
-<li>IPv4 CIDR block: <code>192.168.0.0/18</code></li>
-<li><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="URL_VPC.png" class="img-fluid figure-img"></p>
-<figcaption>VPC creada</figcaption>
-</figure>
-</div></li>
-</ul></li>
-<li><strong>Crear la Subred</strong>
-<ul>
-<li>Nombre: <code>Public subnet</code></li>
-<li>CIDR block: <code>192.168.1.0/26</code></li>
-<li>Zona de disponibilidad: sin preferencia<br>
-</li>
-<li><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="URL_SUBNET.png" class="img-fluid figure-img"></p>
-<figcaption>Subred pública</figcaption>
-</figure>
-</div></li>
-</ul></li>
-<li><strong>Crear Tabla de Enrutamiento</strong>
-<ul>
-<li>Nombre: <code>Public route table</code></li>
-<li>Asociar a <code>Test VPC</code><br>
-</li>
-<li><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="URL_ROUTE_TABLE.png" class="img-fluid figure-img"></p>
-<figcaption>Tabla de enrutamiento</figcaption>
-</figure>
-</div></li>
-</ul></li>
-<li><strong>Crear y Adjuntar la IGW</strong>
-<ul>
-<li>Nombre: <code>IGW test VPC</code></li>
-<li>Adjuntar a <code>Test VPC</code><br>
-</li>
-<li><img src="URL_IGW.png" class="img-fluid" alt="IGW creada"><br>
-</li>
-<li><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="URL_ATTACH_IGW.png" class="img-fluid figure-img"></p>
-<figcaption>Adjuntar IGW</figcaption>
-</figure>
-</div></li>
-</ul></li>
-<li><strong>Agregar Ruta en Tabla de Enrutamiento</strong>
-<ul>
-<li>Destination: <code>0.0.0.0/0</code></li>
-<li>Target: IGW test VPC<br>
-</li>
-<li><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="URL_ADD_ROUTE.png" class="img-fluid figure-img"></p>
-<figcaption>Ruta añadida</figcaption>
-</figure>
-</div></li>
-</ul></li>
-<li><strong>Asociar la Subred a la Tabla de Enrutamiento</strong>
-<ul>
-<li><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="URL_ASSOC_SUBNET.png" class="img-fluid figure-img"></p>
-<figcaption>Subred asociada</figcaption>
-</figure>
-</div></li>
-</ul></li>
-</ol>
 <hr>
 </section>
-<section id="tarea-2-crear-seguridad-de-red" class="level2" data-number="1.7">
-<h2 data-number="1.7" class="anchored" data-anchor-id="tarea-2-crear-seguridad-de-red"><span class="header-section-number">1.7</span> 🧱 Tarea 2: Crear Seguridad de Red</h2>
-<ol type="1">
-<li><strong>Crear ACLs</strong>
+<section id="recursos-adicionales" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="recursos-adicionales"><span class="header-section-number">6</span> 📚 Recursos adicionales</h2>
 <ul>
-<li>Inbound rule: permitir todo (<code>regla 100</code>, <code>0.0.0.0/0</code>, <code>todos los protocolos</code>)</li>
-<li>Outbound rule: permitir todo (<code>regla 100</code>, <code>0.0.0.0/0</code>, <code>todos los protocolos</code>)<br>
-</li>
-<li><img src="URL_NACL_IN.png" class="img-fluid" alt="NACL entrada"><br>
-</li>
-<li><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="URL_NACL_OUT.png" class="img-fluid figure-img"></p>
-<figcaption>NACL salida</figcaption>
-</figure>
-</div></li>
-</ul></li>
-<li><strong>Crear Grupo de Seguridad</strong>
-<ul>
-<li>Nombre: <code>public security group</code></li>
-<li>Descripción: Permite acceso público</li>
-<li>Reglas de entrada:
-<ul>
-<li>SSH (22) desde <code>0.0.0.0/0</code></li>
-<li>HTTP (80) desde <code>0.0.0.0/0</code></li>
-<li>HTTPS (443) desde <code>0.0.0.0/0</code></li>
-</ul></li>
-<li>Reglas de salida: permitir todo tráfico<br>
-</li>
-<li><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="URL_SECURITY_GROUP.png" class="img-fluid figure-img"></p>
-<figcaption>Grupo seguridad</figcaption>
-</figure>
-</div></li>
-</ul></li>
-</ol>
+<li><a href="https://aws.amazon.com/ec2/instance-types/">Tipos de instancia EC2</a></li>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html">Amazon Machine Image (AMI)</a></li>
+<li><a href="https://docs.aws.amazon.com/general/latest/gr/ec2-service.html">Amazon EC2 Service Quotas</a></li>
+<li><a href="https://aws.amazon.com/training/">AWS Training y Certificación</a></li>
+</ul>
 <hr>
-</section>
-<section id="tarea-3-lanzar-y-acceder-a-instancia-ec2" class="level2" data-number="1.8">
-<h2 data-number="1.8" class="anchored" data-anchor-id="tarea-3-lanzar-y-acceder-a-instancia-ec2"><span class="header-section-number">1.8</span> 💻 Tarea 3: Lanzar y Acceder a Instancia EC2</h2>
-<ol type="1">
-<li><strong>Lanzar Instancia EC2</strong>
-<ul>
-<li>AMI: <code>Amazon Linux 2</code></li>
-<li>Tipo: <code>t3.micro</code></li>
-<li>Red: <code>Test VPC</code></li>
-<li>Subred: <code>Public subnet</code></li>
-<li>IP pública: Auto-asignada</li>
-<li>Grupo de Seguridad: <code>public security group</code></li>
-</ul></li>
-<li><strong>Acceso por SSH</strong>
-<ul>
-<li><p>A través de PuTTY (Windows) o terminal (Linux/Mac)</p></li>
-<li><p>Usuario: <code>ec2-user</code></p></li>
-<li><p>Validar conectividad con:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ping</span> google.com</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul></li>
-</ol>
-<hr>
-</section>
-<section id="conclusión" class="level2" data-number="1.9">
-<h2 data-number="1.9" class="anchored" data-anchor-id="conclusión"><span class="header-section-number">1.9</span> ✅ Conclusión</h2>
-<p>La infraestructura de red se configuró correctamente dentro de la VPC, permitiendo que la instancia EC2 lanzada en una subred pública pueda acceder a Internet. Se validó la conectividad con éxito usando <code>ping</code>, cumpliendo así con el requerimiento del cliente. Este laboratorio refuerza el conocimiento práctico de los componentes esenciales de red en AWS.</p>
-<hr>
-<p><strong>🖋️ Firma:</strong><br>
-<em>Boris Ivan Huaraichi Pérez</em><br>
-<em>AWS Cloud Engineer - Lab 264</em></p>
+<p>© 2022 Amazon Web Services, Inc.&nbsp;Todos los derechos reservados.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

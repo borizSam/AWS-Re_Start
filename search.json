@@ -1,5 +1,397 @@
 [
   {
+    "objectID": "Linux/243-LX-Lab.html",
+    "href": "Linux/243-LX-Lab.html",
+    "title": "1 🛠️ Laboratorio: Administración de Software en Amazon Linux 2",
+    "section": "",
+    "text": "Duración estimada: 35 minutos\nPrerrequisitos: Experiencia básica con EC2 y terminal Linux.\n\n\n\n\nActualizar la máquina Linux con el administrador de paquetes.\nRevertir un paquete actualizado.\nInstalar y configurar AWS CLI.\n\n\n\n\n\nHaz clic en Start Lab.\nEspera a que el estado indique: Lab status: ready.\nCierra el panel y accede a la AWS Management Console.\n\n\n\n\n\n\n\nDescarga .ppk desde Details &gt; Download PPK.\nAnota la IP pública.\nEn PuTTY:\n\nHost: Public IP\nAuth: archivo labsuser.ppk\nUsuario: ec2-user\nKeepalives: 30 segundos\n\n\n\n\n\ncd ~/Downloads\nchmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\n\n\n\n\n# Verifica ubicación\npwd\n\n# Cambia a la carpeta correcta si es necesario\ncd companyA\n\n# Revisar actualizaciones\nsudo yum -y check-update\n\n# Aplicar actualizaciones de seguridad\nsudo yum update --security\n\n# Actualizar todos los paquetes\nsudo yum -y upgrade\n\n# Instalar un paquete para probar (httpd)\nsudo yum install httpd -y\n\n\n\n# Ver historial\nsudo yum history list\n\n# Ver detalles de una transacción específica\nsudo yum history info &lt;ID&gt;\n\n# Revertir una transacción\nsudo yum -y history undo &lt;ID&gt;\n\n\n\n# Verificar Python\npython3 --version\n\n# Verificar pip\npip3 --version\n\n# Descargar AWS CLI\ncurl \"https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip\" -o \"awscliv2.zip\"\n\n# Descomprimir\nunzip awscliv2.zip\n\n# Instalar\nsudo ./aws/install\n\n# Verificar instalación\naws help\n\n\n\n# Iniciar configuración\naws configure\n\nCuando se solicite: - Access Key ID: (dejar en blanco) - Secret Access Key: (dejar en blanco) - Región por defecto: us-west-2 - Formato de salida: json\n\n\n\nsudo nano ~/.aws/credentials\nEjemplo de contenido:\n[default]\naws_access_key_id=SU_CLAVE\naws_secret_access_key=TU_SECRET\naws_session_token=TU_TOKEN\nGuardar con Ctrl + O, salir con Ctrl + X.\n\n\n\naws ec2 describe-instance-attribute --instance-id &lt;ID&gt; --attribute instanceType\nSalida esperada:\n{\n  \"InstanceId\": \"i-1234567890abcdefg\",\n  \"InstanceType\": {\n    \"Value\": \"t3.micro\"\n  }\n}\n\n\n\n\nFinaliza haciendo clic en End Lab, confirma con Yes y cierra el mensaje final.\n\n\n\n\nyum: Gestor de paquetes en Amazon Linux.\nAWS CLI: Herramienta para interactuar con AWS desde la terminal.\nReversión de paquetes: Capacidad de deshacer actualizaciones con historial de yum.\nEC2 t3.micro: Instancia pequeña para cargas ligeras.\n\n\n\n\n# Conexión SSH\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\n\n# yum\nsudo yum -y check-update\nsudo yum update --security\nsudo yum -y upgrade\nsudo yum install httpd -y\nsudo yum history list\nsudo yum -y history undo &lt;ID&gt;\n\n# AWS CLI\ncurl \"https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip\" -o \"awscliv2.zip\"\nunzip awscliv2.zip\nsudo ./aws/install\naws configure"
+  },
+  {
+    "objectID": "Linux/243-LX-Lab.html#objetivos",
+    "href": "Linux/243-LX-Lab.html#objetivos",
+    "title": "1 🛠️ Laboratorio: Administración de Software en Amazon Linux 2",
+    "section": "",
+    "text": "Actualizar la máquina Linux con el administrador de paquetes.\nRevertir un paquete actualizado.\nInstalar y configurar AWS CLI."
+  },
+  {
+    "objectID": "Linux/243-LX-Lab.html#acceso-al-entorno",
+    "href": "Linux/243-LX-Lab.html#acceso-al-entorno",
+    "title": "1 🛠️ Laboratorio: Administración de Software en Amazon Linux 2",
+    "section": "",
+    "text": "Haz clic en Start Lab.\nEspera a que el estado indique: Lab status: ready.\nCierra el panel y accede a la AWS Management Console."
+  },
+  {
+    "objectID": "Linux/243-LX-Lab.html#tarea-1-conectarse-a-ec2-vía-ssh",
+    "href": "Linux/243-LX-Lab.html#tarea-1-conectarse-a-ec2-vía-ssh",
+    "title": "1 🛠️ Laboratorio: Administración de Software en Amazon Linux 2",
+    "section": "",
+    "text": "Descarga .ppk desde Details &gt; Download PPK.\nAnota la IP pública.\nEn PuTTY:\n\nHost: Public IP\nAuth: archivo labsuser.ppk\nUsuario: ec2-user\nKeepalives: 30 segundos\n\n\n\n\n\ncd ~/Downloads\nchmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;"
+  },
+  {
+    "objectID": "Linux/243-LX-Lab.html#tarea-2-actualizar-el-sistema",
+    "href": "Linux/243-LX-Lab.html#tarea-2-actualizar-el-sistema",
+    "title": "1 🛠️ Laboratorio: Administración de Software en Amazon Linux 2",
+    "section": "",
+    "text": "# Verifica ubicación\npwd\n\n# Cambia a la carpeta correcta si es necesario\ncd companyA\n\n# Revisar actualizaciones\nsudo yum -y check-update\n\n# Aplicar actualizaciones de seguridad\nsudo yum update --security\n\n# Actualizar todos los paquetes\nsudo yum -y upgrade\n\n# Instalar un paquete para probar (httpd)\nsudo yum install httpd -y"
+  },
+  {
+    "objectID": "Linux/243-LX-Lab.html#tarea-3-revertir-un-paquete",
+    "href": "Linux/243-LX-Lab.html#tarea-3-revertir-un-paquete",
+    "title": "1 🛠️ Laboratorio: Administración de Software en Amazon Linux 2",
+    "section": "",
+    "text": "# Ver historial\nsudo yum history list\n\n# Ver detalles de una transacción específica\nsudo yum history info &lt;ID&gt;\n\n# Revertir una transacción\nsudo yum -y history undo &lt;ID&gt;"
+  },
+  {
+    "objectID": "Linux/243-LX-Lab.html#tarea-4-instalar-aws-cli",
+    "href": "Linux/243-LX-Lab.html#tarea-4-instalar-aws-cli",
+    "title": "1 🛠️ Laboratorio: Administración de Software en Amazon Linux 2",
+    "section": "",
+    "text": "# Verificar Python\npython3 --version\n\n# Verificar pip\npip3 --version\n\n# Descargar AWS CLI\ncurl \"https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip\" -o \"awscliv2.zip\"\n\n# Descomprimir\nunzip awscliv2.zip\n\n# Instalar\nsudo ./aws/install\n\n# Verificar instalación\naws help"
+  },
+  {
+    "objectID": "Linux/243-LX-Lab.html#tarea-5-configurar-aws-cli",
+    "href": "Linux/243-LX-Lab.html#tarea-5-configurar-aws-cli",
+    "title": "1 🛠️ Laboratorio: Administración de Software en Amazon Linux 2",
+    "section": "",
+    "text": "# Iniciar configuración\naws configure\n\nCuando se solicite: - Access Key ID: (dejar en blanco) - Secret Access Key: (dejar en blanco) - Región por defecto: us-west-2 - Formato de salida: json\n\n\n\nsudo nano ~/.aws/credentials\nEjemplo de contenido:\n[default]\naws_access_key_id=SU_CLAVE\naws_secret_access_key=TU_SECRET\naws_session_token=TU_TOKEN\nGuardar con Ctrl + O, salir con Ctrl + X.\n\n\n\naws ec2 describe-instance-attribute --instance-id &lt;ID&gt; --attribute instanceType\nSalida esperada:\n{\n  \"InstanceId\": \"i-1234567890abcdefg\",\n  \"InstanceType\": {\n    \"Value\": \"t3.micro\"\n  }\n}"
+  },
+  {
+    "objectID": "Linux/243-LX-Lab.html#laboratorio-completado",
+    "href": "Linux/243-LX-Lab.html#laboratorio-completado",
+    "title": "1 🛠️ Laboratorio: Administración de Software en Amazon Linux 2",
+    "section": "",
+    "text": "Finaliza haciendo clic en End Lab, confirma con Yes y cierra el mensaje final."
+  },
+  {
+    "objectID": "Linux/243-LX-Lab.html#conceptos-clave",
+    "href": "Linux/243-LX-Lab.html#conceptos-clave",
+    "title": "1 🛠️ Laboratorio: Administración de Software en Amazon Linux 2",
+    "section": "",
+    "text": "yum: Gestor de paquetes en Amazon Linux.\nAWS CLI: Herramienta para interactuar con AWS desde la terminal.\nReversión de paquetes: Capacidad de deshacer actualizaciones con historial de yum.\nEC2 t3.micro: Instancia pequeña para cargas ligeras."
+  },
+  {
+    "objectID": "Linux/243-LX-Lab.html#comandos-clave",
+    "href": "Linux/243-LX-Lab.html#comandos-clave",
+    "title": "1 🛠️ Laboratorio: Administración de Software en Amazon Linux 2",
+    "section": "",
+    "text": "# Conexión SSH\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\n\n# yum\nsudo yum -y check-update\nsudo yum update --security\nsudo yum -y upgrade\nsudo yum install httpd -y\nsudo yum history list\nsudo yum -y history undo &lt;ID&gt;\n\n# AWS CLI\ncurl \"https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip\" -o \"awscliv2.zip\"\nunzip awscliv2.zip\nsudo ./aws/install\naws configure"
+  },
+  {
+    "objectID": "Linux/249-LX-Lab.html",
+    "href": "Linux/249-LX-Lab.html",
+    "title": "1 🛠️ Laboratorio: El Shell Bash",
+    "section": "",
+    "text": "Duración estimada: 30 minutos\nPrerrequisitos: Familiaridad con terminal Bash y comandos Linux básicos.\n\n\n\n\nCrear un alias para realizar copias de seguridad.\nAgregar un nuevo directorio a la variable de entorno PATH.\n\n\n\n\n\nHaz clic en Start Lab.\nEspera Lab status: ready.\nAbre la AWS Management Console.\n\n\n\n\n\n\n\nDescargar .ppk desde Details &gt; Download PPK.\nConectar con:\n\nHost: Public IP\nAuth: labsuser.ppk\nUsuario: ec2-user\n\n\n\n\n\ncd ~/Downloads\nchmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\n\n\n\n\n# Confirmar ubicación\npwd\n\n# Crear alias\nalias backup='tar -cvzf'\n\n# Usar alias para respaldar carpeta\nbackup backup_companyA.tar.gz CompanyA\n\n# Verificar archivo creado\nls\n\n\n\n# Ir al directorio del script\ncd /home/ec2-user/CompanyA/bin\n\n# Ejecutar script directamente\n./hello.sh\n\n# Regresar al directorio anterior\ncd ..\n\n# Ejecutar script desde ruta relativa\n./bin/hello.sh\n\n# Intentar ejecutar directamente (fallará)\nhello.sh\n\n# Mostrar PATH actual\necho $PATH\n\n# Agregar bin al PATH\nPATH=$PATH:/home/ec2-user/CompanyA/bin\n\n# Ejecutar script desde cualquier ubicación\nhello.sh\n\n\n\nSelecciona End Lab, confirma con Yes y cierra el mensaje final.\n\n\n\n\nalias: Crea atajos para comandos complejos.\ntar -cvzf: Comprime archivos y carpetas.\nPATH: Lista de rutas donde Bash busca ejecutables.\n.sh scripts: Archivos ejecutables en Bash.\n\n\n\n\n# Crear alias\nalias backup='tar -cvzf'\n\n# Usar alias\nbackup backup_companyA.tar.gz CompanyA\n\n# Verificar contenido\nls\n\n# Navegación y ejecución\ncd /home/ec2-user/CompanyA/bin\n./hello.sh\nhello.sh\n\n# Actualizar PATH\nPATH=$PATH:/home/ec2-user/CompanyA/bin"
+  },
+  {
+    "objectID": "Linux/249-LX-Lab.html#objetivos",
+    "href": "Linux/249-LX-Lab.html#objetivos",
+    "title": "1 🛠️ Laboratorio: El Shell Bash",
+    "section": "",
+    "text": "Crear un alias para realizar copias de seguridad.\nAgregar un nuevo directorio a la variable de entorno PATH."
+  },
+  {
+    "objectID": "Linux/249-LX-Lab.html#acceso-al-entorno",
+    "href": "Linux/249-LX-Lab.html#acceso-al-entorno",
+    "title": "1 🛠️ Laboratorio: El Shell Bash",
+    "section": "",
+    "text": "Haz clic en Start Lab.\nEspera Lab status: ready.\nAbre la AWS Management Console."
+  },
+  {
+    "objectID": "Linux/249-LX-Lab.html#tarea-1-conexión-a-ec2",
+    "href": "Linux/249-LX-Lab.html#tarea-1-conexión-a-ec2",
+    "title": "1 🛠️ Laboratorio: El Shell Bash",
+    "section": "",
+    "text": "Descargar .ppk desde Details &gt; Download PPK.\nConectar con:\n\nHost: Public IP\nAuth: labsuser.ppk\nUsuario: ec2-user\n\n\n\n\n\ncd ~/Downloads\nchmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;"
+  },
+  {
+    "objectID": "Linux/249-LX-Lab.html#tarea-2-crear-un-alias-para-copia-de-seguridad",
+    "href": "Linux/249-LX-Lab.html#tarea-2-crear-un-alias-para-copia-de-seguridad",
+    "title": "1 🛠️ Laboratorio: El Shell Bash",
+    "section": "",
+    "text": "# Confirmar ubicación\npwd\n\n# Crear alias\nalias backup='tar -cvzf'\n\n# Usar alias para respaldar carpeta\nbackup backup_companyA.tar.gz CompanyA\n\n# Verificar archivo creado\nls"
+  },
+  {
+    "objectID": "Linux/249-LX-Lab.html#tarea-3-actualizar-la-variable-path",
+    "href": "Linux/249-LX-Lab.html#tarea-3-actualizar-la-variable-path",
+    "title": "1 🛠️ Laboratorio: El Shell Bash",
+    "section": "",
+    "text": "# Ir al directorio del script\ncd /home/ec2-user/CompanyA/bin\n\n# Ejecutar script directamente\n./hello.sh\n\n# Regresar al directorio anterior\ncd ..\n\n# Ejecutar script desde ruta relativa\n./bin/hello.sh\n\n# Intentar ejecutar directamente (fallará)\nhello.sh\n\n# Mostrar PATH actual\necho $PATH\n\n# Agregar bin al PATH\nPATH=$PATH:/home/ec2-user/CompanyA/bin\n\n# Ejecutar script desde cualquier ubicación\nhello.sh"
+  },
+  {
+    "objectID": "Linux/249-LX-Lab.html#finalización",
+    "href": "Linux/249-LX-Lab.html#finalización",
+    "title": "1 🛠️ Laboratorio: El Shell Bash",
+    "section": "",
+    "text": "Selecciona End Lab, confirma con Yes y cierra el mensaje final."
+  },
+  {
+    "objectID": "Linux/249-LX-Lab.html#conceptos-clave",
+    "href": "Linux/249-LX-Lab.html#conceptos-clave",
+    "title": "1 🛠️ Laboratorio: El Shell Bash",
+    "section": "",
+    "text": "alias: Crea atajos para comandos complejos.\ntar -cvzf: Comprime archivos y carpetas.\nPATH: Lista de rutas donde Bash busca ejecutables.\n.sh scripts: Archivos ejecutables en Bash."
+  },
+  {
+    "objectID": "Linux/249-LX-Lab.html#comandos-clave",
+    "href": "Linux/249-LX-Lab.html#comandos-clave",
+    "title": "1 🛠️ Laboratorio: El Shell Bash",
+    "section": "",
+    "text": "# Crear alias\nalias backup='tar -cvzf'\n\n# Usar alias\nbackup backup_companyA.tar.gz CompanyA\n\n# Verificar contenido\nls\n\n# Navegación y ejecución\ncd /home/ec2-user/CompanyA/bin\n./hello.sh\nhello.sh\n\n# Actualizar PATH\nPATH=$PATH:/home/ec2-user/CompanyA/bin"
+  },
+  {
+    "objectID": "Linux/233-LX-Lab.html",
+    "href": "Linux/233-LX-Lab.html",
+    "title": "1 📁 Laboratorio: Uso del Sistema de Archivos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "Crear una estructura de carpetas según las instrucciones\nCrear archivos\nCopiar y trasladar archivos y directorios\nEliminar archivos y directorios\n\n\n\n\n30 minutos\n\n\n\n\n\n\nchmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\nSalida esperada:\n[ec2-user@ip-... ~]$\n\n\n\n\ncd ~\nmkdir CompanyA\ncd CompanyA\nmkdir Finance HR Management\n\ncd HR\ntouch Assessments.csv TrialPeriod.csv\ncd ../Finance\ntouch Salary.csv ProfitAndLossStatements.csv\ncd ..\ntouch Management/Managers.csv Management/Schedule.csv\n\nls -laR\nSalida esperada (resumida):\n./Finance:\nProfitAndLossStatements.csv  Salary.csv\n\n./HR:\nAssessments.csv  TrialPeriod.csv\n\n./Management:\nManagers.csv  Schedule.csv\n\n\n\n\n# Copiar Finance dentro de HR\ncp -r Finance HR\nls HR/Finance\nProfitAndLossStatements.csv  Salary.csv\n# Eliminar la carpeta Finance original\nrm Finance/*\nrmdir Finance\n# Mover Management a HR\nmv Management HR\nls HR/Management\nManagers.csv  Schedule.csv\n# Crear carpeta Employees y mover archivos\ncd HR\nmkdir Employees\nmv Assessments.csv TrialPeriod.csv Employees\nls Employees\nAssessments.csv  TrialPeriod.csv\n\n\n\n\n\n\nCierra sesión SSH con exit\nEn AWS selecciona End Lab\nConfirma para finalizar el entorno\n\n\n\n\n\n\nUsa mkdir -p para crear subdirectorios anidados en un solo paso.\nComando cp -r copia carpetas y su contenido.\nrm -r elimina carpetas con contenido.\nls -laR lista recursivamente archivos y carpetas.\nUsa cd .. para subir un nivel en el sistema de archivos.\n\n\n\n\n\n\nTipos de instancia de Amazon EC2\nAmazon EC2 Service Quotas\nAWS Training oficial"
+  },
+  {
+    "objectID": "Linux/233-LX-Lab.html#objetivos",
+    "href": "Linux/233-LX-Lab.html#objetivos",
+    "title": "1 📁 Laboratorio: Uso del Sistema de Archivos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "Crear una estructura de carpetas según las instrucciones\nCrear archivos\nCopiar y trasladar archivos y directorios\nEliminar archivos y directorios"
+  },
+  {
+    "objectID": "Linux/233-LX-Lab.html#duración-estimada",
+    "href": "Linux/233-LX-Lab.html#duración-estimada",
+    "title": "1 📁 Laboratorio: Uso del Sistema de Archivos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "30 minutos"
+  },
+  {
+    "objectID": "Linux/233-LX-Lab.html#tareas-paso-a-paso",
+    "href": "Linux/233-LX-Lab.html#tareas-paso-a-paso",
+    "title": "1 📁 Laboratorio: Uso del Sistema de Archivos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "chmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\nSalida esperada:\n[ec2-user@ip-... ~]$\n\n\n\n\ncd ~\nmkdir CompanyA\ncd CompanyA\nmkdir Finance HR Management\n\ncd HR\ntouch Assessments.csv TrialPeriod.csv\ncd ../Finance\ntouch Salary.csv ProfitAndLossStatements.csv\ncd ..\ntouch Management/Managers.csv Management/Schedule.csv\n\nls -laR\nSalida esperada (resumida):\n./Finance:\nProfitAndLossStatements.csv  Salary.csv\n\n./HR:\nAssessments.csv  TrialPeriod.csv\n\n./Management:\nManagers.csv  Schedule.csv\n\n\n\n\n# Copiar Finance dentro de HR\ncp -r Finance HR\nls HR/Finance\nProfitAndLossStatements.csv  Salary.csv\n# Eliminar la carpeta Finance original\nrm Finance/*\nrmdir Finance\n# Mover Management a HR\nmv Management HR\nls HR/Management\nManagers.csv  Schedule.csv\n# Crear carpeta Employees y mover archivos\ncd HR\nmkdir Employees\nmv Assessments.csv TrialPeriod.csv Employees\nls Employees\nAssessments.csv  TrialPeriod.csv"
+  },
+  {
+    "objectID": "Linux/233-LX-Lab.html#finalizar-laboratorio",
+    "href": "Linux/233-LX-Lab.html#finalizar-laboratorio",
+    "title": "1 📁 Laboratorio: Uso del Sistema de Archivos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "Cierra sesión SSH con exit\nEn AWS selecciona End Lab\nConfirma para finalizar el entorno"
+  },
+  {
+    "objectID": "Linux/233-LX-Lab.html#tips-útiles",
+    "href": "Linux/233-LX-Lab.html#tips-útiles",
+    "title": "1 📁 Laboratorio: Uso del Sistema de Archivos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "Usa mkdir -p para crear subdirectorios anidados en un solo paso.\nComando cp -r copia carpetas y su contenido.\nrm -r elimina carpetas con contenido.\nls -laR lista recursivamente archivos y carpetas.\nUsa cd .. para subir un nivel en el sistema de archivos."
+  },
+  {
+    "objectID": "Linux/233-LX-Lab.html#recursos-adicionales",
+    "href": "Linux/233-LX-Lab.html#recursos-adicionales",
+    "title": "1 📁 Laboratorio: Uso del Sistema de Archivos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "Tipos de instancia de Amazon EC2\nAmazon EC2 Service Quotas\nAWS Training oficial"
+  },
+  {
+    "objectID": "Linux/245-LX-Lab.html",
+    "href": "Linux/245-LX-Lab.html",
+    "title": "1 🛠️ Laboratorio: Administración de Archivos de Registro",
+    "section": "",
+    "text": "Duración estimada: 5–10 minutos\nPrerrequisitos: Conexión a EC2 y conocimientos básicos de comandos Linux.\n\n\n\n\nRevisar lastlog y registros de seguridad en Linux.\n\n\n\n\n\nHaz clic en Start Lab.\nEspera a que el estado indique: Lab status: ready.\nCierra el panel y accede a la AWS Management Console.\n\n\n\n\n\n\n\nDescarga .ppk desde Details &gt; Download PPK.\nAnota la IP pública.\nConéctate usando PuTTY:\n\nHost: Public IP\nAuth: labsuser.ppk\nUsuario: ec2-user\n\n\n\n\n\ncd ~/Downloads\nchmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\n\n\n\n\n# Verifica el directorio actual\npwd\n\n# Cambiar a la carpeta companyA si no estás en ella\ncd companyA\n\n\nsudo less /tmp/log/secure\n\nUsa q para salir del visor less.\n\nNota: Este archivo es una copia de muestra. El archivo real está en /var/log/secure.\n\n\n\nsudo lastlog\n\nEste comando muestra el último inicio de sesión de todos los usuarios del sistema.\n\n\n\n\n\n\n¿Qué tipo de información útil puede obtener tu empresa de estos registros?\n\n¿Intentos fallidos de acceso?\n¿Usuarios que nunca iniciaron sesión?\n¿Fechas y horas de actividad clave?\n\n\n\n\n\nHaz clic en End Lab, confirma con Yes y cierra el mensaje de eliminación.\n\n\n\n\n/var/log/secure: Registro de seguridad del sistema.\nlastlog: Herramienta para ver los últimos accesos de usuarios.\nless: Visor de texto interactivo.\nEC2 t3.micro: Instancia ligera para pruebas básicas.\n\n\n\n\n# Conexión\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\n\n# Navegación\npwd\ncd companyA\n\n# Revisión de logs\nsudo less /tmp/log/secure\nsudo lastlog"
+  },
+  {
+    "objectID": "Linux/245-LX-Lab.html#objetivo",
+    "href": "Linux/245-LX-Lab.html#objetivo",
+    "title": "1 🛠️ Laboratorio: Administración de Archivos de Registro",
+    "section": "",
+    "text": "Revisar lastlog y registros de seguridad en Linux."
+  },
+  {
+    "objectID": "Linux/245-LX-Lab.html#acceso-al-entorno",
+    "href": "Linux/245-LX-Lab.html#acceso-al-entorno",
+    "title": "1 🛠️ Laboratorio: Administración de Archivos de Registro",
+    "section": "",
+    "text": "Haz clic en Start Lab.\nEspera a que el estado indique: Lab status: ready.\nCierra el panel y accede a la AWS Management Console."
+  },
+  {
+    "objectID": "Linux/245-LX-Lab.html#tarea-1-conexión-a-ec2",
+    "href": "Linux/245-LX-Lab.html#tarea-1-conexión-a-ec2",
+    "title": "1 🛠️ Laboratorio: Administración de Archivos de Registro",
+    "section": "",
+    "text": "Descarga .ppk desde Details &gt; Download PPK.\nAnota la IP pública.\nConéctate usando PuTTY:\n\nHost: Public IP\nAuth: labsuser.ppk\nUsuario: ec2-user\n\n\n\n\n\ncd ~/Downloads\nchmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;"
+  },
+  {
+    "objectID": "Linux/245-LX-Lab.html#tarea-2-revisar-archivos-de-registro",
+    "href": "Linux/245-LX-Lab.html#tarea-2-revisar-archivos-de-registro",
+    "title": "1 🛠️ Laboratorio: Administración de Archivos de Registro",
+    "section": "",
+    "text": "# Verifica el directorio actual\npwd\n\n# Cambiar a la carpeta companyA si no estás en ella\ncd companyA\n\n\nsudo less /tmp/log/secure\n\nUsa q para salir del visor less.\n\nNota: Este archivo es una copia de muestra. El archivo real está en /var/log/secure.\n\n\n\nsudo lastlog\n\nEste comando muestra el último inicio de sesión de todos los usuarios del sistema."
+  },
+  {
+    "objectID": "Linux/245-LX-Lab.html#desafío-adicional",
+    "href": "Linux/245-LX-Lab.html#desafío-adicional",
+    "title": "1 🛠️ Laboratorio: Administración de Archivos de Registro",
+    "section": "",
+    "text": "¿Qué tipo de información útil puede obtener tu empresa de estos registros?\n\n¿Intentos fallidos de acceso?\n¿Usuarios que nunca iniciaron sesión?\n¿Fechas y horas de actividad clave?"
+  },
+  {
+    "objectID": "Linux/245-LX-Lab.html#finalización-del-laboratorio",
+    "href": "Linux/245-LX-Lab.html#finalización-del-laboratorio",
+    "title": "1 🛠️ Laboratorio: Administración de Archivos de Registro",
+    "section": "",
+    "text": "Haz clic en End Lab, confirma con Yes y cierra el mensaje de eliminación."
+  },
+  {
+    "objectID": "Linux/245-LX-Lab.html#conceptos-clave",
+    "href": "Linux/245-LX-Lab.html#conceptos-clave",
+    "title": "1 🛠️ Laboratorio: Administración de Archivos de Registro",
+    "section": "",
+    "text": "/var/log/secure: Registro de seguridad del sistema.\nlastlog: Herramienta para ver los últimos accesos de usuarios.\nless: Visor de texto interactivo.\nEC2 t3.micro: Instancia ligera para pruebas básicas."
+  },
+  {
+    "objectID": "Linux/245-LX-Lab.html#comandos-clave",
+    "href": "Linux/245-LX-Lab.html#comandos-clave",
+    "title": "1 🛠️ Laboratorio: Administración de Archivos de Registro",
+    "section": "",
+    "text": "# Conexión\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\n\n# Navegación\npwd\ncd companyA\n\n# Revisión de logs\nsudo less /tmp/log/secure\nsudo lastlog"
+  },
+  {
+    "objectID": "Linux/251-LX-Lab.html",
+    "href": "Linux/251-LX-Lab.html",
+    "title": "1 🧾 Laboratorio: Script Bash para Automatizar Copias de Seguridad",
+    "section": "",
+    "text": "Crear un script de Bash que automatice la creación de un archivo .tar.gz de copia de seguridad para la carpeta CompanyA.\n\n\n\n25 minutos\n\n\n\n\n\n\nchmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\n\n\n\n\nVerifica tu ubicación actual:\npwd\n# /home/ec2-user\nCrea el script y hazlo ejecutable:\ntouch backup.sh\nchmod 755 backup.sh\nEdita el archivo:\nvi backup.sh\nPresiona i para modo inserción y escribe:\n#!/bin/bash\nDAY=\"$(date +%Y_%m_%d_%T_%H_%M)\"\nBACKUP=\"/home/$USER/backups/$DAY-backup-CompanyA.tar.gz\"\ntar -czvpzf $BACKUP /home/$USER/CompanyA\nGuarda y sal: presiona ESC, escribe :wq, y presiona ENTER.\n\n\n\n\nAsegúrate de tener el directorio backups:\nmkdir -p backups\n./backup.sh\nVerifica el archivo creado:\nls backups/\n# Ejemplo: 2025_06_01_16:59:00_16_59-backup-CompanyA.tar.gz\n\n\n\n\n\n\nchmod 755 permite ejecutar el script\n$(date +...) te da la fecha/hora con formato personalizado\ntar -czvpzf comprime la carpeta y mantiene permisos\nPuedes usar cron para automatizar este script\n\n\n\n\n\n\nComando tar\nGuía comando date\nAWS Training oficial"
+  },
+  {
+    "objectID": "Linux/251-LX-Lab.html#objetivo",
+    "href": "Linux/251-LX-Lab.html#objetivo",
+    "title": "1 🧾 Laboratorio: Script Bash para Automatizar Copias de Seguridad",
+    "section": "",
+    "text": "Crear un script de Bash que automatice la creación de un archivo .tar.gz de copia de seguridad para la carpeta CompanyA."
+  },
+  {
+    "objectID": "Linux/251-LX-Lab.html#duración",
+    "href": "Linux/251-LX-Lab.html#duración",
+    "title": "1 🧾 Laboratorio: Script Bash para Automatizar Copias de Seguridad",
+    "section": "",
+    "text": "25 minutos"
+  },
+  {
+    "objectID": "Linux/251-LX-Lab.html#tareas-paso-a-paso",
+    "href": "Linux/251-LX-Lab.html#tareas-paso-a-paso",
+    "title": "1 🧾 Laboratorio: Script Bash para Automatizar Copias de Seguridad",
+    "section": "",
+    "text": "chmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\n\n\n\n\nVerifica tu ubicación actual:\npwd\n# /home/ec2-user\nCrea el script y hazlo ejecutable:\ntouch backup.sh\nchmod 755 backup.sh\nEdita el archivo:\nvi backup.sh\nPresiona i para modo inserción y escribe:\n#!/bin/bash\nDAY=\"$(date +%Y_%m_%d_%T_%H_%M)\"\nBACKUP=\"/home/$USER/backups/$DAY-backup-CompanyA.tar.gz\"\ntar -czvpzf $BACKUP /home/$USER/CompanyA\nGuarda y sal: presiona ESC, escribe :wq, y presiona ENTER.\n\n\n\n\nAsegúrate de tener el directorio backups:\nmkdir -p backups\n./backup.sh\nVerifica el archivo creado:\nls backups/\n# Ejemplo: 2025_06_01_16:59:00_16_59-backup-CompanyA.tar.gz"
+  },
+  {
+    "objectID": "Linux/251-LX-Lab.html#tips-útiles",
+    "href": "Linux/251-LX-Lab.html#tips-útiles",
+    "title": "1 🧾 Laboratorio: Script Bash para Automatizar Copias de Seguridad",
+    "section": "",
+    "text": "chmod 755 permite ejecutar el script\n$(date +...) te da la fecha/hora con formato personalizado\ntar -czvpzf comprime la carpeta y mantiene permisos\nPuedes usar cron para automatizar este script"
+  },
+  {
+    "objectID": "Linux/251-LX-Lab.html#recursos-adicionales",
+    "href": "Linux/251-LX-Lab.html#recursos-adicionales",
+    "title": "1 🧾 Laboratorio: Script Bash para Automatizar Copias de Seguridad",
+    "section": "",
+    "text": "Comando tar\nGuía comando date\nAWS Training oficial"
+  },
+  {
+    "objectID": "Linux/231-LX-Lab.html",
+    "href": "Linux/231-LX-Lab.html",
+    "title": "1 📝 Laboratorio: Edición de Archivos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "Utilizar el archivo ejecutable vimtutor para completar tareas básicas en Vim\n\nCopiar y editar contenido desde /var/log/secure usando nano\n\n\n\n\n1 hora\n\n\n\n\n\n\n📸 Captura sugerida: Conexión SSH exitosa – enlace aquí\nchmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\n\n\n\n\n📸 Captura sugerida: Ejecución de vimtutor – enlace aquí\nvimtutor\nSi no está instalado:\nsudo yum install vim\n✅ Completa las lecciones 1 a 3.\nPara salir del tutor:\n:q!\n\n\n\n\n📸 Captura sugerida: Archivo helloworld editado en Vim – enlace aquí\nCrear archivo:\nvim helloworld\nEn modo inserción (i), escribe:\nHello World!\nThis is my first file in Linux and I am editing it in Vim!\nSalir del modo inserción con ESC y guardar:\n:wq\nEditar de nuevo:\nvim helloworld\nAgrega:\nI learned how to create a file, edit and save them too!\nSalir sin guardar:\n:q!\nDesafío adicional:\n\nEliminar línea: dd\nDeshacer acción: u\nGuardar sin salir: :w\n\n\n\n\n\n📸 Captura sugerida: Archivo cloudworld abierto y editado con Nano – enlace aquí\nCrear archivo:\nnano cloudworld\nEscribe directamente:\nWe are using nano this time! We can simply start typing! No insert mode needed.\nGuardar: CTRL + O\nConfirmar nombre y salir: CTRL + X\nVerificar archivo:\nnano cloudworld\n\n\n\n\n\n\nCierra la sesión SSH\nHaz clic en End Lab en la plataforma\nConfirma para finalizar el entorno\n\n\n\n\n\n\nTipos de instancias EC2\nAWS Training\n\n\n\n\n\n\n\nUsa :q! para salir de Vim sin guardar y :wq para guardar y salir.\nEn Vim, puedes navegar con h, j, k, l si tu teclado no tiene flechas activas.\nNano es ideal para principiantes: no necesitas ingresar en modo de edición.\nSi accidentalmente abres Vim y te trabas, recuerda: ESC, luego :q!\nUsa CTRL+R en Bash para buscar comandos anteriores (historial interactivo).\nSi quieres revisar lo que modificaste con sudo, consulta los logs:\nsudo cat /var/log/secure | tail"
+  },
+  {
+    "objectID": "Linux/231-LX-Lab.html#objetivos",
+    "href": "Linux/231-LX-Lab.html#objetivos",
+    "title": "1 📝 Laboratorio: Edición de Archivos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "Utilizar el archivo ejecutable vimtutor para completar tareas básicas en Vim\n\nCopiar y editar contenido desde /var/log/secure usando nano"
+  },
+  {
+    "objectID": "Linux/231-LX-Lab.html#duración-estimada",
+    "href": "Linux/231-LX-Lab.html#duración-estimada",
+    "title": "1 📝 Laboratorio: Edición de Archivos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "1 hora"
+  },
+  {
+    "objectID": "Linux/231-LX-Lab.html#tareas-paso-a-paso",
+    "href": "Linux/231-LX-Lab.html#tareas-paso-a-paso",
+    "title": "1 📝 Laboratorio: Edición de Archivos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "📸 Captura sugerida: Conexión SSH exitosa – enlace aquí\nchmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\n\n\n\n\n📸 Captura sugerida: Ejecución de vimtutor – enlace aquí\nvimtutor\nSi no está instalado:\nsudo yum install vim\n✅ Completa las lecciones 1 a 3.\nPara salir del tutor:\n:q!\n\n\n\n\n📸 Captura sugerida: Archivo helloworld editado en Vim – enlace aquí\nCrear archivo:\nvim helloworld\nEn modo inserción (i), escribe:\nHello World!\nThis is my first file in Linux and I am editing it in Vim!\nSalir del modo inserción con ESC y guardar:\n:wq\nEditar de nuevo:\nvim helloworld\nAgrega:\nI learned how to create a file, edit and save them too!\nSalir sin guardar:\n:q!\nDesafío adicional:\n\nEliminar línea: dd\nDeshacer acción: u\nGuardar sin salir: :w\n\n\n\n\n\n📸 Captura sugerida: Archivo cloudworld abierto y editado con Nano – enlace aquí\nCrear archivo:\nnano cloudworld\nEscribe directamente:\nWe are using nano this time! We can simply start typing! No insert mode needed.\nGuardar: CTRL + O\nConfirmar nombre y salir: CTRL + X\nVerificar archivo:\nnano cloudworld"
+  },
+  {
+    "objectID": "Linux/231-LX-Lab.html#finalizar-laboratorio",
+    "href": "Linux/231-LX-Lab.html#finalizar-laboratorio",
+    "title": "1 📝 Laboratorio: Edición de Archivos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "Cierra la sesión SSH\nHaz clic en End Lab en la plataforma\nConfirma para finalizar el entorno"
+  },
+  {
+    "objectID": "Linux/231-LX-Lab.html#recursos-adicionales",
+    "href": "Linux/231-LX-Lab.html#recursos-adicionales",
+    "title": "1 📝 Laboratorio: Edición de Archivos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "Tipos de instancias EC2\nAWS Training"
+  },
+  {
+    "objectID": "Linux/231-LX-Lab.html#tips-útiles",
+    "href": "Linux/231-LX-Lab.html#tips-útiles",
+    "title": "1 📝 Laboratorio: Edición de Archivos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "Usa :q! para salir de Vim sin guardar y :wq para guardar y salir.\nEn Vim, puedes navegar con h, j, k, l si tu teclado no tiene flechas activas.\nNano es ideal para principiantes: no necesitas ingresar en modo de edición.\nSi accidentalmente abres Vim y te trabas, recuerda: ESC, luego :q!\nUsa CTRL+R en Bash para buscar comandos anteriores (historial interactivo).\nSi quieres revisar lo que modificaste con sudo, consulta los logs:\nsudo cat /var/log/secure | tail"
+  },
+  {
+    "objectID": "Linux/235-LX-Lab.html",
+    "href": "Linux/235-LX-Lab.html",
+    "title": "1 🗃️ Laboratorio: Uso de Archivos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "Crear copia de seguridad con tar\nRegistrar fecha/hora en un archivo\nMover el archivo de respaldo\n\n\n\n\n30 minutos\n\n\n\n\n\n\nchmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\nSalida esperada:\n[ec2-user@ip-... ~]$\n\n\n\n\npwd\n# Debe mostrar: /home/ec2-user\n\nls -R CompanyA\nEstructura esperada:\nCompanyA/\n├── Employees/\n│   └── Schedules.csv\n├── Finance/\n│   └── Salary.csv\n├── HR/\n│   ├── Assessments.csv\n│   └── Managers.csv\n├── IA/\n├── Management/\n│   ├── Promotions.csv\n│   └── Sections.csv\n└── SharedFolders.csv\nCrear backup:\ntar -czvpzf backup.CompanyA.tar.gz CompanyA\nls\nSalida esperada:\nbackup.CompanyA.tar.gz  CompanyA/\n\n\n\n\ncd /home/ec2-user/CompanyA\ntouch SharedFolders/backups.csv\necho \"2025-06-01, 16:59, backup.CompanyA.tar.gz\" | sudo tee SharedFolders/backups.csv\nVerificar contenido:\ncat SharedFolders/backups.csv\nSalida esperada:\n2025-06-01, 16:59, backup.CompanyA.tar.gz\n\n\n\n\npwd\n# Debe mostrar: /home/ec2-user/CompanyA\n\nmv ../backup.CompanyA.tar.gz IA/\nls IA/\nSalida esperada:\nbackup.CompanyA.tar.gz\n\n\n\n\n\n\nCierra sesión SSH con exit\nEn la consola AWS, selecciona End Lab\nConfirma para cerrar el entorno\n\n\n\n\n\n\ntar -czvpzf → crea backups comprimidos con permisos\ntee permite guardar en archivo y mostrar por terminal al mismo tiempo\nls -R → muestra estructura de carpetas recursivamente\nmv y cp -r son clave para mover/copiar archivos y carpetas\n\n\n\n\n\n\nComando tar\nGuía comandos Linux\nAWS Training oficial"
+  },
+  {
+    "objectID": "Linux/235-LX-Lab.html#objetivos",
+    "href": "Linux/235-LX-Lab.html#objetivos",
+    "title": "1 🗃️ Laboratorio: Uso de Archivos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "Crear copia de seguridad con tar\nRegistrar fecha/hora en un archivo\nMover el archivo de respaldo"
+  },
+  {
+    "objectID": "Linux/235-LX-Lab.html#duración-estimada",
+    "href": "Linux/235-LX-Lab.html#duración-estimada",
+    "title": "1 🗃️ Laboratorio: Uso de Archivos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "30 minutos"
+  },
+  {
+    "objectID": "Linux/235-LX-Lab.html#tareas-paso-a-paso",
+    "href": "Linux/235-LX-Lab.html#tareas-paso-a-paso",
+    "title": "1 🗃️ Laboratorio: Uso de Archivos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "chmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\nSalida esperada:\n[ec2-user@ip-... ~]$\n\n\n\n\npwd\n# Debe mostrar: /home/ec2-user\n\nls -R CompanyA\nEstructura esperada:\nCompanyA/\n├── Employees/\n│   └── Schedules.csv\n├── Finance/\n│   └── Salary.csv\n├── HR/\n│   ├── Assessments.csv\n│   └── Managers.csv\n├── IA/\n├── Management/\n│   ├── Promotions.csv\n│   └── Sections.csv\n└── SharedFolders.csv\nCrear backup:\ntar -czvpzf backup.CompanyA.tar.gz CompanyA\nls\nSalida esperada:\nbackup.CompanyA.tar.gz  CompanyA/\n\n\n\n\ncd /home/ec2-user/CompanyA\ntouch SharedFolders/backups.csv\necho \"2025-06-01, 16:59, backup.CompanyA.tar.gz\" | sudo tee SharedFolders/backups.csv\nVerificar contenido:\ncat SharedFolders/backups.csv\nSalida esperada:\n2025-06-01, 16:59, backup.CompanyA.tar.gz\n\n\n\n\npwd\n# Debe mostrar: /home/ec2-user/CompanyA\n\nmv ../backup.CompanyA.tar.gz IA/\nls IA/\nSalida esperada:\nbackup.CompanyA.tar.gz"
+  },
+  {
+    "objectID": "Linux/235-LX-Lab.html#finalizar-laboratorio",
+    "href": "Linux/235-LX-Lab.html#finalizar-laboratorio",
+    "title": "1 🗃️ Laboratorio: Uso de Archivos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "Cierra sesión SSH con exit\nEn la consola AWS, selecciona End Lab\nConfirma para cerrar el entorno"
+  },
+  {
+    "objectID": "Linux/235-LX-Lab.html#tips-útiles",
+    "href": "Linux/235-LX-Lab.html#tips-útiles",
+    "title": "1 🗃️ Laboratorio: Uso de Archivos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "tar -czvpzf → crea backups comprimidos con permisos\ntee permite guardar en archivo y mostrar por terminal al mismo tiempo\nls -R → muestra estructura de carpetas recursivamente\nmv y cp -r son clave para mover/copiar archivos y carpetas"
+  },
+  {
+    "objectID": "Linux/235-LX-Lab.html#recursos-adicionales",
+    "href": "Linux/235-LX-Lab.html#recursos-adicionales",
+    "title": "1 🗃️ Laboratorio: Uso de Archivos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "Comando tar\nGuía comandos Linux\nAWS Training oficial"
+  },
+  {
     "objectID": "Fundamentos-Nube/Fundamentos-1-2.html",
     "href": "Fundamentos-Nube/Fundamentos-1-2.html",
     "title": "1 📘 Fundamentos de la Nube - Documentación",
@@ -266,39 +658,361 @@
     "text": "AWS Re/Start 🚀\n\n\nTu viaje al mundo de la nube comienza aquí.\n\nEmpezar"
   },
   {
-    "objectID": "Linux/227[LX]-Lab.html",
-    "href": "Linux/227[LX]-Lab.html",
-    "title": "1 🐧 Línea de comandos de Linux",
+    "objectID": "Linux/241-LX-Lab.html",
+    "href": "Linux/241-LX-Lab.html",
+    "title": "1 🛠️ Laboratorio: Administración de Servicios - Monitoreo en Amazon Linux 2",
     "section": "",
-    "text": "Ejecutar comandos para aprender sobre tu sistema y sesión actual.\nBuscar y ejecutar comandos Bash anteriores.\n\n\n\n\nTiempo estimado: 30 minutos.\n\n\n\n\n\nHaz clic en Start Lab en la parte superior.\nEspera el mensaje Lab status: ready y cierra el panel.\nHaz clic en AWS para abrir la consola en una nueva pestaña.\nSi tu navegador bloquea la ventana emergente, permite los pop-ups.\nOrganiza las pestañas para seguir los pasos fácilmente.\n\n\n\n\n\n\n\n\nDescarga el archivo .ppk.\nAnota la dirección Public IP de la instancia.\nAbre PuTTY:\n\nSession → pega la IP pública\nConnection → ajusta Seconds between keepalives a 30\nSSH → Auth → busca tu archivo .ppk\n\nHaz clic en Open → acepta → login as: ec2-user\n\n\n\n\n\nDescarga el archivo .pem.\nDa permisos de solo lectura al archivo:\n```bash chmod 400 labsuser.pem"
+    "text": "Duración estimada: 30 minutos\nPrerrequisitos: Haber completado laboratorios previos y conocer el uso básico de EC2, SSH y la consola AWS.\n\n\n\n\nVerificar el estado del servicio httpd en una instancia EC2.\nProbar conectividad HTTP vía IP pública.\nMonitorear la instancia EC2 utilizando:\n\nEl comando top de Linux.\nEl servicio AWS CloudWatch.\n\n\n\n\n\n\nHaz clic en Start Lab.\nEspera a que el estado indique: Lab status: ready.\nCierra el panel y accede a la AWS Management Console.\n\n\n\n\n\n\n\nDescarga el archivo .ppk desde Details &gt; Download PPK.\nAnota la IP pública de la instancia.\nUsa PuTTY con esta configuración:\n\nHost: Public IP\nAuth: cargar archivo labsuser.ppk\nUsuario: ec2-user\nKeepalives: 30 segundos\n\n\n\n\n\n# 1. Ir al directorio de descarga\ncd ~/Downloads\n\n# 2. Cambiar permisos\nchmod 400 labsuser.pem\n\n# 3. Conectarse vía SSH\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\n\n\n\n\n\n\nsudo systemctl status httpd.service\nResultado esperado: inactive (dead)\n\n\n\nsudo systemctl start httpd.service\nVerifica nuevamente:\nsudo systemctl status httpd.service\nResultado esperado: active (running)\n\n\n\nEn el navegador:\nhttp://&lt;IP-pública&gt;\nDeberías ver la página de prueba de Apache.\n\n\n\nsudo systemctl stop httpd.service\n\n\n\n\n\n\ntop\nPulsa Q para salir.\n\n\n\n./stress.sh & top\n\nObserva el alto uso de CPU en tiempo real.\n\n\n\n\n\nEn la consola AWS, busca CloudWatch.\nVe a: Dashboards &gt; Automatic dashboards &gt; EC2\nObserva métricas:\n\nUtilización de CPU\nLecturas/escrituras de disco\n\n\n\n\n\n\nAWS CloudWatch actualiza cada 5 minutos.\nRevisa que la CPU haya bajado luego del script.\n\n\n\n\n\nHaz clic en End Lab y confirma con Yes.\nCierra el mensaje de eliminación.\n\n\n\n\nEC2 (Elastic Compute Cloud): Servicio de cómputo de AWS.\nhttpd: Servidor web Apache.\nsystemctl: Herramienta de control de servicios en Linux.\ntop: Monitor en tiempo real de procesos.\nCloudWatch: Herramienta de monitoreo en AWS.\n\n\n\n\n# Conexión SSH\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\n\n# Servicio httpd\nsudo systemctl status httpd.service\nsudo systemctl start httpd.service\nsudo systemctl stop httpd.service\n\n# Monitor de procesos\ntop\n\n# Carga artificial de CPU\n./stress.sh & top"
   },
   {
-    "objectID": "Linux/227[LX]-Lab.html#objetivos",
-    "href": "Linux/227[LX]-Lab.html#objetivos",
-    "title": "1 🐧 Línea de comandos de Linux",
+    "objectID": "Linux/241-LX-Lab.html#objetivos",
+    "href": "Linux/241-LX-Lab.html#objetivos",
+    "title": "1 🛠️ Laboratorio: Administración de Servicios - Monitoreo en Amazon Linux 2",
     "section": "",
-    "text": "Ejecutar comandos para aprender sobre tu sistema y sesión actual.\nBuscar y ejecutar comandos Bash anteriores."
+    "text": "Verificar el estado del servicio httpd en una instancia EC2.\nProbar conectividad HTTP vía IP pública.\nMonitorear la instancia EC2 utilizando:\n\nEl comando top de Linux.\nEl servicio AWS CloudWatch."
   },
   {
-    "objectID": "Linux/227[LX]-Lab.html#duración",
-    "href": "Linux/227[LX]-Lab.html#duración",
-    "title": "1 🐧 Línea de comandos de Linux",
+    "objectID": "Linux/241-LX-Lab.html#acceso-al-laboratorio",
+    "href": "Linux/241-LX-Lab.html#acceso-al-laboratorio",
+    "title": "1 🛠️ Laboratorio: Administración de Servicios - Monitoreo en Amazon Linux 2",
+    "section": "",
+    "text": "Haz clic en Start Lab.\nEspera a que el estado indique: Lab status: ready.\nCierra el panel y accede a la AWS Management Console."
+  },
+  {
+    "objectID": "Linux/241-LX-Lab.html#tarea-1-conexión-a-ec2-vía-ssh",
+    "href": "Linux/241-LX-Lab.html#tarea-1-conexión-a-ec2-vía-ssh",
+    "title": "1 🛠️ Laboratorio: Administración de Servicios - Monitoreo en Amazon Linux 2",
+    "section": "",
+    "text": "Descarga el archivo .ppk desde Details &gt; Download PPK.\nAnota la IP pública de la instancia.\nUsa PuTTY con esta configuración:\n\nHost: Public IP\nAuth: cargar archivo labsuser.ppk\nUsuario: ec2-user\nKeepalives: 30 segundos\n\n\n\n\n\n# 1. Ir al directorio de descarga\ncd ~/Downloads\n\n# 2. Cambiar permisos\nchmod 400 labsuser.pem\n\n# 3. Conectarse vía SSH\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;"
+  },
+  {
+    "objectID": "Linux/241-LX-Lab.html#tarea-2-verificar-y-controlar-el-servicio-httpd",
+    "href": "Linux/241-LX-Lab.html#tarea-2-verificar-y-controlar-el-servicio-httpd",
+    "title": "1 🛠️ Laboratorio: Administración de Servicios - Monitoreo en Amazon Linux 2",
+    "section": "",
+    "text": "sudo systemctl status httpd.service\nResultado esperado: inactive (dead)\n\n\n\nsudo systemctl start httpd.service\nVerifica nuevamente:\nsudo systemctl status httpd.service\nResultado esperado: active (running)\n\n\n\nEn el navegador:\nhttp://&lt;IP-pública&gt;\nDeberías ver la página de prueba de Apache.\n\n\n\nsudo systemctl stop httpd.service"
+  },
+  {
+    "objectID": "Linux/241-LX-Lab.html#tarea-3-monitoreo-de-la-instancia-ec2",
+    "href": "Linux/241-LX-Lab.html#tarea-3-monitoreo-de-la-instancia-ec2",
+    "title": "1 🛠️ Laboratorio: Administración de Servicios - Monitoreo en Amazon Linux 2",
+    "section": "",
+    "text": "top\nPulsa Q para salir.\n\n\n\n./stress.sh & top\n\nObserva el alto uso de CPU en tiempo real.\n\n\n\n\n\nEn la consola AWS, busca CloudWatch.\nVe a: Dashboards &gt; Automatic dashboards &gt; EC2\nObserva métricas:\n\nUtilización de CPU\nLecturas/escrituras de disco\n\n\n\n\n\n\nAWS CloudWatch actualiza cada 5 minutos.\nRevisa que la CPU haya bajado luego del script."
+  },
+  {
+    "objectID": "Linux/241-LX-Lab.html#finalización",
+    "href": "Linux/241-LX-Lab.html#finalización",
+    "title": "1 🛠️ Laboratorio: Administración de Servicios - Monitoreo en Amazon Linux 2",
+    "section": "",
+    "text": "Haz clic en End Lab y confirma con Yes.\nCierra el mensaje de eliminación."
+  },
+  {
+    "objectID": "Linux/241-LX-Lab.html#conceptos-core",
+    "href": "Linux/241-LX-Lab.html#conceptos-core",
+    "title": "1 🛠️ Laboratorio: Administración de Servicios - Monitoreo en Amazon Linux 2",
+    "section": "",
+    "text": "EC2 (Elastic Compute Cloud): Servicio de cómputo de AWS.\nhttpd: Servidor web Apache.\nsystemctl: Herramienta de control de servicios en Linux.\ntop: Monitor en tiempo real de procesos.\nCloudWatch: Herramienta de monitoreo en AWS."
+  },
+  {
+    "objectID": "Linux/241-LX-Lab.html#comandos-clave-keyboardas",
+    "href": "Linux/241-LX-Lab.html#comandos-clave-keyboardas",
+    "title": "1 🛠️ Laboratorio: Administración de Servicios - Monitoreo en Amazon Linux 2",
+    "section": "",
+    "text": "# Conexión SSH\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\n\n# Servicio httpd\nsudo systemctl status httpd.service\nsudo systemctl start httpd.service\nsudo systemctl stop httpd.service\n\n# Monitor de procesos\ntop\n\n# Carga artificial de CPU\n./stress.sh & top"
+  },
+  {
+    "objectID": "Linux/247-LX-Lab.html",
+    "href": "Linux/247-LX-Lab.html",
+    "title": "1 🛠️ Laboratorio: Trabajo con Comandos en Amazon Linux 2",
+    "section": "",
+    "text": "Duración estimada: 30 minutos\nPrerrequisitos: Familiaridad básica con línea de comandos en Linux.\n\n\n\n\nUsar tee, sort, cut, sed y el operador | (pipe) para manipular archivos y flujos de texto.\n\n\n\n\n\nHaz clic en Start Lab.\nEspera Lab status: ready.\nAbre la consola de AWS y accede a la instancia EC2.\n\n\n\n\n\n\n\nDescargar .ppk desde Details &gt; Download PPK\nConectar con:\n\nHost: Public IP\nUsuario: ec2-user\nArchivo labsuser.ppk como Auth\n\n\n\n\n\ncd ~/Downloads\nchmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\n\n\n\n\n# Confirmar ubicación\npwd\n\n# Redirigir salida con tee\nhostname | tee file1.txt\n\n# Confirmar creación\nls\n\n\n\n# Crear archivo CSV\ncat &gt; test.csv\nFactory, 1, Paris\nStore, 2, Dubai\nFactory, 3, Brasilia\nStore, 4, Algiers\nFactory, 5, Tokyo\n# Presionar Ctrl+D para salir\n\n# Ordenar alfabéticamente\nsort test.csv\n\n# Buscar \"Paris\" usando pipe\ngrep Paris test.csv\n\n\n\n# Crear archivo cities.csv\ncat &gt; cities.csv\nDallas, Texas\nSeattle, Washington\nLos Angeles, California\nAtlanta, Georgia\nNew York, New York\n# Presionar Ctrl+D para salir\n\n# Extraer primer campo\ncut -d ',' -f 1 cities.csv\n\n\n\n# Reemplazar coma por punto\nsed 's/,/./' cities.csv\nsed 's/,/./' test.csv\n\n\n\nSelecciona End Lab y confirma con Yes. Cierra el mensaje final.\n\n\n\n\ntee: Muestra y guarda la salida al mismo tiempo.\nsort: Ordena líneas en archivos.\ncut: Recorta campos de texto.\nsed: Editor de texto por línea.\npipe (|): Redirige la salida de un comando como entrada de otro.\nEC2 t3.micro: Instancia ligera para entornos de prueba.\n\n\n\n\n# Redirección y visualización\nhostname | tee file1.txt\n\n# Orden y búsqueda\nsort test.csv\ngrep Paris test.csv\n\n# Recorte\ncut -d ',' -f 1 cities.csv\n\n# Reemplazo\nsed 's/,/./' cities.csv\nsed 's/,/./' test.csv"
+  },
+  {
+    "objectID": "Linux/247-LX-Lab.html#objetivos",
+    "href": "Linux/247-LX-Lab.html#objetivos",
+    "title": "1 🛠️ Laboratorio: Trabajo con Comandos en Amazon Linux 2",
+    "section": "",
+    "text": "Usar tee, sort, cut, sed y el operador | (pipe) para manipular archivos y flujos de texto."
+  },
+  {
+    "objectID": "Linux/247-LX-Lab.html#acceso-al-entorno",
+    "href": "Linux/247-LX-Lab.html#acceso-al-entorno",
+    "title": "1 🛠️ Laboratorio: Trabajo con Comandos en Amazon Linux 2",
+    "section": "",
+    "text": "Haz clic en Start Lab.\nEspera Lab status: ready.\nAbre la consola de AWS y accede a la instancia EC2."
+  },
+  {
+    "objectID": "Linux/247-LX-Lab.html#tarea-1-conexión-a-ec2",
+    "href": "Linux/247-LX-Lab.html#tarea-1-conexión-a-ec2",
+    "title": "1 🛠️ Laboratorio: Trabajo con Comandos en Amazon Linux 2",
+    "section": "",
+    "text": "Descargar .ppk desde Details &gt; Download PPK\nConectar con:\n\nHost: Public IP\nUsuario: ec2-user\nArchivo labsuser.ppk como Auth\n\n\n\n\n\ncd ~/Downloads\nchmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;"
+  },
+  {
+    "objectID": "Linux/247-LX-Lab.html#tarea-2-uso-del-comando-tee",
+    "href": "Linux/247-LX-Lab.html#tarea-2-uso-del-comando-tee",
+    "title": "1 🛠️ Laboratorio: Trabajo con Comandos en Amazon Linux 2",
+    "section": "",
+    "text": "# Confirmar ubicación\npwd\n\n# Redirigir salida con tee\nhostname | tee file1.txt\n\n# Confirmar creación\nls"
+  },
+  {
+    "objectID": "Linux/247-LX-Lab.html#tarea-3-uso-de-sort-y-pipe",
+    "href": "Linux/247-LX-Lab.html#tarea-3-uso-de-sort-y-pipe",
+    "title": "1 🛠️ Laboratorio: Trabajo con Comandos en Amazon Linux 2",
+    "section": "",
+    "text": "# Crear archivo CSV\ncat &gt; test.csv\nFactory, 1, Paris\nStore, 2, Dubai\nFactory, 3, Brasilia\nStore, 4, Algiers\nFactory, 5, Tokyo\n# Presionar Ctrl+D para salir\n\n# Ordenar alfabéticamente\nsort test.csv\n\n# Buscar \"Paris\" usando pipe\ngrep Paris test.csv"
+  },
+  {
+    "objectID": "Linux/247-LX-Lab.html#tarea-4-uso-del-comando-cut",
+    "href": "Linux/247-LX-Lab.html#tarea-4-uso-del-comando-cut",
+    "title": "1 🛠️ Laboratorio: Trabajo con Comandos en Amazon Linux 2",
+    "section": "",
+    "text": "# Crear archivo cities.csv\ncat &gt; cities.csv\nDallas, Texas\nSeattle, Washington\nLos Angeles, California\nAtlanta, Georgia\nNew York, New York\n# Presionar Ctrl+D para salir\n\n# Extraer primer campo\ncut -d ',' -f 1 cities.csv"
+  },
+  {
+    "objectID": "Linux/247-LX-Lab.html#desafío-adicional-uso-de-sed",
+    "href": "Linux/247-LX-Lab.html#desafío-adicional-uso-de-sed",
+    "title": "1 🛠️ Laboratorio: Trabajo con Comandos en Amazon Linux 2",
+    "section": "",
+    "text": "# Reemplazar coma por punto\nsed 's/,/./' cities.csv\nsed 's/,/./' test.csv"
+  },
+  {
+    "objectID": "Linux/247-LX-Lab.html#finalización",
+    "href": "Linux/247-LX-Lab.html#finalización",
+    "title": "1 🛠️ Laboratorio: Trabajo con Comandos en Amazon Linux 2",
+    "section": "",
+    "text": "Selecciona End Lab y confirma con Yes. Cierra el mensaje final."
+  },
+  {
+    "objectID": "Linux/247-LX-Lab.html#conceptos-clave",
+    "href": "Linux/247-LX-Lab.html#conceptos-clave",
+    "title": "1 🛠️ Laboratorio: Trabajo con Comandos en Amazon Linux 2",
+    "section": "",
+    "text": "tee: Muestra y guarda la salida al mismo tiempo.\nsort: Ordena líneas en archivos.\ncut: Recorta campos de texto.\nsed: Editor de texto por línea.\npipe (|): Redirige la salida de un comando como entrada de otro.\nEC2 t3.micro: Instancia ligera para entornos de prueba."
+  },
+  {
+    "objectID": "Linux/247-LX-Lab.html#comandos-clave",
+    "href": "Linux/247-LX-Lab.html#comandos-clave",
+    "title": "1 🛠️ Laboratorio: Trabajo con Comandos en Amazon Linux 2",
+    "section": "",
+    "text": "# Redirección y visualización\nhostname | tee file1.txt\n\n# Orden y búsqueda\nsort test.csv\ngrep Paris test.csv\n\n# Recorte\ncut -d ',' -f 1 cities.csv\n\n# Reemplazo\nsed 's/,/./' cities.csv\nsed 's/,/./' test.csv"
+  },
+  {
+    "objectID": "Linux/227-LX-Lab.html",
+    "href": "Linux/227-LX-Lab.html",
+    "title": "1 🧪 Lab - Línea de comandos de Linux",
+    "section": "",
+    "text": "Todos los laboratorios se basan en el material didáctico y la información de laboratorios anteriores.\n\n\n\n\nEn esta sesión de laboratorio, harás lo siguiente:\n\nEjecutar comandos para aprender sobre tu sistema y sesión actual.\nBuscar y ejecutar comandos Bash anteriores.\n\n\n\n\n\nTiempo estimado: 30 minutos.\n\n\n\n\nEn este entorno de laboratorio, el acceso está restringido a servicios necesarios. Puede que encuentres errores si accedes a otros servicios o acciones no descritas.\n\n\n\n\n\nEn la parte superior de estas instrucciones, selecciona Start Lab.\nEspera a que el estado del laboratorio sea Lab status: ready.\nCierra el panel y elige AWS para abrir la consola en una nueva pestaña.\nSi se bloquea la ventana emergente, permite las pop-ups del navegador.\n\n💡 Consejo: organiza las pestañas para poder seguir el laboratorio fácilmente.\n\n\n\n\n\n\n\nEn el panel Details, selecciona Download PPK y guarda el archivo labsuser.ppk.\nAnota la dirección Public IP.\nDescarga e instala PuTTY.\nAbre putty.exe y configura:\n\nConnection → Seconds between keepalives = 30\nSession → Host Name = &lt;Public IP&gt;\nAuth → selecciona el archivo .ppk\n\nHaz clic en Open y conecta como ec2-user.\n\n\n\n\n\n\nEn Details, descarga el archivo labsuser.pem.\nAnota la dirección Public IP.\nAbre terminal y ejecuta:\n\ncd ~/Downloads\nchmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\n\n\n\n\n\nComandos útiles para conocer tu entorno:\nwhoami                      # Usuario actual\nhostname -s                 # Nombre corto del host\nuptime -p                   # Tiempo de actividad\nwho -H -a                   # Sesión de usuarios y detalles\nTZ=America/New_York date    # Hora en Nueva York\nTZ=America/Los_Angeles date # Hora en Los Ángeles\ncal -j                      # Calendario juliano\ncal -s                      # Vista alternativa del calendario\nid ec2-user                 # UID y GID del usuario\n📌 Nota: Usa man cal para explorar más opciones del comando cal.\n\n\n\n\nVisualiza y reutiliza comandos anteriores:\nhistory    # Ver historial completo\n!!         # Ejecuta el último comando usado\nTambién puedes usar:\n\nCTRL + R para búsqueda inversa en el historial de comandos.\nEscribe una palabra clave (ej. TZ) para encontrar comandos anteriores rápidamente.\n\n\n\n\n\n\n\n\nInstancia EC2\n\n\n\nEste laboratorio usa una instancia t3.micro.\nRecurso económico con 1 vCPU y 1 GiB RAM.\nIdeal para propósitos educativos y tareas básicas.\n\n\n\n\n\n\nTipos de instancia EC2\nAmazon Machine Image (AMI)\nAmazon EC2 Service Quotas\nAWS Training y Certificación"
+  },
+  {
+    "objectID": "Linux/227-LX-Lab.html#aviso",
+    "href": "Linux/227-LX-Lab.html#aviso",
+    "title": "1 🧪 Lab - Línea de comandos de Linux",
+    "section": "",
+    "text": "Todos los laboratorios se basan en el material didáctico y la información de laboratorios anteriores."
+  },
+  {
+    "objectID": "Linux/227-LX-Lab.html#objetivos",
+    "href": "Linux/227-LX-Lab.html#objetivos",
+    "title": "1 🧪 Lab - Línea de comandos de Linux",
+    "section": "",
+    "text": "En esta sesión de laboratorio, harás lo siguiente:\n\nEjecutar comandos para aprender sobre tu sistema y sesión actual.\nBuscar y ejecutar comandos Bash anteriores."
+  },
+  {
+    "objectID": "Linux/227-LX-Lab.html#duración",
+    "href": "Linux/227-LX-Lab.html#duración",
+    "title": "1 🧪 Lab - Línea de comandos de Linux",
     "section": "",
     "text": "Tiempo estimado: 30 minutos."
   },
   {
-    "objectID": "Linux/227[LX]-Lab.html#acceso-a-aws-management-console",
-    "href": "Linux/227[LX]-Lab.html#acceso-a-aws-management-console",
-    "title": "1 🐧 Línea de comandos de Linux",
+    "objectID": "Linux/227-LX-Lab.html#restricciones-del-servicio-de-aws",
+    "href": "Linux/227-LX-Lab.html#restricciones-del-servicio-de-aws",
+    "title": "1 🧪 Lab - Línea de comandos de Linux",
     "section": "",
-    "text": "Haz clic en Start Lab en la parte superior.\nEspera el mensaje Lab status: ready y cierra el panel.\nHaz clic en AWS para abrir la consola en una nueva pestaña.\nSi tu navegador bloquea la ventana emergente, permite los pop-ups.\nOrganiza las pestañas para seguir los pasos fácilmente."
+    "text": "En este entorno de laboratorio, el acceso está restringido a servicios necesarios. Puede que encuentres errores si accedes a otros servicios o acciones no descritas."
   },
   {
-    "objectID": "Linux/227[LX]-Lab.html#tarea-1-conectarse-a-una-instancia-ec2",
-    "href": "Linux/227[LX]-Lab.html#tarea-1-conectarse-a-una-instancia-ec2",
-    "title": "1 🐧 Línea de comandos de Linux",
+    "objectID": "Linux/227-LX-Lab.html#acceso-a-aws-management-console",
+    "href": "Linux/227-LX-Lab.html#acceso-a-aws-management-console",
+    "title": "1 🧪 Lab - Línea de comandos de Linux",
     "section": "",
-    "text": "Descarga el archivo .ppk.\nAnota la dirección Public IP de la instancia.\nAbre PuTTY:\n\nSession → pega la IP pública\nConnection → ajusta Seconds between keepalives a 30\nSSH → Auth → busca tu archivo .ppk\n\nHaz clic en Open → acepta → login as: ec2-user\n\n\n\n\n\nDescarga el archivo .pem.\nDa permisos de solo lectura al archivo:\n```bash chmod 400 labsuser.pem"
+    "text": "En la parte superior de estas instrucciones, selecciona Start Lab.\nEspera a que el estado del laboratorio sea Lab status: ready.\nCierra el panel y elige AWS para abrir la consola en una nueva pestaña.\nSi se bloquea la ventana emergente, permite las pop-ups del navegador.\n\n💡 Consejo: organiza las pestañas para poder seguir el laboratorio fácilmente."
+  },
+  {
+    "objectID": "Linux/227-LX-Lab.html#tarea-1-conectarse-a-una-instancia-ec2-de-amazon-linux-mediante-ssh",
+    "href": "Linux/227-LX-Lab.html#tarea-1-conectarse-a-una-instancia-ec2-de-amazon-linux-mediante-ssh",
+    "title": "1 🧪 Lab - Línea de comandos de Linux",
+    "section": "",
+    "text": "En el panel Details, selecciona Download PPK y guarda el archivo labsuser.ppk.\nAnota la dirección Public IP.\nDescarga e instala PuTTY.\nAbre putty.exe y configura:\n\nConnection → Seconds between keepalives = 30\nSession → Host Name = &lt;Public IP&gt;\nAuth → selecciona el archivo .ppk\n\nHaz clic en Open y conecta como ec2-user.\n\n\n\n\n\n\nEn Details, descarga el archivo labsuser.pem.\nAnota la dirección Public IP.\nAbre terminal y ejecuta:\n\ncd ~/Downloads\nchmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;"
+  },
+  {
+    "objectID": "Linux/227-LX-Lab.html#tarea-2-ejecutar-comandos-del-sistema",
+    "href": "Linux/227-LX-Lab.html#tarea-2-ejecutar-comandos-del-sistema",
+    "title": "1 🧪 Lab - Línea de comandos de Linux",
+    "section": "",
+    "text": "Comandos útiles para conocer tu entorno:\nwhoami                      # Usuario actual\nhostname -s                 # Nombre corto del host\nuptime -p                   # Tiempo de actividad\nwho -H -a                   # Sesión de usuarios y detalles\nTZ=America/New_York date    # Hora en Nueva York\nTZ=America/Los_Angeles date # Hora en Los Ángeles\ncal -j                      # Calendario juliano\ncal -s                      # Vista alternativa del calendario\nid ec2-user                 # UID y GID del usuario\n📌 Nota: Usa man cal para explorar más opciones del comando cal."
+  },
+  {
+    "objectID": "Linux/227-LX-Lab.html#tarea-3-historial-y-búsqueda-en-bash",
+    "href": "Linux/227-LX-Lab.html#tarea-3-historial-y-búsqueda-en-bash",
+    "title": "1 🧪 Lab - Línea de comandos de Linux",
+    "section": "",
+    "text": "Visualiza y reutiliza comandos anteriores:\nhistory    # Ver historial completo\n!!         # Ejecuta el último comando usado\nTambién puedes usar:\n\nCTRL + R para búsqueda inversa en el historial de comandos.\nEscribe una palabra clave (ej. TZ) para encontrar comandos anteriores rápidamente."
+  },
+  {
+    "objectID": "Linux/227-LX-Lab.html#información-sobre-ec2",
+    "href": "Linux/227-LX-Lab.html#información-sobre-ec2",
+    "title": "1 🧪 Lab - Línea de comandos de Linux",
+    "section": "",
+    "text": "Instancia EC2\n\n\n\nEste laboratorio usa una instancia t3.micro.\nRecurso económico con 1 vCPU y 1 GiB RAM.\nIdeal para propósitos educativos y tareas básicas."
+  },
+  {
+    "objectID": "Linux/227-LX-Lab.html#recursos-adicionales",
+    "href": "Linux/227-LX-Lab.html#recursos-adicionales",
+    "title": "1 🧪 Lab - Línea de comandos de Linux",
+    "section": "",
+    "text": "Tipos de instancia EC2\nAmazon Machine Image (AMI)\nAmazon EC2 Service Quotas\nAWS Training y Certificación"
+  },
+  {
+    "objectID": "Linux/237-LX-Lab.html",
+    "href": "Linux/237-LX-Lab.html",
+    "title": "1 🛠️ Laboratorio: Administración de Permisos de Archivos",
+    "section": "",
+    "text": "Duración estimada: 35 minutos\nPrerrequisitos: Conocimientos básicos de comandos Linux y estructura de archivos.\n\n\n\n\nAjustar permisos de carpetas y archivos según estructura de grupo.\nModificar permisos de archivos para usuarios.\nAplicar modos simbólicos y absolutos con chmod.\n\n\n\n\n\nHaz clic en Start Lab.\nEspera a que el estado indique: Lab status: ready.\nAccede a la AWS Management Console.\n\n\n\n\n\n\n\nDescargar .ppk desde Details &gt; Download PPK.\nAnotar IP pública.\nUsar PuTTY con:\n\nHost: Public IP\nAuth: archivo labsuser.ppk\nUsuario: ec2-user\n\n\n\n\n\ncd ~/Downloads\nchmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\n\n\n\n\n# Verificar ubicación\npwd\ncd companyA\n\n# Cambiar propiedad de companyA\nsudo chown -R emcbath:Personnel /home/ec2-user/companyA\n\n# Cambiar propiedad de HR\nsudo chown -R ctee:HR HR\n\n# Cambiar propiedad de Finance\nsudo chown -R dolberdi:Finance HR/Finance\n\n# Verificar cambios\nls -laR\n\n\n\n# Verificar ubicación\npwd\n\n# Crear archivo y usar modo simbólico\nsudo vi symbolic_mode_file\n# (Guardar con :wq)\nsudo chmod g+w symbolic_mode_file\n\n# Crear archivo y usar modo absoluto\nsudo vi absolute_mode_file\n# (Guardar con :wq)\nsudo chmod 764 absolute_mode_file\n\n# Verificar permisos\nls -l\n\n\n\n# Verificar ubicación\npwd\n\n# Cambiar propiedad Shipping\nsudo chown -R eleonard:Shipping Shipping\n\n# Cambiar propiedad Sales\nsudo chown -R isteinke:Sales Sales\n\n# Verificar cambios\nls -laR Shipping\nls -laR Sales\n\n\n\nHaz clic en End Lab, confirma con Yes y cierra el panel.\n\n\n\n\nchown: Cambia la propiedad de archivos y carpetas.\nchmod: Modifica los permisos de acceso.\nModos simbólico/absoluto: Formas de especificar permisos.\nEC2 t3.micro: Instancia ligera para pruebas.\n\n\n\n\n# Conexión SSH\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\n\n# Cambiar propiedad\nsudo chown -R user:group &lt;carpeta&gt;\n\n# Cambiar permisos\nsudo chmod g+w archivo\nsudo chmod 764 archivo\n\n# Ver estructura\nls -laR\nls -l"
+  },
+  {
+    "objectID": "Linux/237-LX-Lab.html#objetivos",
+    "href": "Linux/237-LX-Lab.html#objetivos",
+    "title": "1 🛠️ Laboratorio: Administración de Permisos de Archivos",
+    "section": "",
+    "text": "Ajustar permisos de carpetas y archivos según estructura de grupo.\nModificar permisos de archivos para usuarios.\nAplicar modos simbólicos y absolutos con chmod."
+  },
+  {
+    "objectID": "Linux/237-LX-Lab.html#acceso-al-entorno",
+    "href": "Linux/237-LX-Lab.html#acceso-al-entorno",
+    "title": "1 🛠️ Laboratorio: Administración de Permisos de Archivos",
+    "section": "",
+    "text": "Haz clic en Start Lab.\nEspera a que el estado indique: Lab status: ready.\nAccede a la AWS Management Console."
+  },
+  {
+    "objectID": "Linux/237-LX-Lab.html#tarea-1-conexión-a-ec2-vía-ssh",
+    "href": "Linux/237-LX-Lab.html#tarea-1-conexión-a-ec2-vía-ssh",
+    "title": "1 🛠️ Laboratorio: Administración de Permisos de Archivos",
+    "section": "",
+    "text": "Descargar .ppk desde Details &gt; Download PPK.\nAnotar IP pública.\nUsar PuTTY con:\n\nHost: Public IP\nAuth: archivo labsuser.ppk\nUsuario: ec2-user\n\n\n\n\n\ncd ~/Downloads\nchmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;"
+  },
+  {
+    "objectID": "Linux/237-LX-Lab.html#tarea-2-cambiar-propiedad-de-carpetas",
+    "href": "Linux/237-LX-Lab.html#tarea-2-cambiar-propiedad-de-carpetas",
+    "title": "1 🛠️ Laboratorio: Administración de Permisos de Archivos",
+    "section": "",
+    "text": "# Verificar ubicación\npwd\ncd companyA\n\n# Cambiar propiedad de companyA\nsudo chown -R emcbath:Personnel /home/ec2-user/companyA\n\n# Cambiar propiedad de HR\nsudo chown -R ctee:HR HR\n\n# Cambiar propiedad de Finance\nsudo chown -R dolberdi:Finance HR/Finance\n\n# Verificar cambios\nls -laR"
+  },
+  {
+    "objectID": "Linux/237-LX-Lab.html#tarea-3-cambiar-modos-de-permisos",
+    "href": "Linux/237-LX-Lab.html#tarea-3-cambiar-modos-de-permisos",
+    "title": "1 🛠️ Laboratorio: Administración de Permisos de Archivos",
+    "section": "",
+    "text": "# Verificar ubicación\npwd\n\n# Crear archivo y usar modo simbólico\nsudo vi symbolic_mode_file\n# (Guardar con :wq)\nsudo chmod g+w symbolic_mode_file\n\n# Crear archivo y usar modo absoluto\nsudo vi absolute_mode_file\n# (Guardar con :wq)\nsudo chmod 764 absolute_mode_file\n\n# Verificar permisos\nls -l"
+  },
+  {
+    "objectID": "Linux/237-LX-Lab.html#tarea-4-asignar-permisos-a-carpetas",
+    "href": "Linux/237-LX-Lab.html#tarea-4-asignar-permisos-a-carpetas",
+    "title": "1 🛠️ Laboratorio: Administración de Permisos de Archivos",
+    "section": "",
+    "text": "# Verificar ubicación\npwd\n\n# Cambiar propiedad Shipping\nsudo chown -R eleonard:Shipping Shipping\n\n# Cambiar propiedad Sales\nsudo chown -R isteinke:Sales Sales\n\n# Verificar cambios\nls -laR Shipping\nls -laR Sales"
+  },
+  {
+    "objectID": "Linux/237-LX-Lab.html#finalización",
+    "href": "Linux/237-LX-Lab.html#finalización",
+    "title": "1 🛠️ Laboratorio: Administración de Permisos de Archivos",
+    "section": "",
+    "text": "Haz clic en End Lab, confirma con Yes y cierra el panel."
+  },
+  {
+    "objectID": "Linux/237-LX-Lab.html#conceptos-clave",
+    "href": "Linux/237-LX-Lab.html#conceptos-clave",
+    "title": "1 🛠️ Laboratorio: Administración de Permisos de Archivos",
+    "section": "",
+    "text": "chown: Cambia la propiedad de archivos y carpetas.\nchmod: Modifica los permisos de acceso.\nModos simbólico/absoluto: Formas de especificar permisos.\nEC2 t3.micro: Instancia ligera para pruebas."
+  },
+  {
+    "objectID": "Linux/237-LX-Lab.html#comandos-clave",
+    "href": "Linux/237-LX-Lab.html#comandos-clave",
+    "title": "1 🛠️ Laboratorio: Administración de Permisos de Archivos",
+    "section": "",
+    "text": "# Conexión SSH\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\n\n# Cambiar propiedad\nsudo chown -R user:group &lt;carpeta&gt;\n\n# Cambiar permisos\nsudo chmod g+w archivo\nsudo chmod 764 archivo\n\n# Ver estructura\nls -laR\nls -l"
+  },
+  {
+    "objectID": "Linux/239-LX-Lab.html",
+    "href": "Linux/239-LX-Lab.html",
+    "title": "1 🛠️ Laboratorio: Administración de Procesos",
+    "section": "",
+    "text": "Duración estimada: 45 minutos\nPrerrequisitos: Experiencia básica con terminal Linux y procesos del sistema.\n\n\n\n\nCrear un archivo de registro para procesos.\nUsar top para monitoreo en tiempo real.\nCrear un cron job que automatice tareas de auditoría.\n\n\n\n\n\nHaz clic en Start Lab.\nEspera a que indique Lab status: ready.\nAbre la AWS Management Console.\n\n\n\n\n\n\n\nDescargar .ppk desde Details &gt; Download PPK.\nConectar con:\n\nHost: Public IP\nAuth: labsuser.ppk\nUsuario: ec2-user\n\n\n\n\n\ncd ~/Downloads\nchmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\n\n\n\n\ncd companyA\n\n# Registrar procesos sin root\nsudo ps -aux | grep -v root | sudo tee SharedFolders/processes.csv\n\n# Confirmar archivo\ncat SharedFolders/processes.csv\n\n\n\n# Ver procesos activos\ntop\n\n# Salir con:\nq\nOpcional: Ver versión y ayuda\ntop -hv\n\n\n\ncd companyA\n\n# Editar crontab\nsudo crontab -e\nAgregar las siguientes líneas:\nSHELL=/bin/bash\nPATH=/usr/bin:/bin:/usr/local/bin\nMAILTO=root\n0 * * * * ls -la $(find .) | sed -e 's/..csv/#####.csv/g' &gt; /home/ec2-user/companyA/SharedFolders/filteredAudit.csv\nGuardar con ESC, luego :wq y Enter.\nVerificar trabajo programado:\nsudo crontab -l\n\n\n\nSelecciona End Lab, confirma con Yes y cierra el mensaje final.\n\n\n\n\nps -aux: Lista todos los procesos.\ntop: Muestra en tiempo real el uso de recursos del sistema.\ncron: Herramienta para programar tareas.\ncrontab -e: Edita tareas programadas por el usuario.\n\n\n\n\n# Registro de procesos\nsudo ps -aux | grep -v root | sudo tee SharedFolders/processes.csv\n\n# Monitoreo\ntop\n\n# Cron job\nsudo crontab -e\nsudo crontab -l"
+  },
+  {
+    "objectID": "Linux/239-LX-Lab.html#objetivos",
+    "href": "Linux/239-LX-Lab.html#objetivos",
+    "title": "1 🛠️ Laboratorio: Administración de Procesos",
+    "section": "",
+    "text": "Crear un archivo de registro para procesos.\nUsar top para monitoreo en tiempo real.\nCrear un cron job que automatice tareas de auditoría."
+  },
+  {
+    "objectID": "Linux/239-LX-Lab.html#acceso-al-entorno",
+    "href": "Linux/239-LX-Lab.html#acceso-al-entorno",
+    "title": "1 🛠️ Laboratorio: Administración de Procesos",
+    "section": "",
+    "text": "Haz clic en Start Lab.\nEspera a que indique Lab status: ready.\nAbre la AWS Management Console."
+  },
+  {
+    "objectID": "Linux/239-LX-Lab.html#tarea-1-conexión-a-ec2",
+    "href": "Linux/239-LX-Lab.html#tarea-1-conexión-a-ec2",
+    "title": "1 🛠️ Laboratorio: Administración de Procesos",
+    "section": "",
+    "text": "Descargar .ppk desde Details &gt; Download PPK.\nConectar con:\n\nHost: Public IP\nAuth: labsuser.ppk\nUsuario: ec2-user\n\n\n\n\n\ncd ~/Downloads\nchmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;"
+  },
+  {
+    "objectID": "Linux/239-LX-Lab.html#tarea-2-crear-archivo-de-registro-de-procesos",
+    "href": "Linux/239-LX-Lab.html#tarea-2-crear-archivo-de-registro-de-procesos",
+    "title": "1 🛠️ Laboratorio: Administración de Procesos",
+    "section": "",
+    "text": "cd companyA\n\n# Registrar procesos sin root\nsudo ps -aux | grep -v root | sudo tee SharedFolders/processes.csv\n\n# Confirmar archivo\ncat SharedFolders/processes.csv"
+  },
+  {
+    "objectID": "Linux/239-LX-Lab.html#tarea-3-usar-el-comando-top",
+    "href": "Linux/239-LX-Lab.html#tarea-3-usar-el-comando-top",
+    "title": "1 🛠️ Laboratorio: Administración de Procesos",
+    "section": "",
+    "text": "# Ver procesos activos\ntop\n\n# Salir con:\nq\nOpcional: Ver versión y ayuda\ntop -hv"
+  },
+  {
+    "objectID": "Linux/239-LX-Lab.html#tarea-4-crear-un-cron-job",
+    "href": "Linux/239-LX-Lab.html#tarea-4-crear-un-cron-job",
+    "title": "1 🛠️ Laboratorio: Administración de Procesos",
+    "section": "",
+    "text": "cd companyA\n\n# Editar crontab\nsudo crontab -e\nAgregar las siguientes líneas:\nSHELL=/bin/bash\nPATH=/usr/bin:/bin:/usr/local/bin\nMAILTO=root\n0 * * * * ls -la $(find .) | sed -e 's/..csv/#####.csv/g' &gt; /home/ec2-user/companyA/SharedFolders/filteredAudit.csv\nGuardar con ESC, luego :wq y Enter.\nVerificar trabajo programado:\nsudo crontab -l"
+  },
+  {
+    "objectID": "Linux/239-LX-Lab.html#finalización",
+    "href": "Linux/239-LX-Lab.html#finalización",
+    "title": "1 🛠️ Laboratorio: Administración de Procesos",
+    "section": "",
+    "text": "Selecciona End Lab, confirma con Yes y cierra el mensaje final."
+  },
+  {
+    "objectID": "Linux/239-LX-Lab.html#conceptos-clave",
+    "href": "Linux/239-LX-Lab.html#conceptos-clave",
+    "title": "1 🛠️ Laboratorio: Administración de Procesos",
+    "section": "",
+    "text": "ps -aux: Lista todos los procesos.\ntop: Muestra en tiempo real el uso de recursos del sistema.\ncron: Herramienta para programar tareas.\ncrontab -e: Edita tareas programadas por el usuario."
+  },
+  {
+    "objectID": "Linux/239-LX-Lab.html#comandos-clave",
+    "href": "Linux/239-LX-Lab.html#comandos-clave",
+    "title": "1 🛠️ Laboratorio: Administración de Procesos",
+    "section": "",
+    "text": "# Registro de procesos\nsudo ps -aux | grep -v root | sudo tee SharedFolders/processes.csv\n\n# Monitoreo\ntop\n\n# Cron job\nsudo crontab -e\nsudo crontab -l"
   },
   {
     "objectID": "Linux/conceptos.html",
@@ -355,5 +1069,152 @@
     "title": "AWS RE/START",
     "section": "7 📦 Paquetes",
     "text": "7 📦 Paquetes\napt update && apt upgrade   # Debian/Ubuntu\ndnf install httpd           # RHEL/CentOS 8+\n\n\n7.1 🧠 Tips Finales\n\nUsa man comando para ver la ayuda de cualquier comando.\nhistory muestra comandos previos.\nalias para crear accesos rápidos.\nPractica con máquinas virtuales o WSL para evitar errores en producción."
+  },
+  {
+    "objectID": "Linux/255-LX-Lab.html",
+    "href": "Linux/255-LX-Lab.html",
+    "title": "Línea de comandos de Linux",
+    "section": "",
+    "text": "ssh -i labsuser.pem ec2-user@&lt;public-ip&gt;"
+  },
+  {
+    "objectID": "Linux/255-LX-Lab.html#conéctate-con-ssh",
+    "href": "Linux/255-LX-Lab.html#conéctate-con-ssh",
+    "title": "Línea de comandos de Linux",
+    "section": "",
+    "text": "ssh -i labsuser.pem ec2-user@&lt;public-ip&gt;"
+  },
+  {
+    "objectID": "Linux/255-LX-Lab.html#tarea-2-ejecutar-comandos-del-sistema",
+    "href": "Linux/255-LX-Lab.html#tarea-2-ejecutar-comandos-del-sistema",
+    "title": "Línea de comandos de Linux",
+    "section": "2 💻 Tarea 2: Ejecutar comandos del sistema",
+    "text": "2 💻 Tarea 2: Ejecutar comandos del sistema\n\nComandos útiles para obtener información básica del sistema:\nwhoami                           # Usuario actual\nhostname -s                      # Nombre corto del host\nuptime -p                        # Tiempo de actividad\nwho -H -a                        # Sesión de usuarios y detalles\nTZ=America/New_York date         # Fecha/hora en Nueva York\nTZ=America/Los_Angeles date      # Fecha/hora en Los Ángeles\ncal -j                           # Calendario juliano\ncal -s                           # Vista alternativa del calendario\nid ec2-user                      # UID y GID del usuario\n📌 Nota: Puedes usar man cal para ver más opciones del calendario."
+  },
+  {
+    "objectID": "Linux/255-LX-Lab.html#tarea-3-historial-y-búsqueda-en-bash",
+    "href": "Linux/255-LX-Lab.html#tarea-3-historial-y-búsqueda-en-bash",
+    "title": "Línea de comandos de Linux",
+    "section": "3 🔁 Tarea 3: Historial y búsqueda en Bash",
+    "text": "3 🔁 Tarea 3: Historial y búsqueda en Bash\n\nVisualizar y reutilizar comandos anteriores:\nhistory             # Ver historial completo\nPresiona CTRL + R para búsqueda inversa y escribe parte del comando (por ejemplo, TZ) para encontrar un comando previo.\nTambién puedes usar:\n!!                  # Ejecuta el último comando usado"
+  },
+  {
+    "objectID": "Linux/255-LX-Lab.html#conceptos-clave",
+    "href": "Linux/255-LX-Lab.html#conceptos-clave",
+    "title": "Línea de comandos de Linux",
+    "section": "4 🧠 Conceptos clave",
+    "text": "4 🧠 Conceptos clave\n\nTZ=Region permite ver la hora de otras zonas.\ncal -j muestra las fechas en formato juliano.\nCTRL + R busca comandos anteriores (útil para no repetir largos comandos).\n!! ejecuta el último comando (shortcut muy útil)."
+  },
+  {
+    "objectID": "Linux/255-LX-Lab.html#información-sobre-ec2",
+    "href": "Linux/255-LX-Lab.html#información-sobre-ec2",
+    "title": "Línea de comandos de Linux",
+    "section": "5 📌 Información sobre EC2",
+    "text": "5 📌 Información sobre EC2\n\n\nEste laboratorio usa una instancia t3.micro.\nRecurso económico con 1 vCPU y 1 GiB RAM.\nIdeal para propósitos educativos y tareas básicas."
+  },
+  {
+    "objectID": "Linux/255-LX-Lab.html#recursos-adicionales",
+    "href": "Linux/255-LX-Lab.html#recursos-adicionales",
+    "title": "Línea de comandos de Linux",
+    "section": "6 📚 Recursos adicionales",
+    "text": "6 📚 Recursos adicionales\n\nTipos de instancia EC2\nAmazon Machine Image (AMI)\nAmazon EC2 Service Quotas\nAWS Training y Certificación\n\n\n© 2022 Amazon Web Services, Inc. Todos los derechos reservados."
+  },
+  {
+    "objectID": "Linux/229-LX-Lab.html",
+    "href": "Linux/229-LX-Lab.html",
+    "title": "1 🧪 Laboratorio: Administración de Usuarios y Grupos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "Crear usuarios nuevos con una contraseña predeterminada\n\nCrear grupos y asignar los usuarios correspondientes\n\nIniciar sesión con diferentes usuarios y comprobar permisos\n\n\n\n\n45 minutos\n\n\n\n\n\n\nConéctate a tu instancia desde Ubuntu (nativo o WSL):\nchmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\n📸 Captura SSH exitosa:\nEnlace imagen aquí\n\n\n\n\nEjemplo para el primer usuario:\nsudo useradd arosalez\nsudo passwd arosalez\nUsa la contraseña: P@ssword1234!\nResto de usuarios:\nsudo useradd eowusu && sudo passwd eowusu\nsudo useradd jdoe && sudo passwd jdoe\nsudo useradd ljuan && sudo passwd ljuan\nsudo useradd mmajor && sudo passwd mmajor\nsudo useradd mjackson && sudo passwd mjackson\nsudo useradd nwolf && sudo passwd nwolf\nsudo useradd psantos && sudo passwd psantos\nsudo useradd smartinez && sudo passwd smartinez\nsudo useradd ssarkar && sudo passwd ssarkar\nVerificación:\nsudo cat /etc/passwd | cut -d: -f1\n📸 Captura usuarios creados:\nEnlace imagen aquí\n\n\n\n\nCrear los grupos:\nsudo groupadd Sales\nsudo groupadd HR\nsudo groupadd Finance\nsudo groupadd Shipping\nsudo groupadd Managers\nsudo groupadd CEO\nAsignar usuarios:\n# Ventas\nsudo usermod -a -G Sales arosalez\nsudo usermod -a -G Sales nwolf\n\n# RR. HH.\nsudo usermod -a -G HR ljuan\nsudo usermod -a -G HR smartinez\n\n# Finanzas\nsudo usermod -a -G Finance mmajor\nsudo usermod -a -G Finance ssarkar\n\n# Envíos\nsudo usermod -a -G Shipping eowusu\nsudo usermod -a -G Shipping jdoe\nsudo usermod -a -G Shipping psantos\n\n# Gerentes\nsudo usermod -a -G Managers arosalez\nsudo usermod -a -G Managers ljuan\nsudo usermod -a -G Managers mmajor\n\n# CEO\nsudo usermod -a -G CEO mjackson\n\n# Agregar ec2-user a todos los grupos\nfor group in Sales HR Finance Shipping Managers CEO; do sudo usermod -a -G $group ec2-user; done\nVerifica:\ncat /etc/group\n📸 Captura de /etc/group:\nEnlace imagen aquí\n\n\n\n\nCambiar de usuario:\nsu arosalez\n# Contraseña: P@ssword1234!\nVerificar ubicación:\npwd\nProbar permisos:\ntouch myFile.txt  # Permission denied\nsudo touch myFile.txt  # not in the sudoers file\n📸 Captura de errores de permisos:\nEnlace imagen aquí\nSalir y revisar logs:\nexit\nsudo cat /var/log/secure | tail -n 20\n📸 Captura de log del sistema:\nEnlace imagen aquí\n\n\n\n\n\n\nCierra la sesión SSH\n\nEn AWS, selecciona End Lab\nConfirma para cerrar el entorno\n\n\n\n\n\n\nTipos de instancias EC2\n\nGuía comando useradd\n\nGuía comando usermod\n\nAWS Training oficial"
+  },
+  {
+    "objectID": "Linux/229-LX-Lab.html#objetivos",
+    "href": "Linux/229-LX-Lab.html#objetivos",
+    "title": "1 🧪 Laboratorio: Administración de Usuarios y Grupos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "Crear usuarios nuevos con una contraseña predeterminada\n\nCrear grupos y asignar los usuarios correspondientes\n\nIniciar sesión con diferentes usuarios y comprobar permisos"
+  },
+  {
+    "objectID": "Linux/229-LX-Lab.html#duración-estimada",
+    "href": "Linux/229-LX-Lab.html#duración-estimada",
+    "title": "1 🧪 Laboratorio: Administración de Usuarios y Grupos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "45 minutos"
+  },
+  {
+    "objectID": "Linux/229-LX-Lab.html#tareas-paso-a-paso",
+    "href": "Linux/229-LX-Lab.html#tareas-paso-a-paso",
+    "title": "1 🧪 Laboratorio: Administración de Usuarios y Grupos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "Conéctate a tu instancia desde Ubuntu (nativo o WSL):\nchmod 400 labsuser.pem\nssh -i labsuser.pem ec2-user@&lt;public-ip&gt;\n📸 Captura SSH exitosa:\nEnlace imagen aquí\n\n\n\n\nEjemplo para el primer usuario:\nsudo useradd arosalez\nsudo passwd arosalez\nUsa la contraseña: P@ssword1234!\nResto de usuarios:\nsudo useradd eowusu && sudo passwd eowusu\nsudo useradd jdoe && sudo passwd jdoe\nsudo useradd ljuan && sudo passwd ljuan\nsudo useradd mmajor && sudo passwd mmajor\nsudo useradd mjackson && sudo passwd mjackson\nsudo useradd nwolf && sudo passwd nwolf\nsudo useradd psantos && sudo passwd psantos\nsudo useradd smartinez && sudo passwd smartinez\nsudo useradd ssarkar && sudo passwd ssarkar\nVerificación:\nsudo cat /etc/passwd | cut -d: -f1\n📸 Captura usuarios creados:\nEnlace imagen aquí\n\n\n\n\nCrear los grupos:\nsudo groupadd Sales\nsudo groupadd HR\nsudo groupadd Finance\nsudo groupadd Shipping\nsudo groupadd Managers\nsudo groupadd CEO\nAsignar usuarios:\n# Ventas\nsudo usermod -a -G Sales arosalez\nsudo usermod -a -G Sales nwolf\n\n# RR. HH.\nsudo usermod -a -G HR ljuan\nsudo usermod -a -G HR smartinez\n\n# Finanzas\nsudo usermod -a -G Finance mmajor\nsudo usermod -a -G Finance ssarkar\n\n# Envíos\nsudo usermod -a -G Shipping eowusu\nsudo usermod -a -G Shipping jdoe\nsudo usermod -a -G Shipping psantos\n\n# Gerentes\nsudo usermod -a -G Managers arosalez\nsudo usermod -a -G Managers ljuan\nsudo usermod -a -G Managers mmajor\n\n# CEO\nsudo usermod -a -G CEO mjackson\n\n# Agregar ec2-user a todos los grupos\nfor group in Sales HR Finance Shipping Managers CEO; do sudo usermod -a -G $group ec2-user; done\nVerifica:\ncat /etc/group\n📸 Captura de /etc/group:\nEnlace imagen aquí\n\n\n\n\nCambiar de usuario:\nsu arosalez\n# Contraseña: P@ssword1234!\nVerificar ubicación:\npwd\nProbar permisos:\ntouch myFile.txt  # Permission denied\nsudo touch myFile.txt  # not in the sudoers file\n📸 Captura de errores de permisos:\nEnlace imagen aquí\nSalir y revisar logs:\nexit\nsudo cat /var/log/secure | tail -n 20\n📸 Captura de log del sistema:\nEnlace imagen aquí"
+  },
+  {
+    "objectID": "Linux/229-LX-Lab.html#finalizar-laboratorio",
+    "href": "Linux/229-LX-Lab.html#finalizar-laboratorio",
+    "title": "1 🧪 Laboratorio: Administración de Usuarios y Grupos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "Cierra la sesión SSH\n\nEn AWS, selecciona End Lab\nConfirma para cerrar el entorno"
+  },
+  {
+    "objectID": "Linux/229-LX-Lab.html#recursos-adicionales",
+    "href": "Linux/229-LX-Lab.html#recursos-adicionales",
+    "title": "1 🧪 Laboratorio: Administración de Usuarios y Grupos en Amazon EC2 (Linux)",
+    "section": "",
+    "text": "Tipos de instancias EC2\n\nGuía comando useradd\n\nGuía comando usermod\n\nAWS Training oficial"
+  },
+  {
+    "objectID": "Linux/253-LX-Lab.html",
+    "href": "Linux/253-LX-Lab.html",
+    "title": "1 🚀 Laboratorio de Desafío: Scripting de Shell Bash",
+    "section": "",
+    "text": "Escribir un script Bash que genere archivos secuenciales en bloques de 25, asegurando continuidad desde la última ejecución.\n\n\n\n\n\nUso de touch para crear archivos vacíos\nVariables en Bash ($VARIABLE)\nExpresiones aritméticas: $((...))\nComando ls y grep para manipular salidas\nRedirección y ejecución condicional\nUso de basename, sort, tail, y cut para análisis de nombres\n\n\n\n\n\nCrea un archivo generate_files.sh:\ntouch generate_files.sh\nchmod +x generate_files.sh\nEdita con tu editor favorito, por ejemplo:\nnano generate_files.sh\nAgrega lo siguiente:\n#!/bin/bash\n\nPREFIX=\"tuNombre\"  # Reemplaza 'tuNombre' por tu nombre real\nFILES=($(ls ${PREFIX}[0-9]* 2&gt;/dev/null))\nif [ ${#FILES[@]} -eq 0 ]; then\n  START=1\nelse\n  LAST=$(ls ${PREFIX}[0-9]* 2&gt;/dev/null | grep -o '[0-9]\\+$' | sort -n | tail -1)\n  START=$((LAST + 1))\nfi\n\nEND=$((START + 24))\n\nfor i in $(seq $START $END); do\n  touch \"${PREFIX}${i}\"\ndone\n\necho \"📁 Archivos creados de ${PREFIX}${START} a ${PREFIX}${END}\"\nGuarda y sal (Ctrl+O, Enter, Ctrl+X en nano).\n\n\n\n\n./generate_files.sh\nEjemplo de salida:\n📁 Archivos creados de tuNombre1 a tuNombre25\nSi lo ejecutas otra vez:\n📁 Archivos creados de tuNombre26 a tuNombre50\n\n\n\n\nls -lh | grep tuNombre\nDebe mostrar los archivos secuenciales generados.\n\n\n\n\n\nPuedes poner este script en un cron job para programarlo\nAgrega validaciones para carpetas específicas\nUsa basename o awk para parseo si trabajas con nombres complejos\n\n\n\n\n\n\nGuía de scripting Bash\nCron y automatización"
+  },
+  {
+    "objectID": "Linux/253-LX-Lab.html#objetivo",
+    "href": "Linux/253-LX-Lab.html#objetivo",
+    "title": "1 🚀 Laboratorio de Desafío: Scripting de Shell Bash",
+    "section": "",
+    "text": "Escribir un script Bash que genere archivos secuenciales en bloques de 25, asegurando continuidad desde la última ejecución."
+  },
+  {
+    "objectID": "Linux/253-LX-Lab.html#conceptos-clave-que-deberías-conocer",
+    "href": "Linux/253-LX-Lab.html#conceptos-clave-que-deberías-conocer",
+    "title": "1 🚀 Laboratorio de Desafío: Scripting de Shell Bash",
+    "section": "",
+    "text": "Uso de touch para crear archivos vacíos\nVariables en Bash ($VARIABLE)\nExpresiones aritméticas: $((...))\nComando ls y grep para manipular salidas\nRedirección y ejecución condicional\nUso de basename, sort, tail, y cut para análisis de nombres"
+  },
+  {
+    "objectID": "Linux/253-LX-Lab.html#tarea-escribir-el-script",
+    "href": "Linux/253-LX-Lab.html#tarea-escribir-el-script",
+    "title": "1 🚀 Laboratorio de Desafío: Scripting de Shell Bash",
+    "section": "",
+    "text": "Crea un archivo generate_files.sh:\ntouch generate_files.sh\nchmod +x generate_files.sh\nEdita con tu editor favorito, por ejemplo:\nnano generate_files.sh\nAgrega lo siguiente:\n#!/bin/bash\n\nPREFIX=\"tuNombre\"  # Reemplaza 'tuNombre' por tu nombre real\nFILES=($(ls ${PREFIX}[0-9]* 2&gt;/dev/null))\nif [ ${#FILES[@]} -eq 0 ]; then\n  START=1\nelse\n  LAST=$(ls ${PREFIX}[0-9]* 2&gt;/dev/null | grep -o '[0-9]\\+$' | sort -n | tail -1)\n  START=$((LAST + 1))\nfi\n\nEND=$((START + 24))\n\nfor i in $(seq $START $END); do\n  touch \"${PREFIX}${i}\"\ndone\n\necho \"📁 Archivos creados de ${PREFIX}${START} a ${PREFIX}${END}\"\nGuarda y sal (Ctrl+O, Enter, Ctrl+X en nano)."
+  },
+  {
+    "objectID": "Linux/253-LX-Lab.html#ejecución-del-script",
+    "href": "Linux/253-LX-Lab.html#ejecución-del-script",
+    "title": "1 🚀 Laboratorio de Desafío: Scripting de Shell Bash",
+    "section": "",
+    "text": "./generate_files.sh\nEjemplo de salida:\n📁 Archivos creados de tuNombre1 a tuNombre25\nSi lo ejecutas otra vez:\n📁 Archivos creados de tuNombre26 a tuNombre50"
+  },
+  {
+    "objectID": "Linux/253-LX-Lab.html#verificación",
+    "href": "Linux/253-LX-Lab.html#verificación",
+    "title": "1 🚀 Laboratorio de Desafío: Scripting de Shell Bash",
+    "section": "",
+    "text": "ls -lh | grep tuNombre\nDebe mostrar los archivos secuenciales generados."
+  },
+  {
+    "objectID": "Linux/253-LX-Lab.html#tips-adicionales",
+    "href": "Linux/253-LX-Lab.html#tips-adicionales",
+    "title": "1 🚀 Laboratorio de Desafío: Scripting de Shell Bash",
+    "section": "",
+    "text": "Puedes poner este script en un cron job para programarlo\nAgrega validaciones para carpetas específicas\nUsa basename o awk para parseo si trabajas con nombres complejos"
+  },
+  {
+    "objectID": "Linux/253-LX-Lab.html#recursos",
+    "href": "Linux/253-LX-Lab.html#recursos",
+    "title": "1 🚀 Laboratorio de Desafío: Scripting de Shell Bash",
+    "section": "",
+    "text": "Guía de scripting Bash\nCron y automatización"
   }
 ]

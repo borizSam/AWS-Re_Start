@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>lab264-recursos-de-red-para-una-vpc – AWS RE/START</title>
+<title>lx-lab – AWS RE/START</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -521,17 +521,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lab-264---creación-de-recursos-de-red-en-una-vpc" id="toc-lab-264---creación-de-recursos-de-red-en-una-vpc" class="nav-link active" data-scroll-target="#lab-264---creación-de-recursos-de-red-en-una-vpc"><span class="header-section-number">1</span> 🧪 Lab 264 - Creación de Recursos de Red en una VPC</a>
+  <li><a href="#laboratorio-administración-de-servicios---monitoreo-en-amazon-linux-2" id="toc-laboratorio-administración-de-servicios---monitoreo-en-amazon-linux-2" class="nav-link active" data-scroll-target="#laboratorio-administración-de-servicios---monitoreo-en-amazon-linux-2"><span class="header-section-number">1</span> 🛠️ Laboratorio: Administración de Servicios - Monitoreo en Amazon Linux 2</a>
   <ul class="collapse">
   <li><a href="#objetivos" id="toc-objetivos" class="nav-link" data-scroll-target="#objetivos"><span class="header-section-number">1.1</span> 🎯 Objetivos</a></li>
-  <li><a href="#duración" id="toc-duración" class="nav-link" data-scroll-target="#duración"><span class="header-section-number">1.2</span> 🕐 Duración</a></li>
-  <li><a href="#ticket-del-cliente" id="toc-ticket-del-cliente" class="nav-link" data-scroll-target="#ticket-del-cliente"><span class="header-section-number">1.3</span> 📧 Ticket del Cliente</a></li>
-  <li><a href="#requisitos-técnicos-del-cliente" id="toc-requisitos-técnicos-del-cliente" class="nav-link" data-scroll-target="#requisitos-técnicos-del-cliente"><span class="header-section-number">1.4</span> 📌 Requisitos técnicos del cliente</a></li>
-  <li><a href="#diagrama-del-cliente" id="toc-diagrama-del-cliente" class="nav-link" data-scroll-target="#diagrama-del-cliente"><span class="header-section-number">1.5</span> <img src="213123.png" class="img-fluid" alt="Diagrama del cliente"></a></li>
-  <li><a href="#tarea-1-crear-infraestructura-de-red" id="toc-tarea-1-crear-infraestructura-de-red" class="nav-link" data-scroll-target="#tarea-1-crear-infraestructura-de-red"><span class="header-section-number">1.6</span> ✅ Tarea 1: Crear Infraestructura de Red</a></li>
-  <li><a href="#tarea-2-crear-seguridad-de-red" id="toc-tarea-2-crear-seguridad-de-red" class="nav-link" data-scroll-target="#tarea-2-crear-seguridad-de-red"><span class="header-section-number">1.7</span> 🧱 Tarea 2: Crear Seguridad de Red</a></li>
-  <li><a href="#tarea-3-lanzar-y-acceder-a-instancia-ec2" id="toc-tarea-3-lanzar-y-acceder-a-instancia-ec2" class="nav-link" data-scroll-target="#tarea-3-lanzar-y-acceder-a-instancia-ec2"><span class="header-section-number">1.8</span> 💻 Tarea 3: Lanzar y Acceder a Instancia EC2</a></li>
-  <li><a href="#conclusión" id="toc-conclusión" class="nav-link" data-scroll-target="#conclusión"><span class="header-section-number">1.9</span> ✅ Conclusión</a></li>
+  <li><a href="#acceso-al-laboratorio" id="toc-acceso-al-laboratorio" class="nav-link" data-scroll-target="#acceso-al-laboratorio"><span class="header-section-number">1.2</span> 🔐 Acceso al laboratorio</a></li>
+  <li><a href="#tarea-1-conexión-a-ec2-vía-ssh" id="toc-tarea-1-conexión-a-ec2-vía-ssh" class="nav-link" data-scroll-target="#tarea-1-conexión-a-ec2-vía-ssh"><span class="header-section-number">1.3</span> 🧩 Tarea 1: Conexión a EC2 vía SSH</a>
+  <ul class="collapse">
+  <li><a href="#usuarios-windows" id="toc-usuarios-windows" class="nav-link" data-scroll-target="#usuarios-windows"><span class="header-section-number">1.3.1</span> 🔷 Usuarios Windows</a></li>
+  <li><a href="#usuarios-macos-linux" id="toc-usuarios-macos-linux" class="nav-link" data-scroll-target="#usuarios-macos-linux"><span class="header-section-number">1.3.2</span> 🔷 Usuarios macOS / Linux</a></li>
+  </ul></li>
+  <li><a href="#tarea-2-verificar-y-controlar-el-servicio-httpd" id="toc-tarea-2-verificar-y-controlar-el-servicio-httpd" class="nav-link" data-scroll-target="#tarea-2-verificar-y-controlar-el-servicio-httpd"><span class="header-section-number">1.4</span> ⚙️ Tarea 2: Verificar y controlar el servicio HTTPD</a>
+  <ul class="collapse">
+  <li><a href="#ver-estado-del-servicio" id="toc-ver-estado-del-servicio" class="nav-link" data-scroll-target="#ver-estado-del-servicio"><span class="header-section-number">1.4.1</span> 🔸 Ver estado del servicio</a></li>
+  <li><a href="#iniciar-el-servicio" id="toc-iniciar-el-servicio" class="nav-link" data-scroll-target="#iniciar-el-servicio"><span class="header-section-number">1.4.2</span> 🔸 Iniciar el servicio</a></li>
+  <li><a href="#probar-el-servidor-web" id="toc-probar-el-servidor-web" class="nav-link" data-scroll-target="#probar-el-servidor-web"><span class="header-section-number">1.4.3</span> 🔸 Probar el servidor web</a></li>
+  <li><a href="#detener-el-servicio" id="toc-detener-el-servicio" class="nav-link" data-scroll-target="#detener-el-servicio"><span class="header-section-number">1.4.4</span> 🔸 Detener el servicio</a></li>
+  </ul></li>
+  <li><a href="#tarea-3-monitoreo-de-la-instancia-ec2" id="toc-tarea-3-monitoreo-de-la-instancia-ec2" class="nav-link" data-scroll-target="#tarea-3-monitoreo-de-la-instancia-ec2"><span class="header-section-number">1.5</span> 📊 Tarea 3: Monitoreo de la instancia EC2</a>
+  <ul class="collapse">
+  <li><a href="#ver-procesos-y-carga-actual" id="toc-ver-procesos-y-carga-actual" class="nav-link" data-scroll-target="#ver-procesos-y-carga-actual"><span class="header-section-number">1.5.1</span> 🔸 Ver procesos y carga actual</a></li>
+  <li><a href="#simular-carga-en-cpu" id="toc-simular-carga-en-cpu" class="nav-link" data-scroll-target="#simular-carga-en-cpu"><span class="header-section-number">1.5.2</span> 🔸 Simular carga en CPU</a></li>
+  <li><a href="#acceder-a-aws-cloudwatch" id="toc-acceder-a-aws-cloudwatch" class="nav-link" data-scroll-target="#acceder-a-aws-cloudwatch"><span class="header-section-number">1.5.3</span> 🔸 Acceder a AWS CloudWatch</a></li>
+  <li><a href="#esperar-5-minutos" id="toc-esperar-5-minutos" class="nav-link" data-scroll-target="#esperar-5-minutos"><span class="header-section-number">1.5.4</span> 🔸 Esperar 5 minutos</a></li>
+  </ul></li>
+  <li><a href="#finalización" id="toc-finalización" class="nav-link" data-scroll-target="#finalización"><span class="header-section-number">1.6</span> 🏁 Finalización</a></li>
+  <li><a href="#conceptos-core" id="toc-conceptos-core" class="nav-link" data-scroll-target="#conceptos-core"><span class="header-section-number">1.7</span> 📘 Conceptos Core</a></li>
+  <li><a href="#comandos-clave-keyboardas" id="toc-comandos-clave-keyboardas" class="nav-link" data-scroll-target="#comandos-clave-keyboardas"><span class="header-section-number">1.8</span> ⌨️ Comandos clave (keyboardas)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -543,193 +558,149 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="lab-264---creación-de-recursos-de-red-en-una-vpc" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> 🧪 Lab 264 - Creación de Recursos de Red en una VPC</h1>
-<hr>
+<section id="laboratorio-administración-de-servicios---monitoreo-en-amazon-linux-2" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 🛠️ Laboratorio: Administración de Servicios - Monitoreo en Amazon Linux 2</h1>
+<blockquote class="blockquote">
+<p><strong>Duración estimada:</strong> 30 minutos<br>
+<strong>Prerrequisitos:</strong> Haber completado laboratorios previos y conocer el uso básico de EC2, SSH y la consola AWS.</p>
+</blockquote>
 <section id="objetivos" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="objetivos"><span class="header-section-number">1.1</span> 🎯 Objetivos</h2>
 <ul>
-<li>Resumir la situación del cliente.</li>
-<li>Crear los recursos de red necesarios: VPC, IGW, tabla de enrutamiento, grupo de seguridad, NACL, subred y una instancia EC2.</li>
-<li>Probar conectividad con ping desde la instancia EC2 hacia Internet.</li>
-</ul>
-<hr>
-</section>
-<section id="duración" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="duración"><span class="header-section-number">1.2</span> 🕐 Duración</h2>
-<p>Tiempo estimado: 60 minutos</p>
-<hr>
-</section>
-<section id="ticket-del-cliente" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="ticket-del-cliente"><span class="header-section-number">1.3</span> 📧 Ticket del Cliente</h2>
-<p>“Hola, equipo de soporte en la nube,<br>
-Pensé que había configurado bien mi VPC, pero no puedo hacer ni un simple <code>ping</code>. ¿Pueden ayudarme a configurar todo correctamente para tener conexión a Internet?”</p>
-<p>— Brock, Propietario de startup</p>
-<hr>
-</section>
-<section id="requisitos-técnicos-del-cliente" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="requisitos-técnicos-del-cliente"><span class="header-section-number">1.4</span> 📌 Requisitos técnicos del cliente</h2>
+<li>Verificar el estado del servicio <strong>httpd</strong> en una instancia EC2.</li>
+<li>Probar conectividad HTTP vía IP pública.</li>
+<li>Monitorear la instancia EC2 utilizando:
 <ul>
-<li><strong>VPC CIDR</strong>: <code>192.168.0.0/18</code></li>
-<li><strong>Subred pública CIDR</strong>: <code>192.168.1.0/26</code></li>
-<li><strong>Recursos necesarios</strong>:
-<ul>
-<li>Internet Gateway (IGW)</li>
-<li>Tabla de enrutamiento</li>
-<li>Grupo de seguridad</li>
-<li>ACL de red</li>
-<li>Instancia EC2 con IP pública</li>
+<li>El comando <code>top</code> de Linux.</li>
+<li>El servicio <strong>AWS CloudWatch</strong>.</li>
 </ul></li>
 </ul>
 </section>
-<section id="diagrama-del-cliente" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="diagrama-del-cliente"><span class="header-section-number">1.5</span> <img src="213123.png" class="img-fluid" alt="Diagrama del cliente"></h2>
-</section>
-<section id="tarea-1-crear-infraestructura-de-red" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="tarea-1-crear-infraestructura-de-red"><span class="header-section-number">1.6</span> ✅ Tarea 1: Crear Infraestructura de Red</h2>
+<section id="acceso-al-laboratorio" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="acceso-al-laboratorio"><span class="header-section-number">1.2</span> 🔐 Acceso al laboratorio</h2>
 <ol type="1">
-<li><strong>Crear la VPC</strong>
+<li>Haz clic en <strong>Start Lab</strong>.</li>
+<li>Espera a que el estado indique: <code>Lab status: ready</code>.</li>
+<li>Cierra el panel y accede a la <strong>AWS Management Console</strong>.</li>
+</ol>
+</section>
+<section id="tarea-1-conexión-a-ec2-vía-ssh" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="tarea-1-conexión-a-ec2-vía-ssh"><span class="header-section-number">1.3</span> 🧩 Tarea 1: Conexión a EC2 vía SSH</h2>
+<section id="usuarios-windows" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="usuarios-windows"><span class="header-section-number">1.3.1</span> 🔷 Usuarios Windows</h3>
 <ul>
-<li>Nombre: <code>Test VPC</code></li>
-<li>IPv4 CIDR block: <code>192.168.0.0/18</code></li>
-<li><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="URL_VPC.png" class="img-fluid figure-img"></p>
-<figcaption>VPC creada</figcaption>
-</figure>
-</div></li>
+<li>Descarga el archivo <code>.ppk</code> desde <strong>Details &gt; Download PPK</strong>.</li>
+<li>Anota la <strong>IP pública</strong> de la instancia.</li>
+<li>Usa <strong>PuTTY</strong> con esta configuración:
+<ul>
+<li>Host: <code>Public IP</code></li>
+<li>Auth: cargar archivo <code>labsuser.ppk</code></li>
+<li>Usuario: <code>ec2-user</code></li>
+<li>Keepalives: <code>30 segundos</code></li>
 </ul></li>
-<li><strong>Crear la Subred</strong>
+</ul>
+</section>
+<section id="usuarios-macos-linux" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="usuarios-macos-linux"><span class="header-section-number">1.3.2</span> 🔷 Usuarios macOS / Linux</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Ir al directorio de descarga</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Downloads</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Cambiar permisos</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 400 labsuser.pem</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Conectarse vía SSH</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-i</span> labsuser.pem ec2-user@<span class="op">&lt;</span>public-ip<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="tarea-2-verificar-y-controlar-el-servicio-httpd" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="tarea-2-verificar-y-controlar-el-servicio-httpd"><span class="header-section-number">1.4</span> ⚙️ Tarea 2: Verificar y controlar el servicio HTTPD</h2>
+<section id="ver-estado-del-servicio" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="ver-estado-del-servicio"><span class="header-section-number">1.4.1</span> 🔸 Ver estado del servicio</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status httpd.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Resultado esperado:</strong> <code>inactive (dead)</code></p>
+</section>
+<section id="iniciar-el-servicio" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="iniciar-el-servicio"><span class="header-section-number">1.4.2</span> 🔸 Iniciar el servicio</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start httpd.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Verifica nuevamente:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status httpd.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Resultado esperado:</strong> <code>active (running)</code></p>
+</section>
+<section id="probar-el-servidor-web" class="level3" data-number="1.4.3">
+<h3 data-number="1.4.3" class="anchored" data-anchor-id="probar-el-servidor-web"><span class="header-section-number">1.4.3</span> 🔸 Probar el servidor web</h3>
+<p>En el navegador:<br>
+<code>http://&lt;IP-pública&gt;</code></p>
+<p>Deberías ver la página de prueba de Apache.</p>
+</section>
+<section id="detener-el-servicio" class="level3" data-number="1.4.4">
+<h3 data-number="1.4.4" class="anchored" data-anchor-id="detener-el-servicio"><span class="header-section-number">1.4.4</span> 🔸 Detener el servicio</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl stop httpd.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="tarea-3-monitoreo-de-la-instancia-ec2" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="tarea-3-monitoreo-de-la-instancia-ec2"><span class="header-section-number">1.5</span> 📊 Tarea 3: Monitoreo de la instancia EC2</h2>
+<section id="ver-procesos-y-carga-actual" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="ver-procesos-y-carga-actual"><span class="header-section-number">1.5.1</span> 🔸 Ver procesos y carga actual</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">top</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Pulsa <code>Q</code> para salir.</p>
+</section>
+<section id="simular-carga-en-cpu" class="level3" data-number="1.5.2">
+<h3 data-number="1.5.2" class="anchored" data-anchor-id="simular-carga-en-cpu"><span class="header-section-number">1.5.2</span> 🔸 Simular carga en CPU</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./stress.sh</span> <span class="kw">&amp;</span> <span class="ex">top</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Nombre: <code>Public subnet</code></li>
-<li>CIDR block: <code>192.168.1.0/26</code></li>
-<li>Zona de disponibilidad: sin preferencia<br>
-</li>
-<li><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="URL_SUBNET.png" class="img-fluid figure-img"></p>
-<figcaption>Subred pública</figcaption>
-</figure>
-</div></li>
-</ul></li>
-<li><strong>Crear Tabla de Enrutamiento</strong>
+<li>Observa el alto uso de CPU en tiempo real.</li>
+</ul>
+</section>
+<section id="acceder-a-aws-cloudwatch" class="level3" data-number="1.5.3">
+<h3 data-number="1.5.3" class="anchored" data-anchor-id="acceder-a-aws-cloudwatch"><span class="header-section-number">1.5.3</span> 🔸 Acceder a AWS CloudWatch</h3>
+<ol type="1">
+<li>En la consola AWS, busca <code>CloudWatch</code>.</li>
+<li>Ve a: <strong>Dashboards &gt; Automatic dashboards &gt; EC2</strong></li>
+<li>Observa métricas:
 <ul>
-<li>Nombre: <code>Public route table</code></li>
-<li>Asociar a <code>Test VPC</code><br>
-</li>
-<li><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="URL_ROUTE_TABLE.png" class="img-fluid figure-img"></p>
-<figcaption>Tabla de enrutamiento</figcaption>
-</figure>
-</div></li>
-</ul></li>
-<li><strong>Crear y Adjuntar la IGW</strong>
-<ul>
-<li>Nombre: <code>IGW test VPC</code></li>
-<li>Adjuntar a <code>Test VPC</code><br>
-</li>
-<li><img src="URL_IGW.png" class="img-fluid" alt="IGW creada"><br>
-</li>
-<li><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="URL_ATTACH_IGW.png" class="img-fluid figure-img"></p>
-<figcaption>Adjuntar IGW</figcaption>
-</figure>
-</div></li>
-</ul></li>
-<li><strong>Agregar Ruta en Tabla de Enrutamiento</strong>
-<ul>
-<li>Destination: <code>0.0.0.0/0</code></li>
-<li>Target: IGW test VPC<br>
-</li>
-<li><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="URL_ADD_ROUTE.png" class="img-fluid figure-img"></p>
-<figcaption>Ruta añadida</figcaption>
-</figure>
-</div></li>
-</ul></li>
-<li><strong>Asociar la Subred a la Tabla de Enrutamiento</strong>
-<ul>
-<li><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="URL_ASSOC_SUBNET.png" class="img-fluid figure-img"></p>
-<figcaption>Subred asociada</figcaption>
-</figure>
-</div></li>
+<li>Utilización de CPU</li>
+<li>Lecturas/escrituras de disco</li>
 </ul></li>
 </ol>
-<hr>
 </section>
-<section id="tarea-2-crear-seguridad-de-red" class="level2" data-number="1.7">
-<h2 data-number="1.7" class="anchored" data-anchor-id="tarea-2-crear-seguridad-de-red"><span class="header-section-number">1.7</span> 🧱 Tarea 2: Crear Seguridad de Red</h2>
-<ol type="1">
-<li><strong>Crear ACLs</strong>
-<ul>
-<li>Inbound rule: permitir todo (<code>regla 100</code>, <code>0.0.0.0/0</code>, <code>todos los protocolos</code>)</li>
-<li>Outbound rule: permitir todo (<code>regla 100</code>, <code>0.0.0.0/0</code>, <code>todos los protocolos</code>)<br>
-</li>
-<li><img src="URL_NACL_IN.png" class="img-fluid" alt="NACL entrada"><br>
-</li>
-<li><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="URL_NACL_OUT.png" class="img-fluid figure-img"></p>
-<figcaption>NACL salida</figcaption>
-</figure>
-</div></li>
-</ul></li>
-<li><strong>Crear Grupo de Seguridad</strong>
-<ul>
-<li>Nombre: <code>public security group</code></li>
-<li>Descripción: Permite acceso público</li>
-<li>Reglas de entrada:
-<ul>
-<li>SSH (22) desde <code>0.0.0.0/0</code></li>
-<li>HTTP (80) desde <code>0.0.0.0/0</code></li>
-<li>HTTPS (443) desde <code>0.0.0.0/0</code></li>
-</ul></li>
-<li>Reglas de salida: permitir todo tráfico<br>
-</li>
-<li><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="URL_SECURITY_GROUP.png" class="img-fluid figure-img"></p>
-<figcaption>Grupo seguridad</figcaption>
-</figure>
-</div></li>
-</ul></li>
-</ol>
-<hr>
+<section id="esperar-5-minutos" class="level3" data-number="1.5.4">
+<h3 data-number="1.5.4" class="anchored" data-anchor-id="esperar-5-minutos"><span class="header-section-number">1.5.4</span> 🔸 Esperar 5 minutos</h3>
+<blockquote class="blockquote">
+<p>AWS CloudWatch actualiza cada 5 minutos.<br>
+Revisa que la CPU haya bajado luego del script.</p>
+</blockquote>
 </section>
-<section id="tarea-3-lanzar-y-acceder-a-instancia-ec2" class="level2" data-number="1.8">
-<h2 data-number="1.8" class="anchored" data-anchor-id="tarea-3-lanzar-y-acceder-a-instancia-ec2"><span class="header-section-number">1.8</span> 💻 Tarea 3: Lanzar y Acceder a Instancia EC2</h2>
-<ol type="1">
-<li><strong>Lanzar Instancia EC2</strong>
-<ul>
-<li>AMI: <code>Amazon Linux 2</code></li>
-<li>Tipo: <code>t3.micro</code></li>
-<li>Red: <code>Test VPC</code></li>
-<li>Subred: <code>Public subnet</code></li>
-<li>IP pública: Auto-asignada</li>
-<li>Grupo de Seguridad: <code>public security group</code></li>
-</ul></li>
-<li><strong>Acceso por SSH</strong>
-<ul>
-<li><p>A través de PuTTY (Windows) o terminal (Linux/Mac)</p></li>
-<li><p>Usuario: <code>ec2-user</code></p></li>
-<li><p>Validar conectividad con:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ping</span> google.com</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul></li>
-</ol>
-<hr>
 </section>
-<section id="conclusión" class="level2" data-number="1.9">
-<h2 data-number="1.9" class="anchored" data-anchor-id="conclusión"><span class="header-section-number">1.9</span> ✅ Conclusión</h2>
-<p>La infraestructura de red se configuró correctamente dentro de la VPC, permitiendo que la instancia EC2 lanzada en una subred pública pueda acceder a Internet. Se validó la conectividad con éxito usando <code>ping</code>, cumpliendo así con el requerimiento del cliente. Este laboratorio refuerza el conocimiento práctico de los componentes esenciales de red en AWS.</p>
-<hr>
-<p><strong>🖋️ Firma:</strong><br>
-<em>Boris Ivan Huaraichi Pérez</em><br>
-<em>AWS Cloud Engineer - Lab 264</em></p>
+<section id="finalización" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="finalización"><span class="header-section-number">1.6</span> 🏁 Finalización</h2>
+<p>Haz clic en <strong>End Lab</strong> y confirma con <strong>Yes</strong>.<br>
+Cierra el mensaje de eliminación.</p>
+</section>
+<section id="conceptos-core" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="conceptos-core"><span class="header-section-number">1.7</span> 📘 Conceptos Core</h2>
+<ul>
+<li><strong>EC2 (Elastic Compute Cloud):</strong> Servicio de cómputo de AWS.</li>
+<li><strong>httpd:</strong> Servidor web Apache.</li>
+<li><strong>systemctl:</strong> Herramienta de control de servicios en Linux.</li>
+<li><strong>top:</strong> Monitor en tiempo real de procesos.</li>
+<li><strong>CloudWatch:</strong> Herramienta de monitoreo en AWS.</li>
+</ul>
+</section>
+<section id="comandos-clave-keyboardas" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="comandos-clave-keyboardas"><span class="header-section-number">1.8</span> ⌨️ Comandos clave (keyboardas)</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Conexión SSH</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-i</span> labsuser.pem ec2-user@<span class="op">&lt;</span>public-ip<span class="op">&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Servicio httpd</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status httpd.service</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start httpd.service</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl stop httpd.service</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Monitor de procesos</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="ex">top</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga artificial de CPU</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="ex">./stress.sh</span> <span class="kw">&amp;</span> <span class="ex">top</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
