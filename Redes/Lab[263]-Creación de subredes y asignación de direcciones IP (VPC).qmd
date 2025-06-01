@@ -1,0 +1,103 @@
+# Lab 263 - Creación de subredes y asignación de direcciones IP en una Amazon Virtual Private Cloud (Amazon VPC)
+
+## 🧠 Objetivos
+
+- Resumir la situación del cliente.
+- Crear una VPC y subredes asignando correctamente rangos de IP.
+- Familiarizarse con la AWS Management Console.
+- Desarrollar una solución y presentar conclusiones.
+
+## 📘 Situación
+
+**Rol**: Ingeniero de soporte en AWS  
+**Cliente**: Paulo Santos (Startup Owner)  
+**Problema**: Necesita crear una VPC con:
+- ~15,000 IPs privadas
+- Una subred pública con al menos 50 IPs
+- Rango de direcciones IPv4 que comience con `192.x.x.x`
+
+## 🧾 Ticket del cliente
+
+> ¡Hola, equipo de soporte en la nube!
+>
+> Soy nuevo en AWS y necesito ayuda para configurar una VPC. Me gustaría crear solo la parte de la VPC y que se pareciera a la de la siguiente imagen.
+>
+> También me gustaría que el bloque de CIDR IPv4 de la VPC sea 192.x.x.x con 15,000 IPs disponibles. Y una subred pública con al menos 50 IPs.
+>
+> ¡Gracias!  
+> — Paulo Santos
+
+### 📌 Diagrama de arquitectura del cliente
+
+![Diagrama del cliente](https://awsrestart2.s3.eu-central-1.amazonaws.com/Lab263-AWS/Diagrama-VPC.png)
+
+---
+
+## 🧪 Tarea 1: Crear la VPC y la subred pública
+
+### Paso 1: Acceder al servicio VPC
+1. Iniciar sesión en AWS Console.
+2. Buscar "VPC" en la barra de búsqueda superior.
+
+![Barra de búsqueda](https://awsrestart2.s3.eu-central-1.amazonaws.com/Lab263-AWS/Barra+de+busqueda.png)
+
+### Paso 2: Lanzar el asistente de VPC
+- Seleccionar `Launch VPC Wizard`
+
+![Launch VPC Wizard](https://awsrestart2.s3.eu-central-1.amazonaws.com/Lab263-AWS/Launc+VPC.png)
+
+### Paso 3: Seleccionar configuración
+- Elegir **"VPC with a Single Public Subnet"**
+
+### Paso 4: Configurar los parámetros
+
+| Campo                        | Valor                             |
+|-----------------------------|------------------------------------|
+| IPv4 CIDR block             | `192.168.0.0/18` (aprox. 16,384 IPs) |
+| IPv6 CIDR block             | No IPv6                           |
+| VPC name                    | `First VPC`                       |
+| Subnet IPv4 CIDR            | `192.168.1.0/26` (64 IPs, suficiente para 50 requeridas) |
+| Availability Zone           | No Preference                     |
+| Subnet name                 | `Public subnet`                   |
+| DNS hostnames               | Yes                               |
+| Hardware Tenancy            | Default                           |
+
+![Configuración CIDR](https://awsrestart2.s3.eu-central-1.amazonaws.com/Lab263-AWS/Configuracion+CIDR.png)
+
+### Paso 5: Crear la VPC
+- Hacer clic en **Create VPC**
+- Esperar el mensaje **VPC Successfully Created**
+
+![VPC creada con éxito](https://awsrestart2.s3.eu-central-1.amazonaws.com/Lab263-AWS/VPC-CREATE.png)
+
+![Diagrama VPC](https://awsrestart2.s3.eu-central-1.amazonaws.com/Lab263-AWS/Diagrama-VPC.png)
+
+---
+
+## 💬 Tarea 2: Enviar respuesta al cliente
+
+### 💼 Interacción simulada
+**Cliente (Paulo)**: ¿Está todo listo?  
+**Ingeniero (Boris Cloud)**: ✅ Tu VPC está creada con un rango privado de `192.168.0.0/18`, que cubre tus necesidades.  
+También tienes dos subredes públicas `192.168.1.0/26` `192.168.2.0/26` con 128 IPs, cumpliendo con el mínimo de 50. Todo configurado.
+
+---
+
+## ✅ Conclusiones
+
+- Las **direcciones IP privadas** en la VPC se usan para comunicación interna segura.
+- El bloque `192.168.0.0/18` ofrece más de 15,000 direcciones IP.
+- Las **subredes públicas** permiten acceso desde y hacia Internet (cuando se les asigna una IP pública y tienen una gateway).
+- AWS recomienda planificar con bloques CIDR adecuados según proyección de crecimiento.
+
+---
+
+## 🧠 Recursos útiles
+
+- [RFC 1918 - Rangos privados](https://datatracker.ietf.org/doc/html/rfc1918)
+- [Calculadora CIDR/Subredes](https://www.subnet-calculator.com/)
+- [Documentación de Amazon VPC](https://docs.aws.amazon.com/vpc)
+
+---
+
+**Autor del soporte**: Boris Cloud – Cloud Support Engineer

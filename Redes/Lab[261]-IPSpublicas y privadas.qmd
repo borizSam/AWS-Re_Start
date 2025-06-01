@@ -1,0 +1,99 @@
+# 🧪 Lab 262 - Direcciones IP estáticas y dinámicas
+
+## 🎯 Objetivo
+
+Comprender las diferencias entre las direcciones IP públicas y privadas asignadas a las instancias EC2, e identificar qué tipo de dirección tiene cada una mediante observación directa.
+
+---
+
+## 🧩 Situación
+
+Se te proporciona una arquitectura que incluye dos instancias EC2 (A y B) en una subred pública, dentro de una misma VPC con acceso a Internet a través de un Internet Gateway. Tu objetivo es observar las configuraciones de red de ambas instancias y analizar sus diferencias.
+
+### Diagrama de arquitectura
+
+![Diagrama de arquitectura](https://awsrestart2.s3.eu-central-1.amazonaws.com/Lab262-AWS/Arquitectura-LAB262.png)
+
+---
+
+## 🛠️ Tarea 1: Observar las direcciones IP
+
+### 1. Acceder a la consola de AWS
+- Pulsar **Start Lab** y acceder a **AWS Management Console**.
+
+### 2. Ir al servicio EC2
+- Buscar **EC2** en la barra de búsqueda.
+
+![Buscar EC2](https://awsrestart2.s3.eu-central-1.amazonaws.com/Lab262-AWS/EC2-look.png)
+
+### 3. Ver instancias activas
+
+Debes ver dos instancias activas:
+
+- **instance A**
+- **instance B**
+
+![Panel EC2](https://awsrestart2.s3.eu-central-1.amazonaws.com/Lab262-AWS/Panel-EC2.png)
+
+### 4. Verificar direcciones IP
+
+#### Para **instance A**:
+
+- Selecciona la instancia.
+- Ve a la pestaña **Networking**.
+- Anota la IP **pública** y **privada** (si hay).
+
+![Networking - instance A](https://awsrestart2.s3.eu-central-1.amazonaws.com/Lab262-AWS/Networking-InstanceA.png)
+
+> IP privada: 10.0.10.137 
+> IP pública: No asignada
+
+#### Para **instance B**:
+
+- Repite el proceso.
+- Observa que esta instancia **sí tiene una IP pública** asignada.
+
+![Networking - instance B](https://awsrestart2.s3.eu-central-1.amazonaws.com/Lab262-AWS/Networking-InstanceB.png)
+
+> IP privada: 10.0.10.66  
+> IP pública: 52.32.140.209
+
+### ✅ Conclusión de observación
+
+- **Instance A** solo tiene IP privada → no accesible desde Internet.
+- **Instance B** tiene IP pública → accesible desde Internet.
+- Ambas están en la misma subred, pero solo una tiene autoasignación de IP pública habilitada.
+
+---
+
+## 🛠️ Tarea 2: Conexión mediante SSH
+
+### Objetivo
+
+Verificar que solo la instancia con IP pública puede ser accedida desde el exterior usando SSH.
+
+### Pasos
+
+1. Intentar conectar por SSH a **instance A** → Fallará (no tiene IP pública).
+2. Conectar por SSH a **instance B** → Conexión exitosa.
+
+```bash
+ssh -i ~/.ssh/labsuser.pem ec2-user@52.32.140.209
+```
+
+### ✅ Conclusión
+
+Las instancias sin IP pública no pueden ser accedidas directamente desde fuera de la VPC.  
+Para tener acceso SSH, es necesario habilitar IP pública o usar un bastion host.
+
+---
+
+## 🧠 Conclusión final
+
+- **IP privada:** Solo funciona dentro de la red privada (VPC).
+- **IP pública:** Permite acceso externo, pero es dinámica (cambia al detener la instancia, a menos que se use una Elastic IP).
+- Ambas instancias comparten la misma configuración de red a nivel de subred, pero **difieren en visibilidad pública**.
+
+---
+**Autor del soporte**: Boris Cloud – Cloud Support Engineer
+

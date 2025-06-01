@@ -40,8 +40,14 @@ website:
             file: Redes/conceptos.qmd
           - text: "Comandos"
             file: Redes/comandos.qmd
-          - text: "Prácticas"
-            file: Redes/practicas.qmd
+          - text: "Lab[261]-IPs-publicas y privadas"
+            file: Redes/Lab[261]-IPSpublicas y privadas.qmd
+          - text: "Lab[262]-Direcciones IP y estáticas y dinámicas" 
+            file: Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.qmd
+          - text: "Lab[263]-Creación de subredes y asignación de direcciones IP (VPC)"
+            file: Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).qmd
+          - text: "Lab[264] - Recursos de red para una VPC"
+            file: Redes/Lab[264]-Recursos de red para una VPC.qmd
 
       - text: "Seguridad"
         menu:

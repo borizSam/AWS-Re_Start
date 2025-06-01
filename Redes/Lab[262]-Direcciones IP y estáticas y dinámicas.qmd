@@ -1,0 +1,139 @@
+# 🧪 Lab 262 - Direcciones IP estáticas y dinámicas
+
+## 🎯 Objetivo
+
+Analizar y diferenciar entre direcciones IP públicas estáticas y dinámicas en instancias EC2. Replicar el problema de IP cambiante y resolverlo mediante la asignación de una Elastic IP (EIP).
+
+---
+
+## 🧩 Situación del cliente
+
+**Correo del cliente (Bob):**
+
+> "Estamos teniendo problemas con una de nuestras instancias EC2. La IP cambia cada vez que la iniciamos o detenemos. Necesitamos una dirección IP estática, ya que otros recursos dependen de ella. ¿Pueden ayudar?"
+
+---
+
+## 🗺️ Diagrama de arquitectura
+
+![Diagrama de arquitectura](https://awsrestart2.s3.eu-central-1.amazonaws.com/Lab262-AWS/Arquitectura-LAB262.png)  
+> VPC con subred pública, una puerta de enlace de Internet y una instancia EC2 (Instance A).
+
+---
+
+## 🛠️ Tarea 1: Replicar el problema
+
+### 1. Iniciar entorno y consola
+
+- Selecciona **Start Lab**
+- Accede a la **AWS Management Console**
+
+### 2. Ir al servicio EC2
+
+Buscar “EC2” en la barra superior.
+
+![Buscar EC2](https://awsrestart2.s3.eu-central-1.amazonaws.com/Lab262-AWS/EC2-look.png)
+
+### 3. Crear una nueva instancia EC2
+
+![Panel de instancias EC2](https://awsrestart2.s3.eu-central-1.amazonaws.com/Lab262-AWS/Panel-EC2.png)
+
+- AMI: Amazon Linux 2
+- Tipo: `t3.micro`
+- Red: VPC del laboratorio
+- Subred: pública
+- Autoasignación de IP pública: **habilitada**
+- Par de claves: `vockey | RSA`
+- Etiqueta: `Name = test instance`
+- Grupo de seguridad: “Linux Instance SG”
+
+![Launch instance](https://awsrestart2.s3.eu-central-1.amazonaws.com/Lab262-AWS/Lauch+Instance.png)
+
+### 4. Verificar IPs
+
+- Esperar estado: `running (2/2 checks passed)`
+- Ir a pestaña **Networking**
+- Anotar IP pública y privada
+- IP publica 54.187.11.87
+- IP privada 172.31.35.197
+
+![IP pública y privada](https://awsrestart2.s3.eu-central-1.amazonaws.com/Lab262-AWS/IP-PRIV-Pub.png)
+
+### 5. Detener y reiniciar instancia
+
+- Navegar a `Instance state > Stop instance`
+- Confirmar estado `stopped`
+- Iniciar de nuevo: `Instance state > Start instance`
+- Verificar nuevamente las direcciones IP
+
+---
+
+### 🔍 Observación
+
+- **IP pública cambió** → La instancia usa **IP dinámica**
+- **IP privada no cambió** → Se mantiene constante dentro de la VPC
+
+---
+
+## 🛠️ Tarea 2: Asignar Elastic IP
+
+### 1. Ir a Elastic IPs
+
+Desde EC2 > Network & Security > Elastic IPs
+
+### 2. Asignar nueva EIP
+
+- Presionar **Allocate Elastic IP address**
+- Aceptar valores por defecto
+
+![Asignar EIP](https://awsrestart2.s3.eu-central-1.amazonaws.com/Lab262-AWS/ip-asig1.png)
+
+### 3. Asociar EIP
+
+- Marcar nueva EIP
+- Actions > **Associate Elastic IP address**
+- Recurso: **Instance**
+- Seleccionar: `test instance`
+- IP privada: dejar casilla vacía (se selecciona automáticamente)
+- Presionar **Associate**
+
+![Asociar EIP a la instancia EC2-Test](https://awsrestart2.s3.eu-central-1.amazonaws.com/Lab262-AWS/Asignar+EIP-STATIC.png)
+
+---
+
+## 🔁 Verificación
+
+- Ir a pestaña **Networking** de la instancia
+- Verificar que la **IP pública es la EIP**
+- Detener e iniciar la instancia nuevamente
+- Comprobar que **la IP pública permanece igual**
+
+![Asociar EIP a la instancia EC2 -Cliente](https://awsrestart2.s3.eu-central-1.amazonaws.com/Lab262-AWS/Verificacion-cliente-EIP.png)
+---
+
+## 💬 Comunicación con el cliente
+
+**Q:Bob?**  
+> “¿Por qué cambia mi IP pública al reiniciar la instancia?”
+
+**A:Boris-Cloud:**  
+> “La instancia estaba utilizando una IP pública dinámica. Le hemos asignado una Elastic IP (EIP), que es una dirección pública persistente. Ahora su IP no cambiará más al detener o reiniciar la instancia.”
+
+---
+
+## ✅ Conclusión
+
+- Las IP públicas asignadas automáticamente son **dinámicas**.
+- La IP privada de una instancia EC2 **no cambia** al reiniciar.
+- Una **Elastic IP** garantiza persistencia de dirección pública.
+- **Problema resuelto correctamente.**
+
+---
+
+## 📚 Recursos útiles
+
+- [AWS EC2 Addressing](https://docs.aws.amazon.com/es_es/AWSEC2/latest/UserGuide/using-instance-addressing.html)
+- [Elastic IPs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
+
+---
+**Autor del soporte**: Boris Cloud – Cloud Support Engineer

@@ -1,1 +1,47 @@
-/* css styles */
+body {
+  background-color: #0a0f24;
+  color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.minimal-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  text-align: center;
+  padding-top: 60px;
+}
+
+.minimal-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.minimal-subtitle {
+  font-size: 1.125rem;
+  color: #bbbbbb;
+  margin-bottom: 2rem;
+}
+
+.minimal-button {
+  background-color: #00d1ff;
+  color: #000;
+  padding: 0.6rem 1.5rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease-in-out;
+  box-shadow: 0 0 10px #00d1ff50;
+}
+
+.minimal-button:hover {
+  background-color: #00b2e1;
+}
+
+

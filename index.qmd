@@ -1,7 +1,15 @@
 ---
-title: "AWS-Re_Start"
+title: "AWS Re/Start"
+format: html
+page-layout: full
+page-title: false
+theme: cosmo
+css: styles.css
 ---
 
-This is a Quarto website.
+<div class="minimal-hero">
+  <h1 class="minimal-title">AWS Re/Start 🚀</h1>
+  <p class="minimal-subtitle">Tu viaje a la nube empieza aquí.</p>
+  <a href="#fundamentos" class="minimal-button">Empezar</a>
+</div>
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.

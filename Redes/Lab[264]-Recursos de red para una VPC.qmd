@@ -1,0 +1,124 @@
+# 🧪 Lab 264 - Creación de Recursos de Red en una VPC
+
+---
+
+## 🎯 Objetivos
+
+- Resumir la situación del cliente.
+- Crear los recursos de red necesarios: VPC, IGW, tabla de enrutamiento, grupo de seguridad, NACL, subred y una instancia EC2.
+- Probar conectividad con ping desde la instancia EC2 hacia Internet.
+
+---
+
+## 🕐 Duración
+
+Tiempo estimado: 60 minutos
+
+---
+
+## 📧 Ticket del Cliente
+
+"Hola, equipo de soporte en la nube,  
+Pensé que había configurado bien mi VPC, pero no puedo hacer ni un simple `ping`. ¿Pueden ayudarme a configurar todo correctamente para tener conexión a Internet?"
+
+— Brock, Propietario de startup
+
+---
+
+## 📌 Requisitos técnicos del cliente
+
+- **VPC CIDR**: `192.168.0.0/18`
+- **Subred pública CIDR**: `192.168.1.0/26`
+- **Recursos necesarios**:
+  - Internet Gateway (IGW)
+  - Tabla de enrutamiento
+  - Grupo de seguridad
+  - ACL de red
+  - Instancia EC2 con IP pública
+
+![Diagrama del cliente](213123)
+---
+
+## ✅ Tarea 1: Crear Infraestructura de Red
+
+1. **Crear la VPC**
+   - Nombre: `Test VPC`
+   - IPv4 CIDR block: `192.168.0.0/18`
+   - ![VPC creada](URL_VPC)
+
+2. **Crear la Subred**
+   - Nombre: `Public subnet`
+   - CIDR block: `192.168.1.0/26`
+   - Zona de disponibilidad: sin preferencia  
+   - ![Subred pública](URL_SUBNET)
+
+3. **Crear Tabla de Enrutamiento**
+   - Nombre: `Public route table`
+   - Asociar a `Test VPC`  
+   - ![Tabla de enrutamiento](URL_ROUTE_TABLE)
+
+4. **Crear y Adjuntar la IGW**
+   - Nombre: `IGW test VPC`
+   - Adjuntar a `Test VPC`  
+   - ![IGW creada](URL_IGW)  
+   - ![Adjuntar IGW](URL_ATTACH_IGW)
+
+5. **Agregar Ruta en Tabla de Enrutamiento**
+   - Destination: `0.0.0.0/0`
+   - Target: IGW test VPC  
+   - ![Ruta añadida](URL_ADD_ROUTE)
+
+6. **Asociar la Subred a la Tabla de Enrutamiento**  
+   - ![Subred asociada](URL_ASSOC_SUBNET)
+
+---
+
+## 🧱 Tarea 2: Crear Seguridad de Red
+
+1. **Crear ACLs**
+   - Inbound rule: permitir todo (`regla 100`, `0.0.0.0/0`, `todos los protocolos`)
+   - Outbound rule: permitir todo (`regla 100`, `0.0.0.0/0`, `todos los protocolos`)  
+   - ![NACL entrada](URL_NACL_IN)  
+   - ![NACL salida](URL_NACL_OUT)
+
+2. **Crear Grupo de Seguridad**
+   - Nombre: `public security group`
+   - Descripción: Permite acceso público
+   - Reglas de entrada:
+     - SSH (22) desde `0.0.0.0/0`
+     - HTTP (80) desde `0.0.0.0/0`
+     - HTTPS (443) desde `0.0.0.0/0`
+   - Reglas de salida: permitir todo tráfico  
+   - ![Grupo seguridad](URL_SECURITY_GROUP)
+
+---
+
+## 💻 Tarea 3: Lanzar y Acceder a Instancia EC2
+
+1. **Lanzar Instancia EC2**
+   - AMI: `Amazon Linux 2`
+   - Tipo: `t3.micro`
+   - Red: `Test VPC`
+   - Subred: `Public subnet`
+   - IP pública: Auto-asignada
+   - Grupo de Seguridad: `public security group`
+
+2. **Acceso por SSH**
+   - A través de PuTTY (Windows) o terminal (Linux/Mac)
+   - Usuario: `ec2-user`
+   - Validar conectividad con:
+     ```bash
+     ping google.com
+     ```
+
+---
+
+## ✅ Conclusión
+
+La infraestructura de red se configuró correctamente dentro de la VPC, permitiendo que la instancia EC2 lanzada en una subred pública pueda acceder a Internet. Se validó la conectividad con éxito usando `ping`, cumpliendo así con el requerimiento del cliente. Este laboratorio refuerza el conocimiento práctico de los componentes esenciales de red en AWS.
+
+---
+
+**🖋️ Firma:**  
+*Boris Ivan Huaraichi Pérez*  
+*AWS Cloud Engineer - Lab 264*
