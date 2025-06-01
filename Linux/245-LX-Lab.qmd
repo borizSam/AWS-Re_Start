@@ -1,0 +1,94 @@
+# 🛠️ Laboratorio: Administración de Archivos de Registro
+
+> **Duración estimada:** 5–10 minutos  
+> **Prerrequisitos:** Conexión a EC2 y conocimientos básicos de comandos Linux.
+
+## 🎯 Objetivo
+
+- Revisar `lastlog` y registros de seguridad en Linux.
+
+## 🔐 Acceso al entorno
+
+1. Haz clic en **Start Lab**.
+2. Espera a que el estado indique: `Lab status: ready`.
+3. Cierra el panel y accede a la **AWS Management Console**.
+
+## 🧩 Tarea 1: Conexión a EC2
+
+### Usuarios Windows
+
+- Descarga `.ppk` desde **Details > Download PPK**.
+- Anota la **IP pública**.
+- Conéctate usando **PuTTY**:
+  - Host: `Public IP`
+  - Auth: `labsuser.ppk`
+  - Usuario: `ec2-user`
+
+### Usuarios macOS / Linux
+
+```bash
+cd ~/Downloads
+chmod 400 labsuser.pem
+ssh -i labsuser.pem ec2-user@<public-ip>
+```
+
+## 📁 Tarea 2: Revisar archivos de registro
+
+```bash
+# Verifica el directorio actual
+pwd
+
+# Cambiar a la carpeta companyA si no estás en ella
+cd companyA
+```
+
+### 🔍 Revisar archivo seguro de ejemplo
+
+```bash
+sudo less /tmp/log/secure
+```
+
+> Usa `q` para salir del visor `less`.
+
+**Nota:** Este archivo es una copia de muestra. El archivo real está en `/var/log/secure`.
+
+### 🔍 Revisar inicios de sesión con lastlog
+
+```bash
+sudo lastlog
+```
+
+> Este comando muestra el último inicio de sesión de todos los usuarios del sistema.
+
+## 🎯 Desafío adicional
+
+- ¿Qué tipo de información útil puede obtener tu empresa de estos registros?
+  - ¿Intentos fallidos de acceso?
+  - ¿Usuarios que nunca iniciaron sesión?
+  - ¿Fechas y horas de actividad clave?
+
+## ✅ Finalización del laboratorio
+
+Haz clic en **End Lab**, confirma con **Yes** y cierra el mensaje de eliminación.
+
+## 📘 Conceptos clave
+
+- **`/var/log/secure`**: Registro de seguridad del sistema.
+- **`lastlog`**: Herramienta para ver los últimos accesos de usuarios.
+- **`less`**: Visor de texto interactivo.
+- **EC2 t3.micro**: Instancia ligera para pruebas básicas.
+
+## ⌨️ Comandos clave
+
+```bash
+# Conexión
+ssh -i labsuser.pem ec2-user@<public-ip>
+
+# Navegación
+pwd
+cd companyA
+
+# Revisión de logs
+sudo less /tmp/log/secure
+sudo lastlog
+```

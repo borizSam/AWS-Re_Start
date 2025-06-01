@@ -1,0 +1,87 @@
+---
+title: "Línea de comandos de Linux"
+format: html
+---
+
+## 🔐 Conéctate con SSH
+
+![](img/conexion-ssh.png)
+
+```bash
+ssh -i labsuser.pem ec2-user@<public-ip>
+```
+
+---
+
+## 💻 Tarea 2: Ejecutar comandos del sistema
+
+![](img/comandos-sistema.png)
+
+Comandos útiles para obtener información básica del sistema:
+
+```bash
+whoami                           # Usuario actual
+hostname -s                      # Nombre corto del host
+uptime -p                        # Tiempo de actividad
+who -H -a                        # Sesión de usuarios y detalles
+TZ=America/New_York date         # Fecha/hora en Nueva York
+TZ=America/Los_Angeles date      # Fecha/hora en Los Ángeles
+cal -j                           # Calendario juliano
+cal -s                           # Vista alternativa del calendario
+id ec2-user                      # UID y GID del usuario
+```
+
+📌 **Nota**: Puedes usar `man cal` para ver más opciones del calendario.
+
+---
+
+## 🔁 Tarea 3: Historial y búsqueda en Bash
+
+![](img/historial-bash.png)
+
+Visualizar y reutilizar comandos anteriores:
+
+```bash
+history             # Ver historial completo
+```
+
+Presiona `CTRL + R` para búsqueda inversa y escribe parte del comando (por ejemplo, `TZ`) para encontrar un comando previo.
+
+También puedes usar:
+
+```bash
+!!                  # Ejecuta el último comando usado
+```
+
+---
+
+## 🧠 Conceptos clave
+
+- `TZ=Region` permite ver la hora de otras zonas.
+- `cal -j` muestra las fechas en formato juliano.
+- `CTRL + R` busca comandos anteriores (útil para no repetir largos comandos).
+- `!!` ejecuta el último comando (shortcut muy útil).
+
+---
+
+## 📌 Información sobre EC2
+
+![](img/instancia-ec2.png)
+
+- Este laboratorio usa una instancia `t3.micro`.
+- Recurso económico con **1 vCPU y 1 GiB RAM**.
+- Ideal para propósitos educativos y tareas básicas.
+
+---
+
+## 📚 Recursos adicionales
+
+- [Tipos de instancia EC2](https://aws.amazon.com/ec2/instance-types/)
+- [Amazon Machine Image (AMI)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html)
+- [Amazon EC2 Service Quotas](https://docs.aws.amazon.com/general/latest/gr/ec2-service.html)
+- [AWS Training y Certificación](https://aws.amazon.com/training/)
+
+---
+
+© 2022 Amazon Web Services, Inc. Todos los derechos reservados.
+

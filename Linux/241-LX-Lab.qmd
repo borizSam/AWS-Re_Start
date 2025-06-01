@@ -1,0 +1,142 @@
+# 🛠️ Laboratorio: Administración de Servicios - Monitoreo en Amazon Linux 2
+
+> **Duración estimada:** 30 minutos  
+> **Prerrequisitos:** Haber completado laboratorios previos y conocer el uso básico de EC2, SSH y la consola AWS.
+
+## 🎯 Objetivos
+
+- Verificar el estado del servicio **httpd** en una instancia EC2.
+- Probar conectividad HTTP vía IP pública.
+- Monitorear la instancia EC2 utilizando:
+  - El comando `top` de Linux.
+  - El servicio **AWS CloudWatch**.
+
+## 🔐 Acceso al laboratorio
+
+1. Haz clic en **Start Lab**.
+2. Espera a que el estado indique: `Lab status: ready`.
+3. Cierra el panel y accede a la **AWS Management Console**.
+
+## 🧩 Tarea 1: Conexión a EC2 vía SSH
+
+### 🔷 Usuarios Windows
+
+- Descarga el archivo `.ppk` desde **Details > Download PPK**.
+- Anota la **IP pública** de la instancia.
+- Usa **PuTTY** con esta configuración:
+  - Host: `Public IP`
+  - Auth: cargar archivo `labsuser.ppk`
+  - Usuario: `ec2-user`
+  - Keepalives: `30 segundos`
+
+### 🔷 Usuarios macOS / Linux
+
+```bash
+# 1. Ir al directorio de descarga
+cd ~/Downloads
+
+# 2. Cambiar permisos
+chmod 400 labsuser.pem
+
+# 3. Conectarse vía SSH
+ssh -i labsuser.pem ec2-user@<public-ip>
+```
+
+## ⚙️ Tarea 2: Verificar y controlar el servicio HTTPD
+
+### 🔸 Ver estado del servicio
+
+```bash
+sudo systemctl status httpd.service
+```
+
+**Resultado esperado:** `inactive (dead)`
+
+### 🔸 Iniciar el servicio
+
+```bash
+sudo systemctl start httpd.service
+```
+
+Verifica nuevamente:
+
+```bash
+sudo systemctl status httpd.service
+```
+
+**Resultado esperado:** `active (running)`
+
+### 🔸 Probar el servidor web
+
+En el navegador:  
+`http://<IP-pública>`
+
+Deberías ver la página de prueba de Apache.
+
+### 🔸 Detener el servicio
+
+```bash
+sudo systemctl stop httpd.service
+```
+
+## 📊 Tarea 3: Monitoreo de la instancia EC2
+
+### 🔸 Ver procesos y carga actual
+
+```bash
+top
+```
+
+Pulsa `Q` para salir.
+
+### 🔸 Simular carga en CPU
+
+```bash
+./stress.sh & top
+```
+
+- Observa el alto uso de CPU en tiempo real.
+
+### 🔸 Acceder a AWS CloudWatch
+
+1. En la consola AWS, busca `CloudWatch`.
+2. Ve a: **Dashboards > Automatic dashboards > EC2**
+3. Observa métricas:
+   - Utilización de CPU
+   - Lecturas/escrituras de disco
+
+### 🔸 Esperar 5 minutos
+
+> AWS CloudWatch actualiza cada 5 minutos.  
+Revisa que la CPU haya bajado luego del script.
+
+## 🏁 Finalización
+
+Haz clic en **End Lab** y confirma con **Yes**.  
+Cierra el mensaje de eliminación.
+
+## 📘 Conceptos Core
+
+- **EC2 (Elastic Compute Cloud):** Servicio de cómputo de AWS.
+- **httpd:** Servidor web Apache.
+- **systemctl:** Herramienta de control de servicios en Linux.
+- **top:** Monitor en tiempo real de procesos.
+- **CloudWatch:** Herramienta de monitoreo en AWS.
+
+## ⌨️ Comandos clave (keyboardas)
+
+```bash
+# Conexión SSH
+ssh -i labsuser.pem ec2-user@<public-ip>
+
+# Servicio httpd
+sudo systemctl status httpd.service
+sudo systemctl start httpd.service
+sudo systemctl stop httpd.service
+
+# Monitor de procesos
+top
+
+# Carga artificial de CPU
+./stress.sh & top
+```

@@ -1,0 +1,109 @@
+# 🛠️ Laboratorio: El Shell Bash
+
+> **Duración estimada:** 30 minutos  
+> **Prerrequisitos:** Familiaridad con terminal Bash y comandos Linux básicos.
+
+## 🎯 Objetivos
+
+- Crear un alias para realizar copias de seguridad.
+- Agregar un nuevo directorio a la variable de entorno PATH.
+
+## 🔐 Acceso al entorno
+
+1. Haz clic en **Start Lab**.
+2. Espera `Lab status: ready`.
+3. Abre la **AWS Management Console**.
+
+## 🧩 Tarea 1: Conexión a EC2
+
+### Windows (PuTTY)
+
+- Descargar `.ppk` desde **Details > Download PPK**.
+- Conectar con:
+  - Host: `Public IP`
+  - Auth: `labsuser.ppk`
+  - Usuario: `ec2-user`
+
+### macOS / Linux
+
+```bash
+cd ~/Downloads
+chmod 400 labsuser.pem
+ssh -i labsuser.pem ec2-user@<public-ip>
+```
+
+## 📁 Tarea 2: Crear un alias para copia de seguridad
+
+```bash
+# Confirmar ubicación
+pwd
+
+# Crear alias
+alias backup='tar -cvzf'
+
+# Usar alias para respaldar carpeta
+backup backup_companyA.tar.gz CompanyA
+
+# Verificar archivo creado
+ls
+```
+
+## 🛤️ Tarea 3: Actualizar la variable PATH
+
+```bash
+# Ir al directorio del script
+cd /home/ec2-user/CompanyA/bin
+
+# Ejecutar script directamente
+./hello.sh
+
+# Regresar al directorio anterior
+cd ..
+
+# Ejecutar script desde ruta relativa
+./bin/hello.sh
+
+# Intentar ejecutar directamente (fallará)
+hello.sh
+
+# Mostrar PATH actual
+echo $PATH
+
+# Agregar bin al PATH
+PATH=$PATH:/home/ec2-user/CompanyA/bin
+
+# Ejecutar script desde cualquier ubicación
+hello.sh
+```
+
+## ✅ Finalización
+
+Selecciona **End Lab**, confirma con **Yes** y cierra el mensaje final.
+
+## 📘 Conceptos clave
+
+- **alias**: Crea atajos para comandos complejos.
+- **tar -cvzf**: Comprime archivos y carpetas.
+- **PATH**: Lista de rutas donde Bash busca ejecutables.
+- **.sh scripts**: Archivos ejecutables en Bash.
+
+## ⌨️ Comandos clave
+
+```bash
+# Crear alias
+alias backup='tar -cvzf'
+
+# Usar alias
+backup backup_companyA.tar.gz CompanyA
+
+# Verificar contenido
+ls
+
+# Navegación y ejecución
+cd /home/ec2-user/CompanyA/bin
+./hello.sh
+hello.sh
+
+# Actualizar PATH
+PATH=$PATH:/home/ec2-user/CompanyA/bin
+```

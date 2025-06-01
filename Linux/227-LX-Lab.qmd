@@ -1,0 +1,124 @@
+# 🧪 Lab - Línea de comandos de Linux
+
+## 📋 Aviso
+
+Todos los laboratorios se basan en el material didáctico y la información de laboratorios anteriores.
+
+---
+
+## 🎯 Objetivos
+
+En esta sesión de laboratorio, harás lo siguiente:
+
+- Ejecutar comandos para aprender sobre tu sistema y sesión actual.
+- Buscar y ejecutar comandos Bash anteriores.
+
+---
+
+## 🕐 Duración
+
+Tiempo estimado: **30 minutos**.
+
+---
+
+## 🚫 Restricciones del servicio de AWS
+
+En este entorno de laboratorio, el acceso está restringido a servicios necesarios. Puede que encuentres errores si accedes a otros servicios o acciones no descritas.
+
+---
+
+## 🌐 Acceso a AWS Management Console
+
+1. En la parte superior de estas instrucciones, selecciona **Start Lab**.
+2. Espera a que el estado del laboratorio sea **Lab status: ready**.
+3. Cierra el panel y elige **AWS** para abrir la consola en una nueva pestaña.
+4. Si se bloquea la ventana emergente, permite las pop-ups del navegador.
+
+💡 *Consejo:* organiza las pestañas para poder seguir el laboratorio fácilmente.
+
+---
+
+## ✅ Tarea 1: Conectarse a una instancia EC2 de Amazon Linux mediante SSH
+
+### 🔹 Usuarios de **Windows**
+
+1. En el panel `Details`, selecciona **Download PPK** y guarda el archivo `labsuser.ppk`.
+2. Anota la dirección **Public IP**.
+3. Descarga e instala **PuTTY**.
+4. Abre `putty.exe` y configura:
+   - **Connection → Seconds between keepalives** = `30`
+   - **Session → Host Name** = `<Public IP>`
+   - **Auth** → selecciona el archivo `.ppk`
+5. Haz clic en **Open** y conecta como `ec2-user`.
+
+---
+
+### 🔸 Usuarios de **macOS / Linux**
+
+1. En `Details`, descarga el archivo **labsuser.pem**.
+2. Anota la dirección **Public IP**.
+3. Abre terminal y ejecuta:
+
+```bash
+cd ~/Downloads
+chmod 400 labsuser.pem
+ssh -i labsuser.pem ec2-user@<public-ip>
+```
+
+---
+
+## 💻 Tarea 2: Ejecutar comandos del sistema
+
+Comandos útiles para conocer tu entorno:
+
+```bash
+whoami                      # Usuario actual
+hostname -s                 # Nombre corto del host
+uptime -p                   # Tiempo de actividad
+who -H -a                   # Sesión de usuarios y detalles
+TZ=America/New_York date    # Hora en Nueva York
+TZ=America/Los_Angeles date # Hora en Los Ángeles
+cal -j                      # Calendario juliano
+cal -s                      # Vista alternativa del calendario
+id ec2-user                 # UID y GID del usuario
+```
+
+📌 **Nota**: Usa `man cal` para explorar más opciones del comando `cal`.
+
+---
+
+## 🔁 Tarea 3: Historial y búsqueda en Bash
+
+Visualiza y reutiliza comandos anteriores:
+
+```bash
+history    # Ver historial completo
+!!         # Ejecuta el último comando usado
+```
+
+También puedes usar:
+
+- `CTRL + R` para búsqueda inversa en el historial de comandos.
+- Escribe una palabra clave (ej. `TZ`) para encontrar comandos anteriores rápidamente.
+
+---
+
+## 📌 Información sobre EC2
+
+![Instancia EC2](img/instancia-ec2.png)
+
+- Este laboratorio usa una instancia `t3.micro`.
+- Recurso económico con **1 vCPU y 1 GiB RAM**.
+- Ideal para propósitos educativos y tareas básicas.
+
+---
+
+## 📚 Recursos adicionales
+
+- [Tipos de instancia EC2](https://docs.aws.amazon.com/es_es/AWSEC2/latest/UserGuide/instance-types.html)
+- [Amazon Machine Image (AMI)](https://docs.aws.amazon.com/es_es/AWSEC2/latest/UserGuide/AMIs.html)
+- [Amazon EC2 Service Quotas](https://docs.aws.amazon.com/es_es/AWSEC2/latest/UserGuide/ec2-resource-limits.html)
+- [AWS Training y Certificación](https://aws.amazon.com/training/)
+
+---
+

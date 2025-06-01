@@ -1,0 +1,156 @@
+# 📝 Laboratorio: Edición de Archivos en Amazon EC2 (Linux)
+
+## 🎯 Objetivos
+
+- Utilizar el archivo ejecutable `vimtutor` para completar tareas básicas en Vim  
+- Copiar y editar contenido desde `/var/log/secure` usando `nano`
+
+## 🕒 Duración estimada
+
+1 hora
+
+---
+
+## ✅ Tareas paso a paso
+
+### 🔗 Tarea 1: Conexión a la instancia EC2
+
+📸 **Captura sugerida:** Conexión SSH exitosa – [enlace aquí](#)
+
+```bash
+chmod 400 labsuser.pem
+ssh -i labsuser.pem ec2-user@<public-ip>
+```
+
+---
+
+### 📘 Tarea 2: Ejecutar el tutorial de Vim
+
+📸 **Captura sugerida:** Ejecución de `vimtutor` – [enlace aquí](#)
+
+```bash
+vimtutor
+```
+
+Si no está instalado:
+
+```bash
+sudo yum install vim
+```
+
+✅ Completa las lecciones 1 a 3.  
+Para salir del tutor:
+
+```bash
+:q!
+```
+
+---
+
+### ✍️ Tarea 3: Editar archivo en Vim
+
+📸 **Captura sugerida:** Archivo `helloworld` editado en Vim – [enlace aquí](#)
+
+Crear archivo:
+
+```bash
+vim helloworld
+```
+
+En modo inserción (`i`), escribe:
+
+```
+Hello World!
+This is my first file in Linux and I am editing it in Vim!
+```
+
+Salir del modo inserción con `ESC` y guardar:
+
+```bash
+:wq
+```
+
+Editar de nuevo:
+
+```bash
+vim helloworld
+```
+
+Agrega:
+
+```
+I learned how to create a file, edit and save them too!
+```
+
+Salir sin guardar:
+
+```bash
+:q!
+```
+
+Desafío adicional:
+
+- Eliminar línea: `dd`
+- Deshacer acción: `u`
+- Guardar sin salir: `:w`
+
+---
+
+### ✏️ Tarea 4: Editar archivo en nano
+
+📸 **Captura sugerida:** Archivo `cloudworld` abierto y editado con Nano – [enlace aquí](#)
+
+Crear archivo:
+
+```bash
+nano cloudworld
+```
+
+Escribe directamente:
+
+```
+We are using nano this time! We can simply start typing! No insert mode needed.
+```
+
+Guardar: `CTRL + O`  
+Confirmar nombre y salir: `CTRL + X`
+
+Verificar archivo:
+
+```bash
+nano cloudworld
+```
+
+---
+
+## ✅ Finalizar laboratorio
+
+- Cierra la sesión SSH
+- Haz clic en **End Lab** en la plataforma
+- Confirma para finalizar el entorno
+
+---
+
+## 📚 Recursos adicionales
+
+- [Tipos de instancias EC2](https://docs.aws.amazon.com/es_es/AWSEC2/latest/UserGuide/instance-types.html)
+- [AWS Training](https://aws.amazon.com/training/)
+
+
+---
+
+
+
+---
+
+## 💡 Tips útiles
+
+- Usa `:q!` para salir de Vim **sin guardar** y `:wq` para guardar y salir.
+- En Vim, puedes navegar con `h`, `j`, `k`, `l` si tu teclado no tiene flechas activas.
+- Nano es ideal para principiantes: no necesitas ingresar en modo de edición.
+- Si accidentalmente abres Vim y te trabas, recuerda: `ESC`, luego `:q!`
+- Usa `CTRL+R` en Bash para buscar comandos anteriores (historial interactivo).
+- Si quieres revisar lo que modificaste con sudo, consulta los logs:  
+  ```bash
+  sudo cat /var/log/secure | tail
+  ```

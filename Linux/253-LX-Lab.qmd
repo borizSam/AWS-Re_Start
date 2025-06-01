@@ -1,0 +1,105 @@
+# 🚀 Laboratorio de Desafío: Scripting de Shell Bash
+
+## 🎯 Objetivo
+
+Escribir un script Bash que genere archivos secuenciales en bloques de 25, asegurando continuidad desde la última ejecución.
+
+---
+
+## 🧠 Conceptos clave que deberías conocer
+
+- Uso de `touch` para crear archivos vacíos
+- Variables en Bash (`$VARIABLE`)
+- Expresiones aritméticas: `$((...))`
+- Comando `ls` y `grep` para manipular salidas
+- Redirección y ejecución condicional
+- Uso de `basename`, `sort`, `tail`, y `cut` para análisis de nombres
+
+---
+
+## 📝 Tarea: Escribir el script
+
+Crea un archivo `generate_files.sh`:
+
+```bash
+touch generate_files.sh
+chmod +x generate_files.sh
+```
+
+Edita con tu editor favorito, por ejemplo:
+
+```bash
+nano generate_files.sh
+```
+
+Agrega lo siguiente:
+
+```bash
+#!/bin/bash
+
+PREFIX="tuNombre"  # Reemplaza 'tuNombre' por tu nombre real
+FILES=($(ls ${PREFIX}[0-9]* 2>/dev/null))
+if [ ${#FILES[@]} -eq 0 ]; then
+  START=1
+else
+  LAST=$(ls ${PREFIX}[0-9]* 2>/dev/null | grep -o '[0-9]\+$' | sort -n | tail -1)
+  START=$((LAST + 1))
+fi
+
+END=$((START + 24))
+
+for i in $(seq $START $END); do
+  touch "${PREFIX}${i}"
+done
+
+echo "📁 Archivos creados de ${PREFIX}${START} a ${PREFIX}${END}"
+```
+
+Guarda y sal (`Ctrl+O`, `Enter`, `Ctrl+X` en nano).
+
+---
+
+## ▶️ Ejecución del script
+
+```bash
+./generate_files.sh
+```
+
+Ejemplo de salida:
+
+```bash
+📁 Archivos creados de tuNombre1 a tuNombre25
+```
+
+Si lo ejecutas otra vez:
+
+```bash
+📁 Archivos creados de tuNombre26 a tuNombre50
+```
+
+---
+
+## 🔍 Verificación
+
+```bash
+ls -lh | grep tuNombre
+```
+
+Debe mostrar los archivos secuenciales generados.
+
+---
+
+## 💡 Tips adicionales
+
+- Puedes poner este script en un cron job para programarlo
+- Agrega validaciones para carpetas específicas
+- Usa `basename` o `awk` para parseo si trabajas con nombres complejos
+
+---
+
+## 📚 Recursos
+
+- [Guía de scripting Bash](https://tldp.org/LDP/Bash-Beginners-Guide/html/)
+- [Cron y automatización](https://opensource.com/article/19/9/getting-started-cron)
+
+---

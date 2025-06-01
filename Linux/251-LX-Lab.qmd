@@ -1,0 +1,90 @@
+# 🧾 Laboratorio: Script Bash para Automatizar Copias de Seguridad
+
+## 🎯 Objetivo
+
+Crear un script de Bash que automatice la creación de un archivo `.tar.gz` de copia de seguridad para la carpeta `CompanyA`.
+
+## 🕒 Duración
+
+25 minutos
+
+---
+
+## ✅ Tareas paso a paso
+
+### 🔗 Tarea 1: Conexión a la instancia EC2
+
+```bash
+chmod 400 labsuser.pem
+ssh -i labsuser.pem ec2-user@<public-ip>
+```
+
+---
+
+### 📝 Tarea 2: Crear y ejecutar el script
+
+Verifica tu ubicación actual:
+
+```bash
+pwd
+# /home/ec2-user
+```
+
+Crea el script y hazlo ejecutable:
+
+```bash
+touch backup.sh
+chmod 755 backup.sh
+```
+
+Edita el archivo:
+
+```bash
+vi backup.sh
+```
+
+Presiona `i` para modo inserción y escribe:
+
+```bash
+#!/bin/bash
+DAY="$(date +%Y_%m_%d_%T_%H_%M)"
+BACKUP="/home/$USER/backups/$DAY-backup-CompanyA.tar.gz"
+tar -czvpzf $BACKUP /home/$USER/CompanyA
+```
+
+Guarda y sal: presiona `ESC`, escribe `:wq`, y presiona `ENTER`.
+
+---
+
+### ▶️ Ejecutar el script
+
+Asegúrate de tener el directorio `backups`:
+
+```bash
+mkdir -p backups
+./backup.sh
+```
+
+Verifica el archivo creado:
+
+```bash
+ls backups/
+# Ejemplo: 2025_06_01_16:59:00_16_59-backup-CompanyA.tar.gz
+```
+
+---
+
+## 💡 Tips útiles
+
+- `chmod 755` permite ejecutar el script
+- `$(date +...)` te da la fecha/hora con formato personalizado
+- `tar -czvpzf` comprime la carpeta y mantiene permisos
+- Puedes usar `cron` para automatizar este script
+
+---
+
+## 📚 Recursos adicionales
+
+- [Comando tar](https://man7.org/linux/man-pages/man1/tar.1.html)
+- [Guía comando date](https://man7.org/linux/man-pages/man1/date.1.html)
+- [AWS Training oficial](https://aws.amazon.com/training/)

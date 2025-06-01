@@ -22,7 +22,36 @@ website:
           - text: "Conceptos"
             file: Linux/conceptos.qmd
           - text: "Laboratorios"
-            file: Linux/laboratorios.qmd
+          - text: "225 - Lab - Introducción a Linux Amazon AMI"
+            file: Linux/255-LX-Lab.qmd
+          - text: "227 - [LX] - Línea de comandos de Linux"
+            file: Linux/227-LX-Lab.qmd
+          - text: "229 - [LX] - Usuarios y grupos"
+            file: Linux/229-LX-Lab.qmd
+          - text: "231 - [LX] - Edición de archivos"
+            file: Linux/231-LX-Lab.qmd
+          - text: "233 - [LX] - Sistema de archivos Linux"
+            file: Linux/233-LX-Lab.qmd
+          - text: "235 - [LX] - Trabajo con archivos"
+            file: Linux/235-LX-Lab.qmd
+          - text: "237 - [LX] - Permisos de archivos"
+            file: Linux/237-LX-Lab.qmd
+          - text: "239 - [LX] - Procesos administrativos"
+            file: Linux/239-LX-Lab.qmd
+          - text: "241 - [LX] - Administración de servicios"
+            file: Linux/241-LX-Lab.qmd
+          - text: "243 - [LX] - Administración de software"
+            file: Linux/243-LX-Lab.qmd
+          - text: "245 - [LX] - Archivos de registro"
+            file: Linux/245-LX-Lab.qmd
+          - text: "247 - [LX] - Trabajo con comandos"
+            file: Linux/247-LX-Lab.qmd
+          - text: "249 - [LX] - El Bash Shell"
+            file: Linux/249-LX-Lab.qmd
+          - text: "251 - [LX] - Scripts de Bash Shell"
+            file: Linux/251-LX-Lab.qmd
+          - text: "253 - [LX] - Reto: Scripting Shell"
+            file: Linux/253-LX-Lab.qmd
 
       - text: "Redes"
         menu:

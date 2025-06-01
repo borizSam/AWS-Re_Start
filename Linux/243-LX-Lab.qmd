@@ -1,0 +1,172 @@
+# 🛠️ Laboratorio: Administración de Software en Amazon Linux 2
+
+> **Duración estimada:** 35 minutos  
+> **Prerrequisitos:** Experiencia básica con EC2 y terminal Linux.
+
+## 🎯 Objetivos
+
+- Actualizar la máquina Linux con el administrador de paquetes.
+- Revertir un paquete actualizado.
+- Instalar y configurar AWS CLI.
+
+## 🔐 Acceso al entorno
+
+1. Haz clic en **Start Lab**.
+2. Espera a que el estado indique: `Lab status: ready`.
+3. Cierra el panel y accede a la **AWS Management Console**.
+
+## 🧩 Tarea 1: Conectarse a EC2 vía SSH
+
+### Usuarios Windows (PuTTY)
+
+- Descarga `.ppk` desde **Details > Download PPK**.
+- Anota la **IP pública**.
+- En PuTTY:
+  - Host: `Public IP`
+  - Auth: archivo `labsuser.ppk`
+  - Usuario: `ec2-user`
+  - Keepalives: `30 segundos`
+
+### Usuarios macOS / Linux
+
+```bash
+cd ~/Downloads
+chmod 400 labsuser.pem
+ssh -i labsuser.pem ec2-user@<public-ip>
+```
+
+## 🧱 Tarea 2: Actualizar el sistema
+
+```bash
+# Verifica ubicación
+pwd
+
+# Cambia a la carpeta correcta si es necesario
+cd companyA
+
+# Revisar actualizaciones
+sudo yum -y check-update
+
+# Aplicar actualizaciones de seguridad
+sudo yum update --security
+
+# Actualizar todos los paquetes
+sudo yum -y upgrade
+
+# Instalar un paquete para probar (httpd)
+sudo yum install httpd -y
+```
+
+## 🔁 Tarea 3: Revertir un paquete
+
+```bash
+# Ver historial
+sudo yum history list
+
+# Ver detalles de una transacción específica
+sudo yum history info <ID>
+
+# Revertir una transacción
+sudo yum -y history undo <ID>
+```
+
+## 📦 Tarea 4: Instalar AWS CLI
+
+```bash
+# Verificar Python
+python3 --version
+
+# Verificar pip
+pip3 --version
+
+# Descargar AWS CLI
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+
+# Descomprimir
+unzip awscliv2.zip
+
+# Instalar
+sudo ./aws/install
+
+# Verificar instalación
+aws help
+```
+
+## ⚙️ Tarea 5: Configurar AWS CLI
+
+```bash
+# Iniciar configuración
+aws configure
+```
+
+> Cuando se solicite:
+- Access Key ID: (dejar en blanco)
+- Secret Access Key: (dejar en blanco)
+- Región por defecto: `us-west-2`
+- Formato de salida: `json`
+
+### Configurar credenciales manualmente
+
+```bash
+sudo nano ~/.aws/credentials
+```
+
+Ejemplo de contenido:
+
+```
+[default]
+aws_access_key_id=SU_CLAVE
+aws_secret_access_key=TU_SECRET
+aws_session_token=TU_TOKEN
+```
+
+Guardar con `Ctrl + O`, salir con `Ctrl + X`.
+
+### Verificar tipo de instancia
+
+```bash
+aws ec2 describe-instance-attribute --instance-id <ID> --attribute instanceType
+```
+
+**Salida esperada:**
+
+```json
+{
+  "InstanceId": "i-1234567890abcdefg",
+  "InstanceType": {
+    "Value": "t3.micro"
+  }
+}
+```
+
+## ✅ Laboratorio Completado
+
+Finaliza haciendo clic en **End Lab**, confirma con **Yes** y cierra el mensaje final.
+
+## 📘 Conceptos clave
+
+- **yum:** Gestor de paquetes en Amazon Linux.
+- **AWS CLI:** Herramienta para interactuar con AWS desde la terminal.
+- **Reversión de paquetes:** Capacidad de deshacer actualizaciones con historial de yum.
+- **EC2 t3.micro:** Instancia pequeña para cargas ligeras.
+
+## ⌨️ Comandos clave
+
+```bash
+# Conexión SSH
+ssh -i labsuser.pem ec2-user@<public-ip>
+
+# yum
+sudo yum -y check-update
+sudo yum update --security
+sudo yum -y upgrade
+sudo yum install httpd -y
+sudo yum history list
+sudo yum -y history undo <ID>
+
+# AWS CLI
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+aws configure
+```

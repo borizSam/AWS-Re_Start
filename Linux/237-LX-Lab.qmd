@@ -1,0 +1,121 @@
+# 🛠️ Laboratorio: Administración de Permisos de Archivos
+
+> **Duración estimada:** 35 minutos  
+> **Prerrequisitos:** Conocimientos básicos de comandos Linux y estructura de archivos.
+
+## 🎯 Objetivos
+
+- Ajustar permisos de carpetas y archivos según estructura de grupo.
+- Modificar permisos de archivos para usuarios.
+- Aplicar modos simbólicos y absolutos con `chmod`.
+
+## 🔐 Acceso al entorno
+
+1. Haz clic en **Start Lab**.
+2. Espera a que el estado indique: `Lab status: ready`.
+3. Accede a la **AWS Management Console**.
+
+## 🧩 Tarea 1: Conexión a EC2 vía SSH
+
+### Windows (PuTTY)
+
+- Descargar `.ppk` desde **Details > Download PPK**.
+- Anotar **IP pública**.
+- Usar PuTTY con:
+  - Host: `Public IP`
+  - Auth: archivo `labsuser.ppk`
+  - Usuario: `ec2-user`
+
+### macOS / Linux
+
+```bash
+cd ~/Downloads
+chmod 400 labsuser.pem
+ssh -i labsuser.pem ec2-user@<public-ip>
+```
+
+## 📁 Tarea 2: Cambiar propiedad de carpetas
+
+```bash
+# Verificar ubicación
+pwd
+cd companyA
+
+# Cambiar propiedad de companyA
+sudo chown -R emcbath:Personnel /home/ec2-user/companyA
+
+# Cambiar propiedad de HR
+sudo chown -R ctee:HR HR
+
+# Cambiar propiedad de Finance
+sudo chown -R dolberdi:Finance HR/Finance
+
+# Verificar cambios
+ls -laR
+```
+
+## 🧾 Tarea 3: Cambiar modos de permisos
+
+```bash
+# Verificar ubicación
+pwd
+
+# Crear archivo y usar modo simbólico
+sudo vi symbolic_mode_file
+# (Guardar con :wq)
+sudo chmod g+w symbolic_mode_file
+
+# Crear archivo y usar modo absoluto
+sudo vi absolute_mode_file
+# (Guardar con :wq)
+sudo chmod 764 absolute_mode_file
+
+# Verificar permisos
+ls -l
+```
+
+## 🗂️ Tarea 4: Asignar permisos a carpetas
+
+```bash
+# Verificar ubicación
+pwd
+
+# Cambiar propiedad Shipping
+sudo chown -R eleonard:Shipping Shipping
+
+# Cambiar propiedad Sales
+sudo chown -R isteinke:Sales Sales
+
+# Verificar cambios
+ls -laR Shipping
+ls -laR Sales
+```
+
+## ✅ Finalización
+
+Haz clic en **End Lab**, confirma con **Yes** y cierra el panel.
+
+## 📘 Conceptos clave
+
+- **`chown`**: Cambia la propiedad de archivos y carpetas.
+- **`chmod`**: Modifica los permisos de acceso.
+- **Modos simbólico/absoluto**: Formas de especificar permisos.
+- **EC2 t3.micro**: Instancia ligera para pruebas.
+
+## ⌨️ Comandos clave
+
+```bash
+# Conexión SSH
+ssh -i labsuser.pem ec2-user@<public-ip>
+
+# Cambiar propiedad
+sudo chown -R user:group <carpeta>
+
+# Cambiar permisos
+sudo chmod g+w archivo
+sudo chmod 764 archivo
+
+# Ver estructura
+ls -laR
+ls -l
+```

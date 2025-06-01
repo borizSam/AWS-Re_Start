@@ -1,0 +1,119 @@
+# 🛠️ Laboratorio: Trabajo con Comandos en Amazon Linux 2
+
+> **Duración estimada:** 30 minutos  
+> **Prerrequisitos:** Familiaridad básica con línea de comandos en Linux.
+
+## 🎯 Objetivos
+
+- Usar `tee`, `sort`, `cut`, `sed` y el operador `|` (pipe) para manipular archivos y flujos de texto.
+
+## 🔐 Acceso al entorno
+
+1. Haz clic en **Start Lab**.
+2. Espera `Lab status: ready`.
+3. Abre la consola de AWS y accede a la instancia EC2.
+
+## 🧩 Tarea 1: Conexión a EC2
+
+### Windows (PuTTY)
+
+- Descargar `.ppk` desde **Details > Download PPK**
+- Conectar con:
+  - Host: `Public IP`
+  - Usuario: `ec2-user`
+  - Archivo `labsuser.ppk` como Auth
+
+### macOS / Linux
+
+```bash
+cd ~/Downloads
+chmod 400 labsuser.pem
+ssh -i labsuser.pem ec2-user@<public-ip>
+```
+
+## 📄 Tarea 2: Uso del comando tee
+
+```bash
+# Confirmar ubicación
+pwd
+
+# Redirigir salida con tee
+hostname | tee file1.txt
+
+# Confirmar creación
+ls
+```
+
+## 🔃 Tarea 3: Uso de sort y pipe
+
+```bash
+# Crear archivo CSV
+cat > test.csv
+Factory, 1, Paris
+Store, 2, Dubai
+Factory, 3, Brasilia
+Store, 4, Algiers
+Factory, 5, Tokyo
+# Presionar Ctrl+D para salir
+
+# Ordenar alfabéticamente
+sort test.csv
+
+# Buscar "Paris" usando pipe
+grep Paris test.csv
+```
+
+## ✂️ Tarea 4: Uso del comando cut
+
+```bash
+# Crear archivo cities.csv
+cat > cities.csv
+Dallas, Texas
+Seattle, Washington
+Los Angeles, California
+Atlanta, Georgia
+New York, New York
+# Presionar Ctrl+D para salir
+
+# Extraer primer campo
+cut -d ',' -f 1 cities.csv
+```
+
+## 🧪 Desafío adicional: Uso de sed
+
+```bash
+# Reemplazar coma por punto
+sed 's/,/./' cities.csv
+sed 's/,/./' test.csv
+```
+
+## ✅ Finalización
+
+Selecciona **End Lab** y confirma con **Yes**. Cierra el mensaje final.
+
+## 📘 Conceptos clave
+
+- **tee**: Muestra y guarda la salida al mismo tiempo.
+- **sort**: Ordena líneas en archivos.
+- **cut**: Recorta campos de texto.
+- **sed**: Editor de texto por línea.
+- **pipe (|)**: Redirige la salida de un comando como entrada de otro.
+- **EC2 t3.micro**: Instancia ligera para entornos de prueba.
+
+## ⌨️ Comandos clave
+
+```bash
+# Redirección y visualización
+hostname | tee file1.txt
+
+# Orden y búsqueda
+sort test.csv
+grep Paris test.csv
+
+# Recorte
+cut -d ',' -f 1 cities.csv
+
+# Reemplazo
+sed 's/,/./' cities.csv
+sed 's/,/./' test.csv
+```

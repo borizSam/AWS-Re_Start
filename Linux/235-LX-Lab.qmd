@@ -1,0 +1,130 @@
+# 🗃️ Laboratorio: Uso de Archivos en Amazon EC2 (Linux)
+
+## 🎯 Objetivos
+
+- Crear copia de seguridad con `tar`
+- Registrar fecha/hora en un archivo
+- Mover el archivo de respaldo
+
+## 🕒 Duración estimada
+
+30 minutos
+
+---
+
+## ✅ Tareas paso a paso
+
+### 🔗 Tarea 1: Conexión a la instancia EC2
+
+```bash
+chmod 400 labsuser.pem
+ssh -i labsuser.pem ec2-user@<public-ip>
+```
+
+_Salida esperada:_
+```bash
+[ec2-user@ip-... ~]$
+```
+
+---
+
+### 🗂️ Tarea 2: Crear una copia de seguridad
+
+```bash
+pwd
+# Debe mostrar: /home/ec2-user
+
+ls -R CompanyA
+```
+
+_Estructura esperada:_
+```bash
+CompanyA/
+├── Employees/
+│   └── Schedules.csv
+├── Finance/
+│   └── Salary.csv
+├── HR/
+│   ├── Assessments.csv
+│   └── Managers.csv
+├── IA/
+├── Management/
+│   ├── Promotions.csv
+│   └── Sections.csv
+└── SharedFolders.csv
+```
+
+Crear backup:
+
+```bash
+tar -czvpzf backup.CompanyA.tar.gz CompanyA
+ls
+```
+
+_Salida esperada:_
+```bash
+backup.CompanyA.tar.gz  CompanyA/
+```
+
+---
+
+### 📝 Tarea 3: Registrar la copia de seguridad
+
+```bash
+cd /home/ec2-user/CompanyA
+touch SharedFolders/backups.csv
+echo "2025-06-01, 16:59, backup.CompanyA.tar.gz" | sudo tee SharedFolders/backups.csv
+```
+
+Verificar contenido:
+
+```bash
+cat SharedFolders/backups.csv
+```
+
+_Salida esperada:_
+```bash
+2025-06-01, 16:59, backup.CompanyA.tar.gz
+```
+
+---
+
+### 🚚 Tarea 4: Mover el archivo de backup
+
+```bash
+pwd
+# Debe mostrar: /home/ec2-user/CompanyA
+
+mv ../backup.CompanyA.tar.gz IA/
+ls IA/
+```
+
+_Salida esperada:_
+```bash
+backup.CompanyA.tar.gz
+```
+
+---
+
+## ✅ Finalizar laboratorio
+
+- Cierra sesión SSH con `exit`
+- En la consola AWS, selecciona **End Lab**
+- Confirma para cerrar el entorno
+
+---
+
+## 💡 Tips útiles
+
+- `tar -czvpzf` → crea backups comprimidos con permisos
+- `tee` permite guardar en archivo y mostrar por terminal al mismo tiempo
+- `ls -R` → muestra estructura de carpetas recursivamente
+- `mv` y `cp -r` son clave para mover/copiar archivos y carpetas
+
+---
+
+## 📚 Recursos adicionales
+
+- [Comando tar](https://man7.org/linux/man-pages/man1/tar.1.html)
+- [Guía comandos Linux](https://linux.die.net/)
+- [AWS Training oficial](https://aws.amazon.com/training/)

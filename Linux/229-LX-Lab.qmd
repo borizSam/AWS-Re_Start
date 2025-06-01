@@ -1,0 +1,173 @@
+# 🧪 Laboratorio: Administración de Usuarios y Grupos en Amazon EC2 (Linux)
+
+## 🎯 Objetivos
+
+- Crear usuarios nuevos con una contraseña predeterminada  
+- Crear grupos y asignar los usuarios correspondientes  
+- Iniciar sesión con diferentes usuarios y comprobar permisos  
+
+## 🕒 Duración estimada
+
+45 minutos
+
+---
+
+## ✅ Tareas paso a paso
+
+### 🔗 Tarea 1: Conexión a la instancia EC2
+
+Conéctate a tu instancia desde Ubuntu (nativo o WSL):
+
+```bash
+chmod 400 labsuser.pem
+ssh -i labsuser.pem ec2-user@<public-ip>
+```
+
+📸 **Captura SSH exitosa:**  
+[Enlace imagen aquí](#)
+
+---
+
+### 👤 Tarea 2: Crear usuarios
+
+Ejemplo para el primer usuario:
+
+```bash
+sudo useradd arosalez
+sudo passwd arosalez
+```
+
+Usa la contraseña: `P@ssword1234!`
+
+Resto de usuarios:
+
+```bash
+sudo useradd eowusu && sudo passwd eowusu
+sudo useradd jdoe && sudo passwd jdoe
+sudo useradd ljuan && sudo passwd ljuan
+sudo useradd mmajor && sudo passwd mmajor
+sudo useradd mjackson && sudo passwd mjackson
+sudo useradd nwolf && sudo passwd nwolf
+sudo useradd psantos && sudo passwd psantos
+sudo useradd smartinez && sudo passwd smartinez
+sudo useradd ssarkar && sudo passwd ssarkar
+```
+
+Verificación:
+
+```bash
+sudo cat /etc/passwd | cut -d: -f1
+```
+
+📸 **Captura usuarios creados:**  
+[Enlace imagen aquí](#)
+
+---
+
+### 👥 Tarea 3: Crear y asignar grupos
+
+Crear los grupos:
+
+```bash
+sudo groupadd Sales
+sudo groupadd HR
+sudo groupadd Finance
+sudo groupadd Shipping
+sudo groupadd Managers
+sudo groupadd CEO
+```
+
+Asignar usuarios:
+
+```bash
+# Ventas
+sudo usermod -a -G Sales arosalez
+sudo usermod -a -G Sales nwolf
+
+# RR. HH.
+sudo usermod -a -G HR ljuan
+sudo usermod -a -G HR smartinez
+
+# Finanzas
+sudo usermod -a -G Finance mmajor
+sudo usermod -a -G Finance ssarkar
+
+# Envíos
+sudo usermod -a -G Shipping eowusu
+sudo usermod -a -G Shipping jdoe
+sudo usermod -a -G Shipping psantos
+
+# Gerentes
+sudo usermod -a -G Managers arosalez
+sudo usermod -a -G Managers ljuan
+sudo usermod -a -G Managers mmajor
+
+# CEO
+sudo usermod -a -G CEO mjackson
+
+# Agregar ec2-user a todos los grupos
+for group in Sales HR Finance Shipping Managers CEO; do sudo usermod -a -G $group ec2-user; done
+```
+
+Verifica:
+
+```bash
+cat /etc/group
+```
+
+📸 **Captura de /etc/group:**  
+[Enlace imagen aquí](#)
+
+---
+
+### 👨‍💻 Tarea 4: Iniciar sesión con los nuevos usuarios
+
+Cambiar de usuario:
+
+```bash
+su arosalez
+# Contraseña: P@ssword1234!
+```
+
+Verificar ubicación:
+
+```bash
+pwd
+```
+
+Probar permisos:
+
+```bash
+touch myFile.txt  # Permission denied
+sudo touch myFile.txt  # not in the sudoers file
+```
+
+📸 **Captura de errores de permisos:**  
+[Enlace imagen aquí](#)
+
+Salir y revisar logs:
+
+```bash
+exit
+sudo cat /var/log/secure | tail -n 20
+```
+
+📸 **Captura de log del sistema:**  
+[Enlace imagen aquí](#)
+
+---
+
+## ✅ Finalizar laboratorio
+
+- Cierra la sesión SSH  
+- En AWS, selecciona **End Lab**
+- Confirma para cerrar el entorno
+
+---
+
+## 📚 Recursos adicionales
+
+- [Tipos de instancias EC2](https://docs.aws.amazon.com/es_es/AWSEC2/latest/UserGuide/instance-types.html)  
+- [Guía comando `useradd`](https://man7.org/linux/man-pages/man8/useradd.8.html)  
+- [Guía comando `usermod`](https://man7.org/linux/man-pages/man8/usermod.8.html)  
+- [AWS Training oficial](https://aws.amazon.com/training/)

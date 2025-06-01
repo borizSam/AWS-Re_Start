@@ -1,0 +1,112 @@
+# 🛠️ Laboratorio: Administración de Procesos
+
+> **Duración estimada:** 45 minutos  
+> **Prerrequisitos:** Experiencia básica con terminal Linux y procesos del sistema.
+
+## 🎯 Objetivos
+
+- Crear un archivo de registro para procesos.
+- Usar `top` para monitoreo en tiempo real.
+- Crear un cron job que automatice tareas de auditoría.
+
+## 🔐 Acceso al entorno
+
+1. Haz clic en **Start Lab**.
+2. Espera a que indique `Lab status: ready`.
+3. Abre la **AWS Management Console**.
+
+## 🧩 Tarea 1: Conexión a EC2
+
+### Windows (PuTTY)
+
+- Descargar `.ppk` desde **Details > Download PPK**.
+- Conectar con:
+  - Host: `Public IP`
+  - Auth: `labsuser.ppk`
+  - Usuario: `ec2-user`
+
+### macOS / Linux
+
+```bash
+cd ~/Downloads
+chmod 400 labsuser.pem
+ssh -i labsuser.pem ec2-user@<public-ip>
+```
+
+## 📄 Tarea 2: Crear archivo de registro de procesos
+
+```bash
+cd companyA
+
+# Registrar procesos sin root
+sudo ps -aux | grep -v root | sudo tee SharedFolders/processes.csv
+
+# Confirmar archivo
+cat SharedFolders/processes.csv
+```
+
+## 📊 Tarea 3: Usar el comando top
+
+```bash
+# Ver procesos activos
+top
+
+# Salir con:
+q
+```
+
+Opcional: Ver versión y ayuda  
+```bash
+top -hv
+```
+
+## ⏱️ Tarea 4: Crear un cron job
+
+```bash
+cd companyA
+
+# Editar crontab
+sudo crontab -e
+```
+
+Agregar las siguientes líneas:
+
+```
+SHELL=/bin/bash
+PATH=/usr/bin:/bin:/usr/local/bin
+MAILTO=root
+0 * * * * ls -la $(find .) | sed -e 's/..csv/#####.csv/g' > /home/ec2-user/companyA/SharedFolders/filteredAudit.csv
+```
+
+Guardar con `ESC`, luego `:wq` y `Enter`.
+
+Verificar trabajo programado:
+
+```bash
+sudo crontab -l
+```
+
+## ✅ Finalización
+
+Selecciona **End Lab**, confirma con **Yes** y cierra el mensaje final.
+
+## 📘 Conceptos clave
+
+- **ps -aux**: Lista todos los procesos.
+- **top**: Muestra en tiempo real el uso de recursos del sistema.
+- **cron**: Herramienta para programar tareas.
+- **crontab -e**: Edita tareas programadas por el usuario.
+
+## ⌨️ Comandos clave
+
+```bash
+# Registro de procesos
+sudo ps -aux | grep -v root | sudo tee SharedFolders/processes.csv
+
+# Monitoreo
+top
+
+# Cron job
+sudo crontab -e
+sudo crontab -l
+```

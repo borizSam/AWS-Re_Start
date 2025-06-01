@@ -1,0 +1,128 @@
+# 📁 Laboratorio: Uso del Sistema de Archivos en Amazon EC2 (Linux)
+
+## 🎯 Objetivos
+
+- Crear una estructura de carpetas según las instrucciones
+- Crear archivos
+- Copiar y trasladar archivos y directorios
+- Eliminar archivos y directorios
+
+## 🕒 Duración estimada
+
+30 minutos
+
+---
+
+## ✅ Tareas paso a paso
+
+### 🔗 Tarea 1: Conexión a la instancia EC2
+
+```bash
+chmod 400 labsuser.pem
+ssh -i labsuser.pem ec2-user@<public-ip>
+```
+
+_Salida esperada:_
+```bash
+[ec2-user@ip-... ~]$
+```
+
+---
+
+### 📂 Tarea 2: Crear estructura de carpetas y archivos
+
+```bash
+cd ~
+mkdir CompanyA
+cd CompanyA
+mkdir Finance HR Management
+
+cd HR
+touch Assessments.csv TrialPeriod.csv
+cd ../Finance
+touch Salary.csv ProfitAndLossStatements.csv
+cd ..
+touch Management/Managers.csv Management/Schedule.csv
+
+ls -laR
+```
+
+_Salida esperada (resumida):_
+```bash
+./Finance:
+ProfitAndLossStatements.csv  Salary.csv
+
+./HR:
+Assessments.csv  TrialPeriod.csv
+
+./Management:
+Managers.csv  Schedule.csv
+```
+
+---
+
+### 🔄 Tarea 3: Reorganizar y eliminar carpetas
+
+```bash
+# Copiar Finance dentro de HR
+cp -r Finance HR
+ls HR/Finance
+```
+
+```bash
+ProfitAndLossStatements.csv  Salary.csv
+```
+
+```bash
+# Eliminar la carpeta Finance original
+rm Finance/*
+rmdir Finance
+```
+
+```bash
+# Mover Management a HR
+mv Management HR
+ls HR/Management
+```
+
+```bash
+Managers.csv  Schedule.csv
+```
+
+```bash
+# Crear carpeta Employees y mover archivos
+cd HR
+mkdir Employees
+mv Assessments.csv TrialPeriod.csv Employees
+ls Employees
+```
+
+```bash
+Assessments.csv  TrialPeriod.csv
+```
+
+---
+
+## ✅ Finalizar laboratorio
+
+- Cierra sesión SSH con `exit`
+- En AWS selecciona **End Lab**
+- Confirma para finalizar el entorno
+
+---
+
+## 💡 Tips útiles
+
+- Usa `mkdir -p` para crear subdirectorios anidados en un solo paso.
+- Comando `cp -r` copia carpetas y su contenido.
+- `rm -r` elimina carpetas con contenido.
+- `ls -laR` lista recursivamente archivos y carpetas.
+- Usa `cd ..` para subir un nivel en el sistema de archivos.
+
+---
+
+## 📚 Recursos adicionales
+
+- [Tipos de instancia de Amazon EC2](https://docs.aws.amazon.com/es_es/AWSEC2/latest/UserGuide/instance-types.html)
+- [Amazon EC2 Service Quotas](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html)
+- [AWS Training oficial](https://aws.amazon.com/training/)
