@@ -1,7 +1,63 @@
----
-title: "Linux - Conceptos Básicos"
----
+## 🗂️ Gestión de Archivos y Directorios
 
-## ¿Qué es Linux?
+```bash
+ls -l            # Lista archivos con detalles
+cd /ruta         # Cambia de directorio
+pwd              # Muestra el directorio actual
+mkdir nuevo_dir  # Crea un nuevo directorio
+rm archivo       # Elimina archivo
+rm -r carpeta    # Elimina carpeta recursivamente
+cp fuente destino  # Copia archivos o carpetas
+mv fuente destino  # Mueve o renombra
+```
 
-Linux es un sistema operativo tipo Unix, de código abierto, usado comúnmente en servidores, sistemas embebidos y dispositivos móviles.
+📌 **Nota:** Usa `-i` (modo interactivo) con los comandos `rm`, `cp` y `mv` para que soliciten confirmación antes de sobrescribir o eliminar archivos.
+
+## 🔐 Permisos y Propiedades
+```bash
+chmod u+x script.sh       # Da permiso de ejecución al usuario
+chown usuario:grupo file  # Cambia propietario y grupo
+```
+**Permisos**: lectura (r), escritura (w), ejecución (x)
+
+**Modificadores**: u (user), g (group), o (others), a (all)
+
+## 👤 Gestión de Usuarios y Grupos
+```bash
+useradd -m nuevo_usuario     # Crea usuario con directorio home
+passwd nuevo_usuario         # Asigna contraseña
+usermod -aG grupo usuario    # Añade usuario a grupo
+groupadd nuevo_grupo         # Crea grupo
+```
+## ⚙️ Procesos y Servicios
+```bash
+ps aux                       # Ver procesos activos
+top                          # Vista interactiva
+kill -9 PID                  # Forzar cierre proceso
+systemctl status sshd       # Estado de un servicio
+systemctl start nginx       # Iniciar servicio
+systemctl enable apache2    # Habilitar en el arranque
+```
+## 📡 Red
+```bash
+ip a                         # Mostrar interfaces de red
+ping 8.8.8.8                 # Verificar conectividad
+netstat -tuln                # Puertos en escucha
+ss -tuln                     # Alternativa moderna
+```
+## ⏰ Cron Jobs
+```bash
+crontab -e                   # Editar tareas programadas del usuario
+@daily /ruta/script.sh       # Ejecutar diario
+```
+## 📦 Paquetes
+```bash
+apt update && apt upgrade   # Debian/Ubuntu
+dnf install httpd           # RHEL/CentOS 8+
+```
+---
+### 🧠 Tips Finales
+- Usa `man comando` para ver la ayuda de cualquier comando.
+- `history` muestra comandos previos.
+- `alias` para crear accesos rápidos.
+- Practica con máquinas virtuales o WSL para evitar errores en producción.

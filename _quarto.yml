@@ -2,11 +2,11 @@ project:
   type: website
 
 website:
-  title: "Apuntes AWS RE/START"
+  title: "AWS RE/START"
   navbar:
     left:
       - text: "Inicio"
-        file: index.qmd
+        file: README.qmd
 
       - text: "Fundamentos de la Nube"
         menu:
@@ -21,14 +21,6 @@ website:
         menu:
           - text: "Conceptos"
             file: Linux/conceptos.qmd
-          - text: "Comandos Básicos"
-            file: Linux/comandos.qmd
-          - text: "Gestión de Usuarios"
-            file: Linux/usuarios.qmd
-          - text: "Sistema de Archivos"
-            file: Linux/archivos.qmd
-          - text: "Distros"
-            file: Linux/distros.qmd
           - text: "Laboratorios"
             file: Linux/laboratorios.qmd
 

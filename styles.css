@@ -1,47 +1,82 @@
+/* Estilo base compatible con modo claro y oscuro */
+
 body {
-  background-color: #0a0f24;
-  color: #ffffff;
   font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  background-color: var(--background);
+  color: var(--text);
   margin: 0;
   padding: 0;
 }
 
-.minimal-hero {
+:root {
+  --background: #ffffff;
+  --text: #111111;
+  --highlight: #00bfff;
+  --card-bg: #f4f4f4;
+  --code-bg: #eeeeee;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0e1525;
+    --text: #eaeaea;
+    --highlight: #00bfff;
+    --card-bg: #1e273a;
+    --code-bg: #1a1a1a;
+  }
+}
+
+.inicio-simple {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 90vh;
+  min-height: 80vh;
+  padding: 1rem;
   text-align: center;
-  padding-top: 60px;
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  margin: 2rem auto;
+  max-width: 700px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 
-.minimal-title {
+.inicio-simple h1 {
   font-size: 2.5rem;
-  font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 1rem;
+  color: var(--highlight);
 }
 
-.minimal-subtitle {
-  font-size: 1.125rem;
-  color: #bbbbbb;
-  margin-bottom: 2rem;
+.inicio-simple p {
+  font-size: 1.1rem;
+  margin: 1rem 0;
 }
 
-.minimal-button {
-  background-color: #00d1ff;
+.boton-simple {
+  background-color: var(--highlight);
   color: #000;
-  padding: 0.6rem 1.5rem;
-  border-radius: 999px;
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
-  transition: background 0.2s ease-in-out;
-  box-shadow: 0 0 10px #00d1ff50;
+  transition: background-color 0.2s ease;
 }
 
-.minimal-button:hover {
-  background-color: #00b2e1;
+.boton-simple:hover {
+  background-color: #009acb;
 }
+
+/* Código y bloques de terminal */
+
+pre, code {
+  background-color: var(--code-bg);
+  color: var(--text);
+  border-radius: 5px;
+  padding: 0.4rem 0.6rem;
+  font-family: 'Courier New', monospace;
+  overflow-x: auto;
+  display: block;
+}
+
 
 
