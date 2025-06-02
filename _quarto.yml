@@ -62,7 +62,8 @@ website:
             file: Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).qmd
           - text: "Lab[264] - Recursos de red para una VPC"
             file: Redes/Lab[264]-Recursos de red para una VPC.qmd
-
+          - text: "Lab[265]Comandos de solución de problemas del protocolo de Internet"
+            file: Redes/Lab[265].qmd
       - text: "Seguridad"
         menu:
           - text: "Inicio"

@@ -1,0 +1,88 @@
+
+# 🧪 Tarea 2: Practicar los comandos de solución de problemas
+
+En esta tarea ejecutarás comandos clave para resolver problemas de red en una instancia EC2 de Amazon Linux. Cada comando corresponde a una capa del modelo OSI.
+
+---
+
+## 🌐 Capa 3 (Red): `ping` y `traceroute`
+
+### 🔹 Comando `ping`
+**Objetivo:** Verificar la conectividad con un servidor.
+
+```bash
+ping 8.8.8.8 -c 5
+```
+
+- `8.8.8.8` es un servidor DNS público de Google.
+- `-c 5` indica que se enviarán 5 paquetes.
+- ✅ Utiliza este comando para confirmar si hay respuesta de red y verificar reglas de seguridad (grupos de seguridad, ACLs).
+
+---
+
+### 🔹 Comando `traceroute`
+**Objetivo:** Diagnosticar la ruta y latencia de red hasta un destino.
+
+```bash
+traceroute 8.8.8.8
+```
+
+- Muestra todos los saltos intermedios entre tu instancia y el destino.
+- ⚠️ Tres asteriscos `***` indican un salto fallido (posible pérdida de paquetes).
+- 📉 Útil para determinar si el problema está en AWS o en el ISP del cliente.
+
+---
+
+## 🔌 Capa 4 (Transporte): `netstat` y `telnet`
+
+### 🔹 Comando `netstat`
+**Objetivo:** Verificar conexiones TCP activas y puertos en escucha.
+
+```bash
+netstat -tp
+```
+
+- `-t`: muestra solo conexiones TCP.
+- `-p`: muestra el programa/proceso que mantiene la conexión.
+- 📌 Útil para confirmar si hay servicios escuchando en puertos no autorizados.
+
+---
+
+### 🔹 Comando `telnet`
+**Objetivo:** Probar la conectividad TCP a un puerto específico.
+
+Instala telnet si no está disponible:
+
+```bash
+sudo yum install telnet -y
+```
+
+Ejecuta el comando:
+
+```bash
+telnet www.google.com 80
+```
+
+- Conecta al puerto 80 de Google (HTTP).
+- 🛑 Si la conexión es rechazada, puede indicar un firewall o grupo de seguridad que bloquea el tráfico.
+- ⏳ Si hay timeout, probablemente no haya ruta de red disponible.
+
+---
+
+## 🌍 Capa 7 (Aplicación): `curl`
+
+### 🔹 Comando `curl`
+**Objetivo:** Verificar el estado HTTP de un servidor web.
+
+```bash
+curl -vLo /dev/null https://aws.com
+```
+
+- `-v`: salida detallada (verbose).
+- `-L`: sigue redirecciones.
+- `-o /dev/null`: descarta la salida de contenido HTML.
+- 🟢 Busca una respuesta `200 OK` como confirmación de éxito.
+
+---
+
+> ✅ **Consejo:** Cada uno de estos comandos puede ayudarte a ubicar rápidamente el nivel de la red donde se encuentra un problema de conectividad.

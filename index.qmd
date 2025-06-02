@@ -67,5 +67,5 @@ body {
 <div class="hero-container">
   <div class="hero-title">AWS Re/Start 🚀</div>
   <div class="hero-subtitle">Tu viaje al mundo de la nube comienza aquí.</div>
-  <a href="Fundamentos-Nube/Fundamentos-1-2.html" class="hero-button">Empezar</a>
+  <a href="Fundamentos-Nube/Fundamentos.qmd" class="hero-button">Empezar</a>
 </div>
