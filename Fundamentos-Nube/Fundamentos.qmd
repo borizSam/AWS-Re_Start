@@ -1,5 +1,5 @@
 
-# 📘 Fundamentos de la Nube - Documentación
+# 📘 Fundamentos de la Nube
 
 > _Resumen estructurado de conceptos esenciales sobre cloud computing y AWS._
 

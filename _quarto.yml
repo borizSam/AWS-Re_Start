@@ -5,17 +5,10 @@ website:
   title: "AWS RE/START"
   navbar:
     left:
-      - text: "Inicio"
-        file: README.qmd
-
       - text: "Fundamentos de la Nube"
         menu:
-          - text: "Índice"
-            file: Fundamentos-Nube/index.qmd
-          - text: "Fundation"
-            file: Fundamentos-Nube/found.qmd
-          - text: "Fundamentos 1-2"
-            file: Fundamentos-Nube/Fundamentos-1-2.qmd
+          - text: "Fundamentos de la Nube"
+            file: Fundamentos-Nube/Fundamentos.qmd
 
       - text: "Linux"
         menu:
