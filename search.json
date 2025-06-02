@@ -483,53 +483,32 @@
     "text": "AWS EC2 Addressing\nElastic IPs\n\n\nAutor del soporte: Boris Cloud – Cloud Support Engineer"
   },
   {
-    "objectID": "Redes/Lab[261]-IPSpublicas y privadas.html",
-    "href": "Redes/Lab[261]-IPSpublicas y privadas.html",
-    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "objectID": "Redes/Lab[265].html",
+    "href": "Redes/Lab[265].html",
+    "title": "1 🧪 Tarea 2: Practicar los comandos de solución de problemas",
     "section": "",
-    "text": "Comprender las diferencias entre las direcciones IP públicas y privadas asignadas a las instancias EC2, e identificar qué tipo de dirección tiene cada una mediante observación directa.\n\n\n\n\nSe te proporciona una arquitectura que incluye dos instancias EC2 (A y B) en una subred pública, dentro de una misma VPC con acceso a Internet a través de un Internet Gateway. Tu objetivo es observar las configuraciones de red de ambas instancias y analizar sus diferencias.\n\n\n\n\n\nDiagrama de arquitectura\n\n\n\n\n\n\n\n\n\n\nPulsar Start Lab y acceder a AWS Management Console.\n\n\n\n\n\nBuscar EC2 en la barra de búsqueda.\n\n\n\n\nBuscar EC2\n\n\n\n\n\nDebes ver dos instancias activas:\n\ninstance A\ninstance B\n\n\n\n\nPanel EC2\n\n\n\n\n\n\n\n\nSelecciona la instancia.\nVe a la pestaña Networking.\nAnota la IP pública y privada (si hay).\n\n\n\n\nNetworking - instance A\n\n\n\nIP privada: 10.0.10.137 IP pública: No asignada\n\n\n\n\n\nRepite el proceso.\nObserva que esta instancia sí tiene una IP pública asignada.\n\n\n\n\nNetworking - instance B\n\n\n\nIP privada: 10.0.10.66\nIP pública: 52.32.140.209\n\n\n\n\n\n\nInstance A solo tiene IP privada → no accesible desde Internet.\nInstance B tiene IP pública → accesible desde Internet.\nAmbas están en la misma subred, pero solo una tiene autoasignación de IP pública habilitada.\n\n\n\n\n\n\n\n\nVerificar que solo la instancia con IP pública puede ser accedida desde el exterior usando SSH.\n\n\n\n\nIntentar conectar por SSH a instance A → Fallará (no tiene IP pública).\nConectar por SSH a instance B → Conexión exitosa.\n\nssh -i ~/.ssh/labsuser.pem ec2-user@52.32.140.209\n\n\n\nLas instancias sin IP pública no pueden ser accedidas directamente desde fuera de la VPC.\nPara tener acceso SSH, es necesario habilitar IP pública o usar un bastion host.\n\n\n\n\n\n\nIP privada: Solo funciona dentro de la red privada (VPC).\nIP pública: Permite acceso externo, pero es dinámica (cambia al detener la instancia, a menos que se use una Elastic IP).\nAmbas instancias comparten la misma configuración de red a nivel de subred, pero difieren en visibilidad pública.\n\n\nAutor del soporte: Boris Cloud – Cloud Support Engineer"
+    "text": "En esta tarea ejecutarás comandos clave para resolver problemas de red en una instancia EC2 de Amazon Linux. Cada comando corresponde a una capa del modelo OSI.\n\n\n\n\n\nObjetivo: Verificar la conectividad con un servidor.\nping 8.8.8.8 -c 5\n\n8.8.8.8 es un servidor DNS público de Google.\n-c 5 indica que se enviarán 5 paquetes.\n✅ Utiliza este comando para confirmar si hay respuesta de red y verificar reglas de seguridad (grupos de seguridad, ACLs).\n\n\n\n\n\nObjetivo: Diagnosticar la ruta y latencia de red hasta un destino.\ntraceroute 8.8.8.8\n\nMuestra todos los saltos intermedios entre tu instancia y el destino.\n⚠️ Tres asteriscos *** indican un salto fallido (posible pérdida de paquetes).\n📉 Útil para determinar si el problema está en AWS o en el ISP del cliente.\n\n\n\n\n\n\n\n\nObjetivo: Verificar conexiones TCP activas y puertos en escucha.\nnetstat -tp\n\n-t: muestra solo conexiones TCP.\n-p: muestra el programa/proceso que mantiene la conexión.\n📌 Útil para confirmar si hay servicios escuchando en puertos no autorizados.\n\n\n\n\n\nObjetivo: Probar la conectividad TCP a un puerto específico.\nInstala telnet si no está disponible:\nsudo yum install telnet -y\nEjecuta el comando:\ntelnet www.google.com 80\n\nConecta al puerto 80 de Google (HTTP).\n🛑 Si la conexión es rechazada, puede indicar un firewall o grupo de seguridad que bloquea el tráfico.\n⏳ Si hay timeout, probablemente no haya ruta de red disponible.\n\n\n\n\n\n\n\n\nObjetivo: Verificar el estado HTTP de un servidor web.\ncurl -vLo /dev/null https://aws.com\n\n-v: salida detallada (verbose).\n-L: sigue redirecciones.\n-o /dev/null: descarta la salida de contenido HTML.\n🟢 Busca una respuesta 200 OK como confirmación de éxito.\n\n\n\n✅ Consejo: Cada uno de estos comandos puede ayudarte a ubicar rápidamente el nivel de la red donde se encuentra un problema de conectividad."
   },
   {
-    "objectID": "Redes/Lab[261]-IPSpublicas y privadas.html#objetivo",
-    "href": "Redes/Lab[261]-IPSpublicas y privadas.html#objetivo",
-    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "objectID": "Redes/Lab[265].html#capa-3-red-ping-y-traceroute",
+    "href": "Redes/Lab[265].html#capa-3-red-ping-y-traceroute",
+    "title": "1 🧪 Tarea 2: Practicar los comandos de solución de problemas",
     "section": "",
-    "text": "Comprender las diferencias entre las direcciones IP públicas y privadas asignadas a las instancias EC2, e identificar qué tipo de dirección tiene cada una mediante observación directa."
+    "text": "Objetivo: Verificar la conectividad con un servidor.\nping 8.8.8.8 -c 5\n\n8.8.8.8 es un servidor DNS público de Google.\n-c 5 indica que se enviarán 5 paquetes.\n✅ Utiliza este comando para confirmar si hay respuesta de red y verificar reglas de seguridad (grupos de seguridad, ACLs).\n\n\n\n\n\nObjetivo: Diagnosticar la ruta y latencia de red hasta un destino.\ntraceroute 8.8.8.8\n\nMuestra todos los saltos intermedios entre tu instancia y el destino.\n⚠️ Tres asteriscos *** indican un salto fallido (posible pérdida de paquetes).\n📉 Útil para determinar si el problema está en AWS o en el ISP del cliente."
   },
   {
-    "objectID": "Redes/Lab[261]-IPSpublicas y privadas.html#situación",
-    "href": "Redes/Lab[261]-IPSpublicas y privadas.html#situación",
-    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "objectID": "Redes/Lab[265].html#capa-4-transporte-netstat-y-telnet",
+    "href": "Redes/Lab[265].html#capa-4-transporte-netstat-y-telnet",
+    "title": "1 🧪 Tarea 2: Practicar los comandos de solución de problemas",
     "section": "",
-    "text": "Se te proporciona una arquitectura que incluye dos instancias EC2 (A y B) en una subred pública, dentro de una misma VPC con acceso a Internet a través de un Internet Gateway. Tu objetivo es observar las configuraciones de red de ambas instancias y analizar sus diferencias.\n\n\n\n\n\nDiagrama de arquitectura"
+    "text": "Objetivo: Verificar conexiones TCP activas y puertos en escucha.\nnetstat -tp\n\n-t: muestra solo conexiones TCP.\n-p: muestra el programa/proceso que mantiene la conexión.\n📌 Útil para confirmar si hay servicios escuchando en puertos no autorizados.\n\n\n\n\n\nObjetivo: Probar la conectividad TCP a un puerto específico.\nInstala telnet si no está disponible:\nsudo yum install telnet -y\nEjecuta el comando:\ntelnet www.google.com 80\n\nConecta al puerto 80 de Google (HTTP).\n🛑 Si la conexión es rechazada, puede indicar un firewall o grupo de seguridad que bloquea el tráfico.\n⏳ Si hay timeout, probablemente no haya ruta de red disponible."
   },
   {
-    "objectID": "Redes/Lab[261]-IPSpublicas y privadas.html#tarea-1-observar-las-direcciones-ip",
-    "href": "Redes/Lab[261]-IPSpublicas y privadas.html#tarea-1-observar-las-direcciones-ip",
-    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "objectID": "Redes/Lab[265].html#capa-7-aplicación-curl",
+    "href": "Redes/Lab[265].html#capa-7-aplicación-curl",
+    "title": "1 🧪 Tarea 2: Practicar los comandos de solución de problemas",
     "section": "",
-    "text": "Pulsar Start Lab y acceder a AWS Management Console.\n\n\n\n\n\nBuscar EC2 en la barra de búsqueda.\n\n\n\n\nBuscar EC2\n\n\n\n\n\nDebes ver dos instancias activas:\n\ninstance A\ninstance B\n\n\n\n\nPanel EC2\n\n\n\n\n\n\n\n\nSelecciona la instancia.\nVe a la pestaña Networking.\nAnota la IP pública y privada (si hay).\n\n\n\n\nNetworking - instance A\n\n\n\nIP privada: 10.0.10.137 IP pública: No asignada\n\n\n\n\n\nRepite el proceso.\nObserva que esta instancia sí tiene una IP pública asignada.\n\n\n\n\nNetworking - instance B\n\n\n\nIP privada: 10.0.10.66\nIP pública: 52.32.140.209\n\n\n\n\n\n\nInstance A solo tiene IP privada → no accesible desde Internet.\nInstance B tiene IP pública → accesible desde Internet.\nAmbas están en la misma subred, pero solo una tiene autoasignación de IP pública habilitada."
-  },
-  {
-    "objectID": "Redes/Lab[261]-IPSpublicas y privadas.html#tarea-2-conexión-mediante-ssh",
-    "href": "Redes/Lab[261]-IPSpublicas y privadas.html#tarea-2-conexión-mediante-ssh",
-    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
-    "section": "",
-    "text": "Verificar que solo la instancia con IP pública puede ser accedida desde el exterior usando SSH.\n\n\n\n\nIntentar conectar por SSH a instance A → Fallará (no tiene IP pública).\nConectar por SSH a instance B → Conexión exitosa.\n\nssh -i ~/.ssh/labsuser.pem ec2-user@52.32.140.209\n\n\n\nLas instancias sin IP pública no pueden ser accedidas directamente desde fuera de la VPC.\nPara tener acceso SSH, es necesario habilitar IP pública o usar un bastion host."
-  },
-  {
-    "objectID": "Redes/Lab[261]-IPSpublicas y privadas.html#conclusión-final",
-    "href": "Redes/Lab[261]-IPSpublicas y privadas.html#conclusión-final",
-    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
-    "section": "",
-    "text": "IP privada: Solo funciona dentro de la red privada (VPC).\nIP pública: Permite acceso externo, pero es dinámica (cambia al detener la instancia, a menos que se use una Elastic IP).\nAmbas instancias comparten la misma configuración de red a nivel de subred, pero difieren en visibilidad pública.\n\n\nAutor del soporte: Boris Cloud – Cloud Support Engineer"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
+    "text": "Objetivo: Verificar el estado HTTP de un servidor web.\ncurl -vLo /dev/null https://aws.com\n\n-v: salida detallada (verbose).\n-L: sigue redirecciones.\n-o /dev/null: descarta la salida de contenido HTML.\n🟢 Busca una respuesta 200 OK como confirmación de éxito.\n\n\n\n✅ Consejo: Cada uno de estos comandos puede ayudarte a ubicar rápidamente el nivel de la red donde se encuentra un problema de conectividad."
   },
   {
     "objectID": "Redes/Lab[264]-Recursos de red para una VPC.html",
@@ -593,6 +572,55 @@
     "title": "1 🧪 Lab 264 - Creación de Recursos de Red en una VPC",
     "section": "",
     "text": "La infraestructura de red se configuró correctamente dentro de la VPC, permitiendo que la instancia EC2 lanzada en una subred pública pueda acceder a Internet. Se validó la conectividad con éxito usando ping, cumpliendo así con el requerimiento del cliente. Este laboratorio refuerza el conocimiento práctico de los componentes esenciales de red en AWS.\n\n🖋️ Firma:\nBoris Ivan Huaraichi Pérez\nAWS Cloud Engineer - Lab 264"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "Redes/Lab[261]-IPSpublicas y privadas.html",
+    "href": "Redes/Lab[261]-IPSpublicas y privadas.html",
+    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "section": "",
+    "text": "Comprender las diferencias entre las direcciones IP públicas y privadas asignadas a las instancias EC2, e identificar qué tipo de dirección tiene cada una mediante observación directa.\n\n\n\n\nSe te proporciona una arquitectura que incluye dos instancias EC2 (A y B) en una subred pública, dentro de una misma VPC con acceso a Internet a través de un Internet Gateway. Tu objetivo es observar las configuraciones de red de ambas instancias y analizar sus diferencias.\n\n\n\n\n\nDiagrama de arquitectura\n\n\n\n\n\n\n\n\n\n\nPulsar Start Lab y acceder a AWS Management Console.\n\n\n\n\n\nBuscar EC2 en la barra de búsqueda.\n\n\n\n\nBuscar EC2\n\n\n\n\n\nDebes ver dos instancias activas:\n\ninstance A\ninstance B\n\n\n\n\nPanel EC2\n\n\n\n\n\n\n\n\nSelecciona la instancia.\nVe a la pestaña Networking.\nAnota la IP pública y privada (si hay).\n\n\n\n\nNetworking - instance A\n\n\n\nIP privada: 10.0.10.137 IP pública: No asignada\n\n\n\n\n\nRepite el proceso.\nObserva que esta instancia sí tiene una IP pública asignada.\n\n\n\n\nNetworking - instance B\n\n\n\nIP privada: 10.0.10.66\nIP pública: 52.32.140.209\n\n\n\n\n\n\nInstance A solo tiene IP privada → no accesible desde Internet.\nInstance B tiene IP pública → accesible desde Internet.\nAmbas están en la misma subred, pero solo una tiene autoasignación de IP pública habilitada.\n\n\n\n\n\n\n\n\nVerificar que solo la instancia con IP pública puede ser accedida desde el exterior usando SSH.\n\n\n\n\nIntentar conectar por SSH a instance A → Fallará (no tiene IP pública).\nConectar por SSH a instance B → Conexión exitosa.\n\nssh -i ~/.ssh/labsuser.pem ec2-user@52.32.140.209\n\n\n\nLas instancias sin IP pública no pueden ser accedidas directamente desde fuera de la VPC.\nPara tener acceso SSH, es necesario habilitar IP pública o usar un bastion host.\n\n\n\n\n\n\nIP privada: Solo funciona dentro de la red privada (VPC).\nIP pública: Permite acceso externo, pero es dinámica (cambia al detener la instancia, a menos que se use una Elastic IP).\nAmbas instancias comparten la misma configuración de red a nivel de subred, pero difieren en visibilidad pública.\n\n\nAutor del soporte: Boris Cloud – Cloud Support Engineer"
+  },
+  {
+    "objectID": "Redes/Lab[261]-IPSpublicas y privadas.html#objetivo",
+    "href": "Redes/Lab[261]-IPSpublicas y privadas.html#objetivo",
+    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "section": "",
+    "text": "Comprender las diferencias entre las direcciones IP públicas y privadas asignadas a las instancias EC2, e identificar qué tipo de dirección tiene cada una mediante observación directa."
+  },
+  {
+    "objectID": "Redes/Lab[261]-IPSpublicas y privadas.html#situación",
+    "href": "Redes/Lab[261]-IPSpublicas y privadas.html#situación",
+    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "section": "",
+    "text": "Se te proporciona una arquitectura que incluye dos instancias EC2 (A y B) en una subred pública, dentro de una misma VPC con acceso a Internet a través de un Internet Gateway. Tu objetivo es observar las configuraciones de red de ambas instancias y analizar sus diferencias.\n\n\n\n\n\nDiagrama de arquitectura"
+  },
+  {
+    "objectID": "Redes/Lab[261]-IPSpublicas y privadas.html#tarea-1-observar-las-direcciones-ip",
+    "href": "Redes/Lab[261]-IPSpublicas y privadas.html#tarea-1-observar-las-direcciones-ip",
+    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "section": "",
+    "text": "Pulsar Start Lab y acceder a AWS Management Console.\n\n\n\n\n\nBuscar EC2 en la barra de búsqueda.\n\n\n\n\nBuscar EC2\n\n\n\n\n\nDebes ver dos instancias activas:\n\ninstance A\ninstance B\n\n\n\n\nPanel EC2\n\n\n\n\n\n\n\n\nSelecciona la instancia.\nVe a la pestaña Networking.\nAnota la IP pública y privada (si hay).\n\n\n\n\nNetworking - instance A\n\n\n\nIP privada: 10.0.10.137 IP pública: No asignada\n\n\n\n\n\nRepite el proceso.\nObserva que esta instancia sí tiene una IP pública asignada.\n\n\n\n\nNetworking - instance B\n\n\n\nIP privada: 10.0.10.66\nIP pública: 52.32.140.209\n\n\n\n\n\n\nInstance A solo tiene IP privada → no accesible desde Internet.\nInstance B tiene IP pública → accesible desde Internet.\nAmbas están en la misma subred, pero solo una tiene autoasignación de IP pública habilitada."
+  },
+  {
+    "objectID": "Redes/Lab[261]-IPSpublicas y privadas.html#tarea-2-conexión-mediante-ssh",
+    "href": "Redes/Lab[261]-IPSpublicas y privadas.html#tarea-2-conexión-mediante-ssh",
+    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "section": "",
+    "text": "Verificar que solo la instancia con IP pública puede ser accedida desde el exterior usando SSH.\n\n\n\n\nIntentar conectar por SSH a instance A → Fallará (no tiene IP pública).\nConectar por SSH a instance B → Conexión exitosa.\n\nssh -i ~/.ssh/labsuser.pem ec2-user@52.32.140.209\n\n\n\nLas instancias sin IP pública no pueden ser accedidas directamente desde fuera de la VPC.\nPara tener acceso SSH, es necesario habilitar IP pública o usar un bastion host."
+  },
+  {
+    "objectID": "Redes/Lab[261]-IPSpublicas y privadas.html#conclusión-final",
+    "href": "Redes/Lab[261]-IPSpublicas y privadas.html#conclusión-final",
+    "title": "1 🧪 Lab 262 - Direcciones IP estáticas y dinámicas",
+    "section": "",
+    "text": "IP privada: Solo funciona dentro de la red privada (VPC).\nIP pública: Permite acceso externo, pero es dinámica (cambia al detener la instancia, a menos que se use una Elastic IP).\nAmbas instancias comparten la misma configuración de red a nivel de subred, pero difieren en visibilidad pública.\n\n\nAutor del soporte: Boris Cloud – Cloud Support Engineer"
   },
   {
     "objectID": "Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).html",

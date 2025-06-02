@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>index – AWS RE/START</title>
+<title>lab265 – AWS RE/START</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -420,7 +455,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link active" href="../Bases-Datos/index.html" aria-current="page"> 
+    <a class="nav-link" href="../Bases-Datos/index.html"> 
 <span class="menu-text">Bases de Datos</span></a>
   </li>  
   <li class="nav-item">
@@ -473,8 +508,30 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#tarea-2-practicar-los-comandos-de-solución-de-problemas" id="toc-tarea-2-practicar-los-comandos-de-solución-de-problemas" class="nav-link active" data-scroll-target="#tarea-2-practicar-los-comandos-de-solución-de-problemas"><span class="header-section-number">1</span> 🧪 Tarea 2: Practicar los comandos de solución de problemas</a>
+  <ul class="collapse">
+  <li><a href="#capa-3-red-ping-y-traceroute" id="toc-capa-3-red-ping-y-traceroute" class="nav-link" data-scroll-target="#capa-3-red-ping-y-traceroute"><span class="header-section-number">1.1</span> 🌐 Capa 3 (Red): <code>ping</code> y <code>traceroute</code></a>
+  <ul class="collapse">
+  <li><a href="#comando-ping" id="toc-comando-ping" class="nav-link" data-scroll-target="#comando-ping"><span class="header-section-number">1.1.1</span> 🔹 Comando <code>ping</code></a></li>
+  <li><a href="#comando-traceroute" id="toc-comando-traceroute" class="nav-link" data-scroll-target="#comando-traceroute"><span class="header-section-number">1.1.2</span> 🔹 Comando <code>traceroute</code></a></li>
+  </ul></li>
+  <li><a href="#capa-4-transporte-netstat-y-telnet" id="toc-capa-4-transporte-netstat-y-telnet" class="nav-link" data-scroll-target="#capa-4-transporte-netstat-y-telnet"><span class="header-section-number">1.2</span> 🔌 Capa 4 (Transporte): <code>netstat</code> y <code>telnet</code></a>
+  <ul class="collapse">
+  <li><a href="#comando-netstat" id="toc-comando-netstat" class="nav-link" data-scroll-target="#comando-netstat"><span class="header-section-number">1.2.1</span> 🔹 Comando <code>netstat</code></a></li>
+  <li><a href="#comando-telnet" id="toc-comando-telnet" class="nav-link" data-scroll-target="#comando-telnet"><span class="header-section-number">1.2.2</span> 🔹 Comando <code>telnet</code></a></li>
+  </ul></li>
+  <li><a href="#capa-7-aplicación-curl" id="toc-capa-7-aplicación-curl" class="nav-link" data-scroll-target="#capa-7-aplicación-curl"><span class="header-section-number">1.3</span> 🌍 Capa 7 (Aplicación): <code>curl</code></a>
+  <ul class="collapse">
+  <li><a href="#comando-curl" id="toc-comando-curl" class="nav-link" data-scroll-target="#comando-curl"><span class="header-section-number">1.3.1</span> 🔹 Comando <code>curl</code></a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
@@ -483,8 +540,84 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<section id="tarea-2-practicar-los-comandos-de-solución-de-problemas" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 🧪 Tarea 2: Practicar los comandos de solución de problemas</h1>
+<p>En esta tarea ejecutarás comandos clave para resolver problemas de red en una instancia EC2 de Amazon Linux. Cada comando corresponde a una capa del modelo OSI.</p>
+<hr>
+<section id="capa-3-red-ping-y-traceroute" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="capa-3-red-ping-y-traceroute"><span class="header-section-number">1.1</span> 🌐 Capa 3 (Red): <code>ping</code> y <code>traceroute</code></h2>
+<section id="comando-ping" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="comando-ping"><span class="header-section-number">1.1.1</span> 🔹 Comando <code>ping</code></h3>
+<p><strong>Objetivo:</strong> Verificar la conectividad con un servidor.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ping</span> 8.8.8.8 <span class="at">-c</span> 5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>8.8.8.8</code> es un servidor DNS público de Google.</li>
+<li><code>-c 5</code> indica que se enviarán 5 paquetes.</li>
+<li>✅ Utiliza este comando para confirmar si hay respuesta de red y verificar reglas de seguridad (grupos de seguridad, ACLs).</li>
+</ul>
+<hr>
+</section>
+<section id="comando-traceroute" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="comando-traceroute"><span class="header-section-number">1.1.2</span> 🔹 Comando <code>traceroute</code></h3>
+<p><strong>Objetivo:</strong> Diagnosticar la ruta y latencia de red hasta un destino.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">traceroute</span> 8.8.8.8</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Muestra todos los saltos intermedios entre tu instancia y el destino.</li>
+<li>⚠️ Tres asteriscos <code>***</code> indican un salto fallido (posible pérdida de paquetes).</li>
+<li>📉 Útil para determinar si el problema está en AWS o en el ISP del cliente.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="capa-4-transporte-netstat-y-telnet" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="capa-4-transporte-netstat-y-telnet"><span class="header-section-number">1.2</span> 🔌 Capa 4 (Transporte): <code>netstat</code> y <code>telnet</code></h2>
+<section id="comando-netstat" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="comando-netstat"><span class="header-section-number">1.2.1</span> 🔹 Comando <code>netstat</code></h3>
+<p><strong>Objetivo:</strong> Verificar conexiones TCP activas y puertos en escucha.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">netstat</span> <span class="at">-tp</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>-t</code>: muestra solo conexiones TCP.</li>
+<li><code>-p</code>: muestra el programa/proceso que mantiene la conexión.</li>
+<li>📌 Útil para confirmar si hay servicios escuchando en puertos no autorizados.</li>
+</ul>
+<hr>
+</section>
+<section id="comando-telnet" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="comando-telnet"><span class="header-section-number">1.2.2</span> 🔹 Comando <code>telnet</code></h3>
+<p><strong>Objetivo:</strong> Probar la conectividad TCP a un puerto específico.</p>
+<p>Instala telnet si no está disponible:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum install telnet <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ejecuta el comando:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">telnet</span> www.google.com 80</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Conecta al puerto 80 de Google (HTTP).</li>
+<li>🛑 Si la conexión es rechazada, puede indicar un firewall o grupo de seguridad que bloquea el tráfico.</li>
+<li>⏳ Si hay timeout, probablemente no haya ruta de red disponible.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="capa-7-aplicación-curl" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="capa-7-aplicación-curl"><span class="header-section-number">1.3</span> 🌍 Capa 7 (Aplicación): <code>curl</code></h2>
+<section id="comando-curl" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="comando-curl"><span class="header-section-number">1.3.1</span> 🔹 Comando <code>curl</code></h3>
+<p><strong>Objetivo:</strong> Verificar el estado HTTP de un servidor web.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-vLo</span> /dev/null https://aws.com</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>-v</code>: salida detallada (verbose).</li>
+<li><code>-L</code>: sigue redirecciones.</li>
+<li><code>-o /dev/null</code>: descarta la salida de contenido HTML.</li>
+<li>🟢 Busca una respuesta <code>200 OK</code> como confirmación de éxito.</li>
+</ul>
+<hr>
+<blockquote class="blockquote">
+<p>✅ <strong>Consejo:</strong> Cada uno de estos comandos puede ayudarte a ubicar rápidamente el nivel de la red donde se encuentra un problema de conectividad.</p>
+</blockquote>
 
 
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
