@@ -1,4 +1,3 @@
-
 # 🚀 Apuntes AWS RE/START — DevOps en Formación
 
 ¡Bienvenido a mi cuaderno técnico! 📚  
