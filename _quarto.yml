@@ -64,16 +64,7 @@ website:
 
       - text: "Python"
         file: Python/index.qmd
-        # menu:
-        #   - text: "Inicio"
-        #     file: Python/index.qmd
-        #   - text: "Teoría"
-        #     file: Python/teoria.qmd
-        #   - text: "Laboratorio"
-        #     file: Python/laboratorio.qmd
-        #   - text: "Test"
-        #     file: Python/test.qmd
-
+ 
       - text: "Bases de Datos"
         file: Bases-Datos/index.qmd
 
@@ -86,7 +77,7 @@ website:
       - text: "AWS Cloud Practitioner"
         menu:
           - text: "Training"
-            file: Training/practice-exam-1.qmd
+            file: Training/practice1.qmd
 
       # - text: "Recursos"
       #   menu:
@@ -114,5 +105,3 @@ format:
     toc-depth: 3
     number-sections: true
     css: styles.css
-    code-tools: true
-    code-copy: true
