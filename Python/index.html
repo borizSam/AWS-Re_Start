@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -36,14 +71,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-dde8d7229bfee0f8bb5efd37f0f9ae1e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-a5cec38defc11f7561b05eff66b91810.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-dde8d7229bfee0f8bb5efd37f0f9ae1e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a986a95301e671fce2c6472dffc862a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-1e815c4c50043f7e8fc9161d15dcdabb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-a986a95301e671fce2c6472dffc862a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -255,17 +290,10 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-fundamentos-de-la-nube" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Fundamentos de la Nube</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-fundamentos-de-la-nube">    
-        <li>
-    <a class="dropdown-item" href="../Fundamentos-Nube/Fundamentos.html">
- <span class="dropdown-text">Fundamentos de la Nube</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../Fundamentos-Nube/Fundamentos.html"> 
+<span class="menu-text">Fundamentos de la Nube</span></a>
   </li>  
-    </ul>
-  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-linux" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Linux</span>
@@ -344,16 +372,8 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-redes">    
         <li>
-    <a class="dropdown-item" href="../Redes/index.html">
- <span class="dropdown-text">Inicio</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../Redes/conceptos.qmd">
+    <a class="dropdown-item" href="../Redes/conceptos.html">
  <span class="dropdown-text">Conceptos</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../Redes/comandos.qmd">
- <span class="dropdown-text">Comandos</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../Redes/Lab[261]-IPSpublicas y privadas.html">
@@ -383,57 +403,18 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-seguridad">    
         <li>
-    <a class="dropdown-item" href="../Seguridad/index.html">
- <span class="dropdown-text">Inicio</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../Seguridad/permisos.qmd">
- <span class="dropdown-text">Permisos</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../Seguridad/firewall.qmd">
- <span class="dropdown-text">Firewall</span></a>
+    <a class="dropdown-item" href="../Seguridad/conceptos.html">
+ <span class="dropdown-text">Conceptos</span></a>
   </li>  
     </ul>
   </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-python" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Python</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-python">    
-        <li>
-    <a class="dropdown-item" href="../Python/index.html">
- <span class="dropdown-text">Inicio</span></a>
+  <li class="nav-item">
+    <a class="nav-link active" href="../Python/index.html" aria-current="page"> 
+<span class="menu-text">Python</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../Python/teoria.qmd">
- <span class="dropdown-text">Teoría</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../Python/laboratorio.qmd">
- <span class="dropdown-text">Laboratorio</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../Python/test.qmd">
- <span class="dropdown-text">Test</span></a>
-  </li>  
-    </ul>
-  </li>
   <li class="nav-item">
     <a class="nav-link" href="../Bases-Datos/index.html"> 
 <span class="menu-text">Bases de Datos</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../Jumpstart-aws/index.html"> 
-<span class="menu-text">Jumpstart AWS</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../SoftSkills/index.qmd"> 
-<span class="menu-text">Soft Skills</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../Laboratorios-AWS/index.html"> 
-<span class="menu-text">Laboratorios</span></a>
   </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-recursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
@@ -473,8 +454,19 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">1</span> Introducción</a></li>
+  <li><a href="#conceptos-clave" id="toc-conceptos-clave" class="nav-link" data-scroll-target="#conceptos-clave"><span class="header-section-number">2</span> Conceptos clave</a></li>
+  <li><a href="#usos-comunes-de-python-en-aws" id="toc-usos-comunes-de-python-en-aws" class="nav-link" data-scroll-target="#usos-comunes-de-python-en-aws"><span class="header-section-number">3</span> Usos comunes de Python en AWS</a></li>
+  <li><a href="#ejemplo-1-listar-buckets-de-s3-con-python" id="toc-ejemplo-1-listar-buckets-de-s3-con-python" class="nav-link" data-scroll-target="#ejemplo-1-listar-buckets-de-s3-con-python"><span class="header-section-number">4</span> Ejemplo 1: Listar buckets de S3 con Python</a></li>
+  <li><a href="#ejemplo-2-crear-una-función-lambda-en-python" id="toc-ejemplo-2-crear-una-función-lambda-en-python" class="nav-link" data-scroll-target="#ejemplo-2-crear-una-función-lambda-en-python"><span class="header-section-number">5</span> Ejemplo 2: Crear una función Lambda en Python</a></li>
+  <li><a href="#buenas-prácticas" id="toc-buenas-prácticas" class="nav-link" data-scroll-target="#buenas-prácticas"><span class="header-section-number">6</span> Buenas prácticas</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
@@ -483,8 +475,59 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<section id="introducción" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introducción</h1>
+<p>Amazon Web Services (AWS) es una de las plataformas de computación en la nube más utilizadas en el mundo. Python es un lenguaje de programación muy popular para automatizar, desarrollar y administrar recursos en AWS gracias a su simplicidad y a la gran cantidad de librerías disponibles.</p>
+</section>
+<section id="conceptos-clave" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Conceptos clave</h1>
+<ul>
+<li><strong>AWS</strong>: Plataforma de servicios en la nube que ofrece recursos como cómputo, almacenamiento, bases de datos, inteligencia artificial, entre otros.</li>
+<li><strong>Python</strong>: Lenguaje de programación interpretado, fácil de aprender y ampliamente utilizado en ciencia de datos, automatización y desarrollo web.</li>
+<li><strong>Boto3</strong>: Es la librería oficial de AWS para Python, permite interactuar con los servicios de AWS mediante código.</li>
+</ul>
+</section>
+<section id="usos-comunes-de-python-en-aws" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Usos comunes de Python en AWS</h1>
+<ul>
+<li>Automatización de tareas (por ejemplo, encender/apagar instancias EC2)</li>
+<li>Procesamiento de datos en S3</li>
+<li>Creación de funciones serverless con AWS Lambda</li>
+<li>Despliegue de aplicaciones web usando Elastic Beanstalk</li>
+</ul>
+</section>
+<section id="ejemplo-1-listar-buckets-de-s3-con-python" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Ejemplo 1: Listar buckets de S3 con Python</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> boto3</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un cliente de S3</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>s3 <span class="op">=</span> boto3.client(<span class="st">'s3'</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Listar los buckets</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> s3.list_buckets()</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> bucket <span class="kw">in</span> response[<span class="st">'Buckets'</span>]:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(bucket[<span class="st">'Name'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ejemplo-2-crear-una-función-lambda-en-python" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Ejemplo 2: Crear una función Lambda en Python</h1>
+<p>Las funciones Lambda permiten ejecutar código sin aprovisionar servidores. Ejemplo de función Lambda que responde a un evento:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lambda_handler(event, context):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Evento recibido:"</span>, event)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">'statusCode'</span>: <span class="dv">200</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">'body'</span>: <span class="st">'¡Hola desde Lambda!'</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="buenas-prácticas" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Buenas prácticas</h1>
+<ul>
+<li>Usar roles y políticas de IAM para limitar permisos.</li>
+<li>No almacenar credenciales en el código, usar variables de entorno o perfiles de AWS.</li>
+<li>Manejar errores y excepciones en el código Python.</li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

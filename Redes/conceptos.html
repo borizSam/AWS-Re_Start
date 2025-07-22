@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>index – AWS RE/START</title>
+<title>conceptos – AWS RE/START</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -36,14 +71,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-dde8d7229bfee0f8bb5efd37f0f9ae1e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-a5cec38defc11f7561b05eff66b91810.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-dde8d7229bfee0f8bb5efd37f0f9ae1e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a986a95301e671fce2c6472dffc862a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-1e815c4c50043f7e8fc9161d15dcdabb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-a986a95301e671fce2c6472dffc862a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -255,17 +290,10 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-fundamentos-de-la-nube" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Fundamentos de la Nube</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-fundamentos-de-la-nube">    
-        <li>
-    <a class="dropdown-item" href="../Fundamentos-Nube/Fundamentos.html">
- <span class="dropdown-text">Fundamentos de la Nube</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../Fundamentos-Nube/Fundamentos.html"> 
+<span class="menu-text">Fundamentos de la Nube</span></a>
   </li>  
-    </ul>
-  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-linux" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Linux</span>
@@ -344,16 +372,8 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-redes">    
         <li>
-    <a class="dropdown-item" href="../Redes/index.html">
- <span class="dropdown-text">Inicio</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../Redes/conceptos.qmd">
+    <a class="dropdown-item" href="../Redes/conceptos.html">
  <span class="dropdown-text">Conceptos</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../Redes/comandos.qmd">
- <span class="dropdown-text">Comandos</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../Redes/Lab[261]-IPSpublicas y privadas.html">
@@ -383,57 +403,18 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-seguridad">    
         <li>
-    <a class="dropdown-item" href="../Seguridad/index.html">
- <span class="dropdown-text">Inicio</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../Seguridad/permisos.qmd">
- <span class="dropdown-text">Permisos</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../Seguridad/firewall.qmd">
- <span class="dropdown-text">Firewall</span></a>
+    <a class="dropdown-item" href="../Seguridad/conceptos.html">
+ <span class="dropdown-text">Conceptos</span></a>
   </li>  
     </ul>
   </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-python" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Python</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-python">    
-        <li>
-    <a class="dropdown-item" href="../Python/index.html">
- <span class="dropdown-text">Inicio</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../Python/index.html"> 
+<span class="menu-text">Python</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../Python/teoria.qmd">
- <span class="dropdown-text">Teoría</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../Python/laboratorio.qmd">
- <span class="dropdown-text">Laboratorio</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../Python/test.qmd">
- <span class="dropdown-text">Test</span></a>
-  </li>  
-    </ul>
-  </li>
   <li class="nav-item">
     <a class="nav-link" href="../Bases-Datos/index.html"> 
 <span class="menu-text">Bases de Datos</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../Jumpstart-aws/index.html"> 
-<span class="menu-text">Jumpstart AWS</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../SoftSkills/index.qmd"> 
-<span class="menu-text">Soft Skills</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../Laboratorios-AWS/index.html"> 
-<span class="menu-text">Laboratorios</span></a>
   </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-recursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
@@ -473,8 +454,27 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#fundamentos-de-redes-en-aws" id="toc-fundamentos-de-redes-en-aws" class="nav-link active" data-scroll-target="#fundamentos-de-redes-en-aws"><span class="header-section-number">1</span> 🌐 Fundamentos de Redes en AWS</a>
+  <ul class="collapse">
+  <li><a href="#qué-es-una-vpc" id="toc-qué-es-una-vpc" class="nav-link" data-scroll-target="#qué-es-una-vpc"><span class="header-section-number">1.1</span> 🧱 ¿Qué es una VPC?</a></li>
+  <li><a href="#subredes-subnets" id="toc-subredes-subnets" class="nav-link" data-scroll-target="#subredes-subnets"><span class="header-section-number">1.2</span> 🌍 Subredes (Subnets)</a></li>
+  <li><a href="#tablas-de-ruteo" id="toc-tablas-de-ruteo" class="nav-link" data-scroll-target="#tablas-de-ruteo"><span class="header-section-number">1.3</span> 🚦 Tablas de Ruteo</a></li>
+  <li><a href="#internet-gateway-igw" id="toc-internet-gateway-igw" class="nav-link" data-scroll-target="#internet-gateway-igw"><span class="header-section-number">1.4</span> 🌐 Internet Gateway (IGW)</a></li>
+  <li><a href="#grupos-de-seguridad-y-nacls" id="toc-grupos-de-seguridad-y-nacls" class="nav-link" data-scroll-target="#grupos-de-seguridad-y-nacls"><span class="header-section-number">1.5</span> 🔒 Grupos de Seguridad y NACLs</a></li>
+  <li><a href="#conectividad-entre-vpcs" id="toc-conectividad-entre-vpcs" class="nav-link" data-scroll-target="#conectividad-entre-vpcs"><span class="header-section-number">1.6</span> 🌐 Conectividad entre VPCs</a>
+  <ul class="collapse">
+  <li><a href="#vpc-peering" id="toc-vpc-peering" class="nav-link" data-scroll-target="#vpc-peering"><span class="header-section-number">1.6.1</span> VPC Peering</a></li>
+  <li><a href="#vpn-y-direct-connect" id="toc-vpn-y-direct-connect" class="nav-link" data-scroll-target="#vpn-y-direct-connect"><span class="header-section-number">1.6.2</span> VPN y Direct Connect</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#buenas-prácticas" id="toc-buenas-prácticas" class="nav-link" data-scroll-target="#buenas-prácticas"><span class="header-section-number">2</span> 📌 Buenas Prácticas</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
@@ -483,8 +483,94 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<section id="fundamentos-de-redes-en-aws" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 🌐 Fundamentos de Redes en AWS</h1>
+<p>AWS permite crear redes virtuales aisladas mediante <strong>VPC (Virtual Private Cloud)</strong>, donde puedes definir tu arquitectura de red (subredes, enrutamiento, seguridad, etc.).</p>
+<section id="qué-es-una-vpc" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="qué-es-una-vpc"><span class="header-section-number">1.1</span> 🧱 ¿Qué es una VPC?</h2>
+<p>Una <strong>VPC</strong> es una red virtual privada que tú defines dentro de AWS.</p>
+<ul>
+<li>Puedes elegir el rango de IPs (CIDR).</li>
+<li>Crear subredes públicas o privadas.</li>
+<li>Asociar tablas de ruteo.</li>
+<li>Usar gateways para conexión externa.</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear una VPC</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> ec2 create-vpc <span class="at">--cidr-block</span> 10.0.0.0/16</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="subredes-subnets" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="subredes-subnets"><span class="header-section-number">1.2</span> 🌍 Subredes (Subnets)</h2>
+<p>Dividen la VPC en bloques más pequeños.</p>
+<ul>
+<li><strong>Públicas</strong>: con acceso a internet.</li>
+<li><strong>Privadas</strong>: sin acceso directo a internet.</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear una subred</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> ec2 create-subnet <span class="at">--vpc-id</span> vpc-123abc <span class="dt">\</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--cidr-block</span> 10.0.1.0/24 <span class="at">--availability-zone</span> us-east-1a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="tablas-de-ruteo" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="tablas-de-ruteo"><span class="header-section-number">1.3</span> 🚦 Tablas de Ruteo</h2>
+<p>Controlan el flujo del tráfico dentro de la VPC y hacia/desde internet.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear tabla de ruteo</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> ec2 create-route-table <span class="at">--vpc-id</span> vpc-123abc</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir ruta a internet</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> ec2 create-route <span class="at">--route-table-id</span> rtb-abc123 <span class="dt">\</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--destination-cidr-block</span> 0.0.0.0/0 <span class="at">--gateway-id</span> igw-789xyz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="internet-gateway-igw" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="internet-gateway-igw"><span class="header-section-number">1.4</span> 🌐 Internet Gateway (IGW)</h2>
+<p>Permite que instancias en subredes públicas accedan a Internet.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear IGW</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> ec2 create-internet-gateway</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Asociar a la VPC</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> ec2 attach-internet-gateway <span class="at">--vpc-id</span> vpc-123abc <span class="dt">\</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--internet-gateway-id</span> igw-789xyz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="grupos-de-seguridad-y-nacls" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="grupos-de-seguridad-y-nacls"><span class="header-section-number">1.5</span> 🔒 Grupos de Seguridad y NACLs</h2>
+<ul>
+<li><strong>Grupos de seguridad (SG)</strong>: Firewall a nivel de instancia (estadoful).</li>
+<li><strong>Listas de control de acceso (NACL)</strong>: Firewall a nivel de subred (stateless).</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear SG que permite SSH y HTTP</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> ec2 create-security-group <span class="at">--group-name</span> miSG <span class="dt">\</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--description</span> <span class="st">"Permitir SSH y HTTP"</span> <span class="at">--vpc-id</span> vpc-123abc</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> ec2 authorize-security-group-ingress <span class="dt">\</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--group-id</span> sg-abc123 <span class="at">--protocol</span> tcp <span class="at">--port</span> 22 <span class="dt">\</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">--cidr</span> 203.0.113.0/24</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="conectividad-entre-vpcs" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="conectividad-entre-vpcs"><span class="header-section-number">1.6</span> 🌐 Conectividad entre VPCs</h2>
+<section id="vpc-peering" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="vpc-peering"><span class="header-section-number">1.6.1</span> VPC Peering</h3>
+<p>Permite la comunicación privada entre dos VPCs.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> ec2 create-vpc-peering-connection <span class="dt">\</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--vpc-id</span> vpc-1 <span class="at">--peer-vpc-id</span> vpc-2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="vpn-y-direct-connect" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="vpn-y-direct-connect"><span class="header-section-number">1.6.2</span> VPN y Direct Connect</h3>
+<ul>
+<li><strong>VPN</strong>: conexión segura entre tu red local y AWS.</li>
+<li><strong>Direct Connect</strong>: conexión dedicada, más estable y rápida.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="buenas-prácticas" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 📌 Buenas Prácticas</h1>
+<ul>
+<li>Mínimo acceso necesario a internet.</li>
+<li>Segmentar la red: público vs privado.</li>
+<li>Monitorizar tráfico con <strong>VPC Flow Logs</strong>.</li>
+<li>Aplicar principios de <strong>Zero Trust Networking</strong> cuando sea posible.</li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
