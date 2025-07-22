@@ -83,8 +83,10 @@ website:
       # - text: "Soft Skills"
       #   file: SoftSkills/index.qmd
 
-      - text: "AWS Cloud Practitioner-Training"
-        file: Training/practice-exam-1.qmd
+      - text: "AWS Cloud Practitioner"
+        menu:
+          - text: "Training"
+            file: Training/practice-exam-1.qmd
 
       # - text: "Recursos"
       #   menu:
