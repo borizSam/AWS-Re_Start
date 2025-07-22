@@ -1,0 +1,78 @@
+# 🗄️ Introducción a las Bases de Datos en AWS
+
+AWS ofrece una variedad de servicios de bases de datos completamente gestionados, diseñados para diferentes tipos de aplicaciones y necesidades.
+
+## 🧰 Servicios de Bases de Datos en AWS
+
+### RDS (Relational Database Service)
+
+Servicio gestionado para bases de datos relacionales:
+
+- Soporta MySQL, PostgreSQL, MariaDB, Oracle y SQL Server.
+- Respaldos automáticos, escalado vertical, alta disponibilidad (Multi-AZ).
+
+```bash
+# Crear una instancia RDS
+aws rds create-db-instance \
+  --db-instance-identifier mi-db \
+  --db-instance-class db.t3.micro \
+  --engine mysql \
+  --master-username admin --master-user-password clave123 \
+  --allocated-storage 20
+```
+
+### Amazon Aurora
+
+Motor relacional compatible con MySQL y PostgreSQL:
+
+- Hasta 5 veces más rápido que MySQL estándar.
+- Alta disponibilidad y replicación automática.
+
+### DynamoDB
+
+Base de datos NoSQL (clave-valor y documento):
+
+- Totalmente gestionada, altamente escalable.
+- Baja latencia, ideal para aplicaciones en tiempo real.
+
+```bash
+# Crear una tabla DynamoDB
+aws dynamodb create-table \
+  --table-name Productos \
+  --attribute-definitions AttributeName=id,AttributeType=S \
+  --key-schema AttributeName=id,KeyType=HASH \
+  --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
+```
+
+### Amazon Redshift
+
+Almacenamiento de datos a gran escala (data warehouse):
+
+- Optimizado para análisis y consultas complejas.
+- Ideal para BI y reporting empresarial.
+
+### Amazon ElastiCache
+
+Cache en memoria para acelerar aplicaciones:
+
+- Compatible con Redis y Memcached.
+- Reduce la carga de lectura en las bases de datos.
+
+## 🔐 Seguridad en Bases de Datos
+
+- Cifrado en tránsito y en reposo (RDS, Aurora, DynamoDB).
+- Control de acceso con IAM y políticas específicas.
+- Grupos de seguridad y subredes privadas (RDS en VPC).
+
+## 📊 Monitoreo y Alta Disponibilidad
+
+- Monitoreo con Amazon CloudWatch.
+- Multi-AZ para RDS y Aurora.
+- Backups automáticos y snapshots manuales.
+
+## 📌 Buenas Prácticas
+
+- Usar subredes privadas para instancias de bases de datos.
+- Habilitar backups y auditoría.
+- Limitar accesos con roles IAM y grupos de seguridad.
+- Escoger el tipo de base de datos adecuado según la carga y necesidad.

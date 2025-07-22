@@ -1,0 +1,94 @@
+# 🌐 Fundamentos de Redes en AWS
+
+AWS permite crear redes virtuales aisladas mediante **VPC (Virtual Private Cloud)**, donde puedes definir tu arquitectura de red (subredes, enrutamiento, seguridad, etc.).
+
+## 🧱 ¿Qué es una VPC?
+
+Una **VPC** es una red virtual privada que tú defines dentro de AWS.
+
+- Puedes elegir el rango de IPs (CIDR).
+- Crear subredes públicas o privadas.
+- Asociar tablas de ruteo.
+- Usar gateways para conexión externa.
+
+```bash
+# Crear una VPC
+aws ec2 create-vpc --cidr-block 10.0.0.0/16
+```
+
+## 🌍 Subredes (Subnets)
+
+Dividen la VPC en bloques más pequeños.
+
+- **Públicas**: con acceso a internet.
+- **Privadas**: sin acceso directo a internet.
+
+```bash
+# Crear una subred
+aws ec2 create-subnet --vpc-id vpc-123abc \
+  --cidr-block 10.0.1.0/24 --availability-zone us-east-1a
+```
+
+## 🚦 Tablas de Ruteo
+
+Controlan el flujo del tráfico dentro de la VPC y hacia/desde internet.
+
+```bash
+# Crear tabla de ruteo
+aws ec2 create-route-table --vpc-id vpc-123abc
+
+# Añadir ruta a internet
+aws ec2 create-route --route-table-id rtb-abc123 \
+  --destination-cidr-block 0.0.0.0/0 --gateway-id igw-789xyz
+```
+
+## 🌐 Internet Gateway (IGW)
+
+Permite que instancias en subredes públicas accedan a Internet.
+
+```bash
+# Crear IGW
+aws ec2 create-internet-gateway
+
+# Asociar a la VPC
+aws ec2 attach-internet-gateway --vpc-id vpc-123abc \
+  --internet-gateway-id igw-789xyz
+```
+
+## 🔒 Grupos de Seguridad y NACLs
+
+- **Grupos de seguridad (SG)**: Firewall a nivel de instancia (estadoful).
+- **Listas de control de acceso (NACL)**: Firewall a nivel de subred (stateless).
+
+```bash
+# Crear SG que permite SSH y HTTP
+aws ec2 create-security-group --group-name miSG \
+  --description "Permitir SSH y HTTP" --vpc-id vpc-123abc
+
+aws ec2 authorize-security-group-ingress \
+  --group-id sg-abc123 --protocol tcp --port 22 \
+  --cidr 203.0.113.0/24
+```
+
+## 🌐 Conectividad entre VPCs
+
+### VPC Peering
+
+Permite la comunicación privada entre dos VPCs.
+
+```bash
+aws ec2 create-vpc-peering-connection \
+  --vpc-id vpc-1 --peer-vpc-id vpc-2
+```
+
+### VPN y Direct Connect
+
+- **VPN**: conexión segura entre tu red local y AWS.
+- **Direct Connect**: conexión dedicada, más estable y rápida.
+
+# 📌 Buenas Prácticas
+
+- Mínimo acceso necesario a internet.
+- Segmentar la red: público vs privado.
+- Monitorizar tráfico con **VPC Flow Logs**.
+- Aplicar principios de **Zero Trust Networking** cuando sea posible.

@@ -6,9 +6,7 @@ website:
   navbar:
     left:
       - text: "Fundamentos de la Nube"
-        menu:
-          - text: "Fundamentos de la Nube"
-            file: Fundamentos-Nube/Fundamentos.qmd
+        file: Fundamentos-Nube/Fundamentos.qmd
 
       - text: "Linux"
         menu:
@@ -48,12 +46,8 @@ website:
 
       - text: "Redes"
         menu:
-          - text: "Inicio"
-            file: Redes/index.qmd
           - text: "Conceptos"
             file: Redes/conceptos.qmd
-          - text: "Comandos"
-            file: Redes/comandos.qmd
           - text: "Lab[261]-IPs-publicas y privadas"
             file: Redes/Lab[261]-IPSpublicas y privadas.qmd
           - text: "Lab[262]-Direcciones IP y estáticas y dinámicas" 
@@ -66,35 +60,32 @@ website:
             file: Redes/Lab[265].qmd
       - text: "Seguridad"
         menu:
-          - text: "Inicio"
-            file: Seguridad/index.qmd
-          - text: "Permisos"
-            file: Seguridad/permisos.qmd
-          - text: "Firewall"
-            file: Seguridad/firewall.qmd
+          - text: "Conceptos"
+            file: Seguridad/conceptos.qmd
 
       - text: "Python"
-        menu:
-          - text: "Inicio"
-            file: Python/index.qmd
-          - text: "Teoría"
-            file: Python/teoria.qmd
-          - text: "Laboratorio"
-            file: Python/laboratorio.qmd
-          - text: "Test"
-            file: Python/test.qmd
+        file: Python/index.qmd
+        # menu:
+        #   - text: "Inicio"
+        #     file: Python/index.qmd
+        #   - text: "Teoría"
+        #     file: Python/teoria.qmd
+        #   - text: "Laboratorio"
+        #     file: Python/laboratorio.qmd
+        #   - text: "Test"
+        #     file: Python/test.qmd
 
       - text: "Bases de Datos"
         file: Bases-Datos/index.qmd
 
-      - text: "Jumpstart AWS"
-        file: Jumpstart-aws/index.qmd
+      # - text: "Jumpstart AWS"
+      #   file: Jumpstart-aws/index.qmd
 
-      - text: "Soft Skills"
-        file: SoftSkills/index.qmd
+      # - text: "Soft Skills"
+      #   file: SoftSkills/index.qmd
 
-      - text: "Laboratorios"
-        file: Laboratorios-AWS/index.qmd
+      # - text: "Laboratorios"
+      #   file: Laboratorios-AWS/index.qmd
 
       - text: "Recursos"
         menu:

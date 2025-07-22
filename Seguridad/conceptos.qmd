@@ -1,0 +1,73 @@
+# 🔐 Principios Fundamentales de Seguridad en AWS
+
+AWS proporciona una infraestructura altamente segura. Sin embargo, la responsabilidad de configurar adecuadamente los servicios recae parcialmente en el usuario (modelo de **Responsabilidad Compartida**).
+
+## 🧱 Modelo de Responsabilidad Compartida
+
+- **AWS**: Seguridad de la nube (hardware, software, instalaciones, redes).
+- **Cliente**: Seguridad en la nube (configuración de servicios, datos, IAM, redes).
+
+## 🧑‍💼 IAM (Identity and Access Management)
+
+IAM permite controlar quién puede hacer qué en tu cuenta.
+
+```bash
+# Crear un usuario
+aws iam create-user --user-name nombre_usuario
+
+# Adjuntar una política al usuario
+aws iam attach-user-policy --user-name nombre_usuario \
+  --policy-arn arn:aws:iam::aws:policy/ReadOnlyAccess
+```
+
+- Usa el **principio de menor privilegio**.
+- Habilita **MFA (Autenticación Multifactor)**.
+- Crea grupos con políticas claras.
+
+## 🔑 Gestión de Credenciales
+
+- No usar claves de acceso root.
+- Rotar claves periódicamente.
+- Nunca subir `.aws/credentials` a repositorios.
+
+## 🔒 Seguridad en S3
+
+```bash
+# Hacer un bucket privado por defecto
+aws s3api put-bucket-acl --bucket mi-bucket --acl private
+```
+
+- Usa políticas de bucket para limitar el acceso.
+- Habilita el cifrado (SSE-S3 o SSE-KMS).
+- Activa el bloqueo de versiones y registros de acceso.
+
+## 🛡️ Seguridad en EC2
+
+- Usa **grupos de seguridad** y **listas de control de acceso (ACL)**.
+- Nunca abrir el puerto 22 a todo el mundo (`0.0.0.0/0`).
+- Usa claves SSH seguras y rotación periódica.
+
+## 📊 CloudTrail y CloudWatch
+
+- **CloudTrail** registra llamadas a la API para auditoría.
+- **CloudWatch** permite monitorear métricas y establecer alarmas.
+
+```bash
+# Activar trail
+aws cloudtrail create-trail --name MiTrail --s3-bucket-name mi-trail-logs
+
+# Iniciar monitoreo en EC2
+aws cloudwatch put-metric-alarm ...
+```
+
+## 🧬 Cifrado de Datos
+
+- Usa **KMS** (Key Management Service) para cifrar datos en reposo.
+- En tránsito: siempre usar HTTPS (TLS).
+
+# 📌 Buenas Prácticas
+
+- Revisión periódica de permisos IAM.
+- Habilitar CloudTrail en todas las regiones.
+- Configurar alarmas de seguridad.
+- Cifrar todos los datos sensibles.

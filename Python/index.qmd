@@ -1,0 +1,49 @@
+# Introducción
+
+Amazon Web Services (AWS) es una de las plataformas de computación en la nube más utilizadas en el mundo. Python es un lenguaje de programación muy popular para automatizar, desarrollar y administrar recursos en AWS gracias a su simplicidad y a la gran cantidad de librerías disponibles.
+
+# Conceptos clave
+
+- **AWS**: Plataforma de servicios en la nube que ofrece recursos como cómputo, almacenamiento, bases de datos, inteligencia artificial, entre otros.
+- **Python**: Lenguaje de programación interpretado, fácil de aprender y ampliamente utilizado en ciencia de datos, automatización y desarrollo web.
+- **Boto3**: Es la librería oficial de AWS para Python, permite interactuar con los servicios de AWS mediante código.
+
+# Usos comunes de Python en AWS
+
+- Automatización de tareas (por ejemplo, encender/apagar instancias EC2)
+- Procesamiento de datos en S3
+- Creación de funciones serverless con AWS Lambda
+- Despliegue de aplicaciones web usando Elastic Beanstalk
+
+# Ejemplo 1: Listar buckets de S3 con Python
+
+```python
+import boto3
+
+# Crear un cliente de S3
+s3 = boto3.client('s3')
+
+# Listar los buckets
+response = s3.list_buckets()
+for bucket in response['Buckets']:
+    print(bucket['Name'])
+```
+
+# Ejemplo 2: Crear una función Lambda en Python
+
+Las funciones Lambda permiten ejecutar código sin aprovisionar servidores. Ejemplo de función Lambda que responde a un evento:
+
+```python
+def lambda_handler(event, context):
+    print("Evento recibido:", event)
+    return {
+        'statusCode': 200,
+        'body': '¡Hola desde Lambda!'
+    }
+```
+
+# Buenas prácticas
+
+- Usar roles y políticas de IAM para limitar permisos.
+- No almacenar credenciales en el código, usar variables de entorno o perfiles de AWS.
+- Manejar errores y excepciones en el código Python.
