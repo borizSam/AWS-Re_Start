@@ -714,6 +714,27 @@
     "text": "1 Introducción\nAmazon Web Services (AWS) es una de las plataformas de computación en la nube más utilizadas en el mundo. Python es un lenguaje de programación muy popular para automatizar, desarrollar y administrar recursos en AWS gracias a su simplicidad y a la gran cantidad de librerías disponibles.\n\n\n2 Conceptos clave\n\nAWS: Plataforma de servicios en la nube que ofrece recursos como cómputo, almacenamiento, bases de datos, inteligencia artificial, entre otros.\nPython: Lenguaje de programación interpretado, fácil de aprender y ampliamente utilizado en ciencia de datos, automatización y desarrollo web.\nBoto3: Es la librería oficial de AWS para Python, permite interactuar con los servicios de AWS mediante código.\n\n\n\n3 Usos comunes de Python en AWS\n\nAutomatización de tareas (por ejemplo, encender/apagar instancias EC2)\nProcesamiento de datos en S3\nCreación de funciones serverless con AWS Lambda\nDespliegue de aplicaciones web usando Elastic Beanstalk\n\n\n\n4 Ejemplo 1: Listar buckets de S3 con Python\nimport boto3\n\n# Crear un cliente de S3\ns3 = boto3.client('s3')\n\n# Listar los buckets\nresponse = s3.list_buckets()\nfor bucket in response['Buckets']:\n    print(bucket['Name'])\n\n\n5 Ejemplo 2: Crear una función Lambda en Python\nLas funciones Lambda permiten ejecutar código sin aprovisionar servidores. Ejemplo de función Lambda que responde a un evento:\ndef lambda_handler(event, context):\n    print(\"Evento recibido:\", event)\n    return {\n        'statusCode': 200,\n        'body': '¡Hola desde Lambda!'\n    }\n\n\n6 Buenas prácticas\n\nUsar roles y políticas de IAM para limitar permisos.\nNo almacenar credenciales en el código, usar variables de entorno o perfiles de AWS.\nManejar errores y excepciones en el código Python."
   },
   {
+    "objectID": "Training/practice1.html",
+    "href": "Training/practice1.html",
+    "title": "1 AWS Cloud Practitioner - Practice Exam",
+    "section": "",
+    "text": "AWS allows users to manage their resources using a web-based user interface. What is the name of this interface?\n\n\nShow Answer\n\nCorrect answer: D. AWS Management Console\n✅ Explanation:\nThe AWS Management Console is the web interface, while:\n- AWS CLI is for command line\n- AWS API is for developers\n- AWS SDK are programming libraries\n\n\n\n\n\nWhich of the following is an example of horizontal scaling?\n\n\nShow Answer\n\nCorrect answer: D. Adding more EC2 instances\n✅ Key concept:\nHorizontal scaling = adding more instances\nVertical scaling = upgrading instance size"
+  },
+  {
+    "objectID": "Training/practice1.html#question-1",
+    "href": "Training/practice1.html#question-1",
+    "title": "1 AWS Cloud Practitioner - Practice Exam",
+    "section": "",
+    "text": "AWS allows users to manage their resources using a web-based user interface. What is the name of this interface?\n\n\nShow Answer\n\nCorrect answer: D. AWS Management Console\n✅ Explanation:\nThe AWS Management Console is the web interface, while:\n- AWS CLI is for command line\n- AWS API is for developers\n- AWS SDK are programming libraries"
+  },
+  {
+    "objectID": "Training/practice1.html#question-2",
+    "href": "Training/practice1.html#question-2",
+    "title": "1 AWS Cloud Practitioner - Practice Exam",
+    "section": "",
+    "text": "Which of the following is an example of horizontal scaling?\n\n\nShow Answer\n\nCorrect answer: D. Adding more EC2 instances\n✅ Key concept:\nHorizontal scaling = adding more instances\nVertical scaling = upgrading instance size"
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",

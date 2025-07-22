@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>lx-lab – AWS RE/START</title>
+<title>practice1 – AWS RE/START</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -444,19 +409,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#laboratorio-administración-de-usuarios-y-grupos-en-amazon-ec2-linux" id="toc-laboratorio-administración-de-usuarios-y-grupos-en-amazon-ec2-linux" class="nav-link active" data-scroll-target="#laboratorio-administración-de-usuarios-y-grupos-en-amazon-ec2-linux"><span class="header-section-number">1</span> 🧪 Laboratorio: Administración de Usuarios y Grupos en Amazon EC2 (Linux)</a>
+  <li><a href="#aws-cloud-practitioner---practice-exam" id="toc-aws-cloud-practitioner---practice-exam" class="nav-link active" data-scroll-target="#aws-cloud-practitioner---practice-exam"><span class="header-section-number">1</span> AWS Cloud Practitioner - Practice Exam</a>
   <ul class="collapse">
-  <li><a href="#objetivos" id="toc-objetivos" class="nav-link" data-scroll-target="#objetivos"><span class="header-section-number">1.1</span> 🎯 Objetivos</a></li>
-  <li><a href="#duración-estimada" id="toc-duración-estimada" class="nav-link" data-scroll-target="#duración-estimada"><span class="header-section-number">1.2</span> 🕒 Duración estimada</a></li>
-  <li><a href="#tareas-paso-a-paso" id="toc-tareas-paso-a-paso" class="nav-link" data-scroll-target="#tareas-paso-a-paso"><span class="header-section-number">1.3</span> ✅ Tareas paso a paso</a>
-  <ul class="collapse">
-  <li><a href="#tarea-1-conexión-a-la-instancia-ec2" id="toc-tarea-1-conexión-a-la-instancia-ec2" class="nav-link" data-scroll-target="#tarea-1-conexión-a-la-instancia-ec2"><span class="header-section-number">1.3.1</span> 🔗 Tarea 1: Conexión a la instancia EC2</a></li>
-  <li><a href="#tarea-2-crear-usuarios" id="toc-tarea-2-crear-usuarios" class="nav-link" data-scroll-target="#tarea-2-crear-usuarios"><span class="header-section-number">1.3.2</span> 👤 Tarea 2: Crear usuarios</a></li>
-  <li><a href="#tarea-3-crear-y-asignar-grupos" id="toc-tarea-3-crear-y-asignar-grupos" class="nav-link" data-scroll-target="#tarea-3-crear-y-asignar-grupos"><span class="header-section-number">1.3.3</span> 👥 Tarea 3: Crear y asignar grupos</a></li>
-  <li><a href="#tarea-4-iniciar-sesión-con-los-nuevos-usuarios" id="toc-tarea-4-iniciar-sesión-con-los-nuevos-usuarios" class="nav-link" data-scroll-target="#tarea-4-iniciar-sesión-con-los-nuevos-usuarios"><span class="header-section-number">1.3.4</span> 👨‍💻 Tarea 4: Iniciar sesión con los nuevos usuarios</a></li>
-  </ul></li>
-  <li><a href="#finalizar-laboratorio" id="toc-finalizar-laboratorio" class="nav-link" data-scroll-target="#finalizar-laboratorio"><span class="header-section-number">1.4</span> ✅ Finalizar laboratorio</a></li>
-  <li><a href="#recursos-adicionales" id="toc-recursos-adicionales" class="nav-link" data-scroll-target="#recursos-adicionales"><span class="header-section-number">1.5</span> 📚 Recursos adicionales</a></li>
+  <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1"><span class="header-section-number">1.1</span> Question 1</a></li>
+  <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2"><span class="header-section-number">1.2</span> Question 2</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -468,140 +424,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="laboratorio-administración-de-usuarios-y-grupos-en-amazon-ec2-linux" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> 🧪 Laboratorio: Administración de Usuarios y Grupos en Amazon EC2 (Linux)</h1>
-<section id="objetivos" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="objetivos"><span class="header-section-number">1.1</span> 🎯 Objetivos</h2>
-<ul>
-<li>Crear usuarios nuevos con una contraseña predeterminada<br>
-</li>
-<li>Crear grupos y asignar los usuarios correspondientes<br>
-</li>
-<li>Iniciar sesión con diferentes usuarios y comprobar permisos</li>
-</ul>
-</section>
-<section id="duración-estimada" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="duración-estimada"><span class="header-section-number">1.2</span> 🕒 Duración estimada</h2>
-<p>45 minutos</p>
+<section id="aws-cloud-practitioner---practice-exam" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> AWS Cloud Practitioner - Practice Exam</h1>
+<section id="question-1" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="question-1"><span class="header-section-number">1.1</span> Question 1</h2>
+<p>AWS allows users to manage their resources using a web-based user interface. What is the name of this interface?</p>
+<details>
+<summary>
+<b>Show Answer</b>
+</summary>
+<strong>Correct answer: D. AWS Management Console</strong><br>
+✅ <strong>Explanation</strong>:<br>
+The AWS Management Console is the web interface, while:<br>
+- AWS CLI is for command line<br>
+- AWS API is for developers<br>
+- AWS SDK are programming libraries
+</details>
 <hr>
 </section>
-<section id="tareas-paso-a-paso" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="tareas-paso-a-paso"><span class="header-section-number">1.3</span> ✅ Tareas paso a paso</h2>
-<section id="tarea-1-conexión-a-la-instancia-ec2" class="level3" data-number="1.3.1">
-<h3 data-number="1.3.1" class="anchored" data-anchor-id="tarea-1-conexión-a-la-instancia-ec2"><span class="header-section-number">1.3.1</span> 🔗 Tarea 1: Conexión a la instancia EC2</h3>
-<p>Conéctate a tu instancia desde Ubuntu (nativo o WSL):</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 400 labsuser.pem</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-i</span> labsuser.pem ec2-user@<span class="op">&lt;</span>public-ip<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>📸 <strong>Captura SSH exitosa:</strong><br>
-<a href="#">Enlace imagen aquí</a></p>
+<section id="question-2" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="question-2"><span class="header-section-number">1.2</span> Question 2</h2>
+<p>Which of the following is an example of horizontal scaling?</p>
+<details>
+<summary>
+<b>Show Answer</b>
+</summary>
+<strong>Correct answer: D. Adding more EC2 instances</strong><br>
+✅ <strong>Key concept</strong>:<br>
+Horizontal scaling = adding more instances<br>
+Vertical scaling = upgrading instance size
+</details>
 <hr>
-</section>
-<section id="tarea-2-crear-usuarios" class="level3" data-number="1.3.2">
-<h3 data-number="1.3.2" class="anchored" data-anchor-id="tarea-2-crear-usuarios"><span class="header-section-number">1.3.2</span> 👤 Tarea 2: Crear usuarios</h3>
-<p>Ejemplo para el primer usuario:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> useradd arosalez</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> passwd arosalez</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Usa la contraseña: <code>P@ssword1234!</code></p>
-<p>Resto de usuarios:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> useradd eowusu <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> passwd eowusu</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> useradd jdoe <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> passwd jdoe</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> useradd ljuan <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> passwd ljuan</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> useradd mmajor <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> passwd mmajor</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> useradd mjackson <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> passwd mjackson</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> useradd nwolf <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> passwd nwolf</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> useradd psantos <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> passwd psantos</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> useradd smartinez <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> passwd smartinez</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> useradd ssarkar <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> passwd ssarkar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Verificación:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cat /etc/passwd <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d:</span> <span class="at">-f1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>📸 <strong>Captura usuarios creados:</strong><br>
-<a href="#">Enlace imagen aquí</a></p>
-<hr>
-</section>
-<section id="tarea-3-crear-y-asignar-grupos" class="level3" data-number="1.3.3">
-<h3 data-number="1.3.3" class="anchored" data-anchor-id="tarea-3-crear-y-asignar-grupos"><span class="header-section-number">1.3.3</span> 👥 Tarea 3: Crear y asignar grupos</h3>
-<p>Crear los grupos:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> groupadd Sales</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> groupadd HR</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> groupadd Finance</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> groupadd Shipping</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> groupadd Managers</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> groupadd CEO</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Asignar usuarios:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ventas</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-a</span> <span class="at">-G</span> Sales arosalez</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-a</span> <span class="at">-G</span> Sales nwolf</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># RR. HH.</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-a</span> <span class="at">-G</span> HR ljuan</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-a</span> <span class="at">-G</span> HR smartinez</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Finanzas</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-a</span> <span class="at">-G</span> Finance mmajor</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-a</span> <span class="at">-G</span> Finance ssarkar</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Envíos</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-a</span> <span class="at">-G</span> Shipping eowusu</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-a</span> <span class="at">-G</span> Shipping jdoe</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-a</span> <span class="at">-G</span> Shipping psantos</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Gerentes</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-a</span> <span class="at">-G</span> Managers arosalez</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-a</span> <span class="at">-G</span> Managers ljuan</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-a</span> <span class="at">-G</span> Managers mmajor</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co"># CEO</span></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-a</span> <span class="at">-G</span> CEO mjackson</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Agregar ec2-user a todos los grupos</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> group <span class="kw">in</span> Sales HR Finance Shipping Managers CEO<span class="kw">;</span> <span class="cf">do</span> <span class="fu">sudo</span> usermod <span class="at">-a</span> <span class="at">-G</span> <span class="va">$group</span> ec2-user<span class="kw">;</span> <span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Verifica:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> /etc/group</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>📸 <strong>Captura de /etc/group:</strong><br>
-<a href="#">Enlace imagen aquí</a></p>
-<hr>
-</section>
-<section id="tarea-4-iniciar-sesión-con-los-nuevos-usuarios" class="level3" data-number="1.3.4">
-<h3 data-number="1.3.4" class="anchored" data-anchor-id="tarea-4-iniciar-sesión-con-los-nuevos-usuarios"><span class="header-section-number">1.3.4</span> 👨‍💻 Tarea 4: Iniciar sesión con los nuevos usuarios</h3>
-<p>Cambiar de usuario:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">su</span> arosalez</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Contraseña: P@ssword1234!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Verificar ubicación:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Probar permisos:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> myFile.txt  <span class="co"># Permission denied</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> touch myFile.txt  <span class="co"># not in the sudoers file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>📸 <strong>Captura de errores de permisos:</strong><br>
-<a href="#">Enlace imagen aquí</a></p>
-<p>Salir y revisar logs:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cat /var/log/secure <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 20</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>📸 <strong>Captura de log del sistema:</strong><br>
-<a href="#">Enlace imagen aquí</a></p>
-<hr>
-</section>
-</section>
-<section id="finalizar-laboratorio" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="finalizar-laboratorio"><span class="header-section-number">1.4</span> ✅ Finalizar laboratorio</h2>
-<ul>
-<li>Cierra la sesión SSH<br>
-</li>
-<li>En AWS, selecciona <strong>End Lab</strong></li>
-<li>Confirma para cerrar el entorno</li>
-</ul>
-<hr>
-</section>
-<section id="recursos-adicionales" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="recursos-adicionales"><span class="header-section-number">1.5</span> 📚 Recursos adicionales</h2>
-<ul>
-<li><a href="https://docs.aws.amazon.com/es_es/AWSEC2/latest/UserGuide/instance-types.html">Tipos de instancias EC2</a><br>
-</li>
-<li><a href="https://man7.org/linux/man-pages/man8/useradd.8.html">Guía comando <code>useradd</code></a><br>
-</li>
-<li><a href="https://man7.org/linux/man-pages/man8/usermod.8.html">Guía comando <code>usermod</code></a><br>
-</li>
-<li><a href="https://aws.amazon.com/training/">AWS Training oficial</a></li>
-</ul>
 
 
 </section>
