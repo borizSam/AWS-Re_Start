@@ -58,7 +58,7 @@ website:
             file: Redes/Lab[264]-Recursos de red para una VPC.qmd
           - text: "Lab[265]Comandos de solución de problemas del protocolo de Internet"
             file: Redes/Lab[265].qmd
-            
+
       - text: "Seguridad"
         file: Seguridad/conceptos.qmd
 
@@ -83,17 +83,19 @@ website:
       # - text: "Soft Skills"
       #   file: SoftSkills/index.qmd
 
-      # - text: "Laboratorios"
-      #   file: Laboratorios-AWS/index.qmd
-
-      - text: "Recursos"
+      - text: "AWS Cloud Practitioner-Training"
         menu:
-          - text: "Proyectos"
-            file: Recursos/proyectos.qmd
-          - text: "Píldoras"
-            file: Recursos/pildoras.qmd
-          - text: "Grabaciones"
-            file: Recursos/grabaciones.qmd
+          text: "Training"
+          file: Training/practice-exam-1.qmd
+
+      # - text: "Recursos"
+      #   menu:
+      #     - text: "Proyectos"
+      #       file: Recursos/proyectos.qmd
+      #     - text: "Píldoras"
+      #       file: Recursos/pildoras.qmd
+      #     - text: "Grabaciones"
+      #       file: Recursos/grabaciones.qmd
 
     right:
       - icon: github
@@ -112,3 +114,5 @@ format:
     toc-depth: 3
     number-sections: true
     css: styles.css
+    code-tools: true
+    code-copy: true
