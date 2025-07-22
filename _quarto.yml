@@ -84,9 +84,7 @@ website:
       #   file: SoftSkills/index.qmd
 
       - text: "AWS Cloud Practitioner-Training"
-        menu:
-          text: "Training"
-          file: Training/practice-exam-1.qmd
+        file: Training/practice-exam-1.qmd
 
       # - text: "Recursos"
       #   menu:
