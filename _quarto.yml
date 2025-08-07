@@ -77,7 +77,7 @@ website:
       - text: "AWS Cloud Practitioner"
         menu:
           - text: "Examen Práctico 1"
-            file: /practice-exam-1.qmd
+            file: Training/practice-exam-1.qmd
           - text: "Examen Práctico 2"
             file: Training/practice-exam-2.qmd
           - text: "Examen Práctico 3"
