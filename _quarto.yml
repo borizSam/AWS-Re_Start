@@ -77,8 +77,8 @@ website:
       - text: "AWS Cloud Practitioner"
         menu:
           - text: "Training"
-            file: Training/practice1.qmd
-
+          - file: Training/practice-exam-1.qmd
+          - file: Training/practice-exam-2.qmd
       # - text: "Recursos"
       #   menu:
       #     - text: "Proyectos"
