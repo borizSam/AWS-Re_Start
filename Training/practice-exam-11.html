@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>practice-exam-11 – AWS RE/START</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-a986a95301e671fce2c6472dffc862a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-1e815c4c50043f7e8fc9161d15dcdabb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-a986a95301e671fce2c6472dffc862a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">AWS RE/START</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../Fundamentos-Nube/Fundamentos.html"> 
+<span class="menu-text">Fundamentos de la Nube</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-linux" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Linux</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-linux">    
+        <li>
+    <a class="dropdown-item" href="../Linux/conceptos.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li class="dropdown-header">Laboratorios</li>
+        <li>
+    <a class="dropdown-item" href="../Linux/255-LX-Lab.html">
+ <span class="dropdown-text">225 - Lab - Introducción a Linux Amazon AMI</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/227-LX-Lab.html">
+ <span class="dropdown-text">227 - [LX] - Línea de comandos de Linux</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/229-LX-Lab.html">
+ <span class="dropdown-text">229 - [LX] - Usuarios y grupos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/231-LX-Lab.html">
+ <span class="dropdown-text">231 - [LX] - Edición de archivos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/233-LX-Lab.html">
+ <span class="dropdown-text">233 - [LX] - Sistema de archivos Linux</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/235-LX-Lab.html">
+ <span class="dropdown-text">235 - [LX] - Trabajo con archivos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/237-LX-Lab.html">
+ <span class="dropdown-text">237 - [LX] - Permisos de archivos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/239-LX-Lab.html">
+ <span class="dropdown-text">239 - [LX] - Procesos administrativos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/241-LX-Lab.html">
+ <span class="dropdown-text">241 - [LX] - Administración de servicios</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/243-LX-Lab.html">
+ <span class="dropdown-text">243 - [LX] - Administración de software</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/245-LX-Lab.html">
+ <span class="dropdown-text">245 - [LX] - Archivos de registro</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/247-LX-Lab.html">
+ <span class="dropdown-text">247 - [LX] - Trabajo con comandos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/249-LX-Lab.html">
+ <span class="dropdown-text">249 - [LX] - El Bash Shell</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/251-LX-Lab.html">
+ <span class="dropdown-text">251 - [LX] - Scripts de Bash Shell</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/253-LX-Lab.html">
+ <span class="dropdown-text">253 - [LX] - Reto: Scripting Shell</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-redes" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Redes</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-redes">    
+        <li>
+    <a class="dropdown-item" href="../Redes/conceptos.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Redes/Lab[261]-IPSpublicas y privadas.html">
+ <span class="dropdown-text">Lab[261]-IPs-publicas y privadas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html">
+ <span class="dropdown-text">Lab[262]-Direcciones IP y estáticas y dinámicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).html">
+ <span class="dropdown-text">Lab[263]-Creación de subredes y asignación de direcciones IP (VPC)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Redes/Lab[264]-Recursos de red para una VPC.html">
+ <span class="dropdown-text">Lab[264] - Recursos de red para una VPC</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Redes/Lab[265].html">
+ <span class="dropdown-text">Lab[265]Comandos de solución de problemas del protocolo de Internet</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../Seguridad/conceptos.html"> 
+<span class="menu-text">Seguridad</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Python/index.html"> 
+<span class="menu-text">Python</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Bases-Datos/index.html"> 
+<span class="menu-text">Bases de Datos</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-aws-cloud-practitioner" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">AWS Cloud Practitioner</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-aws-cloud-practitioner">    
+        <li class="dropdown-header">Training</li>
+        <li>
+    <a class="dropdown-item" href="../Training/practice-exam-1.qmd">
+ <span class="dropdown-text"></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Training/practice-exam-2.qmd">
+ <span class="dropdown-text"></span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/borizSam"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#practice-exam-11" id="toc-practice-exam-11" class="nav-link active" data-scroll-target="#practice-exam-11"><span class="header-section-number">1</span> Practice Exam 11</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+
+<section id="practice-exam-11" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Practice Exam 11</h1>
+<ol type="1">
+<li>How can a company reduce its Total Cost of Ownership (TCO) using AWS?
+<ul>
+<li>A. By minimizing large capital expenditures.</li>
+<li>B. By having no responsibility for third-party license costs.</li>
+<li>C. By having no operational expenditures.</li>
+<li>D. By having AWS manage applications.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: A
+</details></li>
+<li>Which options does AWS make available for customers who want to learn about security in the cloud in an instructor-led setting? (Select TWO)
+<ul>
+<li>A. AWS Trusted Advisor.</li>
+<li>B. AWS Online Tech Talks.</li>
+<li>C. AWS Blog.</li>
+<li>D. AWS Forums.</li>
+<li>E. AWS Classroom Training.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: B, E
+</details></li>
+<li>Which of the following will enhance the security of access to the AWS Management Console’? (Select TWO)
+<ul>
+<li>A. AWS Secrets Manager.</li>
+<li>B. AWS Certificate Manager.</li>
+<li>C. AWS Multi-Factor Authentication (AWS MFA).</li>
+<li>D. Security groups.</li>
+<li>E. Password policies.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: C, E
+</details></li>
+<li>Which of the following features can be configured through the Amazon Virtual Private Cloud (Amazon VPC) Dashboard? (Select TWO)
+<ul>
+<li>A. Amazon CloudFront distributions.</li>
+<li>B. Amazon Route 53.</li>
+<li>C. Security Groups.</li>
+<li>D. Subnets.</li>
+<li>E. Elastic Load Balancing.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: C, D
+</details></li>
+<li>For which auditing process does AWS have sole responsibility?
+<ul>
+<li>A. AWS IAM policies.</li>
+<li>B. Physical security.</li>
+<li>C. Amazon S3 bucket policies.</li>
+<li>D. AWS CloudTrail Logs.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: B
+</details></li>
+<li>Which of the following are advantages of AWS consolidated billing? (Select TWO)
+<ul>
+<li>A. The ability to receive one bill for multiple accounts.</li>
+<li>B. Service limits increasing by default in all accounts.</li>
+<li>C. A fixed discount on the monthly bill.</li>
+<li>D. Potential volume discounts, as usage in all accounts is combined.</li>
+<li>E. The automatic extension of the master account’s AWS support plan to all accounts.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: A, D
+</details></li>
+<li>Which of the following common IT tasks can AWS cover to free up company IT resources? (Select TWO)
+<ul>
+<li>A. Patching databases software.</li>
+<li>B. Testing application releases.</li>
+<li>C. Backing up databases.</li>
+<li>D. Creating database schema.</li>
+<li>E. Running penetration tests.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: A, C
+</details></li>
+<li>A company wants to expand from one AWS Region into a second AWS Region. What does the company need to do to start supporting the new Region?
+<ul>
+<li>A. Contact an AWS Account Manager to sign a new contract.</li>
+<li>B. Move an Availability Zone to the new Region.</li>
+<li>C. Begin deploying resources in the second Region.</li>
+<li>D. Download the AWS Management Console for the new Region.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: C
+</details></li>
+<li>Why is it beneficial to use Elastic Load Balancers with applications?
+<ul>
+<li>A. They allow for the conversion from Application Load.</li>
+<li>B. Balancers to Classic Load Balancers.</li>
+<li>C. They are capable of handling constant changes in network traffic patterns.</li>
+<li>D. They automatically adjust capacity. They are provided at no charge to users.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: C
+</details></li>
+<li>Which is the MINIMUM AWS Support plan that allows for one-hour target response time for support cases?
+<ul>
+<li>A. Enterprise.</li>
+<li>B. Business.</li>
+<li>C. Developer</li>
+<li>D. Basic</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: B
+</details></li>
+<li>What is the lowest-cost, durable storage option for retaining database backups for immediate retrieval?
+<ul>
+<li>A. Amazon S3.</li>
+<li>B. Amazon Glacier.</li>
+<li>C. Amazon EBS.</li>
+<li>D. Amazon EC2 Instance Store.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: A
+</details></li>
+<li>What AWS team assists customers with accelerating cloud adoption through paid engagements in any of several specialty practice areas?
+<ul>
+<li>A. AWS Enterprise Support.</li>
+<li>B. AWS Solutions Architects.</li>
+<li>C. AWS Professional Services.</li>
+<li>D. AWS Account Managers.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: C
+</details></li>
+<li>A company needs 24/7 phone email and chat access with a response time of less than 1 hour if a production system has a service interruption Which AWS Support plan meets these requirements at the LOWEST cost?
+<ul>
+<li>A. Basic.</li>
+<li>B. Developer.</li>
+<li>C. Business.</li>
+<li>D. Enterprise.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: C
+</details></li>
+<li>If a customer needs to audit the change management of AWS resources, which of the following AWS services should the customer use?
+<ul>
+<li>A. AWS Config.</li>
+<li>B. AWS Trusted Advisor.</li>
+<li>C. Amazon CloudWatch.</li>
+<li>D. Amazon Inspector.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: A
+</details></li>
+<li>How does AWS Trusted Advisor provide guidance to users of the AWS Cloud? (Select TWO)
+<ul>
+<li>A. It identifies software vulnerabilities in applications running on AWS.</li>
+<li>B. It provides a list of cost optimization recommendations based on current AWS usage.</li>
+<li>C. It detects potential security vulnerabilities caused by permissions settings on account resources.</li>
+<li>D. It automatically corrects potential security issues caused by permissions settings on account resources.</li>
+<li>E. It provides proactive alerting whenever an Amazon EC2 instance has been compromised.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: B, C
+</details></li>
+<li>Which AWS managed service is used to host databases?
+<ul>
+<li>A. AWS Batch.</li>
+<li>B. AWS Artifact.</li>
+<li>C. AWS Data Pipeline.</li>
+<li>D. Amazon RDS.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: D
+</details></li>
+<li>Which of the following Identity and Access Management (IAM) entities is associated with an access key ID and secret access key when using AWS Command Line Interface (AWS CLI)?
+<ul>
+<li>A. IAM group.</li>
+<li>B. IAM user.</li>
+<li>C. IAM role.</li>
+<li>D. IAM policy.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: B
+</details></li>
+<li>Under the shared responsibility model, which of the following is the customer responsible for?
+<ul>
+<li>A. Ensuring that disk drives are wiped after use.</li>
+<li>B. Ensuring that firmware is updated on hardware devices.</li>
+<li>C. Ensuring that data is encrypted at rest.</li>
+<li>D. Ensuring that network cables are category six or higher.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: C
+</details></li>
+<li>Which AWS service provides a simple and scalable shared file storage solution for use with Linux-based AWS and on-premises servers?
+<ul>
+<li>A. Amazon S3.</li>
+<li>B. Amazon Glacier.</li>
+<li>C. Amazon EBS.</li>
+<li>D. Amazon EFS.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: D
+</details></li>
+<li>What credential components are required to gain programmatic access to an AWS account? (Select TWO)
+<ul>
+<li>A. An access key ID.</li>
+<li>B. A primary key.</li>
+<li>C. A secret access key.</li>
+<li>D. A user ID.</li>
+<li>E. A secondary key.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: A, C
+</details></li>
+<li>Which of the following is a shared control between the customer and AWS?
+<ul>
+<li>A. Providing a key for Amazon S3 client-side encryption.</li>
+<li>B. Configuration of an Amazon EC2 instance.</li>
+<li>C. Environmental controls of physical AWS data centers.</li>
+<li>D. Awareness.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: D
+</details></li>
+<li>Which type of AWS storage is ephemeral and is deleted when an instance is stopped Of terminated?
+<ul>
+<li>A. Amazon EBS.</li>
+<li>B. Amazon EC2 instance store.</li>
+<li>C. Amazon EFS.</li>
+<li>D. Amazon S3.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: B
+</details></li>
+<li>Which of the following is an advantage of consolidated billing on AWS?
+<ul>
+<li>A. Volume pricing qualification.</li>
+<li>B. Shared access permissions.</li>
+<li>C. Multiple bills per account.</li>
+<li>D. Eliminates the need for tagging.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: A
+</details></li>
+<li>Which services are parts of the AWS serverless platform?
+<ul>
+<li>A. Amazon EC2, Amazon S3, Amazon Athena.</li>
+<li>B. Amazon Kinesis, Amazon SQS, Amazon EMR.</li>
+<li>C. AWS Step Functions, Amazon DynamoDB, Amazon SNS.</li>
+<li>D. Amazon Athena, Amazon Cognito, Amazon EC2.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: C
+</details></li>
+<li>Which of the following Amazon EC2 pricing models allow customers to use existing server-bound software licenses?
+<ul>
+<li>A. Spot Instances.</li>
+<li>B. Reserved Instances.</li>
+<li>C. Dedicated Hosts.</li>
+<li>D. On-Demand Instances.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: C
+</details></li>
+<li>Which of the following security measures protect access to an AWS account? (Select TWO)
+<ul>
+<li>A. Enable AWS CloudTrail.</li>
+<li>B. Grant least privilege access to IAM users.</li>
+<li>C. Create one IAM user and share with many developers and users.</li>
+<li>D. Enable Amazon CloudFront.</li>
+<li>E. Activate multi-factor authentication (MFA) for privileged users.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: B, E
+</details></li>
+<li>Which AWS service provides the ability to manage infrastructure as code?
+<ul>
+<li>A. AWS CodePipeline.</li>
+<li>B. AWS CodeDeploy.</li>
+<li>C. AWS Direct Connect.</li>
+<li>D. AWS CloudFormation.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: D
+</details></li>
+<li>What is an advantage of deploying an application across multiple Availability Zones?
+<ul>
+<li>A. There is a lower risk of service failure if a natural disaster causes a service disruption in a given AWS Region.</li>
+<li>B. The application will have higher availability because it can withstand a service disruption in one Availability Zone.</li>
+<li>C. There will be better coverage as Availability Zones are geographical^ distant and can serve a wider area.</li>
+<li>D. There will be decreased application latency that will improve the user experience.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: B
+</details></li>
+<li>A customer needs to run a MySQL database that easily scales. Which AWS service should they use?
+<ul>
+<li>A. Amazon Aurora.</li>
+<li>B. Amazon Redshift.</li>
+<li>C. Amazon DynamoDB.</li>
+<li>D. Amazon ElastiCache.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: A
+</details></li>
+<li>Which of the following is an AWS Cloud architecture design principle?
+<ul>
+<li>A. Implement single points of failure.</li>
+<li>B. Implement loose coupling.</li>
+<li>C. Implement monolithic design.</li>
+<li>D. Implement vertical scaling.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: B
+</details></li>
+<li>AWS Enterprise Support users have access to which service or feature that is not available to users with other AWS Support plans?
+<ul>
+<li>A. AWS Trusted Advisor.</li>
+<li>B. AWS Support case.</li>
+<li>C. Concierge team.</li>
+<li>D. Amazon Connect.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: C
+</details></li>
+<li>A company will be moving from an on-premises data center to the AWS Cloud. What would be one financial difference after the move?
+<ul>
+<li>A. Moving from variable operational expense ( opex ) to upfront capital expense (capex).</li>
+<li>B. Moving from upfront capital expense (capex) to variable capital expense (capex).</li>
+<li>C. Moving from upfront capital expense (capex) to variable operational expense ( opex ).</li>
+<li>D. Elimination of upfront capital expense (capex) and elimination of variable operational expense ( opex ).</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: C
+</details></li>
+<li>When performing a cost analysis that supports physical isolation of a customer workload, which compute hosting model should be accounted for in the Total Cost of Ownership (TCO)?
+<ul>
+<li>A. Dedicated Hosts</li>
+<li>B. Reserved Instances</li>
+<li>C. On-Demand Instances</li>
+<li>D. No Upfront Reserved Instances</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: A
+</details></li>
+<li>Which AWS service should be used for long-term, low-cost storage of data backups?
+<ul>
+<li>A. Amazon RDS.</li>
+<li>B. Amazon Glacier.</li>
+<li>C. AWS Snowball.</li>
+<li>D. AWS EBS.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: B
+</details></li>
+<li>Which is the MINIMUM AWS Support plan that provides technical support through phone calls?
+<ul>
+<li>A. Enterprise.</li>
+<li>B. Business.</li>
+<li>C. Developer.</li>
+<li>D. Basic.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: B
+</details></li>
+<li>Which Amazon EC2 instance pricing model can provide discounts of up to 90%?
+<ul>
+<li>A. Reserved Instances.</li>
+<li>B. On-Demand.</li>
+<li>C. Dedicated Hosts.</li>
+<li>D. Spot Instances.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: D
+</details></li>
+<li>Which of the following AWS services can be used to serve large amounts of online video content with the lowest possible latency? (Select TWO)
+<ul>
+<li>A. appGateway.</li>
+<li>B. Amazon S3.</li>
+<li>C. Amazon Elastic File System (EFS).</li>
+<li>D. Amazon Glacier.</li>
+<li>E. Amazom CloudFront.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: B, E
+</details></li>
+<li>What can AWS edge locations be used for? (Select TWO)
+<ul>
+<li>A. Hosting applications.</li>
+<li>B. Delivering content closer to users.</li>
+<li>C. Running NoSQL database caching services.</li>
+<li>D. Reducing traffic on the server by caching responses.</li>
+<li>E. Sending notification messages to end users.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: B, D
+</details></li>
+<li>A company is planning to migrate from on-premises to the AWS Cloud. When AWS tool or service provides detailed reports on estimated cost savings after migration?
+<ul>
+<li>A. AWS Total Cost of Ownership (TCO) Calculator.</li>
+<li>B. Cost Explorer.</li>
+<li>C. AWS Budgets.</li>
+<li>D. AWS Migration Hub.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: A
+</details></li>
+<li>Which AWS service provides a customized view of the health of specific AWS services that power a customer’s workloads running on AWS?
+<ul>
+<li>A. AWS Service Health Dashboard.</li>
+<li>B. AWS X-Ray.</li>
+<li>C. AWS Personal Health Dashboard.</li>
+<li>D. Amazon CloudWatch.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: C
+</details></li>
+<li>One of the advantages to moving infrastructure from an on-premises data center to the AWS Cloud is:
+<ul>
+<li>A. It allows the business to eliminate IT bills.</li>
+<li>B. It allows the business to put a server in each customer’s data center.</li>
+<li>C. It allows the business to focus on business activities.</li>
+<li>D. It allows the business to leave servers unpatched.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: C
+</details></li>
+<li>How can an AWS user with an AWS Basic Support plan obtain technical assistance from AWS?
+<ul>
+<li>A. AWS Senior Support Engineers.</li>
+<li>B. AWS Technical Account Managers.</li>
+<li>C. AWS Trusted Advisor.</li>
+<li>D. AWS Discussion Forums.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: D
+</details></li>
+<li>How can a user protect against AWS service disruptions if a natural disaster affects an entire geographic area?
+<ul>
+<li>A. Deploy applications across multiple Availability Zones within an AWS Region.</li>
+<li>B. Use a hybrid cloud computing deployment model within the geographic area.</li>
+<li>C. Deploy applications across multiple AWS Regions.</li>
+<li>D. Store application artifacts using AWS Artifact and replicate them across multiple AWS Regions.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: C
+</details></li>
+<li>Which activity is a customer responsibility in the AWS Cloud according to the AWS shared responsibility model?
+<ul>
+<li>A. Ensuring network connectivity from AWS to the internet.</li>
+<li>B. Patching and fixing flaws within the AWS Cloud infrastructure.</li>
+<li>C. Ensuring the physical security of cloud data centers.</li>
+<li>D. Ensuring Amazon EBS volumes are backed up.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: D
+</details></li>
+<li>In which scenario should Amazon EC2 Spot Instances be used?
+<ul>
+<li>A. A company wants to move its main website to AWS from an on-premises web server.</li>
+<li>B. A company has a number of application services whose Service Level Agreement (SLA) requires 99.999% uptime.</li>
+<li>C. A company’s heavily used legacy database is currently running on-premises.</li>
+<li>D. A company has a number of infrequent, interruptible jobs that are currently using On-Demand Instances.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: D
+</details></li>
+<li>A customer is deploying a new application and needs to choose an AWS Region. Which of the following factors could influence the customer’s decision? (Select TWO)
+<ul>
+<li>A. Reduced latency to users.</li>
+<li>B. The application’s presentation in the local language.</li>
+<li>C. Data sovereignty compliance.</li>
+<li>D. Cooling costs in hotter climates.</li>
+<li>E. Proximity to the customer’s office for on-site visits.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: A, C
+</details></li>
+<li>Which AWS service provides alerts when an AWS event may impact a company’s AWS resources?
+<ul>
+<li>A. AWS Personal Health Dashboard.</li>
+<li>B. AWS Service Health Dashboard.</li>
+<li>C. AWS Trusted Advisor.</li>
+<li>D. AWS Infrastructure Event Management.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: A
+</details></li>
+<li>Which disaster recovery scenario offers the lowest probability of down time?
+<ul>
+<li>A. Backup and restore.</li>
+<li>B. Pilot light.</li>
+<li>C. Warm standby.</li>
+<li>D. Multi-site active-active.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: D
+</details></li>
+<li>Which service’s PRIMARY purpose is software version control?
+<ul>
+<li>A. Amazon CodeStar.</li>
+<li>B. AWS Command Line Interface (AWS CLI).</li>
+<li>C. Amazon Cognito.</li>
+<li>D. AWS CodeCommit.</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: D
+</details></li>
+<li>How can a customer increase security to AWS account logons? (Select TWO)
+<ul>
+<li>A. Configure AWS Certificate Manager</li>
+<li>B. Enable Multi-Factor Authentication (MFA)</li>
+<li>C. Use Amazon Cognito to manage access</li>
+<li>D. Configure a strong password policy</li>
+<li>E. Enable AWS Organizations</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+Correct answer: B, D
+</details></li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/borizSam\.github\.io\/AWS-Re_Start\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

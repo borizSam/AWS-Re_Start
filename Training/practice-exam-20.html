@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>practice-exam-20 – AWS RE/START</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-a986a95301e671fce2c6472dffc862a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-1e815c4c50043f7e8fc9161d15dcdabb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-a986a95301e671fce2c6472dffc862a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">AWS RE/START</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../Fundamentos-Nube/Fundamentos.html"> 
+<span class="menu-text">Fundamentos de la Nube</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-linux" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Linux</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-linux">    
+        <li>
+    <a class="dropdown-item" href="../Linux/conceptos.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li class="dropdown-header">Laboratorios</li>
+        <li>
+    <a class="dropdown-item" href="../Linux/255-LX-Lab.html">
+ <span class="dropdown-text">225 - Lab - Introducción a Linux Amazon AMI</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/227-LX-Lab.html">
+ <span class="dropdown-text">227 - [LX] - Línea de comandos de Linux</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/229-LX-Lab.html">
+ <span class="dropdown-text">229 - [LX] - Usuarios y grupos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/231-LX-Lab.html">
+ <span class="dropdown-text">231 - [LX] - Edición de archivos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/233-LX-Lab.html">
+ <span class="dropdown-text">233 - [LX] - Sistema de archivos Linux</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/235-LX-Lab.html">
+ <span class="dropdown-text">235 - [LX] - Trabajo con archivos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/237-LX-Lab.html">
+ <span class="dropdown-text">237 - [LX] - Permisos de archivos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/239-LX-Lab.html">
+ <span class="dropdown-text">239 - [LX] - Procesos administrativos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/241-LX-Lab.html">
+ <span class="dropdown-text">241 - [LX] - Administración de servicios</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/243-LX-Lab.html">
+ <span class="dropdown-text">243 - [LX] - Administración de software</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/245-LX-Lab.html">
+ <span class="dropdown-text">245 - [LX] - Archivos de registro</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/247-LX-Lab.html">
+ <span class="dropdown-text">247 - [LX] - Trabajo con comandos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/249-LX-Lab.html">
+ <span class="dropdown-text">249 - [LX] - El Bash Shell</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/251-LX-Lab.html">
+ <span class="dropdown-text">251 - [LX] - Scripts de Bash Shell</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Linux/253-LX-Lab.html">
+ <span class="dropdown-text">253 - [LX] - Reto: Scripting Shell</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-redes" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Redes</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-redes">    
+        <li>
+    <a class="dropdown-item" href="../Redes/conceptos.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Redes/Lab[261]-IPSpublicas y privadas.html">
+ <span class="dropdown-text">Lab[261]-IPs-publicas y privadas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Redes/Lab[262]-Direcciones IP y estáticas y dinámicas.html">
+ <span class="dropdown-text">Lab[262]-Direcciones IP y estáticas y dinámicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Redes/Lab[263]-Creación de subredes y asignación de direcciones IP (VPC).html">
+ <span class="dropdown-text">Lab[263]-Creación de subredes y asignación de direcciones IP (VPC)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Redes/Lab[264]-Recursos de red para una VPC.html">
+ <span class="dropdown-text">Lab[264] - Recursos de red para una VPC</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Redes/Lab[265].html">
+ <span class="dropdown-text">Lab[265]Comandos de solución de problemas del protocolo de Internet</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../Seguridad/conceptos.html"> 
+<span class="menu-text">Seguridad</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Python/index.html"> 
+<span class="menu-text">Python</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Bases-Datos/index.html"> 
+<span class="menu-text">Bases de Datos</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-aws-cloud-practitioner" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">AWS Cloud Practitioner</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-aws-cloud-practitioner">    
+        <li class="dropdown-header">Training</li>
+        <li>
+    <a class="dropdown-item" href="../Training/practice-exam-1.qmd">
+ <span class="dropdown-text"></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Training/practice-exam-2.qmd">
+ <span class="dropdown-text"></span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/borizSam"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#practice-exam-20" id="toc-practice-exam-20" class="nav-link active" data-scroll-target="#practice-exam-20"><span class="header-section-number">1</span> Practice Exam 20</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+
+<section id="practice-exam-20" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Practice Exam 20</h1>
+<ol type="1">
+<li><p>Which AWS service helps identify malicious or unauthorized activities in AWS accounts and workloads?</p>
+<ul>
+<li>A. Amazon Rekognition</li>
+<li>B. AWS Trusted Advisor</li>
+<li>C. Amazon GuardDuty</li>
+<li>D. Amazon CloudWatch</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: C</p>
+<p>Explanation: <a href="https://aws.amazon.com/guardduty/" class="uri">https://aws.amazon.com/guardduty/</a></p>
+</details></li>
+<li><p>A company wants to try a third-party ecommerce solution before deciding to use it long term. <br> Which AWS service or tool will support this effort?</p>
+<ul>
+<li>A. AWS Marketplace</li>
+<li>B. AWS Partner Network (APN)</li>
+<li>C. AWS Managed Services</li>
+<li>D. AWS Service Catalog</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: A</p>
+<p>Explanation: <a href="https://aws.amazon.com/about-aws/whats-new/2019/09/aws-marketplace-easier-to-find-solutions-from-aws-console/" class="uri">https://aws.amazon.com/about-aws/whats-new/2019/09/aws-marketplace-easier-to-find-solutions-from-aws-console/</a></p>
+</details></li>
+<li><p>Which AWS service is a managed NoSQL database?</p>
+<ul>
+<li>A. Amazon Redshift</li>
+<li>B. Amazon DynamoDB</li>
+<li>C. Amazon Aurora</li>
+<li>D. Amazon RDS for MariaDB</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: B</p>
+<p>Explanation: <a href="https://aws.amazon.com/dynamodb/" class="uri">https://aws.amazon.com/dynamodb/</a></p>
+</details></li>
+<li><p>Which AWS service should be used to create a billing alarm?</p>
+<ul>
+<li>A. AWS Trusted Advisor</li>
+<li>B. AWS CloudTrail</li>
+<li>C. Amazon CloudWatch</li>
+<li>D. Amazon QuickSight</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: C</p>
+<p>Explanation: <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html" class="uri">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html</a></p>
+</details></li>
+<li><p>A company is hosting a web application in a Docker container on Amazon EC2. <br> AWS is responsible for which of the following tasks?</p>
+<ul>
+<li>A. Scaling the web application and services developed with Docker</li>
+<li>B. Provisioning or scheduling containers to run on clusters and maintain their availability</li>
+<li>C. Performing hardware maintenance in the AWS facilities that run the AWS Cloud</li>
+<li>D. Managing the guest operating system, including updates and security patches</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: C</p>
+<p>Explanation: <a href="https://aws.amazon.com/getting-started/tutorials/deploy-docker-containers/" class="uri">https://aws.amazon.com/getting-started/tutorials/deploy-docker-containers/</a></p>
+</details></li>
+<li><p>Users are reporting latency when connecting to a website with a global customer base. <br> Which AWS service will improve the customer experience by reducing latency?</p>
+<ul>
+<li>A. Amazon CloudFront</li>
+<li>B. AWS Direct Connect</li>
+<li>C. Amazon EC2 Auto Scaling</li>
+<li>D. AWS Transit Gateway</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: A</p>
+<p>Explanation: <a href="https://aws.amazon.com/getting-started/tutorials/deliver-content-faster/" class="uri">https://aws.amazon.com/getting-started/tutorials/deliver-content-faster/</a></p>
+</details></li>
+<li><p>Which actions represent best practices for using AWS IAM? (Choose two.)</p>
+<ul>
+<li>A. Configure a strong password policy</li>
+<li>B. Share the security credentials among users of AWS accounts who are in the same Region</li>
+<li>C. Use access keys to log in to the AWS Management Console</li>
+<li>D. Rotate access keys on a regular basis</li>
+<li>E. Avoid using IAM roles to delegate permissions</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: AD</p>
+<p>Explanation: <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html" class="uri">https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html</a></p>
+</details></li>
+<li><p>Which AWS feature or service can be used to capture information about incoming and outgoing traffic in an AWS VPC infrastructure?</p>
+<ul>
+<li>A. AWS Config</li>
+<li>B. VPC Flow Logs</li>
+<li>C. AWS Trusted Advisor</li>
+<li>D. AWS CloudTrail</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: B</p>
+<p>Explanation: <a href="https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html" class="uri">https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html</a></p>
+</details></li>
+<li><p>A company wants to use an AWS service to monitor the health of application endpoints, with the ability to route traffic to healthy regional endpoints to improve application availability. <br> Which service will support these requirements?</p>
+<ul>
+<li>A. Amazon Inspector</li>
+<li>B. Amazon CloudWatch</li>
+<li>C. AWS Global Accelerator</li>
+<li>D. Amazon CloudFront</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: C</p>
+<p>Explanation:</p>
+<ul>
+<li>AWS Global Accelerator uses the AWS global network to optimize the path from your users to your applications, improving the performance of your traffic by as much as 60%.</li>
+<li>AWS Global Accelerator continually monitors the health of your application endpoints and redirects traffic to healthy endpoints in less than 30 seconds.</li>
+</ul>
+<p>Reference: <a href="https://aws.amazon.com/global-accelerator/?blogs-global-accelerator.sort-by=item.additionalFields.createdDate&amp;blogs-global-accelerator.sort-order=desc&amp;aws-global-accelerator-wn.sort-by=item.additionalFields.postDateTime&amp;aws-global-accelerator-wn.sort-order=desc" class="uri">https://aws.amazon.com/global-accelerator/?blogs-global-accelerator.sort-by=item.additionalFields.createdDate&amp;blogs-global-accelerator.sort-order=desc&amp;aws-global-accelerator-wn.sort-by=item.additionalFields.postDateTime&amp;aws-global-accelerator-wn.sort-order=desc</a></p>
+</details></li>
+<li><p>According to the AWS Well-Architected Framework, what change management steps should be taken to achieve reliability in the AWS Cloud? (Choose two.)</p>
+<ul>
+<li>A. Use AWS Config to generate an inventory of AWS resources</li>
+<li>B. Use service limits to prevent users from creating or making changes to AWS resources</li>
+<li>C. Use AWS CloudTrail to record AWS API calls into an auditable log file</li>
+<li>D. Use AWS Certificate Manager to whitelist approved AWS resources and services</li>
+<li>E. Use Amazon GuardDuty to validate configuration changes made to AWS resources</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: Ac</p>
+</details></li>
+<li><p>Which service can be used to monitor and receive alerts for AWS account root user AWS Management Console sign-in events?</p>
+<ul>
+<li>A. Amazon CloudWatch</li>
+<li>B. AWS Config</li>
+<li>C. AWS Trusted Advisor</li>
+<li>D. AWS IAM</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: A</p>
+<p>Explanation: <a href="https://aws.amazon.com/blogs/mt/monitor-and-notify-on-aws-account-root-user-activity/" class="uri">https://aws.amazon.com/blogs/mt/monitor-and-notify-on-aws-account-root-user-activity/</a></p>
+</details></li>
+<li><p>Which design principle should be considered when architecting in the AWS Cloud?</p>
+<ul>
+<li>A. Think of servers as non-disposable resources</li>
+<li>B. Use synchronous integration of services</li>
+<li>C. Design loosely coupled components</li>
+<li>D. Implement the least permissive rules for security groups</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: C</p>
+<p>Explanation: <a href="https://www.botmetric.com/blog/aws-cloud-architecture-design-principles/" class="uri">https://www.botmetric.com/blog/aws-cloud-architecture-design-principles/</a></p>
+</details></li>
+<li><p>Which AWS services can be used to move data from on-premises data centers to AWS? (Choose two.)</p>
+<ul>
+<li>A. AWS Snowball</li>
+<li>B. AWS Lambda</li>
+<li>C. AWS ElastiCache</li>
+<li>D. AWS Database Migration Service (AWS DMS)</li>
+<li>E. Amazon API Gateway</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: AD</p>
+<p>Explanation: <a href="https://aws.amazon.com/snowball/" class="uri">https://aws.amazon.com/snowball/</a></p>
+</details></li>
+<li><p>A batch workload takes 5 hours to finish on an Amazon EC2 instance. The amount of data to be processed doubles monthly and the processing time is proportional. <br> What is the best cloud architecture to address this consistently growing demand?</p>
+<ul>
+<li>A. Run the application on a bigger EC2 instance size.</li>
+<li>B. Switch to an EC2 instance family that better matches batch requirements.</li>
+<li>C. Distribute the application across multiple EC2 instances and run the workload in parallel.</li>
+<li>D. Run the application on a bare metal EC2 instance.</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: C</p>
+</details></li>
+<li><p>Each department within a company has its own independent AWS account and its own payment method. New company leadership wants to centralize departmental governance and consolidate payments. <br> How can this be achieved using AWS services or features?</p>
+<ul>
+<li>A. Forward monthly invoices for each account. Then create IAM roles to allow cross-account access.</li>
+<li>B. Create a new AWS account. Then configure AWS Organizations and invite all existing accounts to join.</li>
+<li>C. Configure AWS Organizations in each of the existing accounts. Then link all accounts together.</li>
+<li>D. Use Cost Explorer to combine costs from all accounts. Then replicate IAM policies across accounts.</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: B</p>
+<p>Explanation: <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html" class="uri">https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html</a></p>
+</details></li>
+<li><p>The ability to horizontally scale Amazon EC2 instances based on demand is an example of which concept in the AWS Cloud value proposition?</p>
+<ul>
+<li>A. Economy of scale</li>
+<li>B. Elasticity</li>
+<li>C. High availability</li>
+<li>D. Agility</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: B</p>
+</details></li>
+<li><p>An ecommerce company anticipates a huge increase in web traffic for two very popular upcoming shopping holidays. <br> Which AWS service or feature can be configured to dynamically adjust resources to meet this change in demand?</p>
+<ul>
+<li>A. AWS CloudTrail</li>
+<li>B. Amazon EC2 Auto Scaling</li>
+<li>C. Amazon Forecast</li>
+<li>D. AWS Config</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: B</p>
+<p>Explanation: <a href="https://aws.amazon.com/autoscaling/" class="uri">https://aws.amazon.com/autoscaling/</a></p>
+</details></li>
+<li><p>Which AWS service enables users to securely connect to AWS resources over the public internet?</p>
+<ul>
+<li>A. Amazon VPC peering</li>
+<li>B. AWS Direct Connect</li>
+<li>C. AWS VPN</li>
+<li>D. Amazon Pinpoint</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: C</p>
+<p>Explanation: <a href="https://d1.awsstatic.com/whitepapers/aws-security-whitepaper.pdf" class="uri">https://d1.awsstatic.com/whitepapers/aws-security-whitepaper.pdf</a></p>
+</details></li>
+<li><p>Which tool is used to forecast AWS spending?</p>
+<ul>
+<li>A. AWS Trusted Advisor</li>
+<li>B. AWS Organizations</li>
+<li>C. Cost Explorer</li>
+<li>D. Amazon Inspector</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: C</p>
+<p>Explanation: <a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-forecast.html" class="uri">https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-forecast.html</a></p>
+</details></li>
+<li><p>A company is running an ecommerce application hosted in Europe. To decrease latency for users who access the website from other parts of the world, the company would like to cache frequently accessed static content closer to the users. <br> Which AWS service will support these requirements?</p>
+<ul>
+<li>A. Amazon ElastiCache</li>
+<li>B. Amazon CloudFront</li>
+<li>C. Amazon Elastic File System (Amazon EFS)</li>
+<li>D. Amazon Elastic Block Store (Amazon EBS)</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: B</p>
+<p>Explanation:</p>
+<ul>
+<li>Amazon CloudFront employs a global network of edge locations and regional edge caches that cache copies of your content close to your viewers.</li>
+<li>Amazon CloudFront ensures that end-user requests are served by the closest edge location.</li>
+<li>As a result, viewer requests travel a short distance, improving performance for your viewers.</li>
+<li>For files not cached at the edge locations and the regional edge caches, Amazon CloudFront keeps persistent connections with your origin servers so that those files can be fetched from the origin servers as quickly as possible.</li>
+</ul>
+<p>Reference: <a href="https://aws.amazon.com/cloudfront/faqs/" class="uri">https://aws.amazon.com/cloudfront/faqs/</a></p>
+</details></li>
+<li><p>Which of the following is a component of the AWS Global Infrastructure?</p>
+<ul>
+<li>A. Amazon Alexa</li>
+<li>B. AWS Regions</li>
+<li>C. Amazon Lightsail</li>
+<li>D. AWS Organizations</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: B</p>
+<p>Explanation: <a href="https://aws.amazon.com/about-aws/global-infrastructure/" class="uri">https://aws.amazon.com/about-aws/global-infrastructure/</a></p>
+</details></li>
+<li><p>Which AWS service will help users determine if an application running on an Amazon EC2 instance has sufficient CPU capacity?</p>
+<ul>
+<li>A. Amazon CloudWatch</li>
+<li>B. AWS Config</li>
+<li>C. AWS CloudTrail</li>
+<li>D. Amazon Inspector</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: A</p>
+<p>Explanation: <a href="https://aws.amazon.com/ec2/faqs/" class="uri">https://aws.amazon.com/ec2/faqs/</a></p>
+</details></li>
+<li><p>Why is it beneficial to use Elastic Load Balancers with applications?</p>
+<ul>
+<li>A. They allow for the conversion from Application Load Balancers to Classic Load Balancers.</li>
+<li>B. They are capable of handling constant changes in network traffic patterns.</li>
+<li>C. They automatically adjust capacity.</li>
+<li>D. They are provided at no charge to users.</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: B</p>
+<p>Explanation: <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html" class="uri">https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html</a></p>
+</details></li>
+<li><p>Which tasks are the customer’s responsibility in the AWS shared responsibility model? (Choose two.)</p>
+<ul>
+<li>A. Infrastructure facilities access management</li>
+<li>B. Cloud infrastructure hardware lifecycle management</li>
+<li>C. Configuration management of user’s applications</li>
+<li>D. Networking infrastructure protection</li>
+<li>E. Security groups configuration</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: CE</p>
+<p>Explanation: <a href="https://cloudacademy.com/blog/aws-shared-responsibility-model-security/" class="uri">https://cloudacademy.com/blog/aws-shared-responsibility-model-security/</a></p>
+</details></li>
+<li><p>IT systems should be designed to reduce interdependencies, so that a change or failure in one component does not cascade to other components. <br> This is an example of which principle of cloud architecture design?</p>
+<ul>
+<li>A. Scalability</li>
+<li>B. Loose coupling</li>
+<li>C. Automation</li>
+<li>D. Automatic scaling</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: B</p>
+<p>Explanation: <a href="https://d1.awsstatic.com/whitepapers/AWS_Cloud_Best_Practices.pdf" class="uri">https://d1.awsstatic.com/whitepapers/AWS_Cloud_Best_Practices.pdf</a></p>
+</details></li>
+<li><p>Which AWS service or feature can enhance network security by blocking requests from a particular network for a web application on AWS? (Choose two.)</p>
+<ul>
+<li>A. AWS WAF</li>
+<li>B. AWS Trusted Advisor</li>
+<li>C. AWS Direct Connect</li>
+<li>D. AWS Organizations</li>
+<li>E. Network ACLs</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: AE</p>
+<p>Explanation:</p>
+<ul>
+<li><a href="https://aws.amazon.com/waf/" class="uri">https://aws.amazon.com/waf/</a></li>
+<li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html" class="uri">https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html</a></li>
+</ul>
+</details></li>
+<li><p>An application runs on multiple Amazon EC2 instances that access a shared file system simultaneously. <br> Which AWS storage service should be used?</p>
+<ul>
+<li>A. Amazon EBS</li>
+<li>B. Amazon EFS</li>
+<li>C. Amazon S3</li>
+<li>D. AWS Artifact</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: B</p>
+<p>Explanation: <a href="https://aws.amazon.com/efs/" class="uri">https://aws.amazon.com/efs/</a></p>
+</details></li>
+<li><p>A web application is hosted on AWS using an Elastic Load Balancer, multiple Amazon EC2 instances, and Amazon RDS. <br> Which security measures fall under the responsibility of AWS? (Choose two.)</p>
+<ul>
+<li>A. Running a virus scan on EC2 instances</li>
+<li>B. Protecting against IP spoofing and packet sniffing</li>
+<li>C. Installing the latest security patches on the RDS instance</li>
+<li>D. Encrypting communication between the EC2 instances and the Elastic Load Balancer</li>
+<li>E. Configuring a security group and a network access control list (NACL) for EC2</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: BC</p>
+</details></li>
+<li><p>What is the benefit of elasticity in the AWS Cloud?</p>
+<ul>
+<li>A. Ensure web traffic is automatically spread across multiple AWS Regions.</li>
+<li>B. Minimize storage costs by automatically archiving log data.</li>
+<li>C. Enable AWS to automatically select the most cost-effective services.</li>
+<li>D. Automatically adjust the required compute capacity to maintain consistent performance.</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: D</p>
+<p>Explanation: <a href="https://aimconsulting.com/insights/blog/the-elastic-cloud-opportunity/" class="uri">https://aimconsulting.com/insights/blog/the-elastic-cloud-opportunity/</a></p>
+</details></li>
+<li><p>The continual reduction of AWS Cloud pricing is due to:</p>
+<ul>
+<li>A. pay-as-you go pricing</li>
+<li>B. the AWS global infrastructure</li>
+<li>C. economies of scale</li>
+<li>D. reserved storage pricing</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: C</p>
+</details></li>
+<li><p>A company needs an Amazon S3 bucket that cannot have any public objects due to compliance requirements. <br> How can this be accomplished?</p>
+<ul>
+<li>A. Enable S3 Block Public Access from the AWS Management Console.</li>
+<li>B. Hold a team meeting to discuss the importance if only uploading private S3 objects.</li>
+<li>C. Require all S3 objects to be manually approved before uploading.</li>
+<li>D. Create a service to monitor all S3 uploads and remove any public uploads.</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: A</p>
+<p>Explanation: <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html" class="uri">https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html</a></p>
+</details></li>
+<li><p>A Cloud Practitioner identifies a billing issue after examining the AWS Cost and Usage report in the AWS Management Console. <br> Which action can be taken to resolve this?</p>
+<ul>
+<li>A. Open a detailed case related to billing and submit it to AWS Support for help.</li>
+<li>B. Upload data describing the issue to a new object in a private Amazon S3 bucket.</li>
+<li>C. Create a pricing application and deploy it to a right-sized Amazon EC2 instance for more information.</li>
+<li>D. Proceed with creating a new dashboard in Amazon QuickSight.</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: A</p>
+<p>Explanation: &lt; https://docs.aws.amazon.com/awssupport/latest/user/case-management.html&gt;</p>
+</details></li>
+<li><p>What does the AWS Simple Monthly Calculator do?</p>
+<ul>
+<li>A. Compares on-premises costs to colocation environments</li>
+<li>B. Estimates monthly billing based on projected usage</li>
+<li>C. Estimates power consumption at existing data centers</li>
+<li>D. Estimates CPU utilization</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: B</p>
+<p>Explanation: <a href="https://aws.amazon.com/blogs/aws/estimate-your-c/" class="uri">https://aws.amazon.com/blogs/aws/estimate-your-c/</a></p>
+</details></li>
+<li><p>Who is responsible for patching the guest operating system for Amazon RDS?</p>
+<ul>
+<li>A. The AWS Product team</li>
+<li>B. The customer Database Administrator</li>
+<li>C. Managed partners</li>
+<li>D. AWS Support</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: B</p>
+<p>Explanation: <a href="https://aws.amazon.com/compliance/shared-responsibility-model/" class="uri">https://aws.amazon.com/compliance/shared-responsibility-model/</a></p>
+</details></li>
+<li><p>Which AWS services may be scaled using AWS Auto Scaling? (Choose two.)</p>
+<ul>
+<li>A. Amazon EC2</li>
+<li>B. Amazon DynamoDB</li>
+<li>C. Amazon S3</li>
+<li>D. Amazon Route 53</li>
+<li>E. Amazon Redshift</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: AB</p>
+<p>Explanation: <a href="https://aws.amazon.com/autoscaling/faqs/" class="uri">https://aws.amazon.com/autoscaling/faqs/</a></p>
+</details></li>
+<li><p>Which of the following are benefits of AWS Global Accelerator? (Choose two.)</p>
+<ul>
+<li>A. Reduced cost to run services on AWS</li>
+<li>B. Improved availability of applications deployed on AWS</li>
+<li>C. Higher durability of data stored on AWS</li>
+<li>D. Decreased latency to reach applications deployed on AWS</li>
+<li>E. Higher security of data stored on AWS</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: BD</p>
+<p>Explanation: <a href="https://aws.amazon.com/global-accelerator/faqs/" class="uri">https://aws.amazon.com/global-accelerator/faqs/</a></p>
+</details></li>
+<li><p>A user who wants to get help with billing and reactivate a suspended account should submit an account and billing request to:</p>
+<ul>
+<li>A. the AWS Support forum</li>
+<li>B. AWS Abuse</li>
+<li>C. an AWS Solutions Architect</li>
+<li>D. AWS Support</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: D</p>
+<p>Explanation: <a href="https://aws.amazon.com/premiumsupport/knowledge-center/reactivate-suspended-account/" class="uri">https://aws.amazon.com/premiumsupport/knowledge-center/reactivate-suspended-account/</a></p>
+</details></li>
+<li><p>Which AWS Cloud best practice uses the elasticity and agility of cloud computing?</p>
+<ul>
+<li>A. Provision capacity based on past usage and theoretical peaks</li>
+<li>B. Dynamically and predictively scale to meet usage demands</li>
+<li>C. Build the application and infrastructure in a data center that grants physical access</li>
+<li>D. Break apart the application into loosely coupled components</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: B</p>
+<p>Explanation:</p>
+<ul>
+<li>In a traditional computing environment, you provision capacity based on an estimate of a theoretical maximum peak.</li>
+<li>This can result in periods where expensive resources are sitting idle or occasions of insufficient capacity.</li>
+<li>With cloud computing, you can access as much or as little capacity as you need and dynamically scale to meet actual demand, while only paying for what you use.</li>
+</ul>
+</details></li>
+<li><p>Which method helps to optimize costs of users moving to the AWS Cloud?</p>
+<ul>
+<li>A. Paying only for what is used</li>
+<li>B. Purchasing hardware before it is needed</li>
+<li>C. Manually provisioning cloud resources</li>
+<li>D. Purchasing for the maximum possible load</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: A</p>
+<p>Explanation: <a href="https://www.cloudmanagementinsider.com/ways-to-optimize-aws-cost/" class="uri">https://www.cloudmanagementinsider.com/ways-to-optimize-aws-cost/</a></p>
+</details></li>
+<li><p>Under the AWS shared responsibility model, which of the following is a customer responsibility?</p>
+<ul>
+<li>A. Installing security patches for the Xen and KVM hypervisors</li>
+<li>B. Installing operating system patches for Amazon DynamoDB</li>
+<li>C. Installing operating system security patches for Amazon EC2 database instances</li>
+<li>D. Installing operating system security patches for Amazon RDS database instances</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: C</p>
+<p>Explanation: <a href="https://aws.amazon.com/compliance/shared-responsibility-model/" class="uri">https://aws.amazon.com/compliance/shared-responsibility-model/</a></p>
+</details></li>
+<li><p>The AWS Cost Management tools give users the ability to do which of the following? (Choose two.)</p>
+<ul>
+<li>A. Terminate all AWS resources automatically if budget thresholds are exceeded.</li>
+<li>B. Break down AWS costs by day, service, and linked AWS account.</li>
+<li>C. Create budgets and receive notifications if current of forecasted usage exceeds the budgets.</li>
+<li>D. Switch automatically to Reserved Instances or Spot Instances, whichever is most cost-effective.</li>
+<li>E. Move data stored in Amazon S3 to a more cost-effective storage class.</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: BC</p>
+</details></li>
+<li><p>Under the AWS shared responsibility model, the security and patching of the guest operating system is the responsibility of:</p>
+<ul>
+<li>A. AWS Support</li>
+<li>B. the customer</li>
+<li>C. AWS Systems Manager</li>
+<li>D. AWS Config</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: B</p>
+<p>Explanation: <a href="https://aws.amazon.com/compliance/shared-responsibility-model/" class="uri">https://aws.amazon.com/compliance/shared-responsibility-model/</a></p>
+</details></li>
+<li><p>Which AWS service makes it easy to create and manage AWS users and groups, and provide them with secure access to AWS resources at no charge?</p>
+<ul>
+<li>A. AWS Direct Connect</li>
+<li>B. Amazon Connect</li>
+<li>C. AWS Identity and Access Management (IAM)</li>
+<li>D. AWS Firewall Manager</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: C</p>
+<p>Explanation:</p>
+<ul>
+<li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/console_controlling-access.html" class="uri">https://docs.aws.amazon.com/IAM/latest/UserGuide/console_controlling-access.html</a></li>
+<li><a href="https://aws.amazon.com/iam/" class="uri">https://aws.amazon.com/iam/</a></li>
+</ul>
+</details></li>
+<li><p>Which AWS service provides on-demand of AWS security and compliance documentation?</p>
+<ul>
+<li>A. AWS Directory Service</li>
+<li>B. AWS Artifact</li>
+<li>C. AWS Trusted Advisor</li>
+<li>D. Amazon Inspector</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: B</p>
+<p>Explanation: <a href="https://aws.amazon.com/artifact/#:~:text=AWS%20Artifact%20is%20your%20go,reports%20and%20select%20online%20agreements" class="uri">https://aws.amazon.com/artifact/#:~:text=AWS%20Artifact%20is%20your%20go,reports%20and%20select%20online%20agreements</a>.</p>
+</details></li>
+<li><p>Which AWS service can be used to turn text into life-like speech?</p>
+<ul>
+<li>A. Amazon Polly</li>
+<li>B. Amazon Transcribe</li>
+<li>C. Amazon Rekognition</li>
+<li>D. Amazon Lex</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: A</p>
+<p>Explanation: <a href="https://aws.amazon.com/polly/#:~:text=Amazon%20Polly%20is%20a%20service,synthesize%20natural%20sounding%20human%20speech" class="uri">https://aws.amazon.com/polly/#:~:text=Amazon%20Polly%20is%20a%20service,synthesize%20natural%20sounding%20human%20speech</a>.</p>
+</details></li>
+<li><p>What is one of the core principles to follow when designing a highly available application in the AWS Cloud?</p>
+<ul>
+<li>A. Design using a serverless architecture</li>
+<li>B. Assume that all components within an application can fail</li>
+<li>C. Design AWS Auto Scaling into every application</li>
+<li>D. Design all components using open-source code</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: B</p>
+</details></li>
+<li><p>A user needs to generate a report that outlines the status of key security checks in an AWS account. The report must include: <br> (The status of Amazon S3 bucket permissions, Whether multi-factor authentication is enabled for the AWS account root user, If any security groups are configured to allow unrestricted access.) <br> Where can all this information be found in one location?</p>
+<ul>
+<li>A. Amazon QuickSight dashboard</li>
+<li>B. AWS CloudTrail trails</li>
+<li>C. AWS Trusted Advisor report</li>
+<li>D. IAM credential report</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: C</p>
+<p>Explanation: <a href="https://aws.amazon.com/premiumsupport/technology/trusted-advisor/best-practice-checklist/" class="uri">https://aws.amazon.com/premiumsupport/technology/trusted-advisor/best-practice-checklist/</a> #Security</p>
+</details></li>
+<li><p>Which Amazon EC2 pricing model should be used to comply with per-core software license requirements?</p>
+<ul>
+<li>A. Dedicated Hosts</li>
+<li>B. On-Demand Instances</li>
+<li>C. Spot Instances</li>
+<li>D. Reserved Instances</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: A</p>
+<p>Explanation: <a href="https://aws.amazon.com/ec2/dedicated-hosts/pricing/" class="uri">https://aws.amazon.com/ec2/dedicated-hosts/pricing/</a></p>
+</details></li>
+<li><p>Which of the AWS global infrastructure is used to cache copies of content for faster delivery to users across the globe?</p>
+<ul>
+<li>A. AWS Regions</li>
+<li>B. Availability Zones</li>
+<li>C. Edge locations</li>
+<li>D. Data centers</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: C</p>
+<p>Explanation:</p>
+<ul>
+<li>When your web traffic is geo-dispersed, it’s not always feasible and certainly not cost effective to replicate your entire infrastructure across the globe.</li>
+<li>A CDN provides you the ability to utilize its global network of edge locations to deliver a cached copy of web content such as videos, webpages, images and so on to your customers.</li>
+<li>To reduce response time, the CDN utilizes the nearest edge location to the customer or originating request location in order to reduce the response time.</li>
+<li>Throughput is dramatically increased given that the web assets are delivered from cache.</li>
+<li>For dynamic data, many CDNs can be configured to retrieve data from the origin servers.</li>
+</ul>
+<p>Reference: <a href="https://aws.amazon.com/caching/" class="uri">https://aws.amazon.com/caching/</a></p>
+</details></li>
+<li><p>Using AWS Config to record, audit, and evaluate changes to AWS resources to enable traceability is an example of which AWS Well-Architected Framework pillar?</p>
+<ul>
+<li>A. Security</li>
+<li>B. Operational excellence</li>
+<li>C. Performance efficiency</li>
+<li>D. Cost optimization</li>
+</ul>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p>Correct Answer: A</p>
+<p>Explanation: <a href="https://d1.awsstatic.com/whitepapers/architecture/AWS_Well-Architected_Framework.pdf" class="uri">https://d1.awsstatic.com/whitepapers/architecture/AWS_Well-Architected_Framework.pdf</a></p>
+</details></li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/borizSam\.github\.io\/AWS-Re_Start\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
