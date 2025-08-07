@@ -77,8 +77,47 @@ website:
       - text: "AWS Cloud Practitioner"
         menu:
           - text: "Training"
-          - file: Training/practice-exam-1.qmd
-          - file: Training/practice-exam-2.qmd
+            menu:
+              - text: "Examen Práctico 1"
+                file: Training/practice-exam-1.qmd
+              - text: "Examen Práctico 2"
+                file: Training/practice-exam-2.qmd
+              - text: "Examen Práctico 3"
+                file: Training/practice-exam-3.qmd
+              - text: "Examen Práctico 4"
+                file: Training/practice-exam-4.qmd
+              - text: "Examen Práctico 5"
+                file: Training/practice-exam-5.qmd
+              - text: "Examen Práctico 6"
+                file: Training/practice-exam-6.qmd
+              - text: "Examen Práctico 7"
+                file: Training/practice-exam-7.qmd
+              - text: "Examen Práctico 8"
+                file: Training/practice-exam-8.qmd
+              - text: "Examen Práctico 9"
+                file: Training/practice-exam-9.qmd
+              - text: "Examen Práctico 10"
+                file: Training/practice-exam-10.qmd
+              - text: "Examen Práctico 11"
+                file: Training/practice-exam-11.qmd
+              - text: "Examen Práctico 12"
+                file: Training/practice-exam-12.qmd
+              - text: "Examen Práctico 13"
+                file: Training/practice-exam-13.qmd
+              - text: "Examen Práctico 14"
+                file: Training/practice-exam-14.qmd
+              - text: "Examen Práctico 15"
+                file: Training/practice-exam-15.qmd
+              - text: "Examen Práctico 16"
+                file: Training/practice-exam-16.qmd
+              - text: "Examen Práctico 17"
+                file: Training/practice-exam-17.qmd
+              - text: "Examen Práctico 18"
+                file: Training/practice-exam-18.qmd
+              - text: "Examen Práctico 19"
+                file: Training/practice-exam-19.qmd
+              - text: "Examen Práctico 20"
+                file: Training/practice-exam-20.qmd
       # - text: "Recursos"
       #   menu:
       #     - text: "Proyectos"
